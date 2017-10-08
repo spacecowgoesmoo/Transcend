@@ -1,0 +1,792 @@
+/* Design Standards
+
+25 pixel border around the edges of the game field
+Default black is #222222 at 0.7 opacity. 0.4 for more faded out stuff
+Default white is #F9F9F9
+Images are 100% white/color at 0.7 opacity
+
+*/
+
+
+@font-face {
+	font-family: SansGuilt;
+	src: url('SansGuiltMB.otf');
+}
+
+
+body {
+	background: #202020;
+	color: #F9F9F9;
+	font-family: SansGuilt, Calibri, sans-serif;
+	font-size: 19.5px;
+	
+	-webkit-font-smoothing: antialiased;	/* prevents awful super-bold font in OSX Firefox and Chrome */
+	-moz-osx-font-smoothing: grayscale;
+	
+	cursor:default;
+	
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+
+
+
+
+
+
+
+html {										/* Zeroes out the margin padding */
+    margin: -8px;			
+    padding: 0;  
+    overflow: hidden;						/* Prevents all (?) page scrolling */
+}
+
+canvas {
+	z-index: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+button {
+	font-family: SansGuilt, Calibri, sans-serif;
+	background: #222222;
+	color: #F9F9F9;
+	border: 0px solid #888888;
+	font-size: 19.5px;
+	padding-bottom: 2px;
+	outline: none;
+	line-height: 19.5px;
+}
+
+button:hover {
+	background: #383838;
+}
+
+button:disabled:hover {
+	background: #222222;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.lowerRightButton {
+	width: 25px;
+	height: 30px;
+	text-align: center;
+	vertical-align: bottom;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+#biomeSelectBar {
+	/* Position */
+	width: 100%;
+	position: absolute;
+	z-index: 5;
+	padding-right: 25px;
+	margin-left: -1000000px;			/* This gets overriden immediately. Kinda prevents sprite blinking onLoad by delaying its appearance instead */
+	margin-top: -55px;
+	/* BG color */
+	opacity: 0.7;
+	background: #222222;
+	color: rgba(255, 255, 255, 0.075);	/* This gets overriden immediately. Prevents sprite blinking onLoad. */
+}
+
+.diamondButtonImage {
+	height: 23px;
+	position: relative;
+	bottom: 1px;
+	right: 5px;
+}
+
+.hexagonButtonImage {
+	height: 23px;
+	position: relative;
+	bottom: 1px;
+	right: 5px;
+}
+
+.triangleButtonImage {
+	height: 24px;
+	position: relative;
+	right: 6px;
+	bottom: 1px;
+}
+
+.squareButtonImage {
+	height: 21px;
+	position: relative;
+	right: 4px;
+	bottom: 1px;
+}
+
+.circleButtonImage {
+	height: 21px;
+	position: relative;
+	bottom: 1px;
+	right: 4px;
+}
+
+.starButtonImage {
+	height: 23px;
+	position: relative;
+	bottom: 1px;
+	right: 5px;
+}
+
+.stardustButtonImage {
+	height: 20px;
+	position: relative;
+	right: 4px;
+}
+
+.diamondBarPurchaseImage {
+	height: 21px;
+	position: relative;
+	right: 4px;
+}
+
+.biomeRandomImage {
+	position: relative;
+	right: 6px;
+	width: 24px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#upgradeBar {
+	/* Position */
+	width: 100%;
+	position: absolute;
+	z-index: 5;
+	padding-right: 25px;
+	margin-left: -1000000px;			/* This gets overriden immediately. Kinda prevents sprite blinking onLoad by delaying its appearance instead */
+	margin-top: -55px;
+	/* BG color */
+	opacity: 0.7;
+	background: #222222;
+	color: rgba(255, 255, 255, 0.075);	/* This gets overriden immediately. Prevents sprite blinking onLoad. */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.upperLeftButton {						/* DANGER */
+	width: 115px;
+	height: 30px;
+	text-align: left;
+	padding-left: 40px;					/* Should be 25px to match to other border UI elements, but 40 just looks better */
+	margin-left: -25px;
+}
+
+#resourceCounter {						/* DANGER */
+	/* Position */
+	position: absolute;
+	z-index: 1;
+	padding-left: 25px;
+	margin-top: -575px;
+	opacity: 0.7;
+}
+
+.diamondCounterShape {
+	height: 24px;
+	position: relative;
+	top: 1px;
+	right: 7px;
+}
+
+#diamondCounterText {
+	position: relative;
+	bottom: 5px;
+	right: 1px;
+}
+
+.starCounterShape {
+	height: 23px;
+	position: relative;
+	top: 1px;
+	right: 6px;
+}
+
+#starCounterText {
+	position: relative;
+	bottom: 5px;
+	right: 0px;
+}
+
+.hexagonCounterShape {
+	height: 23px;
+	position: relative;
+	top: 1px;
+	right: 6px;
+}
+
+#hexagonCounterText {
+	position: relative;
+	bottom: 5px;
+}
+
+.triangleCounterShape {
+	height: 22px;
+	position: relative;
+	right: 5px;
+	top: 1px;
+}
+
+#triangleCounterText {
+	position: relative;
+	bottom: 4px;
+	left: 1px;
+}
+
+.circleCounterShape {
+	height: 21px;
+	position: relative;
+	top: 1.5px;
+	right: 5px;
+}
+
+#circleCounterText {
+	position: relative;
+	bottom: 3px;
+	left: 2px;
+}
+
+.squareCounterShape {
+	height: 21px;
+	position: relative;
+	top: 2px;
+	right: 5px;
+}
+
+#squareCounterText {
+	position: relative;
+	bottom: 2.5px;
+	left: 2px;
+}
+
+.stardustCounterShape {
+	height: 20px;
+	position: relative;
+	top: 1px;
+	right: 5px;
+}
+
+#stardustCounterText {
+	position: relative;
+	bottom: 2.5px;
+	left: 3px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#optionsMenuButton {
+	/* Position */
+	position: absolute;
+	z-index: 5;
+	margin-left: 851px;
+	margin-top: -580px;
+/*	margin-left: -49px;				/* Different positioning for not using the Kong iFrame *//*
+	margin-top: 20px;*/
+	/* Color */
+	background: none;
+	opacity: 0.4;						/* Actually 0.4. Fades in for the preloader */
+	/* Size */
+	padding-top: 5px;
+}
+
+#optionsMenuButton:hover {
+	opacity: 0.55;
+}
+
+#optionsMenu {
+	/* Position */
+	position: absolute;
+	z-index: 10;					/* Higher Z than the rest of the DOM. Also magically prevents a preventParentClick() bug */
+/*	margin-left: -565px;			/* Different positioning for not using the Kong iFrame *//*
+	margin-top: 92px;*/
+	margin-left: 335px;
+	margin-top: -508px;
+	/* BG color */
+	opacity: 0.7;
+	background: #222222;
+	padding: 25px;
+	/*Font*/
+	line-height: 25px;
+	text-align: center;
+	width: 188px;					/* Has to be set manually or Firefox will fuck it up */
+}
+
+.optionText {
+	margin-bottom: -2px;
+	margin-right: -6px;
+}
+
+.extraMarginRight {
+	margin-right: -12px;
+}
+
+.optionText:hover {
+	background: none;
+}
+
+.noBG:hover {
+	background: none;
+}
+
+.optionTextLast {
+	margin-right: -2px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+progress {
+	width: 150px;
+	height: 17px;
+	border: 0px;
+	opacity: 0.7;
+	position: absolute;
+	z-index: 5;
+	margin-top: -520000000px;			/* This gets overriden immediately. Prevents sprite blinking onLoad. */
+}
+
+#diamondBarLabelImage {
+	height: 21px;
+	position: absolute;
+	z-index: 10;
+	opacity: 0.7;
+	margin-top: -19px;
+}
+
+/* S P A C I N G */
+#diamondBarPart1 { margin-left: 0px }
+#diamondBarPart2 { margin-left: 150px }
+#diamondBarPart3 { margin-left: 300px }
+#diamondBarPart4 { margin-left: 450px }
+#diamondBarPart5 { margin-left: 600px }
+#diamondBarPart6 { margin-left: 750px }
+
+#endgameBarPart1 { margin-left: 0px }
+#endgameBarPart2 { margin-left: 150px }
+#endgameBarPart3 { margin-left: 300px }
+#endgameBarPart4 { margin-left: 450px }
+#endgameBarPart5 { margin-left: 600px }
+#endgameBarPart6 { margin-left: 750px }
+
+/* Color for Firefox */
+progress { background: #222222; }
+#diamondBarPart1::-moz-progress-bar { background: #9292BB; }		/* Darkness +1 so that diamondBarLabelImage is legible */
+#diamondBarPart2::-moz-progress-bar { background: #A3CCA3; }
+#diamondBarPart3::-moz-progress-bar { background: #A777BA; }
+#diamondBarPart4::-moz-progress-bar { background: #CCCCA3; }
+#diamondBarPart5::-moz-progress-bar { background: #7777CC; }
+#diamondBarPart6::-moz-progress-bar { background: #777777; }
+#endgameBarPart1::-moz-progress-bar { background: #990000; }
+#endgameBarPart2::-moz-progress-bar { background: #996300; }
+#endgameBarPart3::-moz-progress-bar { background: #999900; }
+#endgameBarPart4::-moz-progress-bar { background: #009900; }
+#endgameBarPart5::-moz-progress-bar { background: #000099; }
+#endgameBarPart6::-moz-progress-bar { background: #990099; }
+
+/* Color for Chrome & Safari */
+progress::-webkit-progress-bar { background: #222222; }
+#diamondBarPart1::-webkit-progress-value { background: #9292BB; }	/* Darkness +1 so that diamondBarLabelImage is legible */
+#diamondBarPart2::-webkit-progress-value { background: #A3CCA3; }
+#diamondBarPart3::-webkit-progress-value { background: #A777BA; }
+#diamondBarPart4::-webkit-progress-value { background: #CCCCA3; }
+#diamondBarPart5::-webkit-progress-value { background: #7777CC; }
+#diamondBarPart6::-webkit-progress-value { background: #777777; }
+#endgameBarPart1::-webkit-progress-value { background: #990000; }
+#endgameBarPart2::-webkit-progress-value { background: #996300; }
+#endgameBarPart3::-webkit-progress-value { background: #999900; }
+#endgameBarPart4::-webkit-progress-value { background: #009900; }
+#endgameBarPart5::-webkit-progress-value { background: #000099; }
+#endgameBarPart6::-webkit-progress-value { background: #990099; }
+
+/* Color for IE & Edge */
+progress { background-color: #222222; }
+#diamondBarPart1 { color: #9292BB; }								/* Darkness +1 so that diamondBarLabelImage is legible */
+#diamondBarPart2 { color: #A3CCA3; }
+#diamondBarPart3 { color: #A777BA; }
+#diamondBarPart4 { color: #CCCCA3; }
+#diamondBarPart5 { color: #7777CC; }
+#diamondBarPart6 { color: #777777; }
+#endgameBarPart1 { color: #990000; }
+#endgameBarPart2 { color: #996300; }
+#endgameBarPart3 { color: #999900; }
+#endgameBarPart4 { color: #009900; }
+#endgameBarPart5 { color: #000099; }
+#endgameBarPart6 { color: #990099; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#titleCardComplete {
+	display: inline;
+	opacity: 0.7;
+	font-size: 33px;
+	position: absolute;
+	z-index: 5;
+/*	margin-left: -450px;									/* Different positioning for not using the Kong iFrame *//*
+	margin-top: 488px;*/
+	margin-left: 450px;
+	margin-top: -112px;
+}
+
+#creditsText {
+	color: #000000;
+	font-size: 33px;
+	margin-left: 450px;
+}
+
+#creditsText1 {
+	position: absolute;
+	z-index: 5;
+	margin-top: -538px;
+}
+
+#creditsText2 {
+	position: absolute;
+	z-index: 5;
+	margin-top: -488px;
+}
+
+#creditsText3 {
+	position: absolute;
+	z-index: 5;
+	margin-top: -112px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.lowerLeftTextBar {
+	/* Position */
+	position: absolute;
+	z-index: 5;
+	height: 20px;
+	margin-left: 0px;
+	margin-top: -55px;
+	/* BG color */
+	background: #222222;
+	padding-left: 25px;				/* 25 or 40 px */
+	padding-right: 15px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	/* Text positioning */
+	line-height: 12px;
+}
+
+.diamondPriceText {					/* Terrible copypaste bugfix */
+	position: relative;
+	bottom: 5px;
+	right: 1px;
+}
+
+.starPriceText {
+	position: relative;
+	bottom: 5px;
+	right: 0px;
+}
+
+.hexagonPriceText {
+	position: relative;
+	bottom: 5px;
+}
+
+.trianglePriceText {
+	position: relative;
+	bottom: 4px;
+	left: 1px;
+}
+
+.circlePriceText {
+	position: relative;
+	bottom: 4px;
+	left: 2px;
+}
+
+.squarePriceText {
+	position: relative;
+	bottom: 3.5px;
+	left: 2px;
+}
+
+.stardustPriceText {
+	position: relative;
+	bottom: 3.5px;
+	left: 3px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.anchorCenter {
+	margin: 0 auto;							/* Does nothing. Leaving it in because development is 99.9% done */
+	text-align: center;
+}
+
+/* Hiding stuff */
+.invisible {
+	display: none;
+}
+
+.visible {
+	display: inline;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+a:link    { color: #F9F9F9 }  /* unvisited links */
+a:visited { color: #F9F9F9 }  /* visited links   */
+a:hover   { color: #F9F9F9 }  /* user hovers     */
+a:active  { color: #F9F9F9 }  /* active links    */
+
+
+
+
+
+
+
+
+/* Centers the game in the window */ 
+/*
+canvas {
+	border: 2px solid #303030;
+	position: absolute;
+	left: 50%;
+	transform: translate3d( -50%, 0%, 0 );
+	margin-top: 50px;
+}
+*/
+
+/* Firefox Hacks */
+@supports (-moz-appearance:meterbar) { 
+	.firefoxHack { top: 0px; right: 6px; } 		/* Pushes biome select images down 1px and overwrites the rightside spacing */
+	.firefoxHack3 { top: 0px; right: 7px; } 	/* Pushes biome select images down 1px and overwrites the rightside spacing */
+	.firefoxHack6 { top: 1px; right: 7px; }
+	.firefoxHack2 { top: 3px; }					/* Pushes resource counter images down 2px */
+	.firefoxHack4 { top: -3px; }				/* Hax for the resource counter texts */
+	.firefoxHack5 { top: -2px; }				/* Hax for the resource counter texts */
+	button { line-height: 23px; }				/* Fixes uneven options menu line spacing */
+	.diamondButtonImage { left: -7px; }
+	.starButtonImage { left: -7px; }
+	.hexagonButtonImage { left: -7px; }
+	.stardustButtonImage { top: 1px; }
+	.optionText { margin-right: -2px; }
+	.optionTextLast { margin-right: -2px; }
+	.extraMarginRight {	margin-right: -9px; }
+	#optionsMenu { line-height: 26px; width: 190px; margin-left: 330px; margin-top: -510px; }				/* margin-left: -570px; margin-top: 90px; if not Kong */ 
+	.triangleButtonImage { right: 8px; }
+	.lowerLeftTextBar { line-height: 10px; }
+}					
+
+/* Firefox Windows Hacks */
+@media screen and (-moz-windows-theme) {
+
+}
+
+/* Safari Hacks. Also affects Chrome */
+@supports (-webkit-appearance:none) {
+	#biomeSelectBar { width: 100%; }			/* Idiotic hack that's required to prevent sprite colors being inverted */
+	#resourceCounter { height: 63px; }			/* Idiotic hack that's required to prevent sprite colors being inverted. Bit of a bug at the very start, but that's OK */
+	#upgradeBar { width: 100%; }
+	#squareCounterText { bottom: 3.5px;	}
+	#optionsMenu { margin-left: 331px; }		/* margin-left: -569px; if not Kong */
+}
+
+/* IE Hacks (>= 10) */
+@media screen and (-ms-high-contrast:active), (-ms-high-contrast: none) {
+	.firefoxHack { top: 0px; right: 6px; } 		/* Pushes biome select images down 1px and overwrites the rightside spacing */
+	.firefoxHack3 { top: 0px; right: 7px; } 	/* Pushes biome select images down 1px and overwrites the rightside spacing */
+	.diamondButtonImage { left: -7px; }
+	.starButtonImage { left: -7px; }
+	.hexagonButtonImage { left: -7px; }
+	.triangleButtonImage { right: 8px; top: -1px; }
+	.stardustButtonImage { left: -6px; top: -1px; }
+	#starCounterText { bottom: 4px; }
+	#hexagonCounterText { bottom: 4px; }
+	.diamondCounterShape { top: 2px; }
+	#diamondCounterText { bottom: 4px; }
+	.hexagonCounterShape { top: 2px; }
+	.circleCounterShape { top: 2.5; }
+	#stardustCounterText { bottom: 3.5px; }
+	#optionsMenu { width: 190px; margin-left: 330px; line-height: 26px; }			/* margin-left: -570px; if not Kong */
+	#optionsMenuButton { margin-top: 21px; margin-left: -59px; }					/* Very different than normal; it doesn't like Kong's iFrame */
+	.optionTextLast { position: relative; top: 3px; right: -2px; }
+	.lowerLeftTextBar { line-height: 13px; }
+	.visible { display: block; }				/* Fucking stupid hack to make the options menu not be invisible */
+	#resourceCounterFadeInContainer { position: relative; }						/* Fucking stupid hack to fix an IE bug that prevents opacity inheritance */
+	#songTitleSuperdiv { position: relative; }									/* Fucking stupid hack to fix an IE bug that prevents opacity inheritance */
+	#optionsMenuButtonFadeInContainer { position: relative; }					/* Fucking stupid hack to fix an IE bug that prevents opacity inheritance */
+	#lowerRightFadeInContainer { position: relative; display: block; }			/* Fucking stupid hack to fix an IE bug that prevents opacity inheritance */
+	#progressBarIEopacityCancerBugfix { position: relative; display: block; }	/* Fucking stupid hack to fix an IE bug that prevents opacity inheritance */
+	#titleCardComplete { margin-top: 488px; margin-left: -450px; }			/* Fixes iFrame positioning bugs */
+	.ieHack { display: inline; }											/* display: block doesn't work, makes it vertical text */
+}
+
+/* MS Edge Hacks */
+@supports (-ms-ime-align:auto) {
+	.firefoxHack { top: 0px; } 					/* Pushes biome select images down 1px and overwrites the rightside spacing */
+	#diamondCounterText { bottom: 5px; }
+	.triangleButtonImage { right: 6px; top: -1px; }
+	.stardustButtonImage { top: -1px; }
+	#starCounterText { bottom: 4px; }
+	#hexagonCounterText { bottom: 4px; }
+	.hexagonCounterShape { top: 2px; }
+	#squareCounterText { bottom: 3.5px; }
+	#stardustCounterText { bottom: 3.5; }	
+	#optionsMenu { width: 190px; margin-left: 330px; line-height: 26px; }			/* margin-left: -570px; if not Kong */
+	#bgmDisplay { margin-left: 10px; }
+	#sfxDisplay { margin-left: 10px; }
+	.lowerLeftTextBar { line-height: 13px; }
+	.visible { display: block; }				/* Fucking stupid hack to make the options menu not be invisible */
+	#resourceCounterFadeInContainer { position: relative; }		/* Fucking stupid hack to fix an IE bug that prevents opacity inheritance */
+	#songTitleSuperdiv { position: relative; }					/* Fucking stupid hack to fix an IE bug that prevents opacity inheritance */
+	#optionsMenuButtonFadeInContainer { position: relative; }	/* Fucking stupid hack to fix an IE bug that prevents opacity inheritance */
+	#lowerRightFadeInContainer { position: relative; display: block; }			/* Fucking stupid hack to fix an IE bug that prevents opacity inheritance */
+	.ieHack { display: inline; }												/* display: block doesn't work, makes it vertical text */
+}
+
+/* Chrome Hacks */
+@media all and (-webkit-min-device-pixel-ratio:0) and (min-resolution: .001dpcm) { 
+	body { image-rendering: -webkit-optimize-contrast; } 			/* Fixes shitty blurry image scaling in Chrome. Breaks Safari so keep it on Chrome only */		
+	button { line-height: 23px; }									/* Fixes uneven options menu line spacing */
+	.firefoxHack { top: 0px; }										/* These all break OSX intentionally. 5% market share :( */
+	.triangleButtonImage { top: -1px; }
+	.stardustButtonImage { top: -1px; }
+	#starCounterText { bottom: 4px; }
+	#hexagonCounterText { bottom: 4px; }
+	.diamondCounterShape { top: 2px; }
+	#diamondCounterText { bottom: 4px; }
+	.hexagonCounterShape { top: 2px; }
+	.starCounterShape { top: 2px; }
+}

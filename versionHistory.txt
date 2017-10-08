@@ -1,0 +1,6 @@
+v1.01 - Day 1 bugs
+	Fixed a bug that exposed a piece of the end credits scene, allowing accidental page resets
+
+v1.0 - Initial Release
+	TRANSCEND, DIAMOND, and RAINBOW phases
+	17 BGM tracks
