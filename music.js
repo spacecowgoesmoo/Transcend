@@ -159,28 +159,28 @@ function musicSpawnController() {
     	
 		if (r <= 33) {													// Plays music
 			switch (cow.currentBiome) {
-				case 'biome1': playAudio('Music/bringOnTheAbstraction.mp3', 'bgm', 450); break;
-				case 'biome2': playAudio('Music/coldHeartedSpotlight.mp3', 'bgm', 450); break;
-				case 'biome3': playAudio('Music/youreMyFire.mp3', 'bgm', 450); break;
-				case 'biome4': playAudio('Music/lightningIsCominForYou.mp3', 'bgm', 450); break;
-				case 'biome5': playAudio('Music/perfectRepetition.mp3', 'bgm', 450); break;
-				case 'biome6': playAudio('Music/supersonicEternity.mp3', 'bgm', 450); break;
+				case 'biome1': playAudio('./Music/bringOnTheAbstraction.mp3', 'bgm', 450); break;
+				case 'biome2': playAudio('./Music/coldHeartedSpotlight.mp3', 'bgm', 450); break;
+				case 'biome3': playAudio('./Music/youreMyFire.mp3', 'bgm', 450); break;
+				case 'biome4': playAudio('./Music/lightningIsCominForYou.mp3', 'bgm', 450); break;
+				case 'biome5': playAudio('./Music/perfectRepetition.mp3', 'bgm', 450); break;
+				case 'biome6': playAudio('./Music/supersonicEternity.mp3', 'bgm', 450); break;
 				default: break;
 			}
 		} else {																					
 			switch (q) {
-				case 1: playAudio('Music/electricSunrise.mp3', 'bgm', 450); break;
-				case 2: playAudio('Music/crankUpTheEcstasy.mp3', 'bgm', 450); break;
-				case 3: playAudio('Music/bluePassion.mp3', 'bgm', 450); break;
-				case 4: playAudio('Music/redWhisper.mp3', 'bgm', 450); break;
+				case 1: playAudio('./Music/electricSunrise.mp3', 'bgm', 450); break;
+				case 2: playAudio('./Music/crankUpTheEcstasy.mp3', 'bgm', 450); break;
+				case 3: playAudio('./Music/bluePassion.mp3', 'bgm', 450); break;
+				case 4: playAudio('./Music/redWhisper.mp3', 'bgm', 450); break;
 				
-				case 5: playAudio('Music/cantStopThePunk.mp3', 'bgm', 450); break;
-				case 6: playAudio('Music/farFromConsequence.mp3', 'bgm', 450); break;
-				case 7: playAudio('Music/chaosIsOkay.mp3', 'bgm', 450); break;
-				case 8: playAudio('Music/beatParadise.mp3', 'bgm', 450); break;
-				case 9: playAudio('Music/traceTranscend.mp3', 'bgm', 450); break;
+				case 5: playAudio('./Music/cantStopThePunk.mp3', 'bgm', 450); break;
+				case 6: playAudio('./Music/farFromConsequence.mp3', 'bgm', 450); break;
+				case 7: playAudio('./Music/chaosIsOkay.mp3', 'bgm', 450); break;
+				case 8: playAudio('./Music/beatParadise.mp3', 'bgm', 450); break;
+				case 9: playAudio('./Music/traceTranscend.mp3', 'bgm', 450); break;
 				
-				case 10: playAudio('Music/fadingSpace.mp3', 'bgm', 450); break;
+				case 10: playAudio('./Music/fadingSpace.mp3', 'bgm', 450); break;
 				default: break;
 			}
 		}
