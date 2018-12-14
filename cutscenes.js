@@ -80,7 +80,7 @@ function showStartGameButton() {
 }
 
 function startGame() {
-	if (cow.gameStarted == false) {
+	if (cow.gameStarted == false && cow.filesPreloaded >= 160) {
 		newFade(startGameText, 0, 0.7);										// Fadeout the start game text
 		
 		initializeGameTwo();												// Start the game
