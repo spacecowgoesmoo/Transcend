@@ -93,6 +93,8 @@ function startGame() {
 		optionsMenuButton.style.display = 'inline';							// This and the inline CSS on the HTML tag are required for IE and Edge. Fuck IE.
 		newFade(resourceCounterFadeinContainer, 1, 0.7);		
 		newFade(lowerRightFadeinContainer, 1, 0.7);
+		
+		cow.gameStarted = true;
 	}
 	
 	function fadeOutPreloader() {
