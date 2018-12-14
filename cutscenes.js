@@ -1,7 +1,8 @@
+var preloaderContainer = new PIXI.DisplayObjectContainer();
+
 function preloader() {
 	initializeGameOne();
 
-	var preloaderContainer = new PIXI.DisplayObjectContainer();
 	preloaderContainer.zIndex = 50;
 	app.stage.addChild(preloaderContainer);
 
@@ -45,25 +46,55 @@ function preloader() {
 		if (cow.filesPreloaded >= 150 && diam5.alpha == 0.13) { diam5.tint=cowColor; diam5.alpha=1;}
 		if (cow.filesPreloaded >= 159 && diam6.alpha == 0.13) { diam6.tint=cowColor; diam6.alpha=1;}		
 		if (cow.kongUsername && cow.filesPreloaded >= 160) {					// NOTE - This username login part doubles as a sitelock
-			initializeGameTwo();												// Start the game
-			initializeGameThree();
-			fadeOutPreloader();
-			
-			showDiamondBar();
-			showEndgameBar();
-			newFade(optionsMenuButtonFadeinContainer, 1, 0.7);					// Fadein all the UI
-			optionsMenuButton.style.display = 'inline';							// This and the inline CSS on the HTML tag are required for IE and Edge. Fuck IE.
-			newFade(resourceCounterFadeinContainer, 1, 0.7);		
-			newFade(lowerRightFadeinContainer, 1, 0.7);		
+			fadeOutDiamond(1);
+			fadeOutDiamond(2);
+			fadeOutDiamond(3);
+			fadeOutDiamond(4);
+			fadeOutDiamond(5);
+			fadeOutDiamond(6);
+			showStartGameButton();
 		}
 		else {
 			var q = ((cow.filesPreloaded/160)*100).toFixed(0);
 			setTimeout(waitForLogin, 500);										// Ghetto animation engine variation because we don't need 60FPS. 2FPS is fine.
 		}
 	}
-
 	waitForLogin();
+	
+	function fadeOutDiamond(number) {
+		var qq = window['diam' + number]
+		function fade() {
+			qq.alpha -= 0.025;
 
+			if (qq.alpha < 0) {													// if shape is offscreen..
+				qq.destroy(true); 												// kill it
+			} else { window.requestAnimationFrame(fade); }						// otherwise, animate another frame and check again
+		}																		//
+
+		window.requestAnimationFrame(fade);										// starts the animation moving
+	}
+}
+
+function showStartGameButton() {
+	newFade(startGameText, 1, 1.4);											// Fadein the start game text
+}
+
+function startGame() {
+	if (cow.gameStarted == false) {
+		newFade(startGameText, 0, 0.7);										// Fadeout the start game text
+		
+		initializeGameTwo();												// Start the game
+		initializeGameThree();
+		fadeOutPreloader();
+		
+		showDiamondBar();
+		showEndgameBar();
+		newFade(optionsMenuButtonFadeinContainer, 1, 0.7);					// Fadein all the UI
+		optionsMenuButton.style.display = 'inline';							// This and the inline CSS on the HTML tag are required for IE and Edge. Fuck IE.
+		newFade(resourceCounterFadeinContainer, 1, 0.7);		
+		newFade(lowerRightFadeinContainer, 1, 0.7);
+	}
+	
 	function fadeOutPreloader() {
 		function fade() {
 			preloaderContainer.alpha -= 0.01;
