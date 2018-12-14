@@ -1,3 +1,6 @@
+v1.02 - Chrome breaks web audio standards
+	Fixed a bug that would sometimes crash the loading screen
+
 v1.01 - Day 1 bugs
 	Fixed a bug that exposed a piece of the end credits scene, allowing accidental page resets
 
