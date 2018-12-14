@@ -56,6 +56,7 @@ var cow = {
 
 	creditsActivated: false,
 	gameClear: false,
+	gameStarted: false,
 
 	resourceCounterWidthArray: [],
 	filesPreloaded: 0,
