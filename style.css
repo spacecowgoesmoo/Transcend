@@ -544,13 +544,15 @@ progress { background-color: #222222; }
 	margin-top: -488px;
 }
 
-#creditsText3 {
+#creditsText3, #startGameText {
 	position: absolute;
 	z-index: 5;
 	margin-top: -112px;
 }
 
-
+#startGameText {
+	color: #F9F9F9;
+}
 
 
 
