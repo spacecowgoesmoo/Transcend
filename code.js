@@ -1,4 +1,4 @@
-var app = new PIXI.Application(900, 600, { antialias: true, transparant: false });						// creates the PIXI stage
+var app = new PIXI.Application({ width: 900, height: 600, antialias: true });		// creates the PIXI stage
 document.body.appendChild(app.view);
 
 // var renderer = new PIXI.CanvasRenderer(900, 600, { antialias: true });
@@ -15,12 +15,12 @@ document.body.appendChild(app.view);
 app.mozOpaque = true; 																// Supposedly improves Firefox performance. Testing showed minor improvements.. I think
 
 
-var skyContainer = new PIXI.DisplayObjectContainer();								// create the layers (old 2015 method)
-var skyObjectContainer = new PIXI.DisplayObjectContainer();							//
-var textureContainer = new PIXI.DisplayObjectContainer();							//
-var biome4Container = new PIXI.DisplayObjectContainer();							//
-var biome4FGContainer = new PIXI.DisplayObjectContainer();							//
-var foregroundContainer = new PIXI.DisplayObjectContainer();						//
+var skyContainer = new PIXI.Container();											// create the layers
+var skyObjectContainer = new PIXI.Container();										//
+var textureContainer = new PIXI.Container();										//
+var biome4Container = new PIXI.Container();											//
+var biome4FGContainer = new PIXI.Container();										//
+var foregroundContainer = new PIXI.Container();										//
 skyContainer.zIndex = 5;															// set the layer depths
 skyObjectContainer.zIndex = 10;														//
 textureContainer.zIndex = 15;														//

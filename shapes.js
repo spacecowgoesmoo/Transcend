@@ -1,5 +1,5 @@
 function createBackground(luminosity1, color1, luminosity2, color2, lifespan, biome) {
-	if (bgSquare) { bgSquare.destroy(true); }								// deletes any existing background shapes
+	if (bgSquare) { bgSquare.destroy(true); }							// deletes any existing background shapes
 
 	var bgSquare = new PIXI.Graphics();									// create a shape in the PIXI engine
 	bgSquare.beginFill(0xffffff);										// This can be anything except black to make the gradient work

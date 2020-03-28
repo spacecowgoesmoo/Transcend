@@ -213,8 +213,8 @@ function biomeSpawnController() {
 
 
 function fadeInBackgroundTexture() {
-	var texture = PIXI.Texture.fromImage('Images/fuzz.png');							// Adds a tiled background sprite
-	var tilingSprite = new PIXI.extras.TilingSprite(texture, app.renderer.width, app.renderer.height);
+	var texture = PIXI.Texture.from('Images/fuzz.png');									// Adds a tiled background sprite
+	var tilingSprite = new PIXI.TilingSprite(texture, app.renderer.width, app.renderer.height);
 	textureContainer.addChild(tilingSprite);
 	
 	textureContainer.alpha = 0;	

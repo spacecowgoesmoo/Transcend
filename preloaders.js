@@ -3,7 +3,7 @@ function preloadFiles() {
 	setTimeout( function() { 
 		cow.filesPreloaded = 160
 		console.log('Preloader is taking too long, forcing game initialization..')
-	 }, 25000)
+	 }, 2500)
 
 	// Preload
 	// NOTE: On tc.com, the last 10% of files loaded will usually fail when accessed over https

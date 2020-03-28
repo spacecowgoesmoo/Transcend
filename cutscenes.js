@@ -1,4 +1,4 @@
-var preloaderContainer = new PIXI.DisplayObjectContainer();
+var preloaderContainer = new PIXI.Container();
 
 function preloader() {
 	initializeGameOne();
