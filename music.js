@@ -116,7 +116,7 @@ function musicSpawnController() {
 		var r = rngRange(1,100);											// Select biome song or random song
 		if (cow.endgameBarOwned == true || cow.gameClear == true) 	{ var q = rngRange(1,10); } else  	// Gates some songs to Phase 2 and 3
 		if (cow.diamondBarOwned == true ) 							{ var q = rngRange(1,9); } else  	//
-											 							{ var q = rngRange(1,4); }	 	  	//
+											 						{ var q = rngRange(1,4); }	 	  	//
 		
 		if (cow.diamondCapacity <= 2) { var r = 1; }						// Force 'Abstraction' to play first on a new game
 		if (cow.endgameBarOwned == true && cow.gameClear == false && rngRange(1,10) <= 3) 	{ r=0; q=10; } else  	// Higher chance of Fading Space

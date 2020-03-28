@@ -7,7 +7,7 @@ function preloadFiles() {
 
 	// Preload
 	// NOTE: On tc.com, the last 10% of files loaded will usually fail when accessed over https
-	function load(filename) {
+	function load(filename) {		
 	    var xmlhttp;
 	    if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
 	        xmlhttp = new XMLHttpRequest();
@@ -21,7 +21,7 @@ function preloadFiles() {
 				q.setAttribute('class', 'invisible');	//
 				document.body.appendChild(q);			//
 	            document.getElementById("loadSound").innerHTML = '<embed src="' + filename + '" controller="1" autoplay="0" autostart="0" />';
-				//console.log(cow.filesPreloaded);
+				console.log('Loaded file ' + cow.filesPreloaded + '/159 - ' + filename);
 				cow.filesPreloaded++;
 	        }
 	    }
