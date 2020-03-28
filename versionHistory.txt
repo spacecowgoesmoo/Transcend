@@ -1,3 +1,6 @@
+v1.03 - Maintenance patch 2020
+	Fixed broken music filepaths in the demo version
+
 v1.02 - Chrome breaks web audio standards
 	Added a 'click to start' page to account for the new Chrome autoplay protection
 	Fixed a bug that would sometimes crash the loading screen
