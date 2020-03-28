@@ -70,6 +70,7 @@ var cow = {
 	bgmVolume: 80,
 	sfxVolume: 80,
 	muteAudioForIE: false,
+	hideMusicText: false,
 	
 	randomBiomesUnlocked: false,
 	randomBiomesActive: false,
