@@ -1,5 +1,5 @@
 v1.03 - Maintenance patch 2020
-	Added a console message for whenever background music plays
+	New console messages for: Background music, sky gradient changes
 	Fixed broken music filepaths in the demo version
 
 v1.02 - Chrome breaks web audio standards
