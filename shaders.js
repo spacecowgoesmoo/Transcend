@@ -2,9 +2,8 @@
 const shaderSourceCode =
 	// Included data sources
 	'precision mediump float;' +
-	'varying vec2 vTextureCoord;' +		// The coordinates of the current pixel
-	'uniform sampler2D uSampler;' +		// The image data
-	'float screenHeight = 600.0;' +		// Pixels
+	'varying vec2 vTextureCoord;' +		// Coordinates of the current pixel
+	'uniform sampler2D uSampler;' +		// Image data
 
 	// Start and end colors
 	'uniform vec3 tint1;' +				// Vector3 containg RGB values
@@ -12,8 +11,7 @@ const shaderSourceCode =
 
     // Actual graphics code
 	'void main(void) {' +
-		'float yPercent = vTextureCoord.y / screenHeight;' +				// Get the height of the next pixel to draw, scaled 0 to 1
-		'vec3 newPixelByColumn = mix(tint1, tint2, yPercent);' +			// Prepare the next pixel in the gradient column
+		'vec3 newPixelByColumn = mix(tint1, tint2, vTextureCoord.y);' +		// Prepare the next pixel in the gradient column
 		'vec4 nextBlankPixel = texture2D(uSampler, vTextureCoord);' +		// Grab the next pixel on the canvas
     	'gl_FragColor = nextBlankPixel * vec4(newPixelByColumn, 1.0);' +	// Multiply things together to paint it
 	'}';
