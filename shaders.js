@@ -24,27 +24,34 @@
 //     '}';
 
 
-// Fucking bullshit archaic rewrite for IE compatibility. ` is banned
+// New recommendation
+// ((vTextureCoord * inputSize.xy) + outputFrame.xy) / outputFrame.zw
+// Dumb rewrite for IE compatibility. ` is unsupported
 var src =
+	// Included data sources
     'precision mediump float;' +
-    'varying vec2 vTextureCoord;' +
+    'varying vec2 vTextureCoord;' +	// The coordinates of the current pixel
     'varying vec2 vFilterCoord;' +
     'uniform mat3 mappedMatrix;' +
-    'uniform sampler2D uSampler;' +
-
-    // start and end colors
+    'uniform sampler2D uSampler;' +	// The image data
+    'uniform vec4 inputSize;' +
+    'uniform vec4 outputFrame;' +
+    // Start and end colors
     'uniform vec3 tint1;' +
     'uniform vec3 tint2;' +
 
+    // Actual graphics code
     'void main(){' +
+    	// The new patch
+   		'vec2 cow = (((vTextureCoord * inputSize.xy) + outputFrame.xy) / outputFrame.zw);' +
 
-	// vec2 uvs = vTextureCoord.xy;
-    'vec3 mapCoord = vec3(vTextureCoord, 1.0) * mappedMatrix;' +
-    'vec3 mixCol = mix(tint1, tint2, mapCoord.y);' +
+		// vec2 uvs = vTextureCoord.xy;
+    	'vec3 mapCoord = vec3(vTextureCoord, 1.0) * mappedMatrix;' +
+    	'vec3 mixCol = mix(tint1, tint2, mapCoord.y);' +
 
-    'vec4 fg = texture2D(uSampler, vTextureCoord);' +
+ 		'vec4 fg = texture2D(uSampler, vTextureCoord);' +
 
-    'gl_FragColor = fg*vec4(mixCol, 1.0);' +
+    	'gl_FragColor = fg*vec4(mixCol, 1.0);' +
     '}';
 
 
@@ -81,19 +88,19 @@ const plainGradient = function (start, end) {
 
 		// I think this works, except currentState (below) isn't being fetched properly
 		// It's a copypaste of the deprecated function
-		function patch2020(inputMatrix, filterArea, textureSize) {
-    		const mappedMatrix = inputMatrix.value.identity();
-		    mappedMatrix.translate(filterArea.x / textureSize.width, filterArea.y / textureSize.height);
-		    const translateScaleX = (textureSize.width / filterArea.width);
-    		const translateScaleY = (textureSize.height / filterArea.height);
-		    mappedMatrix.scale(translateScaleX, translateScaleY);
-		    return mappedMatrix;
-		}
+		// function patch2020(inputMatrix, filterArea, textureSize) {
+  //   		const mappedMatrix = inputMatrix.value.identity();
+		//     mappedMatrix.translate(filterArea.x / textureSize.width, filterArea.y / textureSize.height);
+		//     const translateScaleX = (textureSize.width / filterArea.width);
+  //   		const translateScaleY = (textureSize.height / filterArea.height);
+		//     mappedMatrix.scale(translateScaleX, translateScaleY);
+		//     return mappedMatrix;
+		// }
 
-    	console.log(currentState)
-		const filterArea = currentState.sourceFrame;
-    	const textureSize = currentState.destinationFrame;
-		this.uniforms.mappedMatrix = patch2020(this.uniforms.mappedMatrix, filterArea, textureSize);
+  //   	console.log(currentState)
+		// const filterArea = currentState.sourceFrame;
+  //   	const textureSize = currentState.destinationFrame;
+		// this.uniforms.mappedMatrix = patch2020(this.uniforms.mappedMatrix, filterArea, textureSize);
 		filterManager.applyFilter(this, input, output);
     };
 

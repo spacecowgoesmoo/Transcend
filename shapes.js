@@ -10,8 +10,8 @@ function createBackground(luminosity1, color1, luminosity2, color2, lifespan, bi
 	bgSquare.endFill();													//
 	skyContainer.addChild(bgSquare);									// add to the PIXI stage
 
-	var shader = plainGradient(randomColor({hue:color1, luminosity:luminosity1}), randomColor({hue:color2, luminosity:luminosity2}))	// Draw the gradient
-    bgSquare.filters = [shader];																										//
+	var cowShader = plainGradient(randomColor({hue:color1, luminosity:luminosity1}), randomColor({hue:color2, luminosity:luminosity2}))	// Draw the gradient
+    bgSquare.filters = [cowShader];																										//
 
 	bgSquare.alpha = 0;													// makes sure the BG doesn't blink before appearing
 	var q = 0.02;														// alpha counter variable
