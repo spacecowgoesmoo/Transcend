@@ -1,6 +1,8 @@
-v1.03 - Maintenance patch 2020
+v1.03 - Big maintenance patch 2020
+	Upgraded pixi.js from 4.4.1 to 5.1.6
+	Rewrote the gradient shader. Lots of extra steps removed and it's now fully documented
+	Fixed broken mp3 filepaths in the demo version
 	New console messages for: Background music, sky gradient changes
-	Fixed broken music filepaths in the demo version
 
 v1.02 - Chrome breaks web audio standards
 	Added a 'click to start' page to account for the new Chrome autoplay protection

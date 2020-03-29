@@ -23,7 +23,7 @@ const shaderSourceCode =
 
 const plainGradient = function (start, end) {
 	// Get shader code as a string, and create our Pixi filter
-	var cowShader = new PIXI.Filter(null, shaderSourceCode, {
+	const cowShader = new PIXI.Filter(null, shaderSourceCode, {
 		// These are the shader 'uniforms'
 		tint1 : { type: 'v3', value: new Float32Array([1.0, 1.0, 1.0]) },
 		tint2 : { type: 'v3', value: new Float32Array([0.0, 0.0, 0.0]) },
