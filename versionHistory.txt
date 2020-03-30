@@ -1,6 +1,6 @@
 v1.03 - Big maintenance patch 2020
 	Improved CPU performance by 20%
-	Upgraded pixi.js from 4.4.1 to 5.1.6
+	Upgraded pixi.js from version 4.4.1 to v5.1.6
 	Rewrote the gradient shader. Lots of extra steps removed and it's now fully documented
 	Fixed broken mp3 filepaths in the demo version
 	Changed some CSS to prevent having two versions for iFrame and standalone hosting
