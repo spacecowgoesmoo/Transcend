@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="style.css">
 <script src='https://cdn1.kongregate.com/javascripts/kongregate_api.js'></script>
 </head>
-<body onload="preloader();" onClick="fadeOut(optionsMenu, 1);">
+<body onload="preloader();" onClick="newFade(optionsMenu, 0, 0.25);">
 <!-- call saveGame() onLoad to fix any permanent bad data crashes -->
 
 
@@ -71,9 +71,9 @@
 <span class='optionText'>Transcend v1.03</span>
 <span class='optionText'><br><br>Design, Programming, Music</span>
 <span class='optionText'><br>© Taylor Calderone, 2017</span>
-<span class='optionText'><br><button class='noBG' onMouseOver='hoverRNGColor(this);' onMouseOut='hoverWhite(this);' onClick="window.open('https://twitter.com/spacecowgoesmoo', 'moo', 'location=0'); hoverWhite(this); fadeOut(optionsMenu, 1);">@spacecowgoesmoo</button></span>
-<span class='optionText'><br><br><button class='noBG' onMouseOver='hoverRNGColor(this);' onMouseOut='hoverWhite(this);' onClick="window.open('versionHistory.txt', 'moo', 'location=0'); hoverWhite(this); fadeOut(optionsMenu, 1);">Version History</button></span>
-<span class='optionText'><br><button class='noBG' onMouseOver='hoverRNGColor(this);' onMouseOut='hoverWhite(this);' onClick="window.open('http://taylorcalderone.com/games', 'moo', 'location=0'); hoverWhite(this); fadeOut(optionsMenu, 1);">More Games Here!</button></span>
+<span class='optionText'><br><button class='noBG' onMouseOver='hoverRNGColor(this);' onMouseOut='hoverWhite(this);' onClick="window.open('https://twitter.com/spacecowgoesmoo', 'moo', 'location=0'); hoverWhite(this); newFade(optionsMenu, 0, 0.25);">@spacecowgoesmoo</button></span>
+<span class='optionText'><br><br><button class='noBG' onMouseOver='hoverRNGColor(this);' onMouseOut='hoverWhite(this);' onClick="window.open('versionHistory.txt', 'moo', 'location=0'); hoverWhite(this); newFade(optionsMenu, 0, 0.25);">Version History</button></span>
+<span class='optionText'><br><button class='noBG' onMouseOver='hoverRNGColor(this);' onMouseOut='hoverWhite(this);' onClick="window.open('http://taylorcalderone.com/games', 'moo', 'location=0'); hoverWhite(this); newFade(optionsMenu, 0, 0.25);">More Games Here!</button></span>
 <span class='optionText extraMarginRight'><br><br><span>Music Volume:<button id='decreaseBGMvolumeButton' class='noBG' onMouseOver='hoverRNGColor(this);' onMouseOut='hoverWhite(this);' onClick="decreaseVolume('bgm');"><</button><span id='bgmDisplay'>q</span><button id='increaseBGMvolumeButton' class='noBG' onMouseOver='hoverRNGColor(this);' onMouseOut='hoverWhite(this);' onClick="increaseVolume('bgm');">></button></span></span>
 <span class='optionText extraMarginRight'><br><span id='muteMusicSpan'>SFX Volume:<button id='decreaseSFXvolumeButton' class='noBG' onMouseOver='hoverRNGColor(this);' onMouseOut='hoverWhite(this);' onClick="decreaseVolume('sfx');"><</button><span id='sfxDisplay'>q</span><button id='increaseSFXvolumeButton' class='noBG' onMouseOver='hoverRNGColor(this);' onMouseOut='hoverWhite(this);' onClick="increaseVolume('sfx');">></button></span></span><span class='optionText'><br><button class='noBG' onMouseOver='hoverRNGColor(this);' onMouseOut='hoverWhite(this);' onClick="window.open('exportSave.html','moo', 'menubar=no, status=no, location=0, toolbar=0, titlebar=no, addressbar=no, width=500, height=235'); hoverWhite(this);">Export Save</button></span>
 <span class='optionText'><br><button class='noBG' onMouseOver='hoverRNGColor(this);' onMouseOut='hoverWhite(this);' onClick='importEncryptedSave(); hoverWhite(this);'>Import Save</button></span>

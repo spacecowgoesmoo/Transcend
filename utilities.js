@@ -62,30 +62,10 @@ function newFade(id, targetOpacity, time) {
 
 
 
-function fadeOut(id, lifespan) {
-	if (id.style.opacity >= 0.68) {									// If object has completed its fadein animation..	
-			id.style.opacity = 0.7;									// required or it doesn't work (???)
-		function cow() {
-			id.style.opacity -= 0.06*(1/lifespan);
-    	
-			if (id.style.opacity > 0) { window.requestAnimationFrame(cow); }	// if not faded out, animate another frame 
-			else id.className = 'invisible';
-		}
-		window.requestAnimationFrame(cow);							// starts the animation moving
-	}
-}
-
-
-
-
-function fadeOutForce(id, lifespan) {
-		function cow() {
-			id.style.opacity -= 0.06*(1/lifespan);
-    	
-			if (id.style.opacity > 0) { window.requestAnimationFrame(cow); }	// if not faded out, animate another frame 
-			else id.className = 'invisible';
-		}
-		window.requestAnimationFrame(cow);							// starts the animation moving
+function newFadeInOut(id, time) {
+	id.style.opacity = 0.7;
+	id.style.transition = 'opacity ' + time + 's ease';
+	setTimeout(function() { id.style.opacity = 0; }, time * 1000)
 }
 
 
@@ -110,18 +90,30 @@ function fadeIn(id, lifespan) {
 
 
 
-function fadeInOut(id, lifespan) {
-	id.style.display = 'inline';									// undo the invis line that happens later on
-	id.style.opacity = 0;											// prevent blinking
-	var q = -.001													// load up the sin counter
-	function cow () {
-		id.style.opacity = (Math.sin(q)) -0.3;						// calculate alpha with a sinewave
-		q += 1/lifespan/100;										// increment. lifespan is tuned to be in seconds
-		
-		if (q < 3.2) { window.requestAnimationFrame(cow); }			// animate another frame of the sinewave phase. Use (pi/2) to not fadeout
-		else id.style.display = 'none';								// Invis the object at the end in case it's overlapping something else that's clickable
+function fadeOut(id, lifespan) {
+	if (id.style.opacity >= 0.68) {									// If object has completed its fadein animation..	
+			id.style.opacity = 0.7;									// required or it doesn't work (???)
+		function cow() {
+			id.style.opacity -= 0.06*(1/lifespan);
+    	
+			if (id.style.opacity > 0) { window.requestAnimationFrame(cow); }	// if not faded out, animate another frame 
+			else id.className = 'invisible';
+		}
+		window.requestAnimationFrame(cow);							// starts the animation moving
 	}
-	window.requestAnimationFrame(cow);								// starts the animation moving
+}
+
+
+
+
+function fadeOutForce(id, lifespan) {
+		function cow() {
+			id.style.opacity -= 0.06*(1/lifespan);
+    	
+			if (id.style.opacity > 0) { window.requestAnimationFrame(cow); }	// if not faded out, animate another frame 
+			else id.className = 'invisible';
+		}
+		window.requestAnimationFrame(cow);							// starts the animation moving
 }
 
 

@@ -159,7 +159,7 @@ function clearPricesSpan() {
 
 function displayMusicText(x, lifespan) {
 	songTitle.innerHTML = '<span style="font-size:18px;">♪</span> <span style="font-size:27px; font-weight:50;">-</span> ' + x;			// change the text
-    fadeInOut(songTitle, lifespan);
+    newFadeInOut(songTitle, lifespan);
     console.log('Now loading music - ' + x);
 }
 

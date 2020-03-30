@@ -55,7 +55,7 @@ function importSave() {
 		saveGame();
 		window.location.reload();
 	} else alert("Save import cancelled");
-	fadeOut(optionsMenu);
+	newFade(optionsMenu, 0, 0.25);
 }
 
 
@@ -84,7 +84,7 @@ function importEncryptedSave() {
 		saveGame();
 		window.location.reload();
 	} else alert("Save import cancelled");
-	fadeOut(optionsMenu);
+	newFade(optionsMenu, 0, 0.25);
 }
 
 

@@ -462,7 +462,7 @@ function stopRandomization() {
 
 function clearUIwhenMouseExitsWindow() {
 	clearPricesSpan();																// This whole function triggers on 10% of all Chrome windows mouseclicks, ruining the options menu. Acceptable loss
-	//fadeOut(optionsMenu, 1);														// Maybe they'll fix it later
+	//newFade(optionsMenu, 0, 0.25);												// Maybe they'll fix it later
 }
 
 
