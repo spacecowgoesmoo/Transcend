@@ -121,7 +121,6 @@ function loadGame() {
 		cow.creditsActivated = false;
 		cow.hideMusicText = false;
 		cow.muteAudioForIE = false;
-		cow.filesPreloaded = 0;
 		cow.gameStarted = true;
 
 		cow.bgTransitionSpeed = 5;
