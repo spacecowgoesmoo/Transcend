@@ -6,7 +6,7 @@ const shaderSourceCode =
 	'uniform sampler2D uSampler;' +		// Image data
 
 	// Start and end colors
-	'uniform vec3 tint1;' +				// Vector3 containg RGB values
+	'uniform vec3 tint1;' +				// Vector3 contaning RGB values
 	'uniform vec3 tint2;' +
 
     // Actual graphics code
@@ -42,6 +42,6 @@ const plainGradient = function (start, end) {
 		cowShader.uniforms.tint2 = formatRGBColor(end)
 	}
 
-	console.log('Generating new background - (' + start + ', ' + end + ')')
+	//console.log('Generating new background - (' + start + ', ' + end + ')')
 	return cowShader
 }

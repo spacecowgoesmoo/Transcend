@@ -320,41 +320,41 @@ function showStardustUpgradeCost20(q) { displayPriceText('sd 150'); }
 
 
 
-// function unlockEverythingDevHack() {
-// 	cow.randomBiomesUnlocked = false;
-// 	cow.endgameBarOwned = false;
-// 	cow.diamondBarOwned = true;
-//
-// 	cow.resourceDiamonds = 20000;
-// 	cow.resourceStars = 20000;
-// 	cow.resourceHexagons = 20000;
-// 	cow.resourceTriangles = 20000;
-// 	cow.resourceCircles = 20000;
-// 	cow.resourceSquares = 200000;
-// 	cow.resourceStardust = 2000;
-//
-// 	cow.diamondCapacity = 2;
-// 	cow.starCapacity = 3;
-// 	cow.hexagonCapacity = 3;
-// 	cow.triangleCapacity = 2;
-// 	cow.circleCapacity = 3;
-// 	cow.squareCapacity = 30;
-//
-// 	cow.resourceStardustBiome1 = 10;
-// 	cow.resourceStardustBiome2 = 10;
-// 	cow.resourceStardustBiome3 = 10;
-// 	cow.resourceStardustBiome4 = 10;
-// 	cow.resourceStardustBiome5 = 10;
-// 	cow.resourceStardustBiome6 = 10;
-//
-// 	cow.resourceEndgameBarDiamonds = 20;
-// 	cow.resourceEndgameBarStars = 20;
-// 	cow.resourceEndgameBarHexagons = 20;
-// 	cow.resourceEndgameBarTriangles = 20;
-// 	cow.resourceEndgameBarCircles = 20;
-// 	cow.resourceEndgameBarSquares = 20;
-// 	saveGame();
-// }
+function unlockEverythingDevHack() {
+	cow.randomBiomesUnlocked = false;
+	cow.endgameBarOwned = false;
+	cow.diamondBarOwned = true;
+
+	cow.resourceDiamonds = 20000;
+	cow.resourceStars = 20000;
+	cow.resourceHexagons = 20000;
+	cow.resourceTriangles = 20000;
+	cow.resourceCircles = 20000;
+	cow.resourceSquares = 200000;
+	cow.resourceStardust = 2000;
+
+	cow.diamondCapacity = 2;
+	cow.starCapacity = 3;
+	cow.hexagonCapacity = 3;
+	cow.triangleCapacity = 2;
+	cow.circleCapacity = 3;
+	cow.squareCapacity = 30;
+
+	cow.resourceStardustBiome1 = 10;
+	cow.resourceStardustBiome2 = 10;
+	cow.resourceStardustBiome3 = 10;
+	cow.resourceStardustBiome4 = 10;
+	cow.resourceStardustBiome5 = 10;
+	cow.resourceStardustBiome6 = 10;
+
+	cow.resourceEndgameBarDiamonds = 20;
+	cow.resourceEndgameBarStars = 20;
+	cow.resourceEndgameBarHexagons = 20;
+	cow.resourceEndgameBarTriangles = 20;
+	cow.resourceEndgameBarCircles = 20;
+	cow.resourceEndgameBarSquares = 20;
+	saveGame();
+}
 
 
 
