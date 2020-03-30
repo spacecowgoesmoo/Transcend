@@ -60,6 +60,7 @@ var cow = {
 
 	resourceCounterWidthArray: [],
 	filesPreloaded: 0,
+	preloaderComplete: false,
 	
 	kongUsername: '',
 	kongLifetimeShapes: 0,

@@ -1,7 +1,7 @@
 function preloadFiles() {
 	// Force the preloader to abort if it hasn't finished quickly enough
 	setTimeout( function() { 
-		cow.filesPreloaded = 160
+		cow.preloaderComplete = true;
 		console.log('Preloader is taking too long, forcing game initialization..')
 	 }, 2500)
 
@@ -23,6 +23,7 @@ function preloadFiles() {
 	            document.getElementById("loadSound").innerHTML = '<embed src="' + filename + '" controller="1" autoplay="0" autostart="0" />';
 				console.log('Loaded file ' + cow.filesPreloaded + '/159 - ' + filename);
 				cow.filesPreloaded++;
+				if (cow.filesPreloaded >= 159) { cow.preloaderComplete = true; }
 	        }
 	    }
 	    xmlhttp.open("GET", filename, true);

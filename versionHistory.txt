@@ -3,8 +3,9 @@ v1.03 - Big maintenance patch 2020
 	Upgraded pixi.js from 4.4.1 to 5.1.6
 	Rewrote the gradient shader. Lots of extra steps removed and it's now fully documented
 	Fixed broken mp3 filepaths in the demo version
-	Changed some CSS so the game doesn't require two versions for iFrame and standalone hosting
-	Fixed a bunch of poorly designed negative margin CSS code
+	Changed some CSS to prevent having two versions for iFrame and standalone hosting
+	Fixed a bunch of negative margin CSS anti-patterns
+	Fixed a bug where skipping the preloader would result in inaccurate console messages
 	New console messages for background music
 
 v1.02 - Chrome breaks web audio standards
