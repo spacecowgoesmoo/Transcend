@@ -236,10 +236,10 @@ button:disabled:hover {
 
 #resourceCounter {						/* DANGER */
 	/* Position */
-	position: absolute;
+	position: fixed;
 	z-index: 1;
 	padding-left: 25px;
-	margin-top: -575px;
+	top: 25px;
 	opacity: 0.7;
 }
 
@@ -350,12 +350,10 @@ button:disabled:hover {
 
 #optionsMenuButton {
 	/* Position */
-	position: absolute;
+	position: fixed;
 	z-index: 5;
-	margin-left: 851px;
-	margin-top: -580px;
-/*	margin-left: -49px;				/* Different positioning for not using the Kong iFrame *//*
-	margin-top: 20px;*/
+	top: 15px;
+	left: 851px;
 	/* Color */
 	background: none;
 	opacity: 0.4;						/* Actually 0.4. Fades in for the preloader */
@@ -369,12 +367,10 @@ button:disabled:hover {
 
 #optionsMenu {
 	/* Position */
-	position: absolute;
+	position: fixed;
 	z-index: 10;					/* Higher Z than the rest of the DOM. Also magically prevents a preventParentClick() bug */
-/*	margin-left: -565px;			/* Different positioning for not using the Kong iFrame *//*
-	margin-top: 92px;*/
-	margin-left: 335px;
-	margin-top: -508px;
+	left: 335px;
+	top: 92px;
 	/* BG color */
 	opacity: 0.7;
 	background: #222222;
@@ -518,12 +514,10 @@ progress { background-color: #222222; }
 	display: inline;
 	opacity: 0.7;
 	font-size: 33px;
-	position: absolute;
+	position: fixed;
 	z-index: 5;
-/*	margin-left: -450px;									/* Different positioning for not using the Kong iFrame *//*
-	margin-top: 488px;*/
-	margin-left: 450px;
-	margin-top: -112px;
+	left: 450px;
+	top: 488px;
 }
 
 #creditsText {
@@ -533,21 +527,21 @@ progress { background-color: #222222; }
 }
 
 #creditsText1 {
-	position: absolute;
+	position: fixed;
 	z-index: 5;
-	margin-top: -538px;
+	top: 56px;
 }
 
 #creditsText2 {
-	position: absolute;
+	position: fixed;
 	z-index: 5;
-	margin-top: -488px;
+	top: 106px;
 }
 
 #creditsText3, #startGameText {
-	position: absolute;
+	position: fixed;
 	z-index: 5;
-	margin-top: -112px;
+	top: 488px;
 }
 
 #startGameText {
@@ -569,11 +563,11 @@ progress { background-color: #222222; }
 
 .lowerLeftTextBar {
 	/* Position */
-	position: absolute;
+	position: fixed;
 	z-index: 5;
 	height: 20px;
-	margin-left: 0px;
-	margin-top: -55px;
+	left: 0px;
+	top: 545px;
 	/* BG color */
 	background: #222222;
 	padding-left: 25px;				/* 25 or 40 px */
@@ -639,7 +633,7 @@ progress { background-color: #222222; }
 
 
 .anchorCenter {
-	margin: 0 auto;							/* Does nothing. Leaving it in because development is 99.9% done */
+	margin: 0 auto;				/* Does nothing. Leaving it in because development is 99.9% done */
 	text-align: center;
 }
 
@@ -706,7 +700,7 @@ canvas {
 	.optionText { margin-right: -2px; }
 	.optionTextLast { margin-right: -2px; }
 	.extraMarginRight {	margin-right: -9px; }
-	#optionsMenu { line-height: 26px; width: 190px; margin-left: 330px; margin-top: -510px; }				/* margin-left: -570px; margin-top: 90px; if not Kong */ 
+	#optionsMenu { line-height: 26px; width: 190px; left: 330px; top: 90px; }
 	.triangleButtonImage { right: 8px; }
 	.lowerLeftTextBar { line-height: 10px; }
 }					
@@ -722,7 +716,7 @@ canvas {
 	#resourceCounter { height: 63px; }			/* Idiotic hack that's required to prevent sprite colors being inverted. Bit of a bug at the very start, but that's OK */
 	#upgradeBar { width: 100%; }
 	#squareCounterText { bottom: 3.5px;	}
-	#optionsMenu { margin-left: 331px; }		/* margin-left: -569px; if not Kong */
+	#optionsMenu { left: 331px; }
 }
 
 /* IE Hacks (>= 10) */
@@ -741,8 +735,7 @@ canvas {
 	.hexagonCounterShape { top: 2px; }
 	.circleCounterShape { top: 2.5; }
 	#stardustCounterText { bottom: 3.5px; }
-	#optionsMenu { width: 190px; margin-left: 330px; line-height: 26px; }			/* margin-left: -570px; if not Kong */
-	#optionsMenuButton { margin-top: 21px; margin-left: -59px; }					/* Very different than normal; it doesn't like Kong's iFrame */
+	#optionsMenu { width: 190px; left: 330px; line-height: 26px; }
 	.optionTextLast { position: relative; top: 3px; right: -2px; }
 	.lowerLeftTextBar { line-height: 13px; }
 	.visible { display: block; }				/* Fucking stupid hack to make the options menu not be invisible */
@@ -751,7 +744,6 @@ canvas {
 	#optionsMenuButtonFadeInContainer { position: relative; }					/* Fucking stupid hack to fix an IE bug that prevents opacity inheritance */
 	#lowerRightFadeInContainer { position: relative; display: block; }			/* Fucking stupid hack to fix an IE bug that prevents opacity inheritance */
 	#progressBarIEopacityCancerBugfix { position: relative; display: block; }	/* Fucking stupid hack to fix an IE bug that prevents opacity inheritance */
-	#titleCardComplete { margin-top: 488px; margin-left: -450px; }			/* Fixes iFrame positioning bugs */
 	.ieHack { display: inline; }											/* display: block doesn't work, makes it vertical text */
 }
 
@@ -766,7 +758,7 @@ canvas {
 	.hexagonCounterShape { top: 2px; }
 	#squareCounterText { bottom: 3.5px; }
 	#stardustCounterText { bottom: 3.5; }	
-	#optionsMenu { width: 190px; margin-left: 330px; line-height: 26px; }			/* margin-left: -570px; if not Kong */
+	#optionsMenu { width: 190px; left: 330px; line-height: 26px; }
 	#bgmDisplay { margin-left: 10px; }
 	#sfxDisplay { margin-left: 10px; }
 	.lowerLeftTextBar { line-height: 13px; }
