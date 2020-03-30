@@ -62,20 +62,6 @@ function newFade(id, targetOpacity, time) {
 
 
 
-
-function fadeOutWithoutDelete(id, lifespan) {
-	id.style.opacity = 0.7;											// required or it doesn't work (???)
-	function cow() {
-		id.style.opacity -= 0.06*(1/lifespan);
-
-		if (id.style.opacity > 0) { window.requestAnimationFrame(cow); }	// if not faded out, animate another frame 
-	}
-	window.requestAnimationFrame(cow);								// starts the animation moving
-}
-
-
-
-
 function fadeOut(id, lifespan) {
 	if (id.style.opacity >= 0.68) {									// If object has completed its fadein animation..	
 			id.style.opacity = 0.7;									// required or it doesn't work (???)

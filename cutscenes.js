@@ -216,15 +216,15 @@ function displayGameTitle() {
 		setTimeout('newFade(titleCard7, 0.7, 9)', q);
 		setTimeout('newFade(titleCard8, 0.7, 9)', q);
 		setTimeout('newFade(titleCard9, 0.7, 9)', q);
-		setTimeout('fadeOutWithoutDelete(titleCard1, 30)', q + r);						// Fade out one letter at a time
-		setTimeout('fadeOutWithoutDelete(titleCard2, 30)', q + r + 1000);
-		setTimeout('fadeOutWithoutDelete(titleCard3, 30)', q + r + 2000);
-		setTimeout('fadeOutWithoutDelete(titleCard4, 30)', q + r + 3000);
-		setTimeout('fadeOutWithoutDelete(titleCard5, 30)', q + r + 4000);
-		setTimeout('fadeOutWithoutDelete(titleCard6, 30)', q + r + 5000);
-		setTimeout('fadeOutWithoutDelete(titleCard7, 30)', q + r + 6000);
-		setTimeout('fadeOutWithoutDelete(titleCard8, 30)', q + r + 7000);
-		setTimeout('fadeOutWithoutDelete(titleCard9, 30)', q + r + 8000);
+		setTimeout('newFade(titleCard1, 0, 9)', q + r);									// Fade out one letter at a time
+		setTimeout('newFade(titleCard2, 0, 9)', q + r + 1000);
+		setTimeout('newFade(titleCard3, 0, 9)', q + r + 2000);
+		setTimeout('newFade(titleCard4, 0, 9)', q + r + 3000);
+		setTimeout('newFade(titleCard5, 0, 9)', q + r + 4000);
+		setTimeout('newFade(titleCard6, 0, 9)', q + r + 5000);
+		setTimeout('newFade(titleCard7, 0, 9)', q + r + 6000);
+		setTimeout('newFade(titleCard8, 0, 9)', q + r + 7000);
+		setTimeout('newFade(titleCard9, 0, 9)', q + r + 8000);
 		function deleteAll() {															// Delete the text from the DOM..
 			titleCard1.className = 'invisible';
 			titleCard2.className = 'invisible';

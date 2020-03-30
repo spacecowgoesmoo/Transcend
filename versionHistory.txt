@@ -5,7 +5,7 @@ v1.03 - Big maintenance patch 2020
 	Fixed broken mp3 filepaths in the demo version
 	Changed some CSS to prevent having two versions for iFrame and standalone hosting
 	Fixed a bunch of negative margin CSS anti-patterns
-	Fixed a bug where skipping the preloader would result in inaccurate console messages
+	Fixed two bugs that would result in inaccurate preloader console messages
 	New console messages for background music
 
 v1.02 - Chrome breaks web audio standards
