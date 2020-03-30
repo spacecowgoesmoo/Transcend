@@ -54,17 +54,27 @@ function stringToInteger (string) {
 
 
 
-function newFade(id, targetOpacity, time) {
-	id.style.opacity = targetOpacity;
-	id.style.transition = 'opacity ' + time + 's ease';
+function newFade(id, targetOpacity, time, toggle) {
+	// targetOpacity should always be 0 or 0.7
+	// First part makes this also toggle opacity when used as a fadeIn
+	if (id.style.opacity >= 0.3 && toggle == true) {
+		newFade(id, 0, time)
+	} else {
+		// Visibility
+		if (targetOpacity > 0) { id.style.opacity = 0; id.className = 'visible'; }
+		else { setTimeout(function() { id.className = 'invisible'; }, time * 1000) }
+		// Opacity
+		id.style.transition = 'opacity ' + time + 's ease';
+		id.style.opacity = targetOpacity;
+	}
 }
 
 
 
 
 function newFadeInOut(id, time) {
-	id.style.opacity = 0.7;
 	id.style.transition = 'opacity ' + time + 's ease';
+	id.style.opacity = 0.7;
 	setTimeout(function() { id.style.opacity = 0; }, time * 1000)
 }
 
@@ -72,19 +82,19 @@ function newFadeInOut(id, time) {
 
 
 function fadeIn(id, lifespan) {
-	if (id.style.opacity <= 0) {									// prevents extra animations for buttons
+	if (id.style.opacity <= 0) {		// prevents extra animations for buttons
 		id.className = 'visible';
 		id.style.opacity = 0;	
-		var q = 0.06;												// bullshit variable required; += doesn't work
+		var q = 0.06;					// bullshit variable required; += doesn't work
 		function cow() {
 			id.style.opacity = q;
 			q += 0.06*(1/lifespan);
 		
-			if (id.style.opacity < 0.7) { window.requestAnimationFrame(cow); }		// if not faded in, animate another frame 
+			if (id.style.opacity < 0.7) { window.requestAnimationFrame(cow); }	// if not faded in, animate another frame 
 		}
-		window.requestAnimationFrame(cow);							// starts the animation moving
+		window.requestAnimationFrame(cow);	// starts the animation moving
 	}
-	if (id.style.opacity >= 0.7) { fadeOut(id, lifespan); }			// Makes the fadeIn button trigger fadeOut if the object is already visible
+	if (id.style.opacity >= 0.7) { fadeOut(id, lifespan); }	// Makes the fadeIn button trigger fadeOut if the object is already visible
 }
 
 
@@ -101,19 +111,6 @@ function fadeOut(id, lifespan) {
 		}
 		window.requestAnimationFrame(cow);							// starts the animation moving
 	}
-}
-
-
-
-
-function fadeOutForce(id, lifespan) {
-		function cow() {
-			id.style.opacity -= 0.06*(1/lifespan);
-    	
-			if (id.style.opacity > 0) { window.requestAnimationFrame(cow); }	// if not faded out, animate another frame 
-			else id.className = 'invisible';
-		}
-		window.requestAnimationFrame(cow);							// starts the animation moving
 }
 
 

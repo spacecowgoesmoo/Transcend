@@ -4,13 +4,17 @@
 
 
 <head>
-<link REL="SHORTCUT ICON" HREF="favicon.ico">
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<title>Transcend</title>
-<meta charset="UTF-8">
-<link rel="stylesheet" href="style.css">
-<script src='https://cdn1.kongregate.com/javascripts/kongregate_api.js'></script>
+	<link REL="SHORTCUT ICON" HREF="favicon.ico">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>Transcend</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="style.css">
+	<script src='https://cdn1.kongregate.com/javascripts/kongregate_api.js'></script>
 </head>
+
+
+
+
 <body onload="preloader();" onClick="newFade(optionsMenu, 0, 0.25);">
 <!-- call saveGame() onLoad to fix any permanent bad data crashes -->
 
@@ -55,7 +59,7 @@
 
 <!-- Includes extra stuff for the eraseSave behavior -->
 <span id='optionsMenuButtonFadeinContainer' style='opacity:0;'>
-<button id='optionsMenuButton' style='display: none;' onClick="fadeIn(optionsMenu, 1); eraseSaveText.innerHTML = 'Erase Save'; hoverWhite(eraseSaveText); preventParentClick(event);"><img width=18 src='Images/gear.png'></button>
+<button id='optionsMenuButton' class='invisible' onClick="newFade(optionsMenu, 0.7, 0.25, true); eraseSaveText.innerHTML = 'Erase Save'; hoverWhite(eraseSaveText); preventParentClick(event);"><img width=18 src='Images/gear.png'></button>
 </span>
 
 

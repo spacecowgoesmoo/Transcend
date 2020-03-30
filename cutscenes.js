@@ -204,27 +204,26 @@ function fadeOutPrices(id, lifespan) {
 
 function displayGameTitle() {
 	if (!document.hidden) {																// Skip the whole thing if the tab is backgrounded
-		var q = 0;																		// delay before the animation begins. Leaving this at zero so I don't have to refactor. Delay is in code.js now
 		var r = 12000;																	// delay before the fadeout begins
 
-		setTimeout('newFade(titleCard1, 0.7, 9)', q);									// Fade in all letters at once
-		setTimeout('newFade(titleCard2, 0.7, 9)', q);
-		setTimeout('newFade(titleCard3, 0.7, 9)', q);
-		setTimeout('newFade(titleCard4, 0.7, 9)', q);
-		setTimeout('newFade(titleCard5, 0.7, 9)', q);
-		setTimeout('newFade(titleCard6, 0.7, 9)', q);
-		setTimeout('newFade(titleCard7, 0.7, 9)', q);
-		setTimeout('newFade(titleCard8, 0.7, 9)', q);
-		setTimeout('newFade(titleCard9, 0.7, 9)', q);
-		setTimeout('newFade(titleCard1, 0, 9)', q + r);									// Fade out one letter at a time
-		setTimeout('newFade(titleCard2, 0, 9)', q + r + 1000);
-		setTimeout('newFade(titleCard3, 0, 9)', q + r + 2000);
-		setTimeout('newFade(titleCard4, 0, 9)', q + r + 3000);
-		setTimeout('newFade(titleCard5, 0, 9)', q + r + 4000);
-		setTimeout('newFade(titleCard6, 0, 9)', q + r + 5000);
-		setTimeout('newFade(titleCard7, 0, 9)', q + r + 6000);
-		setTimeout('newFade(titleCard8, 0, 9)', q + r + 7000);
-		setTimeout('newFade(titleCard9, 0, 9)', q + r + 8000);
+		newFade(titleCard1, 0.7, 9);													// Fade in all letters at once
+		newFade(titleCard2, 0.7, 9);
+		newFade(titleCard3, 0.7, 9);
+		newFade(titleCard4, 0.7, 9);
+		newFade(titleCard5, 0.7, 9);
+		newFade(titleCard6, 0.7, 9);
+		newFade(titleCard7, 0.7, 9);
+		newFade(titleCard8, 0.7, 9);
+		newFade(titleCard9, 0.7, 9);
+		setTimeout('newFade(titleCard1, 0, 9)', r);										// Fade out one letter at a time
+		setTimeout('newFade(titleCard2, 0, 9)', r + 1000);
+		setTimeout('newFade(titleCard3, 0, 9)', r + 2000);
+		setTimeout('newFade(titleCard4, 0, 9)', r + 3000);
+		setTimeout('newFade(titleCard5, 0, 9)', r + 4000);
+		setTimeout('newFade(titleCard6, 0, 9)', r + 5000);
+		setTimeout('newFade(titleCard7, 0, 9)', r + 6000);
+		setTimeout('newFade(titleCard8, 0, 9)', r + 7000);
+		setTimeout('newFade(titleCard9, 0, 9)', r + 8000);
 		function deleteAll() {															// Delete the text from the DOM..
 			titleCard1.className = 'invisible';
 			titleCard2.className = 'invisible';
@@ -236,7 +235,7 @@ function displayGameTitle() {
 			titleCard8.className = 'invisible';
 			titleCard9.className = 'invisible';
 		}
-		setTimeout('this.deleteAll', q + 30000);										//..now
+		setTimeout('this.deleteAll', 30000);											//..now
 	}
 }
 
@@ -325,8 +324,8 @@ function checkForDiamondBarCompletion() {
 
 
 function beginCredits() {
-	var creditsBGContainer = new PIXI.DisplayObjectContainer();					// Add new layers for credits stuff
-	var creditsFGContainer = new PIXI.DisplayObjectContainer();					//
+	var creditsBGContainer = new PIXI.Container();								// Add new layers for credits stuff
+	var creditsFGContainer = new PIXI.Container();								//
 	creditsBGContainer.zIndex = 25;												//
 	creditsFGContainer.zIndex = 30;												//
 	app.stage.addChild(creditsBGContainer);										//
@@ -480,16 +479,16 @@ function beginCredits() {
 
 	setTimeout(spawnCreditsPillar, 1, '0x000099', 600);
 	setTimeout(spawnCreditsPillar, 20000, '0x990000', 0);
-	setTimeout(fadeOut, 35000, resourceCounter, 30);
-	setTimeout(fadeOutForce, 35000, pricesTextBox, 30);
+	setTimeout(newFade, 35000, resourceCounter, 0, 10);
+	setTimeout(newFade, 35000, pricesTextBox, 0, 10);
 	setTimeout(spawnCreditsPillar, 40000, '0x996300', 150);
 	setTimeout(spawnCreditsPillar, 60000, '0x009900', 450);
-	setTimeout(fadeOut, 70000, biomeSelectBar, 38);
-	setTimeout(fadeOut, 70000, upgradeBar, 38);
+	setTimeout(newFade, 70000, biomeSelectBar, 0, 10);
+	setTimeout(newFade, 70000, upgradeBar, 0, 10);
 	setTimeout(spawnCreditsPillar, 80000, '0x990099', 750);
 	setTimeout('optionsMenuButton.style.opacity = 0.4;', 94500);	// Required to make this button fadeout. Opacity must 'exist' in the correct place before it can be modified
-	setTimeout(fadeOutForce, 95000, optionsMenuButton, 27);			// Note - UI becomes unclickable at 0 opacity. Lucky!
-	setTimeout(fadeOutForce, 95000, optionsMenu, 27);				// Note - UI becomes unclickable at 0 opacity. Lucky!
+	setTimeout(newFade, 95000, optionsMenuButton, 0, 10);			// Note - UI becomes unclickable at 0 opacity. Lucky!
+	setTimeout(newFade, 95000, optionsMenu, 0, 10);					// Note - UI becomes unclickable at 0 opacity. Lucky!
 	setTimeout(spawnCreditsPillar, 100000, '0x999900', 300);
 	setTimeout(fadeToWhite, 115000);
 	setTimeout(spawnWhiteGlass1, 155000);
