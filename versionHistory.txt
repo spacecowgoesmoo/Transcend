@@ -4,6 +4,7 @@ v1.03 - Big maintenance patch 2020
 	Rewrote the gradient shader. Lots of extra steps removed and it's now fully documented
 	Fixed broken mp3 filepaths in the demo version
 	Changed some CSS to prevent having two versions for iFrame and standalone hosting
+	Fixed setTimeout() string evaluation anti-patterns
 	Replaced all the complicated Javascript fade animations with two lines of CSS
 	Fixed a bunch of negative margin CSS anti-patterns
 	Fixed two bugs that would result in inaccurate preloader console messages

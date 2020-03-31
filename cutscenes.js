@@ -215,15 +215,15 @@ function displayGameTitle() {
 		newFade(titleCard7, 0.7, 9);
 		newFade(titleCard8, 0.7, 9);
 		newFade(titleCard9, 0.7, 9);
-		setTimeout('newFade(titleCard1, 0, 9)', r);										// Fade out one letter at a time
-		setTimeout('newFade(titleCard2, 0, 9)', r + 1000);
-		setTimeout('newFade(titleCard3, 0, 9)', r + 2000);
-		setTimeout('newFade(titleCard4, 0, 9)', r + 3000);
-		setTimeout('newFade(titleCard5, 0, 9)', r + 4000);
-		setTimeout('newFade(titleCard6, 0, 9)', r + 5000);
-		setTimeout('newFade(titleCard7, 0, 9)', r + 6000);
-		setTimeout('newFade(titleCard8, 0, 9)', r + 7000);
-		setTimeout('newFade(titleCard9, 0, 9)', r + 8000);
+		setTimeout(function() { newFade(titleCard1, 0, 9) }, r);						// Fade out one letter at a time
+		setTimeout(function() { newFade(titleCard2, 0, 9) }, r + 1000);
+		setTimeout(function() { newFade(titleCard3, 0, 9) }, r + 2000);
+		setTimeout(function() { newFade(titleCard4, 0, 9) }, r + 3000);
+		setTimeout(function() { newFade(titleCard5, 0, 9) }, r + 4000);
+		setTimeout(function() { newFade(titleCard6, 0, 9) }, r + 5000);
+		setTimeout(function() { newFade(titleCard7, 0, 9) }, r + 6000);
+		setTimeout(function() { newFade(titleCard8, 0, 9) }, r + 7000);
+		setTimeout(function() { newFade(titleCard9, 0, 9) }, r + 8000);
 		function deleteAll() {															// Delete the text from the DOM..
 			titleCard1.className = 'invisible';
 			titleCard2.className = 'invisible';
@@ -235,7 +235,7 @@ function displayGameTitle() {
 			titleCard8.className = 'invisible';
 			titleCard9.className = 'invisible';
 		}
-		setTimeout('this.deleteAll', 30000);											//..now
+		setTimeout(function() { deleteAll() }, 30000);									//..now
 	}
 }
 
@@ -293,17 +293,17 @@ function checkForDiamondBarCompletion() {
 	if (cow.resourceStardustBiome1 >=20 && cow.resourceStardustBiome2 >=20 && cow.resourceStardustBiome3 >=20 && cow.resourceStardustBiome4 >=20 && cow.resourceStardustBiome5 >=20 && cow.resourceStardustBiome6 >=20 && cow.diamondBarOwned == true && cow.resourceEndgameBarDiamonds == 0) {
 		cow.resourceEndgameBarDiamonds = 1;							// Minor hack to prevent this from being called twice if two rare spawns happen at once to finish off the Diamond Bar
 		setTimeout(hideDiamondBar, 10000);							// Bunch of time delays so that you can see the diamond bar be 100% filled for a moment, and so that no player progress is lost
-		setTimeout("playAudio('SFXc/diamondBarClear.wav', 'sfx', 450, true);", 10000);
-		setTimeout('cow.diamondBarOwned = false;', 14500);
-		setTimeout('cow.endgameBarOwned = true;', 14500);
+		setTimeout(function() { playAudio('SFXc/diamondBarClear.wav', 'sfx', 450, true); }, 10000);
+		setTimeout(function() { cow.diamondBarOwned = false; }, 14500);
+		setTimeout(function() { cow.endgameBarOwned = true; }, 14500);
 		setTimeout(showEndgameBar, 15000);
-		setTimeout('cow.resourceStardustBiome1 = 0;', 15500);
-		setTimeout('cow.resourceStardustBiome2 = 0;', 15500);
-		setTimeout('cow.resourceStardustBiome3 = 0;', 15500);
-		setTimeout('cow.resourceStardustBiome4 = 0;', 15500);
-		setTimeout('cow.resourceStardustBiome5 = 0;', 15500);
-		setTimeout('cow.resourceStardustBiome6 = 0;', 15500);
-		setTimeout('cow.randomBiomesUnlocked = true;', 15500);
+		setTimeout(function() { cow.resourceStardustBiome1 = 0; }, 15500);
+		setTimeout(function() { cow.resourceStardustBiome2 = 0; }, 15500);
+		setTimeout(function() { cow.resourceStardustBiome3 = 0; }, 15500);
+		setTimeout(function() { cow.resourceStardustBiome4 = 0; }, 15500);
+		setTimeout(function() { cow.resourceStardustBiome5 = 0; }, 15500);
+		setTimeout(function() { cow.resourceStardustBiome6 = 0; }, 15500);
+		setTimeout(function() { cow.randomBiomesUnlocked = true; }, 15500);
 		setTimeout(saveGame, 15555);
 	}
 }
@@ -486,9 +486,9 @@ function beginCredits() {
 	setTimeout(newFade, 70000, biomeSelectBar, 0, 10);
 	setTimeout(newFade, 70000, upgradeBar, 0, 10);
 	setTimeout(spawnCreditsPillar, 80000, '0x990099', 750);
-	setTimeout('optionsMenuButton.style.opacity = 0.4;', 94500);	// Required to make this button fadeout. Opacity must 'exist' in the correct place before it can be modified
-	setTimeout(newFade, 95000, optionsMenuButton, 0, 10);			// Note - UI becomes unclickable at 0 opacity. Lucky!
-	setTimeout(newFade, 95000, optionsMenu, 0, 10);					// Note - UI becomes unclickable at 0 opacity. Lucky!
+	setTimeout(function() { optionsMenuButton.style.opacity = 0.4; }, 94500);	// Required to make this button fadeout. Opacity must 'exist' in the correct place before it can be modified
+	setTimeout(newFadePlusToggleAndVisibility, 95000, optionsMenuButton, 0, 10);
+	setTimeout(newFadePlusToggleAndVisibility, 95000, optionsMenu, 0, 10);
 	setTimeout(spawnCreditsPillar, 100000, '0x999900', 300);
 	setTimeout(fadeToWhite, 115000);
 	setTimeout(spawnWhiteGlass1, 155000);

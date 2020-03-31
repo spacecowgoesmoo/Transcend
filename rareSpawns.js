@@ -301,7 +301,7 @@ function rareSpawnController() {
 				var r = rngRange(0, 300);
 				
 				function sfxDelayedConstellation(pan) {									// very dumb but fuck setTimeout scope changes
-					setTimeout("playAudio('./SFXb/constellation' + rngRange(1,3) + '.wav', 'sfx', " + pan + ")", 6000);
+					setTimeout(function() { playAudio('./SFXb/constellation' + rngRange(1,3) + '.wav', 'sfx', pan) }, 6000)
 				}
 				
 				sfxDelayedConstellation(q);
@@ -767,8 +767,8 @@ function rareSpawnController() {
 					window.requestAnimationFrame(move);									// starts the animation moving
 				}
 
-				function sfxDelayedTritower(pan) {												// very dumb but fuck setTimeout scope changes
-					setTimeout("playAudio('./SFXb/triTower' + rngRange(1,3) + '.wav', 'sfx', " + pan + ")", 1000);
+				function sfxDelayedTritower(pan) {		
+					setTimeout(function() { playAudio('./SFXb/triTower' + rngRange(1,3) + '.wav', 'sfx', pan) }, 1000)
 				}
 				
 				var q = rngRange(50, 850);												// Randomize the fixed x spawn position
@@ -1174,7 +1174,7 @@ function rareSpawnController() {
 					window.requestAnimationFrame(move);									// starts the animation moving
 				}
 
-				setTimeout("playAudio('./SFXb/paint' + rngRange(1,3) + '.wav', 'sfx', 250)", 8000);
+				setTimeout(function() { playAudio('./SFXb/paint' + rngRange(1,3) + '.wav', 'sfx', 250) }, 8000)
 
 				var s = rngRange(5, 15);												// Randomize the number of shapes
 				for (var i=0; i<s; i++){												// Spawn S shapes
