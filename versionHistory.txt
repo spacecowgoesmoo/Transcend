@@ -5,6 +5,7 @@ v1.03 - Big maintenance patch 2020
 	Fixed broken music filepaths in the demo version
 	Changed some CSS to prevent having two versions for iFrame and standalone hosting
 	Fixed all setTimeout() string evaluation anti-patterns
+	Replaced 0/269 var declarations with const or let
 	Replaced all complicated Javascript fade animations with two lines of CSS
 	Fixed many negative margin CSS anti-patterns
 	Fixed two bugs that would result in inaccurate preloader console messages

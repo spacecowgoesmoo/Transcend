@@ -19,7 +19,7 @@ function biomeSpawnController() {
 			}
 			// Diamonds
 			if (cow.biome1CurrentDiamondCount < cow.diamondCapacity) {
-				var q = rngRange(1,100);
+				let q = rngRange(1,100);
 				if (cow.diamondCapacity == 1 && cow.resourceDiamonds <= 4) { q = 10; }							// Hack to force quick diamonds during the very early game
 				// Big background monoliths
 				if (q < 6) { spawnShape(10, 0.3, 0, 0, false, '', 'hax', 1, 'diamond', 'biome1CurrentDiamondCount', 'foregroundContainer'); } else
@@ -49,7 +49,7 @@ function biomeSpawnController() {
 			}
 			// Hexagons
 			if (cow.biome2CurrentHexagonCount < cow.hexagonCapacity) {
-				var q = rngRange(1,100);
+				const q = rngRange(1,100);
 				// Big soulless hexagons
 				if (q < 20) { spawnShape(rngRange(3,10), 0.7, 0, 0, false, '', 'monochrome', 1, 'hexagon', 'biome2CurrentHexagonCount', 'foregroundContainer'); } else
 				// Tiny alive hexagons
@@ -75,7 +75,7 @@ function biomeSpawnController() {
 			}
 			// Triangles
 			if (cow.biome3CurrentTriangleCount < cow.triangleCapacity) {
-				var q = rngRange(1,100);
+				const q = rngRange(1,100);
 				// Big
 				if (q < 30) { spawnShape(rngRange(2,4), 2, 0, 0, true, '', 'random', 0.5, 'triangle', 'biome3CurrentTriangleCount', 'foregroundContainer'); } else
 				// Tiny
@@ -96,7 +96,7 @@ function biomeSpawnController() {
 			if (cow.spawnNewBGgradient == true) { createBackground('dark', 'blue', 'dark', 'orange', cow.bgTransitionSpeed, 'biome4'); cow.spawnNewBGgradient = false; }
 			// Squares
  			if (cow.biome4CurrentSquareCount < cow.squareCapacity) {
-				var q = rngRange(1,100);
+				const q = rngRange(1,100);
 				// mini quads
 				if (q < 85) { 
 					spawnShape(rngRange(2,4), 1, 0, 0, false, '', 'yellow', 1, 'quad', 'biome4CurrentSquareCount', 'biome4Container');  
@@ -122,7 +122,7 @@ function biomeSpawnController() {
 				if (cow.spawnNewBGgradient == true) { createBackground('dark', 'blue', 'dark', 'blue', cow.bgTransitionSpeed, 'biome5'); cow.spawnNewBGgradient = false; }	
 				// Bubbles
 				if (cow.biome5CurrentCircleCount < cow.circleCapacity) {
-					var q = rngRange(1,100);
+					const q = rngRange(1,100);
 					// Giant foreground bubbles
 					if (q < 10) { spawnShape(12, 1.8, 0.2, 400, false, '', 'blue', 0.2, 'circle', 'biome5CurrentCircleCount', 'foregroundContainer'); } else
 					// Big foreground bubbles
@@ -133,7 +133,7 @@ function biomeSpawnController() {
 				}
 				// Hydrofarms, with time delay
 				if (cow.biome5CurrentHexagonCount < cow.hexagonCapacity && rngRange(1,10) < 5) {
-					var r = rngRange(1,100);
+					const r = rngRange(1,100);
 					// Foreground
 					if (r < 25) { spawnShape(5, 0.6, 0, 0, false, 'dark', 'blue', 1, 'hexagon', 'biome5CurrentHexagonCount', 'skyObjectContainer'); } else 
 					// Distance
@@ -182,8 +182,8 @@ function biomeSpawnController() {
 	if (cow.currentBiome == 'biome2') { var p = 1600 - (cow.hexagonCapacity * 30); }
 	if (cow.currentBiome == 'biome3') { var p = 100; }
 	if (cow.currentBiome == 'biome4') { var p = 80; }
-	if (cow.currentBiome == 'biome5') { var p = 1600 - (cow.circleCapacity * 20);; }
-	if (cow.currentBiome == 'biome6') { var p = 1600 - (cow.starCapacity * 5);; }
+	if (cow.currentBiome == 'biome5') { var p = 1600 - (cow.circleCapacity * 20); }
+	if (cow.currentBiome == 'biome6') { var p = 1600 - (cow.starCapacity * 5); }
 	p = p * (rngRange(80,120)/100);																// randomize spawn interval 20%
 	if (p < 50) { p = 50; }																		// 0 or -P will spawn shapes at 60FPS, beware
 	setTimeout(biomeSpawnController, p);
@@ -213,12 +213,12 @@ function biomeSpawnController() {
 
 
 function fadeInBackgroundTexture() {
-	var texture = PIXI.Texture.from('Images/fuzz.png');									// Adds a tiled background sprite
-	var tilingSprite = new PIXI.TilingSprite(texture, app.renderer.width, app.renderer.height);
+	const texture = PIXI.Texture.from('Images/fuzz.png');								// Adds a tiled background sprite
+	const tilingSprite = new PIXI.TilingSprite(texture, app.renderer.width, app.renderer.height);
 	textureContainer.addChild(tilingSprite);
 	
 	textureContainer.alpha = 0;	
-	var q = 0;																			// bullshit variable required; += doesn't work
+	let q = 0;																			// bullshit variable required; += doesn't work
 	function cow() {
 		textureContainer.alpha = q;
 		q += 0.0005;																	// Fades in pretty quickly so that it can hide the gradient banding

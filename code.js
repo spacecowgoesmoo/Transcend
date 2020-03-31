@@ -1,4 +1,4 @@
-var app = new PIXI.Application({ width: 900, height: 600, antialias: true });		// creates the PIXI stage
+const app = new PIXI.Application({ width: 900, height: 600, antialias: true });		// creates the PIXI stage
 document.body.appendChild(app.view);
 
 // var renderer = new PIXI.CanvasRenderer(900, 600, { antialias: true });
