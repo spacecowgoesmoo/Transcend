@@ -33,14 +33,6 @@ function randomColorPound(luminosity, color) {
 
 
 
-// Create a HTML object with javascript
-	// var q = document.createElement('span');
-	// q.setAttribute('id', 'textCowSpan');
-	// document.body.appendChild(q);
-
-
-
-
 // Haven't tried this yet but it looks useful. Pulled out of randomColor.js
 function stringToInteger (string) {
 	var total = 0
@@ -110,7 +102,7 @@ function capitalizeFirstLetter(string) {
 
 // Free diablo 3 battle.net redeem code
 function cubeCat () {
-	var surfaceArea = '86YCYZ-7CMW-8ETXD2-D727-RGMNZV';				// Placed here on 1-17-2017. Claimed on 7-1-2017.
+	const surfaceArea = '86YCYZ-7CMW-8ETXD2-D727-RGMNZV';			// Placed here on 1-17-2017. Claimed on 7-1-2017.
 }
 
 

@@ -10,12 +10,12 @@ function createBackground(luminosity1, color1, luminosity2, color2, lifespan, bi
 	bgSquare.endFill();													//
 	skyContainer.addChild(bgSquare);									// add to the PIXI stage
 
-	var cowShader = plainGradient(randomColor({hue:color1, luminosity:luminosity1}), randomColor({hue:color2, luminosity:luminosity2}))	// Draw the gradient
-    bgSquare.filters = [cowShader];																										//
+	const cowShader = plainGradient(randomColor({hue:color1, luminosity:luminosity1}), randomColor({hue:color2, luminosity:luminosity2}))	// Draw the gradient
+    bgSquare.filters = [cowShader];																											//
 
 	bgSquare.alpha = 0;													// makes sure the BG doesn't blink before appearing
-	var q = 0.02;														// alpha counter variable
-	var preventSecondFadeIn = false;									// prevents the bgSquare from reappearing if user quicklyswitches back to an old biome
+	let q = 0.02;														// alpha counter variable
+	let preventSecondFadeIn = false;									// prevents the bgSquare from reappearing if user quickly switches back to an old biome
 
 	function crossfade() {
 		if (biome == cow.currentBiome && preventSecondFadeIn == false) {// If the biome is the same as when the bgSquare spawned..
@@ -29,13 +29,13 @@ function createBackground(luminosity1, color1, luminosity2, color2, lifespan, bi
 		}
 
 		if (q > 3.2 || bgSquare.alpha <= 0.01) {						// if gradient has faded out.. (3.14 is one sinwave cycle)
-			bgSquare.destroy(true);											// kill it
+			bgSquare.destroy(true);										// kill it
 		 } else { window.requestAnimationFrame(crossfade); }			// otherwise, animate another frame and check again
 	}
 
 	window.requestAnimationFrame(crossfade);							// starts the animation moving
 
-	if (biome == cow.currentBiome) {									// if we're still in the same biome the gradient was created in..				 // lifespan == minutes
+	if (biome == cow.currentBiome) {									// if we're still in the same biome the gradient was created in.. (lifespan == minutes)
 		setTimeout(function() { createBackground(luminosity1, color1, luminosity2, color2, lifespan, biome); }, (lifespan*30000))
 	}
 }
@@ -56,7 +56,7 @@ function createBackground(luminosity1, color1, luminosity2, color2, lifespan, bi
 
 
 function spawnSkystar(luminosity, color, placement, lifespan, shape, counter) {
-	var star = new PIXI.Graphics();										// create a shape in the PIXI engine
+	let star = new PIXI.Graphics();										// create a shape in the PIXI engine
 	star.beginFill(randomColor({luminosity:luminosity, hue:color}));	// set a fill and line style, then code in the points
 	
 	switch (shape) {
@@ -91,13 +91,13 @@ function spawnSkystar(luminosity, color, placement, lifespan, shape, counter) {
 	if (placement == 'half') { star.y = rngRange (0, 350); }			// moves shape to a random height
 	if (placement == 'full') { star.y = rngRange (0, 600); }			//
 
-	var q = -.001 - (rngRange(1,300)/100);								// variable for calculating the brightness using a sinwave 
+	let q = -.001 - (rngRange(1,300)/100);								// variable for calculating the brightness using a sinwave 
 																		// also staggers spawn rate. Max of 314 or it will overflow
-	var sfxPlayed = false;												// Used for dynamically calling the SFX in the animation loop
+	let sfxPlayed = false;												// Used for dynamically calling the SFX in the animation loop
 	
 	document.body.addEventListener('click', boost);						// Adds click boost event listener
-	var boostCounter = rngRange(0,5)/10;								// initialize sinewave, slight RNG
-	var boostable = true;												// initialize logic to prevent click spamming
+	let boostCounter = rngRange(0,5)/10;								// initialize sinewave, slight RNG
+	let boostable = true;												// initialize logic to prevent click spamming
 	
 	function boost() {													// click boost animation
 		if (boostable == true) { go(); }
@@ -171,22 +171,23 @@ function spawnSkystar(luminosity, color, placement, lifespan, shape, counter) {
 
 
 function spawnShape(size, speedY, speedX, widthX, rotation, luminosity, color, opacity, shape, counter, layer) {
-	var shape1 = new PIXI.Graphics();									// create a shape in the PIXI engine
+	let shape1 = new PIXI.Graphics();									// create a shape in the PIXI engine
 	shape1.beginFill(randomColor({luminosity:luminosity, hue:color}));	// set a fill and line style, then code in the points
 	shape1.moveTo(0, 0);												// places the shape at the origin for easy drawing math
-	
+	let offscreen;
+
 	switch (shape) {
 		case 'triangle': 
 			shape1.lineTo(rngRange(15,25), rngRange(25,35));			// create randomized vertices
 			shape1.lineTo(rngRange(-25,-15), rngRange (25,35));			//
-			var offscreen = -35;										// must equal the largest y coordinate
+			offscreen = -35;											// must equal the largest y coordinate
 			break;
 
 		case 'diamond':
 			shape1.lineTo(rngRange(10,30), rngRange(20,40));
 			shape1.lineTo(rngRange(-8,8), rngRange (80,100));
 			shape1.lineTo(rngRange(-30,-10), rngRange (20,40));
-			var offscreen = -100;
+			offscreen = -100;
 			break;
 		
 		case 'hexagon':
@@ -195,12 +196,12 @@ function spawnShape(size, speedY, speedX, widthX, rotation, luminosity, color, o
 			shape1.lineTo(10,18);
 			shape1.lineTo(0,18);
 			shape1.lineTo(-5,9);
-			var offscreen = -18;
+			offscreen = -18;
 			break;
 			
 		case 'circle':
 			shape1.drawCircle(0, 0, 20);
-			var offscreen = -20;
+			offscreen = -20;
 			break;
 			
 		case 'quad':
@@ -209,7 +210,7 @@ function spawnShape(size, speedY, speedX, widthX, rotation, luminosity, color, o
 			shape1.lineTo(quadWidth, 0);
 			shape1.lineTo(quadWidth, quadHeight);
 			shape1.lineTo(0, quadHeight);
-			var offscreen = -quadHeight;
+			offscreen = -quadHeight;
 			break;
 		
 		case 'pillar':
@@ -218,14 +219,14 @@ function spawnShape(size, speedY, speedX, widthX, rotation, luminosity, color, o
 			shape1.lineTo(quadWidth, 0);
 			shape1.lineTo(quadWidth, quadHeight);
 			shape1.lineTo(0, quadHeight);
-			var offscreen = -quadHeight;
+			offscreen = -quadHeight;
 			break;
 		
 		case 'rhombus':
 			shape1.lineTo(40, 0);
 			shape1.lineTo(30, 30);
 			shape1.lineTo(-10, 30);
-			var offscreen = -30;
+			offscreen = -30;
 			break;
 		
 		case 'star':
@@ -239,7 +240,7 @@ function spawnShape(size, speedY, speedX, widthX, rotation, luminosity, color, o
 			shape1.lineTo(137,115);
 			shape1.lineTo(180,78);
 			shape1.lineTo(123,78);
-			var offscreen = -180;
+			offscreen = -180;
 		default: break;
 		}
 	
@@ -261,18 +262,18 @@ function spawnShape(size, speedY, speedX, widthX, rotation, luminosity, color, o
 	if (shape == 'circle') { shape1.y += (size * 20) }					// extra y value if the shape is a circle
 	if (rotation == true) { shape1.y -= offscreen}						// boost starting y value if the shape is rotated
 
-	var speedYFinal = (speedY * rngRange (10,100)) / 100;				// randomize speed by -90% to 100%
+	const speedYFinal = (speedY * rngRange (10,100)) / 100;				// randomize speed by -90% to 100%
 	
 	if (speedX != 0) { var sinFinal = rngRange (-3, 3);	}				// Initialize sinwave counter and direction
 	
  	// var shader = plainGradient(0xffffff, 0x888888)					// Gradient overlay, soft overhead light
 	// shape1.filters = [shader];										// Note - Breaks antialiasing if the shape is moving
 
-	var sfxPlayed = false;												// Used for dynamically calling the SFX in the animation loop
+	let sfxPlayed = false;												// Used for dynamically calling the SFX in the animation loop
 	
 	document.body.addEventListener('click', boost);						// Adds click boost event listener
-	var boostCounter = rngRange(0,5)/10;								// initialize sinewave, slight RNG
-	var boostable = true;												// initialize logic to prevent click spamming
+	let boostCounter = rngRange(0,5)/10;								// initialize sinewave, slight RNG
+	let boostable = true;												// initialize logic to prevent click spamming
 	
 	function boost() {													// click boost animation
 		if (boostable == true && counter != 'biome2CurrentBGHexagonCount') { go(); }	// Disabled for biome2 BG hexes

@@ -333,12 +333,12 @@ function unlockEverythingDevHack() {
 	cow.resourceSquares = 200000;
 	cow.resourceStardust = 2000;
 
-	cow.diamondCapacity = 2;
-	cow.starCapacity = 3;
-	cow.hexagonCapacity = 3;
-	cow.triangleCapacity = 2;
-	cow.circleCapacity = 3;
-	cow.squareCapacity = 30;
+	cow.diamondCapacity = 10;
+	cow.starCapacity = 10;
+	cow.hexagonCapacity = 10;
+	cow.triangleCapacity = 10;
+	cow.circleCapacity = 10;
+	cow.squareCapacity = 50;
 
 	cow.resourceStardustBiome1 = 10;
 	cow.resourceStardustBiome2 = 10;
@@ -451,9 +451,11 @@ function recheckItemCostHighlighting() {
 	if (cow.resourceCircles >= 1000 	&& buttID18.src.slice(-10,-5) != 'Color')	{ buttID18.src = 'Images/circleHollowColor' + rngRange(1,3) + '.png'; }
 	if (cow.resourceSquares >= 3000 	&& buttID19.src.slice(-10,-5) != 'Color')	{ buttID19.src = 'Images/squareHollowColor' + rngRange(1,3) + '.png'; }
 	if (cow.resourceSquares >= 8000 	&& buttID20.src.slice(-10,-5) != 'Color')	{ buttID20.src = 'Images/squareHollowColor' + rngRange(1,3) + '.png'; }
+	
 	// Resource counter numbers and shapes
+	function getRNG() { return rngRange(4,7); }
 	if (cow.resourceDiamonds >= cow.nextDiamondPrice 	&& cow.diamondCapacity < cow.maxDiamondCapacity 	&& (buttID21.src.slice(-10,-5) != 'Color' || diamondCounter.style.color == 'rgb(249, 249, 249)')) {
-		var q = rngRange(4,7);
+		const q = getRNG()
 		switch (q) {
 			case 4: diamondCounter.style.color = '#B0B22C'; break;
 			case 5: diamondCounter.style.color = '#DE8F49'; break;
@@ -464,7 +466,7 @@ function recheckItemCostHighlighting() {
 		buttID21.src = 'Images/diamondColor' + q + '.png';
 	}
 	if (cow.resourceStars >= cow.nextStarPrice 			&& cow.starCapacity < cow.maxStarCapacity 			&& (buttID22.src.slice(-10,-5) != 'Color' || starCounter.style.color == 'rgb(249, 249, 249)')) {
-		var q = rngRange(4,7);
+		const q = getRNG()
 		switch (q) {
 			case 4: starCounter.style.color = '#439C9E'; break;
 			case 5: starCounter.style.color = '#B658A5'; break;
@@ -475,7 +477,7 @@ function recheckItemCostHighlighting() {
 		buttID22.src = 'Images/starColor' + q + '.png';
 	}
 	if (cow.resourceHexagons >= cow.nextHexagonPrice 	&& cow.hexagonCapacity < cow.maxHexagonCapacity 	&& (buttID23.src.slice(-10,-5) != 'Color' || hexagonCounter.style.color == 'rgb(249, 249, 249)')) {
-		var q = rngRange(4,7);
+		const q = getRNG()
 		switch (q) {
 			case 4: hexagonCounter.style.color = '#24A952'; break;
 			case 5: hexagonCounter.style.color = '#3B5DA2'; break;
@@ -486,7 +488,7 @@ function recheckItemCostHighlighting() {
 		buttID23.src = 'Images/hexagonColor' + q + '.png';
 	}
 	if (cow.resourceTriangles >= cow.nextTrianglePrice 	&& cow.triangleCapacity < cow.maxTriangleCapacity 	&& (buttID24.src.slice(-10,-5) != 'Color' || triangleCounter.style.color == 'rgb(249, 249, 249)')) {
-		var q = rngRange(4,7);
+		const q = getRNG()
 		switch (q) {
 			case 4: triangleCounter.style.color = '#2B7A94'; break;
 			case 5: triangleCounter.style.color = '#932340'; break;
@@ -497,7 +499,7 @@ function recheckItemCostHighlighting() {
 		buttID24.src = 'Images/triangleColor' + q + '.png';
 	}
 	if (cow.resourceCircles >= cow.nextCirclePrice 		&& cow.circleCapacity < cow.maxCircleCapacity 		&& (buttID25.src.slice(-10,-5) != 'Color' || circleCounter.style.color == 'rgb(249, 249, 249)')) {
-		var q = rngRange(4,7);
+		const q = getRNG()
 		switch (q) {
 			case 4: circleCounter.style.color = '#119E8D'; break;
 			case 5: circleCounter.style.color = '#E9525E'; break;
@@ -508,7 +510,7 @@ function recheckItemCostHighlighting() {
 		buttID25.src = 'Images/circleColor' + q + '.png';
 	}
 	if (cow.resourceSquares >= cow.nextSquarePrice 		&& cow.squareCapacity < cow.maxSquareCapacity 		&& (buttID26.src.slice(-10,-5) != 'Color' || squareCounter.style.color == 'rgb(249, 249, 249)')) {
-		var q = rngRange(4,7);
+		const q = getRNG()
 		switch (q) {
 			case 4: squareCounter.style.color = '#9052D0'; break;
 			case 5: squareCounter.style.color = '#307A93'; break;
@@ -560,9 +562,11 @@ function forceIconRecolorize() {
 	if (cow.resourceCircles >= 1000		&& cow.maxCircleCapacity < 30) 				{ buttID18.src = 'Images/circleHollowColor' + rngRange(1,3) + '.png'; }
 	if (cow.resourceSquares >= 3000		&& cow.maxSquareCapacity < 20) 				{ buttID19.src = 'Images/squareHollowColor' + rngRange(1,3) + '.png'; }
 	if (cow.resourceSquares >= 8000		&& cow.maxSquareCapacity < 30) 				{ buttID20.src = 'Images/squareHollowColor' + rngRange(1,3) + '.png'; }
+	
 	// Resource counter numbers and shapes
+	function getRNG() { return rngRange(4,7); }
 	if (cow.resourceDiamonds >= cow.nextDiamondPrice 	&& cow.diamondCapacity < cow.maxDiamondCapacity) {
-		var q = rngRange(4,7);
+		const q = getRNG()
 		switch (q) {
 			case 4: diamondCounter.style.color = '#B0B22C'; break;
 			case 5: diamondCounter.style.color = '#DE8F49'; break;
@@ -573,7 +577,7 @@ function forceIconRecolorize() {
 		buttID21.src = 'Images/diamondColor' + q + '.png';
 	}
 	if (cow.resourceStars >= cow.nextStarPrice 			&& cow.starCapacity < cow.maxStarCapacity) {
-		var q = rngRange(4,7);
+		const q = getRNG()
 		switch (q) {
 			case 4: starCounter.style.color = '#439C9E'; break;
 			case 5: starCounter.style.color = '#B658A5'; break;
@@ -584,7 +588,7 @@ function forceIconRecolorize() {
 		buttID22.src = 'Images/starColor' + q + '.png';
 	}
 	if (cow.resourceHexagons >= cow.nextHexagonPrice 	&& cow.hexagonCapacity < cow.maxHexagonCapacity) {
-		var q = rngRange(4,7);
+		const q = getRNG()
 		switch (q) {
 			case 4: hexagonCounter.style.color = '#24A952'; break;
 			case 5: hexagonCounter.style.color = '#3B5DA2'; break;
@@ -595,7 +599,7 @@ function forceIconRecolorize() {
 		buttID23.src = 'Images/hexagonColor' + q + '.png';
 	}
 	if (cow.resourceTriangles >= cow.nextTrianglePrice 	&& cow.triangleCapacity < cow.maxTriangleCapacity) {
-		var q = rngRange(4,7);
+		const q = getRNG()
 		switch (q) {
 			case 4: triangleCounter.style.color = '#2B7A94'; break;
 			case 5: triangleCounter.style.color = '#923240'; break;
@@ -606,7 +610,7 @@ function forceIconRecolorize() {
 		buttID24.src = 'Images/triangleColor' + q + '.png';
 	}
 	if (cow.resourceCircles >= cow.nextCirclePrice 		&& cow.circleCapacity < cow.maxCircleCapacity) {
-		var q = rngRange(4,7);
+		const q = getRNG()
 		switch (q) {
 			case 4: circleCounter.style.color = '#119E8D'; break;
 			case 5: circleCounter.style.color = '#E9525E'; break;
@@ -617,7 +621,7 @@ function forceIconRecolorize() {
 		buttID25.src = 'Images/circleColor' + q + '.png';
 	}
 	if (cow.resourceSquares >= cow.nextSquarePrice 		&& cow.squareCapacity < cow.maxSquareCapacity) {
-		var q = rngRange(4,7);
+		const q = getRNG()
 		switch (q) {
 			case 4: squareCounter.style.color = '#9052D0'; break;
 			case 5: squareCounter.style.color = '#307A93'; break;

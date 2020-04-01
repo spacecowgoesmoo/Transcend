@@ -1,17 +1,6 @@
 const app = new PIXI.Application({ width: 900, height: 600, antialias: true });		// creates the PIXI stage
 document.body.appendChild(app.view);
 
-// var renderer = new PIXI.CanvasRenderer(900, 600, { antialias: true });
-// document.body.appendChild(renderer.view);
-// var stage = new PIXI.Container();
-// renderer.render(stage);
-
-// var renderer = new PIXI.WebGLRenderer(900, 600, { antialias: true });
-// document.body.appendChild(renderer.view);
-
-// var renderer = PIXI.autoDetectRenderer(900, 600, { antialias: true });
-// document.body.appendChild(renderer.view);
-
 app.mozOpaque = true; 																// Supposedly improves Firefox performance. Testing showed minor improvements.. I think
 
 
@@ -36,10 +25,10 @@ app.stage.addChild(foregroundContainer);											//
 
 
 
-// var shader = plainGradient(0xFFFFFF, 0xAAAAAA)										// Applies gradient overlay to all shapes
-// app.stage.filters = [shader];														//
-// app.stage.filters = '';																//
-// foregroundContainer.filters = [shader];												// Or to one layer
+// const shader = plainGradient(0xFFFFFF, 0xAAAAAA)									// Applies gradient overlay to all shapes
+// app.stage.filters = [shader];													//
+// app.stage.filters = '';															//
+// foregroundContainer.filters = [shader];											// Or to one layer
 
 // document.body.addEventListener('click', moo, false);
 
@@ -209,9 +198,8 @@ function updateResourceCounter(shape) {
 	cow.resourceCounterWidthArray[3] = cow.triangleCapacity.toString().length + cow.resourceTriangles.toLocaleString().length;
 	cow.resourceCounterWidthArray[4] = cow.circleCapacity.toString().length + cow.resourceCircles.toLocaleString().length;
 	cow.resourceCounterWidthArray[5] = cow.squareCapacity.toString().length + cow.resourceSquares.toLocaleString().length;
-	var q = Math.max.apply(Math,cow.resourceCounterWidthArray);												// Grab the largest number in the array
-	//var r = cow.resourceCounterWidthArray.indexOf(Math.max.apply(Math,cow.resourceCounterWidthArray));	// And which index it is
-	var newSize = 100 + (q*7);
+	const q = Math.max.apply(Math,cow.resourceCounterWidthArray);									// Grab the largest number in the array
+	const newSize = 100 + (q*7);
 	if (diamondCounter.offsetWidth != newSize) {													// If the calculated size is different than the current size..
 		modifyCSS('.upperLeftButton', 'width', newSize);											// ..Resize the resource box based on this number
 	}
@@ -231,7 +219,7 @@ function checkToDisableBiome4Filter() {
 function updateTextSpans(recursive) {
 	recheckItemCostHighlighting();
 	// Shows or hides the buttons in the lower right biome select
-	var r = 0;																						// Used to size the biome select bar
+	let r = 0;																						// Used to size the biome select bar
 	if (cow.biome1Owned == true) { biome1Button.style.display = 'inline'; r++; } 				else { biome1Button.style.display = 'none'; }
 	if (cow.biome2Owned == true) { biome2Button.style.display = 'inline'; r++; } 				else { biome2Button.style.display = 'none'; }
 	if (cow.biome3Owned == true) { biome3Button.style.display = 'inline'; r++; } 				else { biome3Button.style.display = 'none'; }
@@ -245,7 +233,7 @@ function updateTextSpans(recursive) {
 	}
 	// Shows or hides the buttons in the lower right upgrade bar
 	// Contains requirements for displaying buttons to buy upgrades and biomes
-	var s = 0;
+	let s = 0;
 	if (cow.triangleCapacity >= 6 && cow.biome2Owned == false) {	biome2PurchaseButton.style.display = 'inline'; s++; } 	else { biome2PurchaseButton.style.display = 'none'; }
 	if (cow.diamondCapacity >= 6 && cow.biome3Owned == false) { 	biome3PurchaseButton.style.display = 'inline'; s++; } 	else { biome3PurchaseButton.style.display = 'none'; }
 	if (cow.starCapacity >= 2 && cow.biome4Owned == false) {		biome4PurchaseButton.style.display = 'inline'; s++; } 	else { biome4PurchaseButton.style.display = 'none'; }
@@ -383,7 +371,7 @@ function changeBiome(location, randomSaveCPU) {
 
 	if (location == 'biome4') {
 		// Smog filter for biome4
-		var shader = plainGradient(0xFFFFFF, 0xAAAAAA)					// Applies gradient overlay to all shapes
+		const shader = plainGradient(0xFFFFFF, 0xAAAAAA)				// Applies gradient overlay to all shapes
 		biome4Container.filters = [shader];								//
 	}
 
@@ -487,7 +475,7 @@ function kongregateStuff() {
 		kongregate.services.addEventListener('login', kongLiveLogin);				// Recognize live page logins, and execute this function
 		
 		function kongLiveLogin() {
-			var x = kongregate.services.getUsername();
+			const x = kongregate.services.getUsername();
 			console.log('Kong username changed to: ' + x);
 			cow.kongUsername = x;													// This is OK because the new username isn't saved
 			initializeGameTwo();

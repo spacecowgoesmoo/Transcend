@@ -178,12 +178,13 @@ function biomeSpawnController() {
 
 
 	// Biome shape respawn speeds
-	if (cow.currentBiome == 'biome1') { var p = 1600 - (cow.diamondCapacity * 5); }
-	if (cow.currentBiome == 'biome2') { var p = 1600 - (cow.hexagonCapacity * 30); }
-	if (cow.currentBiome == 'biome3') { var p = 100; }
-	if (cow.currentBiome == 'biome4') { var p = 80; }
-	if (cow.currentBiome == 'biome5') { var p = 1600 - (cow.circleCapacity * 20); }
-	if (cow.currentBiome == 'biome6') { var p = 1600 - (cow.starCapacity * 5); }
+	let p;
+	if (cow.currentBiome == 'biome1') { p = 1600 - (cow.diamondCapacity * 5); }
+	if (cow.currentBiome == 'biome2') { p = 1600 - (cow.hexagonCapacity * 30); }
+	if (cow.currentBiome == 'biome3') { p = 100; }
+	if (cow.currentBiome == 'biome4') { p = 80; }
+	if (cow.currentBiome == 'biome5') { p = 1600 - (cow.circleCapacity * 20); }
+	if (cow.currentBiome == 'biome6') { p = 1600 - (cow.starCapacity * 5); }
 	p = p * (rngRange(80,120)/100);																// randomize spawn interval 20%
 	if (p < 50) { p = 50; }																		// 0 or -P will spawn shapes at 60FPS, beware
 	setTimeout(biomeSpawnController, p);

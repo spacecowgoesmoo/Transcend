@@ -126,26 +126,28 @@ function startGame() {
 
 
 function displayPriceText(x) {
+	let a
+	let b
 	switch (x.slice(0,2)) {
-		case 'di': 	var a = "<img class='diamondCounterShape' style='top:-2px' src='Images/diamond.png'>";
-					var b = "<span class='diamondPriceText' style='top:-9px' class='firefoxHack4'>";		break;
-		case 'st': 	var a = "<img class='starCounterShape' style='top:-2px' src='Images/star.png'>";
-					var b = "<span class='starPriceText' style='top:-8px' class='firefoxHack4'>"; 			break;
-		case 'hx': 	var a = "<img class='hexagonCounterShape' style='top:-2px' src='Images/hexagon.png'>";
-					var b = "<span class='hexagonPriceText' style='top:-8px' class='firefoxHack4'>"; 		break;
-		case 'tr': 	var a = "<img class='triangleCounterShape' style='top:-2px' src='Images/triangle.png'>";
-					var b = "<span class='trianglePriceText' style='top:-7px' class='firefoxHack4'>"; 		break;
-		case 'ci': 	var a = "<img class='circleCounterShape' style='top:-1px' src='Images/circle.png'>";
-					var b = "<span class='circlePriceText' style='top:-6px' class='firefoxHack4'>"; 		break;
-		case 'sq': 	var a = "<img class='squareCounterShape' style='top:-1px' src='Images/square.png'>";
-					var b = "<span class='squarePriceText' style='top:-6px' class='firefoxHack4'>"; 		break;
-		case 'sd': 	var a = "<img class='stardustCounterShape' style='top:0px' src='Images/stardust.png'>";
-					var b = "<span class='stardustPriceText' style='top:-5px' class='firefoxHack4'>"; 		break;
+		case 'di': 	a = "<img class='diamondCounterShape' style='top:-2px' src='Images/diamond.png'>";
+					b = "<span class='diamondPriceText' style='top:-9px' class='firefoxHack4'>";		break;
+		case 'st': 	a = "<img class='starCounterShape' style='top:-2px' src='Images/star.png'>";
+					b = "<span class='starPriceText' style='top:-8px' class='firefoxHack4'>"; 			break;
+		case 'hx': 	a = "<img class='hexagonCounterShape' style='top:-2px' src='Images/hexagon.png'>";
+					b = "<span class='hexagonPriceText' style='top:-8px' class='firefoxHack4'>"; 		break;
+		case 'tr': 	a = "<img class='triangleCounterShape' style='top:-2px' src='Images/triangle.png'>";
+					b = "<span class='trianglePriceText' style='top:-7px' class='firefoxHack4'>"; 		break;
+		case 'ci': 	a = "<img class='circleCounterShape' style='top:-1px' src='Images/circle.png'>";
+					b = "<span class='circlePriceText' style='top:-6px' class='firefoxHack4'>"; 		break;
+		case 'sq': 	a = "<img class='squareCounterShape' style='top:-1px' src='Images/square.png'>";
+					b = "<span class='squarePriceText' style='top:-6px' class='firefoxHack4'>"; 		break;
+		case 'sd': 	a = "<img class='stardustCounterShape' style='top:0px' src='Images/stardust.png'>";
+					b = "<span class='stardustPriceText' style='top:-5px' class='firefoxHack4'>"; 		break;
 		default: break;
 	}
 
-	var c = x.slice(3);
-	var d = '</span>';
+	const c = x.slice(3);
+	const d = '</span>';
 
 	pricesTextBox.innerHTML = a + b + c + d;													// Display the shape and the price number
     if (pricesTextBox.style.opacity <= 0.2) { fadeInPrices(pricesTextBox); }					// Fade in the price span. the IF prevents extra animations
