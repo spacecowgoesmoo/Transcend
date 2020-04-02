@@ -9,6 +9,7 @@ v1.03 - Big maintenance patch 2020
 	Replaced all complicated Javascript fade animations with two lines of CSS
 	Fixed many negative margin CSS anti-patterns
 	Fixed two bugs that would result in inaccurate preloader console messages
+	Reduced image filesizes by 45% / 55KB
 	New console messages for background music
 	Removed some old commented-out code
 
