@@ -1,17 +1,17 @@
 v1.03 - Big maintenance patch 2020
 	Improved CPU performance by 20%
 	Upgraded pixi.js from version 4.4.1 to 5.1.6
-	Changed music format from MP3 to OPUS, reducing total filesize by 65% / 54MB
-	Changed SFX format from WAV to OPUS, reducing total filesize by 85% / 12MB
+	Changed music format from MP3 to OPUS, reducing asset filesize by 65% (54MB)
+	Changed SFX format from WAV to OPUS, reducing asset filesize by 85% (12MB)
 	Rewrote the gradient shader. Lots of extra steps removed and it's now fully documented
 	Fixed broken music filepaths in the demo version
 	Changed some CSS to prevent having two versions for iFrame and standalone hosting
 	Fixed all setTimeout() string evaluation anti-patterns
+	Replaced complicated Javascript fade animations with two lines of CSS
 	Reduced number of Javascript var declarations from 269 to 173
-	Replaced all complicated Javascript fade animations with two lines of CSS
+	Applied better image compression, reducing asset filesize by 45% (55KB)
 	Fixed many negative margin CSS anti-patterns
 	Fixed three bugs that would result in inaccurate preloader console messages
-	Applied better image compression, reducing total filesize by 45% / 55KB
 	New console messages for background music
 	Removed some old commented-out code
 	Stripped trailing whitespace and replaced overlooked space-indents with tabs
