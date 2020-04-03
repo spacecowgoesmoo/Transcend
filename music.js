@@ -16,21 +16,13 @@
 
 
 
-function getAudioFormat() {
-	let format
-    if (cow.cafAudioForSafari == true) { format = '.caf' }
-    else { format = '.opus'}
-	return format
-}
-
-
 var bgmGroup = new Pizzicato.Group;											// Initialize global audio groups/busses
 var sfxGroup = new Pizzicato.Group;	
 
 
 function playAudio(filename, type, pan, noFilter) {
 	if (((cow.sfxVolume >= 5 && type == 'sfx') || type == 'bgm') && cow.muteAudioForIE == false) {			// Prevents SFX from loading if SFX are muted. Saves CPU
-		var snd = new Pizzicato.Sound(filename, function() {
+		var snd = new Pizzicato.Sound(filename + cow.audioFormat, function() {
 		
 		if (rngRange(1,10) < 3 && type == 'sfx') {							// Set up effects and add them to the signal chain one by one
 			var distortion = new Pizzicato.Effects.Distortion({				// No distortion allowed on music
@@ -165,33 +157,30 @@ function musicSpawnController() {
 
 
 
-    	// Prepare the music format
-		const format = getAudioFormat()
-
 		if (r <= 33) {													// Plays music
 			switch (cow.currentBiome) {
-				case 'biome1': playAudio('./Music/bota' + format, 'bgm', 450); break;
-				case 'biome2': playAudio('./Music/chs' + format, 'bgm', 450); break;
-				case 'biome3': playAudio('./Music/ymf' + format, 'bgm', 450); break;
-				case 'biome4': playAudio('./Music/licfy' + format, 'bgm', 450); break;
-				case 'biome5': playAudio('./Music/pr' + format, 'bgm', 450); break;
-				case 'biome6': playAudio('./Music/se' + format, 'bgm', 450); break;
+				case 'biome1': playAudio('./Music/bota', 'bgm', 450); break;
+				case 'biome2': playAudio('./Music/chs', 'bgm', 450); break;
+				case 'biome3': playAudio('./Music/ymf', 'bgm', 450); break;
+				case 'biome4': playAudio('./Music/licfy', 'bgm', 450); break;
+				case 'biome5': playAudio('./Music/pr', 'bgm', 450); break;
+				case 'biome6': playAudio('./Music/se', 'bgm', 450); break;
 				default: break;
 			}
 		} else {																					
 			switch (q) {
-				case 1: playAudio('./Music/es' + format, 'bgm', 450); break;
-				case 2: playAudio('./Music/cute' + format, 'bgm', 450); break;
-				case 3: playAudio('./Music/bluep' + format, 'bgm', 450); break;
-				case 4: playAudio('./Music/rw' + format, 'bgm', 450); break;
+				case 1: playAudio('./Music/es', 'bgm', 450); break;
+				case 2: playAudio('./Music/cute', 'bgm', 450); break;
+				case 3: playAudio('./Music/bluep', 'bgm', 450); break;
+				case 4: playAudio('./Music/rw', 'bgm', 450); break;
 				
-				case 5: playAudio('./Music/cstp' + format, 'bgm', 450); break;
-				case 6: playAudio('./Music/ffc' + format, 'bgm', 450); break;
-				case 7: playAudio('./Music/cio' + format, 'bgm', 450); break;
-				case 8: playAudio('./Music/beatp' + format, 'bgm', 450); break;
-				case 9: playAudio('./Music/tt' + format, 'bgm', 450); break;
+				case 5: playAudio('./Music/cstp', 'bgm', 450); break;
+				case 6: playAudio('./Music/ffc', 'bgm', 450); break;
+				case 7: playAudio('./Music/cio', 'bgm', 450); break;
+				case 8: playAudio('./Music/beatp', 'bgm', 450); break;
+				case 9: playAudio('./Music/tt', 'bgm', 450); break;
 				
-				case 10: playAudio('./Music/fs' + format, 'bgm', 450); break;
+				case 10: playAudio('./Music/fs', 'bgm', 450); break;
 				default: break;
 			}
 		}
@@ -302,6 +291,6 @@ function browserAudioCheck() {
 	} else { cow.muteAudioForIE = false; }							// Extra security for Windows Chrome
 	
 	// Check for Safari
-	if (navigator.userAgent.indexOf('Safari') > -1 && navigator.vendor.indexOf('Apple') > -1) { cow.cafAudioForSafari = true; }
-	else { cow.cafAudioForSafari = false; }
+	if (navigator.userAgent.indexOf('Safari') > -1 && navigator.vendor.indexOf('Apple') > -1) { cow.audioFormat = '.caf'; }
+	else { cow.audioFormat = '.opus'; }
 }

@@ -7,7 +7,7 @@ function buyDiamond() {
 		showDiamondCost();																						// Update the price display
 		updateResourceCounter('diamond');
 		recheckItemCostHighlighting();
-		playAudio('SFXc/buyShape' + rngRange(1,7) + '.wav', 'sfx', 450, true);
+		playAudio('SFXc/buyShape' + rngRange(1,7), 'sfx', 450, true);
 		saveGame();
 	}
 }
@@ -20,7 +20,7 @@ function buyStar() {
 		showStarCost();
 		updateResourceCounter('star');
 		recheckItemCostHighlighting();
-		playAudio('SFXc/buyShape' + rngRange(1,7) + '.wav', 'sfx', 450, true);
+		playAudio('SFXc/buyShape' + rngRange(1,7), 'sfx', 450, true);
 		saveGame();
 	}
 }
@@ -33,7 +33,7 @@ function buyHexagon() {
 		showHexagonCost();
 		updateResourceCounter('hexagon');
 		recheckItemCostHighlighting();
-		playAudio('SFXc/buyShape' + rngRange(1,7) + '.wav', 'sfx', 450, true);
+		playAudio('SFXc/buyShape' + rngRange(1,7), 'sfx', 450, true);
 		saveGame();
 	}
 }
@@ -46,7 +46,7 @@ function buyTriangle() {
 		showTriangleCost();
 		updateResourceCounter('triangle');
 		recheckItemCostHighlighting();
-		playAudio('SFXc/buyShape' + rngRange(1,7) + '.wav', 'sfx', 450, true);
+		playAudio('SFXc/buyShape' + rngRange(1,7), 'sfx', 450, true);
 		saveGame();
 	}
 }
@@ -59,7 +59,7 @@ function buyCircle() {
 		showCircleCost();
 		updateResourceCounter('circle');
 		recheckItemCostHighlighting();
-		playAudio('SFXc/buyShape' + rngRange(1,7) + '.wav', 'sfx', 450, true);
+		playAudio('SFXc/buyShape' + rngRange(1,7), 'sfx', 450, true);
 		saveGame();
 	}
 }
@@ -72,7 +72,7 @@ function buySquare() {
 		showSquareCost();
 		updateResourceCounter('square');
 		recheckItemCostHighlighting();
-		playAudio('SFXc/buyShape' + rngRange(1,7) + '.wav', 'sfx', 450, true);
+		playAudio('SFXc/buyShape' + rngRange(1,7), 'sfx', 450, true);
 		saveGame();
 	}
 }
@@ -101,7 +101,7 @@ function buyBiome2() {
 		updateResourceCounter('triangle');
 		updateResourceCounter('hexagon');
 		updateTextSpans(false);
-		playAudio('SFXc/newBiome' + rngRange(1,3) + '.wav', 'sfx', 450, true);
+		playAudio('SFXc/newBiome' + rngRange(1,3), 'sfx', 450, true);
 		cow.kongFirstBiomePurchased = true;
 		saveGame();
 	}
@@ -118,7 +118,7 @@ function buyBiome3() {
 		updateResourceCounter('triangle');
 		updateResourceCounter('circle');
 		updateTextSpans(false);
-		playAudio('SFXc/newBiome' + rngRange(1,3) + '.wav', 'sfx', 450, true);
+		playAudio('SFXc/newBiome' + rngRange(1,3), 'sfx', 450, true);
 		cow.kongFirstBiomePurchased = true;
 		saveGame();
 	}
@@ -133,7 +133,7 @@ function buyBiome4() {
 		updateResourceCounter('star');
 		updateResourceCounter('square');
 		updateTextSpans(false);
-		playAudio('SFXc/newBiome' + rngRange(1,3) + '.wav', 'sfx', 450, true);
+		playAudio('SFXc/newBiome' + rngRange(1,3), 'sfx', 450, true);
 		cow.kongFirstBiomePurchased = true;
 		saveGame();
 	}
@@ -150,7 +150,7 @@ function buyBiome5() {
 		updateResourceCounter('hexagon');
 		updateResourceCounter('circle');
 		updateTextSpans(false);
-		playAudio('SFXc/newBiome' + rngRange(1,3) + '.wav', 'sfx', 450, true);
+		playAudio('SFXc/newBiome' + rngRange(1,3), 'sfx', 450, true);
 		cow.kongFirstBiomePurchased = true;
 		saveGame();
 	}
@@ -164,7 +164,7 @@ function buyBiome6() {
 		clearPricesSpan();
 		updateResourceCounter('circle');
 		updateTextSpans(false);
-		playAudio('SFXc/newBiome' + rngRange(1,3) + '.wav', 'sfx', 450, true);
+		playAudio('SFXc/newBiome' + rngRange(1,3), 'sfx', 450, true);
 		cow.kongFirstBiomePurchased = true;
 		saveGame();
 	}
@@ -193,7 +193,7 @@ function buyDiamondBar() {
 		updateResourceCounter('star');
 		updateTextSpans(false);
 		showDiamondBar();
-		playAudio('SFXc/stardustBoost' + rngRange(1,3) + '.wav', 'sfx', 450, true);
+		playAudio('SFXc/stardustBoost' + rngRange(1,3), 'sfx', 450, true);
 		cow.kongDiamondBarUnlocked = true;
 		saveGame();
 	}
@@ -206,7 +206,7 @@ function increaseStardustChance100() {
 		clearPricesSpan();
 		updateResourceCounter('stardust');
 		updateTextSpans(false);
-		playAudio('SFXc/stardustBoost' + rngRange(1,3) + '.wav', 'sfx', 450, true);
+		playAudio('SFXc/stardustBoost' + rngRange(1,3), 'sfx', 450, true);
 		saveGame();
 	}
 }
@@ -218,7 +218,7 @@ function increaseStardustChance20() {
 		clearPricesSpan();
 		updateResourceCounter('stardust');
 		updateTextSpans(false);
-		playAudio('SFXc/stardustBoost' + rngRange(1,3) + '.wav', 'sfx', 450, true);
+		playAudio('SFXc/stardustBoost' + rngRange(1,3), 'sfx', 450, true);
 		saveGame();
 	}
 }
@@ -256,7 +256,7 @@ function buyMaxShapeCapacity(q) {
 	}
 	function stuff() {
 		clearPricesSpan(); 
-		playAudio('SFXc/capacityBoost' + rngRange(1,3) + '.wav', 'sfx', 450, true);
+		playAudio('SFXc/capacityBoost' + rngRange(1,3), 'sfx', 450, true);
 		saveGame();
 		updateTextSpans(false);
 	}

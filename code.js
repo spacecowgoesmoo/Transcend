@@ -59,8 +59,8 @@ var cow = {
 	
 	bgmVolume: 80,
 	sfxVolume: 80,
+	audioFormat: '.opus',
 	muteAudioForIE: false,
-	cafAudioForSafari: false,
 	hideMusicText: false,
 	
 	randomBiomesUnlocked: false,
@@ -530,6 +530,7 @@ function initializeGameOne() {
 function initializeGameTwo() {
 	// Things that need to load first
 	loadGame();
+	browserAudioCheck();													// This line is a patch but fixing it properly would be even more fragile
 	newGameStuff();
 	if (cow.randomBiomesActive == false) { changeBiome(cow.currentBiome); }	// Activate biome from last play session
 	if (cow.randomBiomesActive == true) { randomBiomes('activate'); }		// Or randomBiome, if applicable

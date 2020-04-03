@@ -111,7 +111,7 @@ function rareSpawnController() {
 						quadQuad.rotation += rotateSpeed;
 						
 						if (quadQuad.y <= 648 && sfxPlayed == false) {						// Play SFX, early to compensate for rotation and the central anchor point
-							playAudio('./SFXb/quadQuad' + rngRange(1,3) + '.wav', 'sfx', quadQuad.x);
+							playAudio('./SFXb/quadQuad' + rngRange(1,3), 'sfx', quadQuad.x);
 							sfxPlayed = true;
 						}
 						
@@ -191,7 +191,7 @@ function rareSpawnController() {
 						counter += 0.03;
 
 						if (diam.y <= 645 && sfxPlayed == false) {						// Play SFX, plus 50 to account for rotation and scale
-							playAudio('./SFX/diamond' + rngRange(1,5) + '.wav', 'sfx', diam.x);
+							playAudio('./SFX/diamond' + rngRange(1,5), 'sfx', diam.x);
 							sfxPlayed = true;
 						}
 						
@@ -301,7 +301,7 @@ function rareSpawnController() {
 				var r = rngRange(0, 300);
 				
 				function sfxDelayedConstellation(pan) {									// very dumb but fuck setTimeout scope changes
-					setTimeout(function() { playAudio('./SFXb/constellation' + rngRange(1,3) + '.wav', 'sfx', pan) }, 6000)
+					setTimeout(function() { playAudio('./SFXb/constellation' + rngRange(1,3), 'sfx', pan) }, 6000)
 				}
 				
 				sfxDelayedConstellation(q);
@@ -393,7 +393,7 @@ function rareSpawnController() {
 					if (rngRange(1,2) == 1) { var xMovement = 4 }						// Random xMovement direction
 					else { var xMovement = -4 }
 					
-					playAudio('./SFXb/fallingStar' + rngRange(1,3) + '.wav', 'sfx', star.x);
+					playAudio('./SFXb/fallingStar' + rngRange(1,3), 'sfx', star.x);
 
 					function move() {
 						star.alpha = (Math.sin(q));										// calculate alpha with a sinewave
@@ -473,7 +473,7 @@ function rareSpawnController() {
 						ufo.x -= speedX;												// move left
 						
 						if (ufo.x <= 900 && sfxPlayed == false) {						// Play SFX, 5px early because the left isn't the origin
-							playAudio('./SFXb/ufo' + rngRange(1,3) + '.wav', 'sfx', ufo.x);
+							playAudio('./SFXb/ufo' + rngRange(1,3), 'sfx', ufo.x);
 							sfxPlayed = true;
 						}
 						
@@ -590,7 +590,7 @@ function rareSpawnController() {
 						}
 						
 						if (hex.y <= 595 && sfxPlayed == false) {						// Play SFX
-							playAudio('./SFXb/hexScanner' + rngRange(1,3) + '.wav', 'sfx', hex.x);
+							playAudio('./SFXb/hexScanner' + rngRange(1,3), 'sfx', hex.x);
 							sfxPlayed = true;
 						}
 						
@@ -677,8 +677,8 @@ function rareSpawnController() {
 						counter += 0.05;
 						
 						if (tri.y <= 612 && sfxPlayed == false) {						// Play SFX, 50% early to compensate for an average rotation of 90 degrees
-							if (color == 'black') { playAudio('./SFXb/blackCircle' + rngRange(1,3) + '.wav', 'sfx', tri.x, true); }		// Black circle SFX used here
-							else { playAudio('./SFXb/triCreepy' + rngRange(1,3) + '.wav', 'sfx', tri.x, true); }		// Using noFilter here because highPass kills this sfx too often
+							if (color == 'black') { playAudio('./SFXb/blackCircle' + rngRange(1,3), 'sfx', tri.x, true); }		// Black circle SFX used here
+							else { playAudio('./SFXb/triCreepy' + rngRange(1,3), 'sfx', tri.x, true); }		// Using noFilter here because highPass kills this sfx too often
 							sfxPlayed = true;
 						}
 						
@@ -768,7 +768,7 @@ function rareSpawnController() {
 				}
 
 				function sfxDelayedTritower(pan) {		
-					setTimeout(function() { playAudio('./SFXb/triTower' + rngRange(1,3) + '.wav', 'sfx', pan) }, 1000)
+					setTimeout(function() { playAudio('./SFXb/triTower' + rngRange(1,3), 'sfx', pan) }, 1000)
 				}
 				
 				var q = rngRange(50, 850);												// Randomize the fixed x spawn position
@@ -887,12 +887,12 @@ function rareSpawnController() {
 
 						if (shape.y <= 595 && sfxPlayed == false) {
 							switch (selectShape) {										// play sfx when the shape spawns. 100% squares break the audio engine lol
-								case 1:	playAudio('./SFX/diamond' + rngRange(1,5) + '.wav', 'sfx', shape.x);	break;
-								case 2:	playAudio('./SFX/star' + rngRange(1,5) + '.wav', 'sfx', shape.x);		break;
-								case 3:	playAudio('./SFX/hexagon' + rngRange(1,5) + '.wav', 'sfx', shape.x);	break;
-								case 4:	playAudio('./SFX/triangle' + rngRange(1,5) + '.wav', 'sfx', shape.x);	break;
-								case 5:	playAudio('./SFX/circle' + rngRange(1,5) + '.wav', 'sfx', shape.x);		break;
-								case 6:	playAudio('./SFX/square' + rngRange(1,5) + '.wav', 'sfx', shape.x); 	break;
+								case 1:	playAudio('./SFX/diamond' + rngRange(1,5), 'sfx', shape.x);	break;
+								case 2:	playAudio('./SFX/star' + rngRange(1,5), 'sfx', shape.x);		break;
+								case 3:	playAudio('./SFX/hexagon' + rngRange(1,5), 'sfx', shape.x);	break;
+								case 4:	playAudio('./SFX/triangle' + rngRange(1,5), 'sfx', shape.x);	break;
+								case 5:	playAudio('./SFX/circle' + rngRange(1,5), 'sfx', shape.x);		break;
+								case 6:	playAudio('./SFX/square' + rngRange(1,5), 'sfx', shape.x); 	break;
 								default: break;						
 							}
 							sfxPlayed = true;
@@ -981,7 +981,7 @@ function rareSpawnController() {
 						circ.y -= speedY;												// Standard vertical movement
 
 						if (circ.y <= 625 && sfxPlayed == false) {						// Play SFX
-							playAudio('./SFXb/blackCircle' + rngRange(1,3) + '.wav', 'sfx', circ.x, true);
+							playAudio('./SFXb/blackCircle' + rngRange(1,3), 'sfx', circ.x, true);
 							sfxPlayed = true;
 						}
 						
@@ -1006,10 +1006,7 @@ function rareSpawnController() {
 				if (select <= 100) { 
 					spawnEvilCircle(1200, 450, 0.4, 0); 								// spawn a big monster circle
 					cow.kongStrayNightmareDiscovered = true;
-					
-					// Play music
-					const format = getAudioFormat()
-    				playAudio('./Music/sn' + format, 'bgm', 450);
+					playAudio('./Music/sn', 'bgm', 450);
 					displayMusicText('Stray Nightmare', 12);
 				}	
 				break;
@@ -1177,7 +1174,7 @@ function rareSpawnController() {
 					window.requestAnimationFrame(move);									// starts the animation moving
 				}
 
-				setTimeout(function() { playAudio('./SFXb/paint' + rngRange(1,3) + '.wav', 'sfx', 250) }, 8000)
+				setTimeout(function() { playAudio('./SFXb/paint' + rngRange(1,3), 'sfx', 250) }, 8000)
 
 				var s = rngRange(5, 15);												// Randomize the number of shapes
 				for (var i=0; i<s; i++){												// Spawn S shapes
@@ -1241,7 +1238,7 @@ function rareSpawnController() {
 						square.y -= 0.4;													// Standard vertical movement
 
 						if (square.y <= 595 && sfxPlayed == false) {						// Play SFX
-							playAudio('./SFXb/cuteSquare' + rngRange(1,3) + '.wav', 'sfx', square.x);
+							playAudio('./SFXb/cuteSquare' + rngRange(1,3), 'sfx', square.x);
 							sfxPlayed = true;
 						}
 						
