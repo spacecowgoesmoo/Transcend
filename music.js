@@ -17,13 +17,13 @@
 
 
 var bgmGroup = new Pizzicato.Group;											// Initialize global audio groups/busses
-var sfxGroup = new Pizzicato.Group;	
+var sfxGroup = new Pizzicato.Group;
 
 
 function playAudio(filename, type, pan, noFilter) {
 	if (((cow.sfxVolume >= 5 && type == 'sfx') || type == 'bgm') && cow.muteAudioForIE == false) {			// Prevents SFX from loading if SFX are muted. Saves CPU
 		var snd = new Pizzicato.Sound(filename + cow.audioFormat, function() {
-		
+
 		if (rngRange(1,10) < 3 && type == 'sfx') {							// Set up effects and add them to the signal chain one by one
 			var distortion = new Pizzicato.Effects.Distortion({				// No distortion allowed on music
 				gain: rngRange(20,50)/100,
@@ -41,7 +41,7 @@ function playAudio(filename, type, pan, noFilter) {
 		// 	});
 		// 	snd.addEffect(quadrafuzz);
 		// }
-		
+
 		// if (rngRange(1,100) < 7 && type == 'sfx') {							// Sounds good but murders the CPU and audio engine
 		// 	var delay = new Pizzicato.Effects.Delay({						// Each +10% chance costs about 20% more CPU at endgame
 		// 		feedback: rngRange(4,8)/10,
@@ -87,13 +87,13 @@ function playAudio(filename, type, pan, noFilter) {
 // 			});
 // 			snd.addEffect(flanger);
 // 		}
-			
+
 		var stereoPanner = new Pizzicato.Effects.StereoPanner({				// Applied to every SFX
 		    pan: (pan-450)/450												// Converts X position to panning. (0, 900) to (-1, 1)
 		});
-		snd.addEffect(stereoPanner); 			    
+		snd.addEffect(stereoPanner);
 
-		if (type == 'sfx') { snd.volume = cow.sfxVolume/100; sfxGroup.addSound(snd); sfxGroup.play(); 	sfxGroup.removeSound(snd); }										// Add, play, and remove sound.	Set volume takes place at different times for reasons below		
+		if (type == 'sfx') { snd.volume = cow.sfxVolume/100; sfxGroup.addSound(snd); sfxGroup.play(); 	sfxGroup.removeSound(snd); }										// Add, play, and remove sound.	Set volume takes place at different times for reasons below
 		if (type == 'bgm') { 								 bgmGroup.addSound(snd); bgmGroup.play(); 	bgmGroup.volume = cow.bgmVolume/100; 	setTimeout(killBGM, 240000); }	// Annoying scope-y setTimeout to remove the BGM after 4 minutes
 
 		});
@@ -114,7 +114,7 @@ function musicSpawnController() {
 		if (cow.endgameBarOwned == true || cow.gameClear == true) 	{ var q = rngRange(1,10); } else  	// Gates some songs to Phase 2 and 3
 		if (cow.diamondBarOwned == true ) 							{ var q = rngRange(1,9); } else  	//
 											 						{ var q = rngRange(1,4); }	 	  	//
-		
+
 		if (cow.diamondCapacity <= 2) { var r = 1; }						// Force 'Abstraction' to play first on a new game
 		if (cow.endgameBarOwned == true && cow.gameClear == false && rngRange(1,10) <= 3) 	{ r=0; q=10; }  	// Higher chance of Fading Space
 			else {
@@ -135,14 +135,14 @@ function musicSpawnController() {
 						case 2: displayMusicText('Crank Up The Ecstasy', lifespan); break;
 						case 3: displayMusicText('Blue Passion', lifespan); break;
 						case 4: displayMusicText('Red Whisper', lifespan); break;
-		
+
 						// Phase 2 only
 						case 5: displayMusicText("Can't Stop The Punk", lifespan); break;
 						case 6: displayMusicText('Far From Consequence', lifespan); break;
 						case 7: displayMusicText('Chaos is Okay', lifespan); break;
-						case 8: displayMusicText('Beat Paradise', lifespan); break;				
+						case 8: displayMusicText('Beat Paradise', lifespan); break;
 						case 9: displayMusicText('trace.transcend', lifespan); break;
-						
+
 						// Phase 3 only
 						case 10: displayMusicText('Fading Space', lifespan); break;
 						default: break;
@@ -167,25 +167,25 @@ function musicSpawnController() {
 				case 'biome6': playAudio('./Music/se', 'bgm', 450); break;
 				default: break;
 			}
-		} else {																					
+		} else {
 			switch (q) {
 				case 1: playAudio('./Music/es', 'bgm', 450); break;
 				case 2: playAudio('./Music/cute', 'bgm', 450); break;
 				case 3: playAudio('./Music/bluep', 'bgm', 450); break;
 				case 4: playAudio('./Music/rw', 'bgm', 450); break;
-				
+
 				case 5: playAudio('./Music/cstp', 'bgm', 450); break;
 				case 6: playAudio('./Music/ffc', 'bgm', 450); break;
 				case 7: playAudio('./Music/cio', 'bgm', 450); break;
 				case 8: playAudio('./Music/beatp', 'bgm', 450); break;
 				case 9: playAudio('./Music/tt', 'bgm', 450); break;
-				
+
 				case 10: playAudio('./Music/fs', 'bgm', 450); break;
 				default: break;
 			}
 		}
 	}
-	
+
 	setTimeout(musicSpawnController, rngRange(270000,430000));							// 300k = five minutes
 }
 
@@ -239,14 +239,14 @@ function increaseVolume(bus) {
 		case 'sfx': var q=sfxGroup; var r=cow.sfxVolume; break;
 		default: break;
 	}
-	
+
 	if (r < 99) {
 		switch (bus) {
 			case 'bgm': cow.bgmVolume += 10; bgmDisplay.innerHTML = cow.bgmVolume; var r=cow.bgmVolume; hoverRNGColor(increaseBGMvolumeButton); break;
 			case 'sfx': cow.sfxVolume += 10; sfxDisplay.innerHTML = cow.sfxVolume; var r=cow.sfxVolume; hoverRNGColor(increaseSFXvolumeButton); break;
 			default: break;
-		}	
-		
+		}
+
 		q.volume += 0.1;						// Set volume to target
 		if (r >= 100) { q.volume = 1; }
 		saveGame();
@@ -262,18 +262,18 @@ function decreaseVolume(bus) {
 		case 'sfx': var q=sfxGroup; var r=cow.sfxVolume;break;
 		default: break;
 	}
-	
+
 	if (r > 1) {
 		switch (bus) {
 			case 'bgm': cow.bgmVolume -= 10; bgmDisplay.innerHTML = cow.bgmVolume; var r=cow.bgmVolume; hoverRNGColor(decreaseBGMvolumeButton); break;
 			case 'sfx': cow.sfxVolume -= 10; sfxDisplay.innerHTML = cow.sfxVolume; var r=cow.sfxVolume; hoverRNGColor(decreaseSFXvolumeButton); break;
 			default: break;
-		}	
-		
+		}
+
 		q.volume -= 0.1;						// Set volume to target
 		if (r <= 0) { q.volume = 0; }
 		saveGame();
-	}			
+	}
 }
 
 
@@ -289,7 +289,7 @@ function browserAudioCheck() {
 		alert("Developer's note: This game doesn't support audio on Internet Explorer. Please consider using a more modern web browser like Firefox or Chrome.");
 		cow.muteAudioForIE = true;
 	} else { cow.muteAudioForIE = false; }							// Extra security for Windows Chrome
-	
+
 	// Check for Safari
 	if (navigator.userAgent.indexOf('Safari') > -1 && navigator.vendor.indexOf('Apple') > -1) { cow.audioFormat = '.caf'; }
 	else { cow.audioFormat = '.opus'; }

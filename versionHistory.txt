@@ -14,6 +14,7 @@ v1.03 - Big maintenance patch 2020
 	Applied better image compression, reducing total filesize by 45% / 55KB
 	New console messages for background music
 	Removed some old commented-out code
+	Stripped trailing whitespace and replaced overlooked space-indents with tabs
 
 v1.02 - Chrome breaks web audio standards
 	Added a 'click to start' page to account for the new Chrome autoplay protection

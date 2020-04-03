@@ -255,7 +255,7 @@ function buyMaxShapeCapacity(q) {
 		default: break;
 	}
 	function stuff() {
-		clearPricesSpan(); 
+		clearPricesSpan();
 		playAudio('SFXc/capacityBoost' + rngRange(1,3), 'sfx', 450, true);
 		saveGame();
 		updateTextSpans(false);
@@ -373,7 +373,7 @@ function recheckItemCostHighlighting() {
 	if (cow.resourceStars < 30 			&& buttID3.src.slice(-10,-5) == 'Color') 	{ buttID3.src = 'Images/square.png'; }
 	if (cow.resourceDiamonds < 100 		&& buttID4.src.slice(-10,-5) == 'Color') 	{ buttID4.src = 'Images/circle.png'; }
 	if (cow.resourceCircles < 1200 		&& buttID5.src.slice(-10,-5) == 'Color') 	{ buttID5.src = 'Images/star.png'; }
-	// Phase 2/3 things             	
+	// Phase 2/3 things
 	if (cow.resourceStars < 800			&& buttID6.src.slice(-10,-5) == 'Color')	{ buttID6.src = 'Images/diamondBarHollow.png'; }
 	if (cow.resourceStardust < 30 		&& buttID7.src.slice(-10,-5) == 'Color')	{ buttID7.src = 'Images/stardustHollow.png'; }
 	if (cow.resourceStardust < 150 		&& buttID8.src.slice(-10,-5) == 'Color') 	{ buttID8.src = 'Images/stardustHollow.png'; }
@@ -392,37 +392,37 @@ function recheckItemCostHighlighting() {
 	if (cow.resourceSquares < 8000 		&& buttID20.src.slice(-10,-5) == 'Color')	{ buttID20.src = 'Images/squareHollow.png'; }
 	// Resource counter numbers and shapes
 	if (buttID21.src.slice(-10,-5) == 'Color' || diamondCounter.style.color != 'rgb(249, 249, 249)') {
-		if (cow.resourceDiamonds < cow.nextDiamondPrice	|| cow.diamondCapacity >= cow.maxDiamondCapacity) { 
+		if (cow.resourceDiamonds < cow.nextDiamondPrice	|| cow.diamondCapacity >= cow.maxDiamondCapacity) {
 			diamondCounter.style.color = "F9F9F9";
 			buttID21.src = 'Images/diamond.png';
 		}
 	}
 	if (buttID22.src.slice(-10,-5) == 'Color' || starCounter.style.color != 'rgb(249, 249, 249)') {
-		if (cow.resourceStars < cow.nextStarPrice || cow.starCapacity >= cow.maxStarCapacity) { 
+		if (cow.resourceStars < cow.nextStarPrice || cow.starCapacity >= cow.maxStarCapacity) {
 			starCounter.style.color = "F9F9F9";
 			buttID22.src = 'Images/star.png';
 		}
 	}
 	if (buttID23.src.slice(-10,-5) == 'Color' || hexagonCounter.style.color != 'rgb(249, 249, 249)') {
-		if (cow.resourceHexagons < cow.nextHexagonPrice	|| cow.hexagonCapacity >= cow.maxHexagonCapacity) { 
+		if (cow.resourceHexagons < cow.nextHexagonPrice	|| cow.hexagonCapacity >= cow.maxHexagonCapacity) {
 			hexagonCounter.style.color = "F9F9F9";
 			buttID23.src = 'Images/hexagon.png';
 		}
 	}
 	if (buttID24.src.slice(-10,-5) == 'Color' || triangleCounter.style.color != 'rgb(249, 249, 249)') {
-		if (cow.resourceTriangles < cow.nextTrianglePrice || cow.triangleCapacity >= cow.maxTriangleCapacity) { 
+		if (cow.resourceTriangles < cow.nextTrianglePrice || cow.triangleCapacity >= cow.maxTriangleCapacity) {
 			triangleCounter.style.color = "F9F9F9";
 			buttID24.src = 'Images/triangle.png';
 		}
 	}
 	if (buttID25.src.slice(-10,-5) == 'Color' || circleCounter.style.color != 'rgb(249, 249, 249)') {
-		if (cow.resourceCircles < cow.nextCirclePrice || cow.circleCapacity >= cow.maxCircleCapacity) { 
+		if (cow.resourceCircles < cow.nextCirclePrice || cow.circleCapacity >= cow.maxCircleCapacity) {
 			circleCounter.style.color = "F9F9F9";
 			buttID25.src = 'Images/circle.png';
 		}
 	}
 	if (buttID26.src.slice(-10,-5) == 'Color' || squareCounter.style.color != 'rgb(249, 249, 249)') {
-		if (cow.resourceSquares < cow.nextSquarePrice || cow.squareCapacity >= cow.maxSquareCapacity) { 
+		if (cow.resourceSquares < cow.nextSquarePrice || cow.squareCapacity >= cow.maxSquareCapacity) {
 			squareCounter.style.color = "F9F9F9";
 			buttID26.src = 'Images/square.png';
 		}
@@ -451,7 +451,7 @@ function recheckItemCostHighlighting() {
 	if (cow.resourceCircles >= 1000 	&& buttID18.src.slice(-10,-5) != 'Color')	{ buttID18.src = 'Images/circleHollowColor' + rngRange(1,3) + '.png'; }
 	if (cow.resourceSquares >= 3000 	&& buttID19.src.slice(-10,-5) != 'Color')	{ buttID19.src = 'Images/squareHollowColor' + rngRange(1,3) + '.png'; }
 	if (cow.resourceSquares >= 8000 	&& buttID20.src.slice(-10,-5) != 'Color')	{ buttID20.src = 'Images/squareHollowColor' + rngRange(1,3) + '.png'; }
-	
+
 	// Resource counter numbers and shapes
 	function getRNG() { return rngRange(4,7); }
 	if (cow.resourceDiamonds >= cow.nextDiamondPrice 	&& cow.diamondCapacity < cow.maxDiamondCapacity 	&& (buttID21.src.slice(-10,-5) != 'Color' || diamondCounter.style.color == 'rgb(249, 249, 249)')) {
@@ -562,7 +562,7 @@ function forceIconRecolorize() {
 	if (cow.resourceCircles >= 1000		&& cow.maxCircleCapacity < 30) 				{ buttID18.src = 'Images/circleHollowColor' + rngRange(1,3) + '.png'; }
 	if (cow.resourceSquares >= 3000		&& cow.maxSquareCapacity < 20) 				{ buttID19.src = 'Images/squareHollowColor' + rngRange(1,3) + '.png'; }
 	if (cow.resourceSquares >= 8000		&& cow.maxSquareCapacity < 30) 				{ buttID20.src = 'Images/squareHollowColor' + rngRange(1,3) + '.png'; }
-	
+
 	// Resource counter numbers and shapes
 	function getRNG() { return rngRange(4,7); }
 	if (cow.resourceDiamonds >= cow.nextDiamondPrice 	&& cow.diamondCapacity < cow.maxDiamondCapacity) {

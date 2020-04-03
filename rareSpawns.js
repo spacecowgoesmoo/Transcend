@@ -22,21 +22,21 @@ function rareSpawnController() {
 	if (rngRange(1, q) == 7 && !document.hidden){								// If RNG hits the magic number, and if the window isn't backgrounded
 		var r = rngRange(1,12);
 
-		
-		
-		
-		
-		
-		
-		
-		
-	
-		
-		
-		
-		
-		
-		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		switch (r) {															// Generate the rare spawn
 			case 1:
 				// Perfect square diamond. Rotating.
@@ -85,9 +85,9 @@ function rareSpawnController() {
 					quadQuad.rotation = (rngRange(0,310)/100);								// Random starting rotation
 					if (rngRange(1,2) == 1) { var rotateSpeed = 0.01 }						// Random rotation direction
 					else { var rotateSpeed = -0.01 }
-					
+
 					var sfxPlayed = false;
-		
+
 					document.body.addEventListener('click', boost);							// Adds click boost event listener
 					var boostCounter = rngRange(0,5)/10;									// initialize sinewave, slight RNG
 					var boostable = true;													// initialize logic to prevent click spamming
@@ -105,19 +105,19 @@ function rareSpawnController() {
 							} else { if (quadQuad.y > -85) { window.requestAnimationFrame(go); } }	// otherwise, animate another frame and check again
 						}																	//
 					}																		//
-						
+
 					function move() {
 						quadQuad.y -= 0.4;													// Standard vertical movement
 						quadQuad.rotation += rotateSpeed;
-						
+
 						if (quadQuad.y <= 648 && sfxPlayed == false) {						// Play SFX, early to compensate for rotation and the central anchor point
 							playAudio('./SFXb/quadQuad' + rngRange(1,3), 'sfx', quadQuad.x);
 							sfxPlayed = true;
 						}
-						
+
 						if (quadQuad.y < -90) { 											// if shape is offscreen..
 							quadQuad.destroy(true); 										// kill it
-							cow.kongLifetimeShapes+=5;	
+							cow.kongLifetimeShapes+=5;
 							document.body.removeEventListener('click', boost);				// Removes the click boost event listener from the HTML body
 							if (rngRange(1,2) == 1) { cow.resourceDiamonds+=5; updateResourceCounter('diamond'); }			// Random shape rewards
 							else { cow.resourceSquares+=5; updateResourceCounter('square'); }
@@ -166,7 +166,7 @@ function rareSpawnController() {
 					if (direction == 2) { var counter = -3.14; }
 
 					sfxPlayed = false;
-					
+
 					document.body.addEventListener('click', boost);						// Adds click boost event listener
 					var boostCounter = rngRange(0,5)/10;								// initialize sinewave, slight RNG
 					var boostable = true;												// initialize logic to prevent click spamming
@@ -184,7 +184,7 @@ function rareSpawnController() {
 							} else { if (diam.y > -35) { window.requestAnimationFrame(go); } }	// otherwise, animate another frame and check again
 						}																//
 					}																	//
-					
+
 					function move() {
 						diam.y -= 3.0;													// vertical movement
 						diam.x += (Math.sin(counter))*3;								// X sinewave movement
@@ -194,7 +194,7 @@ function rareSpawnController() {
 							playAudio('./SFX/diamond' + rngRange(1,5), 'sfx', diam.x);
 							sfxPlayed = true;
 						}
-						
+
 						if (diam.y < -40) { 											// if shape is offscreen..
 							diam.destroy(true); 										// kill it
 							document.body.removeEventListener('click', boost);			// Removes the click boost event listener from the HTML body
@@ -258,7 +258,7 @@ function rareSpawnController() {
 
 					var q = -.001;														// variable for calculating the brightness using a sinwave
                 	var lifespan = 2;
-					
+
 					document.body.addEventListener('click', boost);						// Adds click boost event listener
 					var boostCounter = rngRange(0,5)/10;								// initialize sinewave, slight RNG
 					var boostable = true;												// initialize logic to prevent click spamming
@@ -279,11 +279,11 @@ function rareSpawnController() {
 							} else { if (q < 3.1) { window.requestAnimationFrame(go); } }// otherwise, animate another frame and check again
 						}																//
 					}																	//
-										
+
 					function pulseBrightness() {
 						star.alpha = (Math.sin(q));										// calculate alpha with a sinewave
 						q += 1/lifespan/1150;											// increment. lifespan is tuned to be in minutes
-						
+
 						if (q > 3.2) {													// if star has faded out.. (3.14 is one sinwave cycle)
 							star.destroy(true);											// kill it
 							document.body.removeEventListener('click', boost);			// Removes the click boost event listener from the HTML body
@@ -295,17 +295,17 @@ function rareSpawnController() {
 
 					window.requestAnimationFrame(pulseBrightness);						// starts the animation moving
 				}
-				
+
 				var constellation = rngRange(1,4);										// select constellation
 				var q = rngRange(-50, 850);												// randomize location
 				var r = rngRange(0, 300);
-				
+
 				function sfxDelayedConstellation(pan) {									// very dumb but fuck setTimeout scope changes
 					setTimeout(function() { playAudio('./SFXb/constellation' + rngRange(1,3), 'sfx', pan) }, 6000)
 				}
-				
+
 				sfxDelayedConstellation(q);
-				
+
 					switch (constellation) {
 					// Crux 50000CE
 					case 1:
@@ -392,7 +392,7 @@ function rareSpawnController() {
 					var q = -.001;														// variable for calculating the brightness using a sinwave
 					if (rngRange(1,2) == 1) { var xMovement = 4 }						// Random xMovement direction
 					else { var xMovement = -4 }
-					
+
 					playAudio('./SFXb/fallingStar' + rngRange(1,3), 'sfx', star.x);
 
 					function move() {
@@ -450,7 +450,7 @@ function rareSpawnController() {
 					var speedX = rngRange(2,8)/10;
 
 					var sfxPlayed = false;
-					
+
 					document.body.addEventListener('click', boost);						// Adds click boost event listener
 					var boostCounter = rngRange(0,5)/10;								// initialize sinewave, slight RNG
 					var boostable = true;												// initialize logic to prevent click spamming
@@ -468,15 +468,15 @@ function rareSpawnController() {
 							} else { if (ufo.x > -25) { window.requestAnimationFrame(go); } }	// otherwise, animate another frame and check again
 						}																//
 					}																	//
-					
+
 					function move() {													//
 						ufo.x -= speedX;												// move left
-						
+
 						if (ufo.x <= 900 && sfxPlayed == false) {						// Play SFX, 5px early because the left isn't the origin
 							playAudio('./SFXb/ufo' + rngRange(1,3), 'sfx', ufo.x);
 							sfxPlayed = true;
 						}
-						
+
 						if (ufo.x < -30) { 												// if shape is offscreen..
 							ufo.destroy(true); 											// kill it
 							document.body.removeEventListener('click', boost);			// Removes the click boost event listener from the HTML body
@@ -532,9 +532,9 @@ function rareSpawnController() {
 					hex.y = 750;
 
 					var counter = 0;
-					
+
 					var sfxPlayed = false;
-					
+
 					document.body.addEventListener('click', boost);						// Adds click boost event listener
 					var boostCounter = rngRange(0,5)/10;								// initialize sinewave, slight RNG
 					var boostable = true;												// initialize logic to prevent click spamming
@@ -552,7 +552,7 @@ function rareSpawnController() {
 							} else { if (hex.y > -145) { window.requestAnimationFrame(go); } }	// otherwise, animate another frame and check again
 						}																//
 					}																	//
-					
+
 					function jumpShapeX() {
 						var xMovement = rngRange(-300,300);								// Same as jumpShapeY, but with extra shit to account for left/right movement
 						var xCounter = 0;
@@ -563,7 +563,7 @@ function rareSpawnController() {
 							if (xMovement > 0 && xCounter < xMovement && hex.y > -149) { window.requestAnimationFrame(move); }
 							if (xMovement <= 0 && xCounter < -xMovement && hex.y > -149) { window.requestAnimationFrame(move); }
 						}
-						window.requestAnimationFrame(move);								// starts the animation moving											
+						window.requestAnimationFrame(move);								// starts the animation moving
 					}
 
 					function jumpShapeY() {
@@ -572,7 +572,7 @@ function rareSpawnController() {
 						function move() {
 							hex.y-=3;													// move
 							yCounter+=3;												// increment counter
-							if (yCounter < yMovement && hex.y > -149) { window.requestAnimationFrame(move); } // If movement isn't done yet and the hex isn't offscreen, keep going	
+							if (yCounter < yMovement && hex.y > -149) { window.requestAnimationFrame(move); } // If movement isn't done yet and the hex isn't offscreen, keep going
 							if (hex.y <= -149) {										// This is here for quick updating of the resource counter
 								cow.resourceHexagons++;
 								cow.kongLifetimeShapes++;
@@ -581,19 +581,19 @@ function rareSpawnController() {
 						}
 						window.requestAnimationFrame(move);								// starts the animation moving
 					}
-					
+
 					function timer() {
 						counter += 1;													// Increment timer
 						if (counter % 150 === 0 || counter == 1) { 						// Every few seconds (or once it spawns), move the hexagon
 							jumpShapeX();
-							jumpShapeY(); 
+							jumpShapeY();
 						}
-						
+
 						if (hex.y <= 595 && sfxPlayed == false) {						// Play SFX
 							playAudio('./SFXb/hexScanner' + rngRange(1,3), 'sfx', hex.x);
 							sfxPlayed = true;
 						}
-						
+
 						if (hex.y < -150) {												// if shape is offscreen..
 							hex.destroy(true); 											// kill it
 							document.body.removeEventListener('click', boost);			// Removes the click boost event listener from the HTML body
@@ -602,7 +602,7 @@ function rareSpawnController() {
 
 					window.requestAnimationFrame(timer);								// starts the animation moving
 				}
-				
+
 				var s = rngRange(2,5);
 				for (var i=0; i<s; i++){												// Spawn S scanners
 					setTimeout(spawnHexagonScanner, 500*i);
@@ -629,11 +629,11 @@ function rareSpawnController() {
 				function spawnCreepyTriangle(color) {
 					var tri = new PIXI.Graphics();										// create a shape in the PIXI engine
 
-					if (color == 'black') { 
+					if (color == 'black') {
 						tri.beginFill(0x000000);										// set a fill color. Solid black, or..
-						var boostSpeed = -6; 											// Positive or negative boost speed 
-					}											
-					else { 
+						var boostSpeed = -6; 											// Positive or negative boost speed
+					}
+					else {
 						tri.beginFill(randomColor({hue:color})); 						// random red/green
 						var boostSpeed = 2;
 					}
@@ -652,7 +652,7 @@ function rareSpawnController() {
 					var counter = rngRange(0, 100);										// randomize the initial state
 
 					var sfxPlayed = false;
-					
+
 					document.body.addEventListener('click', boost);						// Adds click boost event listener
 					var boostCounter = rngRange(0,5)/10;								// initialize sinewave, slight RNG
 					var boostable = true;												// initialize logic to prevent click spamming
@@ -670,18 +670,18 @@ function rareSpawnController() {
 							} else { if (tri.y > -65) { window.requestAnimationFrame(go); } }	// otherwise, animate another frame and check again
 						}																//
 					}																	//
-					
+
 					function move() {
 						tri.y -= speedY;												// Standard vertical movement
 						tri.scale.set((Math.sin(counter/2))*2);							// Weird scaling animation
 						counter += 0.05;
-						
+
 						if (tri.y <= 612 && sfxPlayed == false) {						// Play SFX, 50% early to compensate for an average rotation of 90 degrees
 							if (color == 'black') { playAudio('./SFXb/blackCircle' + rngRange(1,3), 'sfx', tri.x, true); }		// Black circle SFX used here
 							else { playAudio('./SFXb/triCreepy' + rngRange(1,3), 'sfx', tri.x, true); }		// Using noFilter here because highPass kills this sfx too often
 							sfxPlayed = true;
 						}
-						
+
 						if (tri.y < -70) { 												// if shape is offscreen..
 							tri.destroy(true); 											// kill it
 							document.body.removeEventListener('click', boost);			// Removes the click boost event listener from the HTML body
@@ -751,7 +751,7 @@ function rareSpawnController() {
 							} else { if (tri.y > scale*-15) { window.requestAnimationFrame(go); } }	// otherwise, animate another frame and check again
 						}																//
 					}																	//
-					
+
 					function move() {
 						tri.y -= 2/scale;												// vertical movement, based on size
 
@@ -767,14 +767,14 @@ function rareSpawnController() {
 					window.requestAnimationFrame(move);									// starts the animation moving
 				}
 
-				function sfxDelayedTritower(pan) {		
+				function sfxDelayedTritower(pan) {
 					setTimeout(function() { playAudio('./SFXb/triTower' + rngRange(1,3), 'sfx', pan) }, 1000)
 				}
-				
+
 				var q = rngRange(50, 850);												// Randomize the fixed x spawn position
 				var s = rngRange(8, 15);												// Randomize the number of tris
 				sfxDelayedTritower(q);
-								
+
 				for (var i=1; i<s; i++){												// Spawn S tris. Use i=1 instead of 0 because of scale also being used for y speed
 					spawnNestedTriangle(q, i);
 				}
@@ -799,20 +799,20 @@ function rareSpawnController() {
 				// A few of everything. Small, perfect shapes. Glitter
 				function spawnGlitterShape(selectShape) {
 					var shape = new PIXI.Graphics();									// create a shape in the PIXI engine
-					
+
 					shape.beginFill(randomColor({hue:'hax'}));							// random color
 					shape.moveTo(0, 0);													// places the shape at the origin for easy drawing math
-					
+
 					switch (selectShape) {
 						// Diamond
-						case 1: 
+						case 1:
 							shape.lineTo(8, 12);										// create vertices
-							shape.lineTo(0, 24);		
+							shape.lineTo(0, 24);
 							shape.lineTo(-8, 12);
 							break;
-						
+
 						// Star
-						case 2: 
+						case 2:
 							shape.moveTo(100,20);										// create vertices
 							shape.lineTo(78,78);
 							shape.lineTo(20,78);
@@ -823,38 +823,38 @@ function rareSpawnController() {
 							shape.lineTo(137,115);
 							shape.lineTo(180,78);
 							shape.lineTo(123,78);
-							shape.scale.set(0.1);	
+							shape.scale.set(0.1);
 							break;
-						
+
 						// Hexagon
-						case 3: 
+						case 3:
 							shape.lineTo(9,0);
 							shape.lineTo(14,8);
 							shape.lineTo(9,17);
 							shape.lineTo(0,17);
-							shape.lineTo(-5,8);		
+							shape.lineTo(-5,8);
 							break;
-								
+
 						// Triangle
-						case 4: 
+						case 4:
 							shape.lineTo(8, 15);										// create vertices
-							shape.lineTo(-8, 15);		
+							shape.lineTo(-8, 15);
 							break;
-							
+
 						// Circle
-						case 5: 
-							shape.drawCircle(0, 0, 8);		
+						case 5:
+							shape.drawCircle(0, 0, 8);
 							break;
-							
+
 						// Square
-						case 6: 
+						case 6:
 							shape.lineTo(15, 0);										// create vertices
-							shape.lineTo(15, 15);		
-							shape.lineTo(0, 15);		
+							shape.lineTo(15, 15);
+							shape.lineTo(0, 15);
 							break;
 						default: break;
 				}
-					shape.endFill();			
+					shape.endFill();
 					foregroundContainer.addChild(shape);								// add shape to the PIXI stage
 
 					shape.x = rngRange(0, 900);											// random shape location
@@ -863,7 +863,7 @@ function rareSpawnController() {
 					var speedY = rngRange(18,22)/10;									// randomized Y speed
 
 					var sfxPlayed = false;
-					
+
 					document.body.addEventListener('click', boost);						// Adds click boost event listener
 					var boostCounter = rngRange(0,5)/10;								// initialize sinewave, slight RNG
 					var boostable = true;												// initialize logic to prevent click spamming
@@ -881,9 +881,9 @@ function rareSpawnController() {
 							} else { if (shape.y > -25) { window.requestAnimationFrame(go); } }	// otherwise, animate another frame and check again
 						}																//
 					}																	//
-					
+
 					function move() {
-						shape.y -= speedY;						
+						shape.y -= speedY;
 
 						if (shape.y <= 595 && sfxPlayed == false) {
 							switch (selectShape) {										// play sfx when the shape spawns. 100% squares break the audio engine lol
@@ -893,11 +893,11 @@ function rareSpawnController() {
 								case 4:	playAudio('./SFX/triangle' + rngRange(1,5), 'sfx', shape.x);	break;
 								case 5:	playAudio('./SFX/circle' + rngRange(1,5), 'sfx', shape.x);		break;
 								case 6:	playAudio('./SFX/square' + rngRange(1,5), 'sfx', shape.x); 	break;
-								default: break;						
+								default: break;
 							}
 							sfxPlayed = true;
 						}
-						
+
 						if (shape.y < -30) { 											// if shape is offscreen..
 							shape.destroy(true); 										// kill it
 							document.body.removeEventListener('click', boost);			// Removes the click boost event listener from the HTML body
@@ -958,7 +958,7 @@ function rareSpawnController() {
 					circ.y = radius + spawnDelay + 601;
 
 					var sfxPlayed = false;
-					
+
 					document.body.addEventListener('click', boost);						// Adds click boost event listener
 					var boostCounter = rngRange(0,5)/10;								// initialize sinewave, slight RNG
 					var boostable = true;												// initialize logic to prevent click spamming
@@ -976,7 +976,7 @@ function rareSpawnController() {
 							} else { if (circ.y > -radius -5) { window.requestAnimationFrame(go); } }	// otherwise, animate another frame and check again
 						}																//
 					}																	//
-					
+
 					function move() {
 						circ.y -= speedY;												// Standard vertical movement
 
@@ -984,7 +984,7 @@ function rareSpawnController() {
 							playAudio('./SFXb/blackCircle' + rngRange(1,3), 'sfx', circ.x, true);
 							sfxPlayed = true;
 						}
-						
+
 						if (circ.y < -radius) {											// if shape is offscreen..
 							circ.destroy(true); 										// kill it
 							document.body.removeEventListener('click', boost);			// Removes the click boost event listener from the HTML body
@@ -998,17 +998,17 @@ function rareSpawnController() {
 				}
 
 				var select = rngRange(1,100);
-				
+
 				if (select <= 98) {
 					var s = rngRange(10,20);											// randomize number of circles's
 					for (var i=0; i<s; i++) { spawnEvilCircle(30, 'random', rngRange(4,20)/10, rngRange(671, 1800)); }	// spawn a swarm of circles
 				} else
-				if (select <= 100) { 
+				if (select <= 100) {
 					spawnEvilCircle(1200, 450, 0.4, 0); 								// spawn a big monster circle
 					cow.kongStrayNightmareDiscovered = true;
 					playAudio('./Music/sn', 'bgm', 450);
 					displayMusicText('Stray Nightmare', 12);
-				}	
+				}
 				break;
 
 
@@ -1034,32 +1034,32 @@ function rareSpawnController() {
 					var shape = rngRange(1, 8);
 					var paint = new PIXI.Graphics();									// create a shape in the PIXI engine
 					paint.beginFill(0x000000, 0);										// empty, transparant fill color
-					
+
 					switch (shape) {
-						// .8x.8 square	
+						// .8x.8 square
 						case 1:
-							paint.lineStyle(4, randomColor({luminosity:'light', hue:'blue'}), 0.5);	
-							paint.moveTo(-15, -15);									
+							paint.lineStyle(4, randomColor({luminosity:'light', hue:'blue'}), 0.5);
+							paint.moveTo(-15, -15);
 							paint.lineTo(15, -15);
 							paint.lineTo(15, 15);
 							paint.lineTo(-15, 15);
 							paint.lineTo(-15, -15);
 							break;
-						
+
 						// 2x2 square
-						case 2: 
+						case 2:
 							paint.lineStyle(4, randomColor({luminosity:'light', hue:'green'}), 0.5);			// line style
-							paint.moveTo(-40, -40);									
+							paint.moveTo(-40, -40);
 							paint.lineTo(40, -40);
 							paint.lineTo(40, 40);
 							paint.lineTo(-40, 40);
 							paint.lineTo(-40, -40);
 							break;
-							
+
 						// 3x3 square
-						case 3: 
-							paint.lineStyle(4, randomColor({luminosity:'light', hue:'blue'}), 0.5);	
-							paint.moveTo(-60, -60);									
+						case 3:
+							paint.lineStyle(4, randomColor({luminosity:'light', hue:'blue'}), 0.5);
+							paint.moveTo(-60, -60);
 							paint.lineTo(60, -60);
 							paint.lineTo(60, 60);
 							paint.lineTo(-60, 60);
@@ -1067,40 +1067,40 @@ function rareSpawnController() {
 							break;
 
 						// 2x width circle
-						case 4: 
-							paint.lineStyle(4, randomColor({luminosity:'light', hue:'red'}), 0.5);	
+						case 4:
+							paint.lineStyle(4, randomColor({luminosity:'light', hue:'red'}), 0.5);
 							paint.moveTo(0, 0);
 							paint.drawCircle(0, 0, 40);
 							break;
-						
+
 						// 0.7x width triangle (ratio 6:7 x:y)
 						case 5:
-							paint.lineStyle(4, randomColor({luminosity:'light', hue:'green'}), 0.5);	
-							paint.moveTo(0, 18);									
+							paint.lineStyle(4, randomColor({luminosity:'light', hue:'green'}), 0.5);
+							paint.moveTo(0, 18);
 							paint.lineTo(21, -18);
 							paint.lineTo(-21, -18);
 							paint.lineTo(0, 18);
 							break;
-						
+
 						// 1.3x width triangle
 						case 6:
-							paint.lineStyle(4, randomColor({luminosity:'light', hue:'red'}), 0.5);	
-							paint.moveTo(0, 30);									
+							paint.lineStyle(4, randomColor({luminosity:'light', hue:'red'}), 0.5);
+							paint.moveTo(0, 30);
 							paint.lineTo(35, -30);
 							paint.lineTo(-35, -30);
 							paint.lineTo(0, 30);
 							break;
 
 						// 1x4 bar
-						case 7: 
+						case 7:
 							paint.lineStyle(4, randomColor({luminosity:'light', hue:'red'}), 0.5);
-							paint.moveTo(-20, -80);									
+							paint.moveTo(-20, -80);
 							paint.lineTo(20, -80);
 							paint.lineTo(20, 80);
 							paint.lineTo(-20, 80);
 							paint.lineTo(-20, -80);
 							break;
-						
+
 						// S block, facing right
 						case 8:
 							paint.lineStyle(4, randomColor({luminosity:'light', hue:'green'}), 0.5);
@@ -1114,10 +1114,10 @@ function rareSpawnController() {
 							paint.lineTo(-60, 40);
 							paint.lineTo(20, 40);
 							break;
-							
+
 						default: break;
 					}
-					
+
 					paint.endFill();													// ends vertice drawing
 					skyObjectContainer.addChild(paint);									// add shape to the PIXI stage
 
@@ -1147,7 +1147,7 @@ function rareSpawnController() {
 							} else { if (paint.x < 985) { window.requestAnimationFrame(go); } }	// otherwise, animate another frame and check again
 						}																//
 					}																	//
-					
+
 					function move() {
 						paint.x += speedX;												// move right
 						paint.y -= speedY;												// move right
@@ -1215,7 +1215,7 @@ function rareSpawnController() {
 					square.y = 640;
 
 					var sfxPlayed = false;
-					
+
 					document.body.addEventListener('click', boost);							// Adds click boost event listener
 					var boostCounter = rngRange(0,5)/10;									// initialize sinewave, slight RNG
 					var boostable = true;													// initialize logic to prevent click spamming
@@ -1233,7 +1233,7 @@ function rareSpawnController() {
 							} else { if (square.y > -65) { window.requestAnimationFrame(go); } }	// otherwise, animate another frame and check again
 						}																	//
 					}																		//
-					
+
 					function move() {
 						square.y -= 0.4;													// Standard vertical movement
 
@@ -1241,7 +1241,7 @@ function rareSpawnController() {
 							playAudio('./SFXb/cuteSquare' + rngRange(1,3), 'sfx', square.x);
 							sfxPlayed = true;
 						}
-						
+
 						if (square.y < -70) { 												// if shape is offscreen..
 							square.destroy(true); 											// kill it
 							document.body.removeEventListener('click', boost);			// Removes the click boost event listener from the HTML body
@@ -1271,28 +1271,28 @@ function rareSpawnController() {
 
 
 
-		
-		
-		
-
-	
-		
-	
-	
-	
-	
-	
-	
 
 
-			
 
 
-	
-		
-		
-		
-		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		if (cow.endgameBarOwned == true) {									// If Phase 3 is active..
 			switch (q) {													// Collect endgame shapes
 				case 1: cow.resourceEndgameBarDiamonds	+=36; 	break;

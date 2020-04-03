@@ -1,5 +1,5 @@
 function rngRange(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+	return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 
@@ -13,11 +13,11 @@ function randomColor100() {
 
 
 function modifyCSS(selector, property, value) {
-    for (var i=0; i<document.styleSheets.length;i++) {//Loop through all styles
-        //Try add rule
-        try { document.styleSheets[i].insertRule(selector+ ' {'+property+':'+value+'}', document.styleSheets[i].cssRules.length);
-        } catch(err) {try { document.styleSheets[i].addRule(selector, property+':'+value);} catch(err) {}}//IE
-    }
+	for (var i=0; i<document.styleSheets.length;i++) {//Loop through all styles
+		//Try add rule
+		try { document.styleSheets[i].insertRule(selector+ ' {'+property+':'+value+'}', document.styleSheets[i].cssRules.length);
+	} catch(err) {try { document.styleSheets[i].addRule(selector, property+':'+value);} catch(err) {}}//IE
+	}
 }
 
 
@@ -126,23 +126,23 @@ function playAudioBasic(file) {
 // Makes .remove() work in IE8-11
 // https://stackoverflow.com/questions/8830839/javascript-dom-remove-element
 (function () {					
-    var typesToPatch = ['DocumentType', 'Element', 'CharacterData'],
-        remove = function () {
-            // The check here seems pointless, since we're not adding this
-            // method to the prototypes of any any elements that CAN be the
-            // root of the DOM. However, it's required by spec (see point 1 of
-            // https://dom.spec.whatwg.org/#dom-childnode-remove) and would
-            // theoretically make a difference if somebody .apply()ed this
-            // method to the DOM's root node, so let's roll with it.
-            if (this.parentNode != null) {
-                this.parentNode.removeChild(this);
-            }
-        };
+	var typesToPatch = ['DocumentType', 'Element', 'CharacterData'],
+		remove = function () {
+			// The check here seems pointless, since we're not adding this
+			// method to the prototypes of any any elements that CAN be the
+			// root of the DOM. However, it's required by spec (see point 1 of
+			// https://dom.spec.whatwg.org/#dom-childnode-remove) and would
+			// theoretically make a difference if somebody .apply()ed this
+			// method to the DOM's root node, so let's roll with it.
+			if (this.parentNode != null) {
+				this.parentNode.removeChild(this);
+			}
+		};
 
-    for (var i=0; i<typesToPatch.length; i++) {
-        var type = typesToPatch[i];
-        if (window[type] && !window[type].prototype.remove) {
-            window[type].prototype.remove = remove;
-        }
-    }
+	for (var i=0; i<typesToPatch.length; i++) {
+		var type = typesToPatch[i];
+		if (window[type] && !window[type].prototype.remove) {
+			window[type].prototype.remove = remove;
+		}
+	}
 })();

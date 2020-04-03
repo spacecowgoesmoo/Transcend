@@ -50,19 +50,19 @@ var cow = {
 	resourceCounterWidthArray: [],
 	filesPreloaded: 0,
 	preloaderComplete: false,
-	
+
 	kongUsername: '',
 	kongLifetimeShapes: 0,
 	kongFirstBiomePurchased: false,
 	kongDiamondBarUnlocked: false,
 	kongStrayNightmareDiscovered: false,
-	
+
 	bgmVolume: 80,
 	sfxVolume: 80,
 	audioFormat: '.opus',
 	muteAudioForIE: false,
 	hideMusicText: false,
-	
+
 	randomBiomesUnlocked: false,
 	randomBiomesActive: false,
 	bgTransitionSpeed: 5,
@@ -73,8 +73,8 @@ var cow = {
 	resourceTriangles: 0,
 	resourceCircles: 0,
 	resourceSquares: 0,
-	
-	diamondBarOwned: false,	
+
+	diamondBarOwned: false,
 	resourceStardust: 0,
 	resourceStardustBiome1: 0,
 	resourceStardustBiome2: 0,
@@ -82,7 +82,7 @@ var cow = {
 	resourceStardustBiome4: 0,
 	resourceStardustBiome5: 0,
 	resourceStardustBiome6: 0,
-	
+
 	endgameBarOwned: false,
 	resourceEndgameBarDiamonds: 0,
 	resourceEndgameBarStars: 0,
@@ -90,7 +90,7 @@ var cow = {
 	resourceEndgameBarTriangles: 0,
 	resourceEndgameBarCircles: 0,
 	resourceEndgameBarSquares: 0,
-	
+
 	stardustSpawnBoost1Owned: false,
 	stardustSpawnBoost2Owned: false,
 
@@ -100,14 +100,14 @@ var cow = {
 	biome4Owned: false,
 	biome5Owned: false,
 	biome6Owned: false,
-		
+
 	nextDiamondPrice: 2,
 	nextStarPrice: 10,
 	nextHexagonPrice: 20,
 	nextTrianglePrice: 20,
 	nextCirclePrice: 10,
 	nextSquarePrice: 150,
-	
+
 	diamondCapacity: 1,
 	starCapacity: 1,
 	hexagonCapacity: 0,
@@ -122,7 +122,7 @@ var cow = {
 	maxTriangleCapacity: 10,
 	maxCircleCapacity: 10,
 	maxSquareCapacity: 100,
-	
+
 	biome1CurrentDiamondCount: 0,
 	biome1CurrentStarCount: 0,
 	biome2CurrentHexagonCount: 0,
@@ -166,7 +166,7 @@ function updateResourceCounter(shape) {
 								checkToDisableBiome4Filter();																										break;
 		case 'quad': 		squareCounterText.innerHTML = cow.squareCapacity + ' / ' + cow.resourceSquares.toLocaleString();
 								checkToDisableBiome4Filter();																										break;
-		case 'stardust':  	stardustCounterText.innerHTML = cow.resourceStardust.toLocaleString();	
+		case 'stardust':  	stardustCounterText.innerHTML = cow.resourceStardust.toLocaleString();
 								// Update the Diamond Bar
 								diamondBarPart1.value = cow.resourceStardustBiome1;
 								diamondBarPart2.value = cow.resourceStardustBiome2;
@@ -178,7 +178,7 @@ function updateResourceCounter(shape) {
 		default: break;
 	}
 
-	if (cow.endgameBarOwned == true) { 
+	if (cow.endgameBarOwned == true) {
 		switch (shape) {
 			case 'diamond': 	endgameBarPart1.value = cow.resourceEndgameBarDiamonds;				break;
 			case 'star': 		endgameBarPart2.value = cow.resourceEndgameBarStars;				break;
@@ -261,7 +261,7 @@ function updateTextSpans(recursive) {
 		if (upgradeBar.style.display == 'none') {								// If there is an upgrade available and the bar is hidden..
 			showUpgradeBar();													// ..display the bar
 		}
-	 }	
+	 }
 	// Hide unused currencies
 	if (cow.starCapacity >= 2 || cow.resourceStars >= 1)																						{ starButtonSpan.style.display = 'inline'; } 		else { starButtonSpan.style.display = 'none'; }
 	if (cow.biome2Owned == true || cow.biome5Owned == true || cow.resourceHexagons >= 1 || cow.hexagonCapacity >= 1)							{ hexagonButtonSpan.style.display = 'inline'; } 	else { hexagonButtonSpan.style.display = 'none'; }
@@ -354,12 +354,12 @@ function disableBiomeButtons() {
 	biome6ButtonImage.style.opacity = 0.075;
 	biomeRandomPNG.style.opacity = 0.075;
 	biome1Button.disabled = false;										// Activate all the biome buttons
-	biome2Button.disabled = false;															
-	biome3Button.disabled = false;															
-	biome4Button.disabled = false;															
-	biome5Button.disabled = false;															
-	biome6Button.disabled = false;	
-	biomeRandomButton.disabled = false;		
+	biome2Button.disabled = false;
+	biome3Button.disabled = false;
+	biome4Button.disabled = false;
+	biome5Button.disabled = false;
+	biome6Button.disabled = false;
+	biomeRandomButton.disabled = false;
 }
 
 
@@ -377,36 +377,36 @@ function changeBiome(location, randomSaveCPU) {
 	}
 
 	if (randomSaveCPU != false) { 										// Skips a bunch of stuff if this is being called from the biome randomizer
-		disableBiomeButtons();																							
+		disableBiomeButtons();
 		switch (location) {
-			case 'biome1': 
+			case 'biome1':
 				biome1ButtonImage.style.opacity = 0.7;					// Turns the opacity up
 				biome1Button.innerHTML = "<image src='Images/diamondColor" + rngRange(1,3) + ".png' id='biome1ButtonImage' class='diamondButtonImage firefoxHack'></image>";		// color change
 				biome1Button.disabled = true;							// prevent the button from being clicked
 				break;
-			case 'biome2': 
+			case 'biome2':
 				biome2ButtonImage.style.opacity = 0.7;
-				biome2Button.innerHTML = "<image src='Images/hexagonColor" + rngRange(1,3) + ".png' id='biome2ButtonImage' class='hexagonButtonImage firefoxHack3'></image>"; 
+				biome2Button.innerHTML = "<image src='Images/hexagonColor" + rngRange(1,3) + ".png' id='biome2ButtonImage' class='hexagonButtonImage firefoxHack3'></image>";
 				biome2Button.disabled = true;
 				break;
-			case 'biome3': 
+			case 'biome3':
 				biome3ButtonImage.style.opacity = 0.7;
-				biome3Button.innerHTML = "<image src='Images/triangleColor" + rngRange(1,3) + ".png' id='biome3ButtonImage' class='triangleButtonImage firefoxHack'></image>"; 
+				biome3Button.innerHTML = "<image src='Images/triangleColor" + rngRange(1,3) + ".png' id='biome3ButtonImage' class='triangleButtonImage firefoxHack'></image>";
 				biome3Button.disabled = true;
 				break;
-			case 'biome4': 
+			case 'biome4':
 				biome4ButtonImage.style.opacity = 0.7;
-				biome4Button.innerHTML = "<image src='Images/squareColor" + rngRange(1,3) + ".png' id='biome4ButtonImage' class='squareButtonImage firefoxHack'></image>"; 
+				biome4Button.innerHTML = "<image src='Images/squareColor" + rngRange(1,3) + ".png' id='biome4ButtonImage' class='squareButtonImage firefoxHack'></image>";
 				biome4Button.disabled = true;
 				break;
-			case 'biome5': 
+			case 'biome5':
 				biome5ButtonImage.style.opacity = 0.7;
-				biome5Button.innerHTML = "<image src='Images/circleColor" + rngRange(1,3) + ".png' id='biome5ButtonImage' class='circleButtonImage firefoxHack'></image>"; 
+				biome5Button.innerHTML = "<image src='Images/circleColor" + rngRange(1,3) + ".png' id='biome5ButtonImage' class='circleButtonImage firefoxHack'></image>";
 				biome5Button.disabled = true;
 				break;
-			case 'biome6': 
+			case 'biome6':
 				biome6ButtonImage.style.opacity = 0.7;
-				biome6Button.innerHTML = "<image src='Images/starColor" + rngRange(1,3) + ".png' id='biome6ButtonImage' class='starButtonImage firefoxHack3'></image>"; 
+				biome6Button.innerHTML = "<image src='Images/starColor" + rngRange(1,3) + ".png' id='biome6ButtonImage' class='starButtonImage firefoxHack3'></image>";
 				biome6Button.disabled = true;
 				break;
 			default: break;
@@ -469,28 +469,28 @@ function newGameStuff() {
 function kongregateStuff() {
 	kongregateAPI.loadAPI(function(){												// Initialize
 		window.kongregate = kongregateAPI.getAPI();									//
-		
+
 		cow.kongUsername = kongregate.services.getUsername();						// Get username for the savefile
 		// if (kongregate.services.isGuest()) { cow.kongUsername = 'guest'; }		// Already covered by the API
-		
+
 		kongregate.services.addEventListener('login', kongLiveLogin);				// Recognize live page logins, and execute this function
-		
+
 		function kongLiveLogin() {
 			const x = kongregate.services.getUsername();
 			console.log('Kong username changed to: ' + x);
 			cow.kongUsername = x;													// This is OK because the new username isn't saved
 			initializeGameTwo();
 		}
-		
+
 		function submitScores() {													// High Scores and future badges
-			kongregate.stats.submit("Lifetime Shapes", cow.kongLifetimeShapes); 
+			kongregate.stats.submit("Lifetime Shapes", cow.kongLifetimeShapes);
 			if (cow.kongFirstBiomePurchased == true) { kongregate.stats.submit("First Biome", 1); }				 // Easy		Explorer			Unlock your first new biome
 			if (cow.kongDiamondBarUnlocked == true) { kongregate.stats.submit("Research Phase", 1); }			 // Medium		Technologist		Begin the research phase
 			if (cow.gameClear == true) { kongregate.stats.submit("Game Clear", 1); }							 // Hard		Transhuman			Complete the game
 			if (cow.kongStrayNightmareDiscovered == true) { kongregate.stats.submit("Stray Nightmare", 1); }	 // Impossible	Stray Nightmare		Find a Ghost in the machine
 			setTimeout(submitScores, 30000);
 		}
-		
+
 		submitScores();
 	});
 }
@@ -552,7 +552,7 @@ function initializeGameThree() {
 	// Things that don't need to load quickly
 	initializeVolumeDisplays();
 	biomeSpawnController();													// Needs to go before updateResourceCounter or the smog filter won't spawn
-	rareSpawnController(); 
+	rareSpawnController();
 	fadeInBackgroundTexture();
 	setTimeout(musicSpawnController, 90000);								// 90 seconds
 	setTimeout(forceIconRecolorize, 120000);								// 120 seconds

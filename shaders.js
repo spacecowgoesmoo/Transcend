@@ -9,11 +9,11 @@ const shaderSourceCode =
 	'uniform vec3 tint1;' +				// Vector3 contaning RGB values
 	'uniform vec3 tint2;' +
 
-    // Actual graphics code
+	// Actual graphics code
 	'void main(void) {' +
 		'vec3 newPixelByColumn = mix(tint1, tint2, vTextureCoord.y);' +		// Prepare the next pixel in the gradient column
 		'vec4 nextBlankPixel = texture2D(uSampler, vTextureCoord);' +		// Grab the next pixel on the canvas
-    	'gl_FragColor = nextBlankPixel * vec4(newPixelByColumn, 1.0);' +	// Multiply things together to paint it
+		'gl_FragColor = nextBlankPixel * vec4(newPixelByColumn, 1.0);' +	// Multiply things together to paint it
 	'}';
 
 
