@@ -60,6 +60,7 @@ var cow = {
 	bgmVolume: 80,
 	sfxVolume: 80,
 	muteAudioForIE: false,
+	cafAudioForSafari: false,
 	hideMusicText: false,
 	
 	randomBiomesUnlocked: false,
@@ -548,7 +549,7 @@ function initializeGameTwo() {
 function initializeGameThree() {
 	// Things that don't need to load quickly
 	initializeVolumeDisplays();
-	IEaudioCheck();															// Should go before any shapes spawn for safety
+	browserAudioCheck();													// Should go before any shapes spawn for safety
 	biomeSpawnController();													// Needs to go before updateResourceCounter or the smog filter won't spawn
 	rareSpawnController(); 
 	fadeInBackgroundTexture();

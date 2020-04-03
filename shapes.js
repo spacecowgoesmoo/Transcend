@@ -318,7 +318,7 @@ function spawnShape(size, speedY, speedX, widthX, rotation, luminosity, color, o
 			playAudio('./SFX/circle' + rngRange(1,5) + '.wav', 'sfx', shape1.x);
 			sfxPlayed = true;
 		}
-		
+
 		if (shape1.y < offscreen) { 									// if shape is offscreen..
 			shape1.destroy(true); 										// kill it
 			cow[counter]--;												// remove the shape from the resource counter

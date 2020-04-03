@@ -1005,9 +1005,14 @@ function rareSpawnController() {
 				} else
 				if (select <= 100) { 
 					spawnEvilCircle(1200, 450, 0.4, 0); 								// spawn a big monster circle
-					playAudio('./Music/strayNightmare.mp3', 'bgm', 450);
-					displayMusicText('Stray Nightmare', 4);
 					cow.kongStrayNightmareDiscovered = true;
+					
+					// Play music
+					let format    	
+    				if (cow.cafAudioForSafari == true) { format = '.caf' }
+    				else { format = '.opus'}
+    				playAudio('./Music/sn' + format, 'bgm', 450);
+					displayMusicText('Stray Nightmare', 12);
 				}	
 				break;
 

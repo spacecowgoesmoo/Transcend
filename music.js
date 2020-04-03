@@ -112,75 +112,82 @@ function playAudio(filename, type, pan, noFilter) {
 
 function musicSpawnController() {
 	if (!document.hidden && cow.hideMusicText == false) {					// Skip everything if the tab is backgrounded, or if we're in the credits
-		//muteMusicSpan.style.display = 'inline';							// Unhides the Mute Music span
 		var r = rngRange(1,100);											// Select biome song or random song
 		if (cow.endgameBarOwned == true || cow.gameClear == true) 	{ var q = rngRange(1,10); } else  	// Gates some songs to Phase 2 and 3
 		if (cow.diamondBarOwned == true ) 							{ var q = rngRange(1,9); } else  	//
 											 						{ var q = rngRange(1,4); }	 	  	//
 		
 		if (cow.diamondCapacity <= 2) { var r = 1; }						// Force 'Abstraction' to play first on a new game
-		if (cow.endgameBarOwned == true && cow.gameClear == false && rngRange(1,10) <= 3) 	{ r=0; q=10; } else  	// Higher chance of Fading Space
-	
-		if (r <= 33) {														// Higher weighted chance of the main biome songs
-			switch (cow.currentBiome) {
-				case 'biome1': displayMusicText('Bring On The Abstraction', 4); break;			// display the relevant song title
-				case 'biome2': displayMusicText('Cold Hearted Spotlight', 4); break;
-				case 'biome3': displayMusicText("You're My Fire", 4); break;
-				case 'biome4': displayMusicText('Lightning is Comin For You', 4); break;
-				case 'biome5': displayMusicText('Perfect Repetition', 4); break;
-				case 'biome6': displayMusicText('Supersonic Eternity', 4); break;
-				default: break;
+		if (cow.endgameBarOwned == true && cow.gameClear == false && rngRange(1,10) <= 3) 	{ r=0; q=10; }  	// Higher chance of Fading Space
+			else {
+				const lifespan = 12
+				if (r <= 33) {														// Higher weighted chance of the main biome songs
+					switch (cow.currentBiome) {
+						case 'biome1': displayMusicText('Bring On The Abstraction', lifespan); break;			// display the relevant song title
+						case 'biome2': displayMusicText('Cold Hearted Spotlight', lifespan); break;
+						case 'biome3': displayMusicText("You're My Fire", lifespan); break;
+						case 'biome4': displayMusicText('Lightning is Comin For You', lifespan); break;
+						case 'biome5': displayMusicText('Perfect Repetition', lifespan); break;
+						case 'biome6': displayMusicText('Supersonic Eternity', lifespan); break;
+						default: break;
+					}
+				} else {															// otherwise, select a random song title
+					switch (q) {
+						case 1: displayMusicText('Electric Sunrise', lifespan); break;
+						case 2: displayMusicText('Crank Up The Ecstasy', lifespan); break;
+						case 3: displayMusicText('Blue Passion', lifespan); break;
+						case 4: displayMusicText('Red Whisper', lifespan); break;
+		
+						// Phase 2 only
+						case 5: displayMusicText("Can't Stop The Punk", lifespan); break;
+						case 6: displayMusicText('Far From Consequence', lifespan); break;
+						case 7: displayMusicText('Chaos is Okay', lifespan); break;
+						case 8: displayMusicText('Beat Paradise', lifespan); break;				
+						case 9: displayMusicText('trace.transcend', lifespan); break;
+						
+						// Phase 3 only
+						case 10: displayMusicText('Fading Space', lifespan); break;
+						default: break;
+					}
+				}
 			}
-		} else {															// otherwise, select a random song title
-			switch (q) {
-				case 1: displayMusicText('Electric Sunrise', 4); break;
-				case 2: displayMusicText('Crank Up The Ecstasy', 4); break;
-				case 3: displayMusicText('Blue Passion', 4); break;
-				case 4: displayMusicText('Red Whisper', 4); break;
 
-				// Phase 2 only
-				case 5: displayMusicText("Can't Stop The Punk", 4); break;
-				case 6: displayMusicText('Far From Consequence', 4); break;
-				case 7: displayMusicText('Chaos is Okay', 4); break;
-				case 8: displayMusicText('Beat Paradise', 4); break;				
-				case 9: displayMusicText('trace.transcend', 4); break;
-				
-				// Phase 3 only
-				case 10: displayMusicText('Fading Space', 4); break;
-				default: break;
-			}
-		}
-   
-    	
-    	
-    	
-    	
-    	
-    	
+
+
+
+
+
+
+
+    	// Prepare the music format
+		let format    	
+    	if (cow.cafAudioForSafari == true) { format = '.caf' }
+    	else { format = '.opus'}
+
 		if (r <= 33) {													// Plays music
 			switch (cow.currentBiome) {
-				case 'biome1': playAudio('./Music/bringOnTheAbstraction.mp3', 'bgm', 450); break;
-				case 'biome2': playAudio('./Music/coldHeartedSpotlight.mp3', 'bgm', 450); break;
-				case 'biome3': playAudio('./Music/youreMyFire.mp3', 'bgm', 450); break;
-				case 'biome4': playAudio('./Music/lightningIsCominForYou.mp3', 'bgm', 450); break;
-				case 'biome5': playAudio('./Music/perfectRepetition.mp3', 'bgm', 450); break;
-				case 'biome6': playAudio('./Music/supersonicEternity.mp3', 'bgm', 450); break;
+				case 'biome1': playAudio('./Music/bota' + format, 'bgm', 450); break;
+				case 'biome2': playAudio('./Music/chs' + format, 'bgm', 450); break;
+				case 'biome3': playAudio('./Music/ymf' + format, 'bgm', 450); break;
+				case 'biome4': playAudio('./Music/licfy' + format, 'bgm', 450); break;
+				case 'biome5': playAudio('./Music/pr' + format, 'bgm', 450); break;
+				case 'biome6': playAudio('./Music/se' + format, 'bgm', 450); break;
 				default: break;
 			}
 		} else {																					
 			switch (q) {
-				case 1: playAudio('./Music/electricSunrise.mp3', 'bgm', 450); break;
-				case 2: playAudio('./Music/crankUpTheEcstasy.mp3', 'bgm', 450); break;
-				case 3: playAudio('./Music/bluePassion.mp3', 'bgm', 450); break;
-				case 4: playAudio('./Music/redWhisper.mp3', 'bgm', 450); break;
+				case 1: playAudio('./Music/es' + format, 'bgm', 450); break;
+				case 2: playAudio('./Music/cute' + format, 'bgm', 450); break;
+				case 3: playAudio('./Music/bluep' + format, 'bgm', 450); break;
+				case 4: playAudio('./Music/rw' + format, 'bgm', 450); break;
 				
-				case 5: playAudio('./Music/cantStopThePunk.mp3', 'bgm', 450); break;
-				case 6: playAudio('./Music/farFromConsequence.mp3', 'bgm', 450); break;
-				case 7: playAudio('./Music/chaosIsOkay.mp3', 'bgm', 450); break;
-				case 8: playAudio('./Music/beatParadise.mp3', 'bgm', 450); break;
-				case 9: playAudio('./Music/traceTranscend.mp3', 'bgm', 450); break;
+				case 5: playAudio('./Music/cstp' + format, 'bgm', 450); break;
+				case 6: playAudio('./Music/ffc' + format, 'bgm', 450); break;
+				case 7: playAudio('./Music/cio' + format, 'bgm', 450); break;
+				case 8: playAudio('./Music/beatp' + format, 'bgm', 450); break;
+				case 9: playAudio('./Music/tt' + format, 'bgm', 450); break;
 				
-				case 10: playAudio('./Music/fadingSpace.mp3', 'bgm', 450); break;
+				case 10: playAudio('./Music/fs' + format, 'bgm', 450); break;
 				default: break;
 			}
 		}
@@ -283,9 +290,14 @@ function decreaseVolume(bus) {
 
 
 
-function IEaudioCheck() {
+function browserAudioCheck() {
+	// Check for IE
 	if (navigator.appName == 'Microsoft Internet Explorer' || !!(navigator.userAgent.match(/Trident/) || navigator.userAgent.match(/rv:11/))) {
-		alert("Developer's note: This game doesn't support audio on Internet Explorer. Please consider using a more modern web browser such as Chrome or Firefox.");
+		alert("Developer's note: This game doesn't support audio on Internet Explorer. Please consider using a more modern web browser like Firefox or Chrome.");
 		cow.muteAudioForIE = true;
 	} else { cow.muteAudioForIE = false; }							// Extra security for Windows Chrome
+	
+	// Check for Safari
+	if (navigator.userAgent.indexOf('Safari') > -1 && navigator.vendor.indexOf('Apple') > -1) { cow.cafAudioForSafari = true; }
+	else { cow.cafAudioForSafari = false; }
 }
