@@ -16,10 +16,16 @@
 
 
 
+function getAudioFormat() {
+	let format
+    if (cow.cafAudioForSafari == true) { format = '.caf' }
+    else { format = '.opus'}
+	return format
+}
+
+
 var bgmGroup = new Pizzicato.Group;											// Initialize global audio groups/busses
 var sfxGroup = new Pizzicato.Group;	
-
-
 
 
 function playAudio(filename, type, pan, noFilter) {
@@ -160,9 +166,7 @@ function musicSpawnController() {
 
 
     	// Prepare the music format
-		let format    	
-    	if (cow.cafAudioForSafari == true) { format = '.caf' }
-    	else { format = '.opus'}
+		const format = getAudioFormat()
 
 		if (r <= 33) {													// Plays music
 			switch (cow.currentBiome) {

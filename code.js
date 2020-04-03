@@ -522,6 +522,7 @@ function kongregateStuff() {
 // Safer to use as an onLoad function in case something (pixi.js) stalls the HTML elements from loading..
 // ..which breaks the game when they then get called before they exist
 function initializeGameOne() {
+	browserAudioCheck();													// We need the CAF/OPUS data for the preloader
 	preloadFiles();
 	kongregateStuff();
 }
@@ -549,7 +550,6 @@ function initializeGameTwo() {
 function initializeGameThree() {
 	// Things that don't need to load quickly
 	initializeVolumeDisplays();
-	browserAudioCheck();													// Should go before any shapes spawn for safety
 	biomeSpawnController();													// Needs to go before updateResourceCounter or the smog filter won't spawn
 	rareSpawnController(); 
 	fadeInBackgroundTexture();

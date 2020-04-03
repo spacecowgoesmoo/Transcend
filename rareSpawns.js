@@ -1008,9 +1008,7 @@ function rareSpawnController() {
 					cow.kongStrayNightmareDiscovered = true;
 					
 					// Play music
-					let format    	
-    				if (cow.cafAudioForSafari == true) { format = '.caf' }
-    				else { format = '.opus'}
+					const format = getAudioFormat()
     				playAudio('./Music/sn' + format, 'bgm', 450);
 					displayMusicText('Stray Nightmare', 12);
 				}	
