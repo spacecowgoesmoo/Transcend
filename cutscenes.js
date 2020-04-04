@@ -203,7 +203,7 @@ function fadeOutPrices(id, lifespan) {
 
 function displayGameTitle() {
 	if (!document.hidden) {																// Skip the whole thing if the tab is backgrounded
-		var r = 12000;																	// delay before the fadeout begins
+		const r = 12000;																// delay before the fadeout begins
 
 		newFade(titleCard1, 0.7, 9);													// Fade in all letters at once
 		newFade(titleCard2, 0.7, 9);
@@ -334,13 +334,13 @@ function beginCredits() {
 
 
 	function spawnCreditsPillar(color, spawnX) {
-		var square = new PIXI.Graphics();										// create a shape in the PIXI engine
+		let square = new PIXI.Graphics();										// create a shape in the PIXI engine
 		square.beginFill(color);												// set a fill and line style, then code in the points
 		square.moveTo(0, 0);													// places the shape at the origin for easy drawing math
 
 		square.lineTo(150, 0);
-		square.lineTo(150, 1500);
-		square.lineTo(0, 1500);
+		square.lineTo(150, 800);
+		square.lineTo(0, 800);
 
 		square.endFill();														// ends vertice drawing that was in the switch
 		creditsBGContainer.addChild(square);									// add shape to the PIXI stage
@@ -348,15 +348,12 @@ function beginCredits() {
 		square.x = spawnX;														// Set fixed X position
 		square.y = 601;
 
-		var speedY = rngRange(1,3)/10;
+		const speedY = rngRange(1,3)/10;
 
 		function move() {
 			square.y -= speedY;													// Standard vertical movement
-
-			if (square.y < 0) { 												// if shape is offscreen..
-				//square.destroy(true); 										// kill it
-			} else { window.requestAnimationFrame(move); }						// otherwise, animate another frame and check again
-		}																		//
+			if (square.y > -20) { window.requestAnimationFrame(move); }			// if shape hasn't reached the top yet, keep going
+		}
 
 		window.requestAnimationFrame(move);										// starts the animation moving
 	}
@@ -365,7 +362,7 @@ function beginCredits() {
 
 
 	function fadeToWhite(color, spawnX) {
-		var squareBG = new PIXI.Graphics();										// create a shape in the PIXI engine
+		let squareBG = new PIXI.Graphics();										// create a shape in the PIXI engine
 		squareBG.beginFill(0xE1E5E9);											// set a fill and line style, then code in the points
 		squareBG.moveTo(0, 0);													// places the shape at the origin for easy drawing math
 
@@ -382,11 +379,10 @@ function beginCredits() {
 			squareBG.alpha += 0.0004;
 			Pizzicato.volume -= 0.0004;											// Mutes audio slowly
 
-			if (squareBG.alpha >= 1) {											// if shape is offscreen..
+			if (squareBG.alpha >= 1) {											// Animates until alpha >= 1
 				cow.hideMusicText = true;										// prevents any new music text appearing onscreen
 				cow.muteMusic = true;											// save cpu
 				cow.muteSFX = true;												// save cpu
-				//square.destroy(true); 										// kill it
 			} else { window.requestAnimationFrame(fadeinBG); }					// otherwise, animate another frame and check again
 		}																		//
 
@@ -397,7 +393,7 @@ function beginCredits() {
 
 
 	function spawnWhiteGlass1() {
-		var squareG1 = new PIXI.Graphics();										// create a shape in the PIXI engine
+		let squareG1 = new PIXI.Graphics();										// create a shape in the PIXI engine
 		squareG1.beginFill(0x000000);											// set a fill and line style, then code in the points
 		squareG1.moveTo(0, 450);
 
@@ -425,7 +421,7 @@ function beginCredits() {
 
 
 	function spawnWhiteGlass2() {
-		var squareG2 = new PIXI.Graphics();										// create a shape in the PIXI engine
+		let squareG2 = new PIXI.Graphics();										// create a shape in the PIXI engine
 		squareG2.beginFill(0x000000);											// set a fill and line style, then code in the points
 		squareG2.moveTo(0, 550);
 
@@ -455,8 +451,8 @@ function beginCredits() {
 	function fadeSineForever(id, lifespan) {
 		id.className = 'visible';
 		id.style.opacity = 0;
-		var q = 0.06;												// bullshit variable required; += doesn't work
-		var randomize = rngRange(100,150)/100;
+		let q = 0.06;												// bullshit variable required; += doesn't work
+		const randomize = rngRange(100,150)/100;
 		function cow() {
 			id.style.opacity = Math.sin(q);
 			q += 0.06 * (1/lifespan) * randomize;

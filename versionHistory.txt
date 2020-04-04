@@ -6,7 +6,8 @@ v1.03 - Big maintenance patch 2020
 	Rewrote the gradient shader. Lots of extra steps removed and it's now fully documented
 	Fixed broken music filepaths in the demo version
 	Throttled sky gradient to 4FPS to boost performance
-	Throttled skyStars and planets to 1FPS to boost performance
+	Throttled stars and planets to 1FPS to boost performance
+	(CREDITS PERFORMANCE BOOST WIP)
 	Changed some CSS to prevent having two versions for iFrame and standalone hosting
 	Fixed all setTimeout() string evaluation anti-patterns
 	Replaced complicated Javascript fade animations with two lines of CSS
