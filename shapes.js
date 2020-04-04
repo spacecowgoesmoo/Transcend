@@ -18,7 +18,7 @@ function createBackground(luminosity1, color1, luminosity2, color2, lifespan, bi
 	function crossfade() {
 		if (biome == cow.currentBiome && preventSecondFadeIn == false) {// If the biome is the same as when the bgSquare spawned..
 			bgSquare.alpha = (Math.sin(q));								// calculate alpha with a sinewave
-			q += (1/lifespan)/1150;										// increment. lifespan is tuned to be in minutes
+			q += (1/lifespan)/76;										// increment. lifespan is tuned to be in minutes
 		}
 
 		if (biome != cow.currentBiome) {								// If the biome has changed..
@@ -28,8 +28,7 @@ function createBackground(luminosity1, color1, luminosity2, color2, lifespan, bi
 
 		if (q > 3.2 || bgSquare.alpha <= 0.01) {						// if gradient has faded out.. (3.14 is one sinwave cycle)
 			bgSquare.destroy(true);										// kill it
-			moo()
-		} else { window.requestAnimationFrame(crossfade); }				// otherwise, animate another frame and check again
+		} else { setTimeout(function() { window.requestAnimationFrame(crossfade); }, 250) } // Throttled to 4FPS
 	}
 
 	window.requestAnimationFrame(crossfade);							// starts the animation moving
