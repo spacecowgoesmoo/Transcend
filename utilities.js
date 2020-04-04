@@ -13,7 +13,7 @@ function randomColor100() {
 
 
 function modifyCSS(selector, property, value) {
-	for (var i=0; i<document.styleSheets.length;i++) {//Loop through all styles
+	for (let i=0; i<document.styleSheets.length; i++) {//Loop through all styles
 		//Try add rule
 		try { document.styleSheets[i].insertRule(selector+ ' {'+property+':'+value+'}', document.styleSheets[i].cssRules.length);
 	} catch(err) {try { document.styleSheets[i].addRule(selector, property+':'+value);} catch(err) {}}//IE
@@ -25,22 +25,9 @@ function modifyCSS(selector, property, value) {
 
 // Requires randomColor.js, with a mod that changes it's default output format to 0xFFFFFF
 function randomColorPound(luminosity, color) {
-	var r = randomColor({luminosity:luminosity, hue:color});
+	let r = randomColor({luminosity:luminosity, hue:color});
 	r = "#" + r.slice(2, 8);
 	return r;
-}
-
-
-
-
-// Haven't tried this yet but it looks useful. Pulled out of randomColor.js
-function stringToInteger (string) {
-	var total = 0
-	for (var i = 0; i !== string.length; i++) {
-		if (total >= Number.MAX_SAFE_INTEGER) break;
-		total += string.charCodeAt(i)
-	}
-	return total
 }
 
 
@@ -110,14 +97,6 @@ function cubeCat () {
 
 function moo() {
 	console.log('moo');
-}
-
-
-
-
-function playAudioBasic(file) {
-	var snd = new Audio(file); 										// Loads file. Remember to use folder paths
-	snd.play();														// Plays file
 }
 
 

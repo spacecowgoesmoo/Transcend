@@ -1,7 +1,6 @@
 // I used to be frightened of dying
 // I used to think death was the end
-// But that was before
-// I'm not scared anymore
+// But that was before, I'm not scared anymore
 // I know that my soul will transcend
 
 
@@ -16,23 +15,23 @@
 
 
 
-var bgmGroup = new Pizzicato.Group;											// Initialize global audio groups/busses
-var sfxGroup = new Pizzicato.Group;
+let bgmGroup = new Pizzicato.Group;											// Initialize global audio groups/busses
+let sfxGroup = new Pizzicato.Group;
 
 
 function playAudio(filename, type, pan, noFilter) {
 	if (((cow.sfxVolume >= 5 && type == 'sfx') || type == 'bgm') && cow.muteAudioForIE == false) {			// Prevents SFX from loading if SFX are muted. Saves CPU
-		var snd = new Pizzicato.Sound(filename + cow.audioFormat, function() {
+		let snd = new Pizzicato.Sound(filename + cow.audioFormat, function() {
 
 		if (rngRange(1,10) < 3 && type == 'sfx') {							// Set up effects and add them to the signal chain one by one
-			var distortion = new Pizzicato.Effects.Distortion({				// No distortion allowed on music
+			const distortion = new Pizzicato.Effects.Distortion({			// No distortion allowed on music
 				gain: rngRange(20,50)/100,
 			});
 			snd.addEffect(distortion);
 		}
 
 		// if (rngRange(1,10) < 3) {										// Probably more CPU intensive than distortion and not much different
-		// 	var quadrafuzz = new Pizzicato.Effects.Quadrafuzz({				// Can add too much high statics
+		// 	const quadrafuzz = new Pizzicato.Effects.Quadrafuzz({			// Can add too much high statics
 		// 	    lowGain: rngRange(3,7)/10,
 		// 	    midLowGain: rngRange(3,7)/10,
 		// 	    midHighGain: rngRange(3,7)/10,
@@ -43,7 +42,7 @@ function playAudio(filename, type, pan, noFilter) {
 		// }
 
 		// if (rngRange(1,100) < 7 && type == 'sfx') {							// Sounds good but murders the CPU and audio engine
-		// 	var delay = new Pizzicato.Effects.Delay({						// Each +10% chance costs about 20% more CPU at endgame
+		// 	const delay = new Pizzicato.Effects.Delay({						// Each +10% chance costs about 20% more CPU at endgame
 		// 		feedback: rngRange(4,8)/10,
 		//     	time: rngRange(2,20)/10,
 		//     	mix: rngRange(6,10)/10
@@ -52,7 +51,7 @@ function playAudio(filename, type, pan, noFilter) {
 		// }
 
 		// if (rngRange(1,10) < 3 && type == 'sfx') {						// Sounds good but murders the CPU and audio engine
-// 			var reverb = new Pizzicato.Effects.Reverb({						// SFX also sound less muddier without it..
+// 			const reverb = new Pizzicato.Effects.Reverb({					// SFX also sound less muddier without it..
 // 			    time: rngRange(100,300)/100,
 // 			    decay: rngRange(100,300)/100,
 // 			    mix: rngRange(6,10)/10
@@ -62,7 +61,7 @@ function playAudio(filename, type, pan, noFilter) {
 // 		}
 
 		if (rngRange(1,10) < 2 && noFilter != true) {						// the != saves me from having to add 'noFilter=false' to everything
-			var lowPassFilter = new Pizzicato.Effects.LowPassFilter({		// noFilter is used for the evilCircles whose SFX are only bass
+			const lowPassFilter = new Pizzicato.Effects.LowPassFilter({		// noFilter is used for the evilCircles whose SFX are only bass
 			    frequency: rngRange(200,600),
 			    peak: rngRange(5,15)
 			});
@@ -70,7 +69,7 @@ function playAudio(filename, type, pan, noFilter) {
 		}
 
 		if (rngRange(1,10) < 2 && noFilter != true) {
-			var highPassFilter = new Pizzicato.Effects.HighPassFilter({
+			const highPassFilter = new Pizzicato.Effects.HighPassFilter({
 			    frequency: rngRange(1000,5000),
 			    peak: rngRange(5,15)
 			});
@@ -78,7 +77,7 @@ function playAudio(filename, type, pan, noFilter) {
 		}
 
 		// if (rngRange(1,10) < 3) {										// Not noticible enough when low, sounds bad when high
-// 			var flanger = new Pizzicato.Effects.Flanger({
+// 			const flanger = new Pizzicato.Effects.Flanger({
 // 				time: rngRange(5,7)/10,
 // 			    speed: rngRange(5,7)/10,
 // 			    depth: rngRange(1,2)/10,
@@ -88,12 +87,12 @@ function playAudio(filename, type, pan, noFilter) {
 // 			snd.addEffect(flanger);
 // 		}
 
-		var stereoPanner = new Pizzicato.Effects.StereoPanner({				// Applied to every SFX
+		const stereoPanner = new Pizzicato.Effects.StereoPanner({			// Applied to every SFX
 		    pan: (pan-450)/450												// Converts X position to panning. (0, 900) to (-1, 1)
 		});
 		snd.addEffect(stereoPanner);
 
-		if (type == 'sfx') { snd.volume = cow.sfxVolume/100; sfxGroup.addSound(snd); sfxGroup.play(); 	sfxGroup.removeSound(snd); }										// Add, play, and remove sound.	Set volume takes place at different times for reasons below
+		if (type == 'sfx') { snd.volume = cow.sfxVolume/100; sfxGroup.addSound(snd); sfxGroup.play(); 	sfxGroup.removeSound(snd); }											// Add, play, and remove sound.	Set volume takes place at different times for reasons below
 		if (type == 'bgm') { 								 bgmGroup.addSound(snd); bgmGroup.play(); 	bgmGroup.volume = cow.bgmVolume/100; 	setTimeout(killBGM, 240000); }	// Annoying scope-y setTimeout to remove the BGM after 4 minutes
 
 		});
@@ -110,12 +109,14 @@ function playAudio(filename, type, pan, noFilter) {
 
 function musicSpawnController() {
 	if (!document.hidden && cow.hideMusicText == false) {					// Skip everything if the tab is backgrounded, or if we're in the credits
-		var r = rngRange(1,100);											// Select biome song or random song
-		if (cow.endgameBarOwned == true || cow.gameClear == true) 	{ var q = rngRange(1,10); } else  	// Gates some songs to Phase 2 and 3
-		if (cow.diamondBarOwned == true ) 							{ var q = rngRange(1,9); } else  	//
-											 						{ var q = rngRange(1,4); }	 	  	//
+		let q;
+		let r = rngRange(1,100);											// Select biome song or random song
+		
+		if (cow.endgameBarOwned == true || cow.gameClear == true) 	{ q = rngRange(1,10); } else  	// Gates some songs to Phase 2 and 3
+		if (cow.diamondBarOwned == true ) 							{ q = rngRange(1,9); } else  	//
+											 						{ q = rngRange(1,4); }	 	  	//
 
-		if (cow.diamondCapacity <= 2) { var r = 1; }						// Force 'Abstraction' to play first on a new game
+		if (cow.diamondCapacity <= 2) { r = 1; }							// Force 'Abstraction' to play first on a new game
 		if (cow.endgameBarOwned == true && cow.gameClear == false && rngRange(1,10) <= 3) 	{ r=0; q=10; }  	// Higher chance of Fading Space
 			else {
 				const lifespan = 12
@@ -234,16 +235,19 @@ function initializeVolumeDisplays() {
 // BGM modifies the group instead, so that you can change volume during a song
 
 function increaseVolume(bus) {
+	let q;
+	let r;
+
 	switch (bus) {
-		case 'bgm': var q=bgmGroup; var r=cow.bgmVolume; break;
-		case 'sfx': var q=sfxGroup; var r=cow.sfxVolume; break;
+		case 'bgm': q=bgmGroup; r=cow.bgmVolume; break;
+		case 'sfx': q=sfxGroup; r=cow.sfxVolume; break;
 		default: break;
 	}
 
 	if (r < 99) {
 		switch (bus) {
-			case 'bgm': cow.bgmVolume += 10; bgmDisplay.innerHTML = cow.bgmVolume; var r=cow.bgmVolume; hoverRNGColor(increaseBGMvolumeButton); break;
-			case 'sfx': cow.sfxVolume += 10; sfxDisplay.innerHTML = cow.sfxVolume; var r=cow.sfxVolume; hoverRNGColor(increaseSFXvolumeButton); break;
+			case 'bgm': cow.bgmVolume += 10; bgmDisplay.innerHTML = cow.bgmVolume; r=cow.bgmVolume; hoverRNGColor(increaseBGMvolumeButton); break;
+			case 'sfx': cow.sfxVolume += 10; sfxDisplay.innerHTML = cow.sfxVolume; r=cow.sfxVolume; hoverRNGColor(increaseSFXvolumeButton); break;
 			default: break;
 		}
 
@@ -257,16 +261,19 @@ function increaseVolume(bus) {
 
 
 function decreaseVolume(bus) {
+	let q;
+	let r;
+
 	switch (bus) {
-		case 'bgm': var q=bgmGroup; var r=cow.bgmVolume;break;
-		case 'sfx': var q=sfxGroup; var r=cow.sfxVolume;break;
+		case 'bgm': q=bgmGroup; r=cow.bgmVolume; break;
+		case 'sfx': q=sfxGroup; r=cow.sfxVolume; break;
 		default: break;
 	}
 
 	if (r > 1) {
 		switch (bus) {
-			case 'bgm': cow.bgmVolume -= 10; bgmDisplay.innerHTML = cow.bgmVolume; var r=cow.bgmVolume; hoverRNGColor(decreaseBGMvolumeButton); break;
-			case 'sfx': cow.sfxVolume -= 10; sfxDisplay.innerHTML = cow.sfxVolume; var r=cow.sfxVolume; hoverRNGColor(decreaseSFXvolumeButton); break;
+			case 'bgm': cow.bgmVolume -= 10; bgmDisplay.innerHTML = cow.bgmVolume; r=cow.bgmVolume; hoverRNGColor(decreaseBGMvolumeButton); break;
+			case 'sfx': cow.sfxVolume -= 10; sfxDisplay.innerHTML = cow.sfxVolume; r=cow.sfxVolume; hoverRNGColor(decreaseSFXvolumeButton); break;
 			default: break;
 		}
 

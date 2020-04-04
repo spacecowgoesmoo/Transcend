@@ -1,5 +1,5 @@
 function rareSpawnTester() {
-	var q = 0;
+	let q = 0;
 	for (i=0; i<180; i++) {	if (rngRange(1,200) == 7) { q++; } }
 	debug.innerHTML = q;
 	setTimeout(rareSpawnTester, 1500);
@@ -19,7 +19,8 @@ function rareSpawnController() {
 		else { var q = 200; }													// OK spawn rate during the start of phase 2
 	if (cow.stardustSpawnBoost1Owned == true) { q = 100; }
 	if (cow.stardustSpawnBoost2Owned == true) { q = 20; }
-	if (rngRange(1, q) == 7 && !document.hidden){								// If RNG hits the magic number, and if the window isn't backgrounded
+	//if (rngRange(1, q) == 7 && !document.hidden){								// If RNG hits the magic number, and if the window isn't backgrounded
+	if (rngRange(6, 7) == 7 && !document.hidden){								// If RNG hits the magic number, and if the window isn't backgrounded
 		var r = rngRange(1,12);
 
 
@@ -41,10 +42,10 @@ function rareSpawnController() {
 			case 1:
 				// Perfect square diamond. Rotating.
 				function spawnQuadQuad() {
-					var quadQuad = new PIXI.Graphics();										// create the parent shape
+					let quadQuad = new PIXI.Graphics();										// create the parent shape
 					foregroundContainer.addChild(quadQuad);									// add shape to the PIXI stage
 
-					var square1 = new PIXI.Graphics();										// create a child square
+					let square1 = new PIXI.Graphics();										// create a child square
 					square1.beginFill(randomColor({hue:'hax'}));
 					square1.moveTo(-53, -53);
 					square1.lineTo(-8, -53);
@@ -53,7 +54,7 @@ function rareSpawnController() {
 					square1.endFill();
 					quadQuad.addChild(square1);
 
-					var square2 = new PIXI.Graphics();										// create a child square
+					let square2 = new PIXI.Graphics();										// create a child square
 					square2.beginFill(randomColor({hue:'hax'}));
 					square2.moveTo(7, -53);
 					square2.lineTo(53, -53);
@@ -62,7 +63,7 @@ function rareSpawnController() {
 					square2.endFill();
 					quadQuad.addChild(square2);
 
-					var square3 = new PIXI.Graphics();										// create a child square
+					let square3 = new PIXI.Graphics();										// create a child square
 					square3.beginFill(randomColor({hue:'hax'}));
 					square3.moveTo(-53, 7);
 					square3.lineTo(-8, 7);
@@ -71,7 +72,7 @@ function rareSpawnController() {
 					square3.endFill();
 					quadQuad.addChild(square3);
 
-					var square4 = new PIXI.Graphics();										// create a child square
+					let square4 = new PIXI.Graphics();										// create a child square
 					square4.beginFill(randomColor({hue:'hax'}));
 					square4.moveTo(7, 7);
 					square4.lineTo(53, 7);
@@ -83,14 +84,15 @@ function rareSpawnController() {
 					quadQuad.x = rngRange(1,900);											// Set fixed X position
 					quadQuad.y = 690;
 					quadQuad.rotation = (rngRange(0,310)/100);								// Random starting rotation
-					if (rngRange(1,2) == 1) { var rotateSpeed = 0.01 }						// Random rotation direction
-					else { var rotateSpeed = -0.01 }
+					let rotateSpeed;
+					if (rngRange(1,2) == 1) { rotateSpeed = 0.01 }							// Random rotation direction
+					else { rotateSpeed = -0.01 }
 
-					var sfxPlayed = false;
+					let sfxPlayed = false;
 
 					document.body.addEventListener('click', boost);							// Adds click boost event listener
-					var boostCounter = rngRange(0,5)/10;									// initialize sinewave, slight RNG
-					var boostable = true;													// initialize logic to prevent click spamming
+					let boostCounter = rngRange(0,5)/10;									// initialize sinewave, slight RNG
+					let boostable = true;													// initialize logic to prevent click spamming
 																							//
 					function boost() {														// click boost animation
 						if (boostable == true) { go(); }									//
@@ -147,7 +149,7 @@ function rareSpawnController() {
 			case 2:
 				// Swarm of Tyrian paths. Ships in a sine line formation
 				function spawnDiamondShip(spawnX, direction) {
-					var diam = new PIXI.Graphics();										// create a shape in the PIXI engine
+					let diam = new PIXI.Graphics();										// create a shape in the PIXI engine
 					diam.beginFill(randomColor({hue:'hax'}));
 
 					diam.moveTo(0, 0);													// places the shape at the origin for easy drawing math
@@ -162,14 +164,15 @@ function rareSpawnController() {
 					diam.scale.set(0.5);
 					diam.rotation = 3.14;												// Rotate 180 degrees to point up
 
-					if (direction == 1) { var counter = 0; }							// Starts the sinewave movement going left or right
-					if (direction == 2) { var counter = -3.14; }
+					let counter;
+					if (direction == 1) { counter = 0; }								// Starts the sinewave movement going left or right
+					if (direction == 2) { counter = -3.14; }
 
 					sfxPlayed = false;
 
 					document.body.addEventListener('click', boost);						// Adds click boost event listener
-					var boostCounter = rngRange(0,5)/10;								// initialize sinewave, slight RNG
-					var boostable = true;												// initialize logic to prevent click spamming
+					let boostCounter = rngRange(0,5)/10;								// initialize sinewave, slight RNG
+					let boostable = true;												// initialize logic to prevent click spamming
 																						//
 					function boost() {													// click boost animation
 						if (boostable == true) { go(); }								//
@@ -207,11 +210,11 @@ function rareSpawnController() {
 					window.requestAnimationFrame(move);									// starts the animation moving
 				}
 
-				var q = rngRange(50,850);												// Randomize the fixed x spawn position
-				var r = rngRange(1, 2);													// Randomize the sinewave direction
-				var s = rngRange(7, 20);												// Randomize the number of ships
-				for (var i=0; i<s; i++){												// Spawn S ships
-					setTimeout(spawnDiamondShip, 500*i, q, r);
+				const xSpawn = rngRange(50,850);										// Randomize the fixed x spawn position
+				const direction = rngRange(1, 2);										// Randomize the sinewave direction
+				const numberOfShips = rngRange(7, 20);									// Randomize the number of ships
+				for (let i=0; i<numberOfShips; i++){									// Spawn ships
+					setTimeout(spawnDiamondShip, 500*i, xSpawn, direction);
 				}
 				break;
 
@@ -233,7 +236,7 @@ function rareSpawnController() {
 			case 3:
 				// Constellations
 				function spawnFixedStar(x, y) {
-					var star = new PIXI.Graphics();										// create a shape in the PIXI engine
+					let star = new PIXI.Graphics();										// create a shape in the PIXI engine
 					star.beginFill(randomColor({hue:'monochrome'}));					// set a fill and line style, then code in the points
 
 					star.moveTo(100,20);												// vertices
@@ -257,11 +260,11 @@ function rareSpawnController() {
 					star.alpha = 0;														// makes sure stars don't blink once before appearing
 
 					var q = -.001;														// variable for calculating the brightness using a sinwave
-                	var lifespan = 2;
+                	const lifespan = 2;
 
 					document.body.addEventListener('click', boost);						// Adds click boost event listener
-					var boostCounter = rngRange(0,5)/10;								// initialize sinewave, slight RNG
-					var boostable = true;												// initialize logic to prevent click spamming
+					let boostCounter = rngRange(0,5)/10;								// initialize sinewave, slight RNG
+					let boostable = true;												// initialize logic to prevent click spamming
 																						//
 					function boost() {													// click boost animation
 						if (boostable == true) { go(); }								//
@@ -296,11 +299,11 @@ function rareSpawnController() {
 					window.requestAnimationFrame(pulseBrightness);						// starts the animation moving
 				}
 
-				var constellation = rngRange(1,4);										// select constellation
+				let constellation = rngRange(1,4);										// select constellation
 				var q = rngRange(-50, 850);												// randomize location
 				var r = rngRange(0, 300);
 
-				function sfxDelayedConstellation(pan) {									// very dumb but fuck setTimeout scope changes
+				function sfxDelayedConstellation(pan) {
 					setTimeout(function() { playAudio('./SFXb/constellation' + rngRange(1,3), 'sfx', pan) }, 6000)
 				}
 
@@ -333,7 +336,7 @@ function rareSpawnController() {
 						spawnFixedStar(164+q, 68+r);
 					break;
 
-					// Dipper 50000CE
+					// Big Dipper 50000CE
 					case 4:
 						spawnFixedStar(7+q, 34+r);
 						spawnFixedStar(46+q, 6+r);
@@ -366,7 +369,7 @@ function rareSpawnController() {
 			case 4:
 				// Shooting star
 				function spawnShootingStar() {
-					var star = new PIXI.Graphics();										// create a shape in the PIXI engine
+					let star = new PIXI.Graphics();										// create a shape in the PIXI engine
 					star.beginFill(randomColor({hue:'monochrome'}));					// set a fill and line style, then code in the points
 
 					star.moveTo(100,20);												// vertices
@@ -390,8 +393,9 @@ function rareSpawnController() {
 					star.alpha = 0;														// makes sure stars don't blink once before appearing
 
 					var q = -.001;														// variable for calculating the brightness using a sinwave
-					if (rngRange(1,2) == 1) { var xMovement = 4 }						// Random xMovement direction
-					else { var xMovement = -4 }
+					let xMovement;
+					if (rngRange(1,2) == 1) { xMovement = 4 }							// Random xMovement direction
+					else { xMovement = -4 }
 
 					playAudio('./SFXb/fallingStar' + rngRange(1,3), 'sfx', star.x);
 
@@ -433,7 +437,7 @@ function rareSpawnController() {
 				// Flattish hex UFOs. Horizontal movement
 				// Children of the Stars
 				function spawnUFO() {
-					var ufo = new PIXI.Graphics();										// create a shape in the PIXI engine
+					let ufo = new PIXI.Graphics();										// create a shape in the PIXI engine
 					ufo.beginFill(randomColor({hue:'monochrome'}));						// set a fill and line style, then code in the points
 					ufo.moveTo(0, 0);													// places the shape at the origin for easy drawing math
 					ufo.lineTo(10,0);													// Draw the vertices
@@ -447,13 +451,13 @@ function rareSpawnController() {
 					ufo.scale.set(2);
 					ufo.x = 920;														// Place the UFO offscreen
 					ufo.y = rngRange(30, 400);											// random starting height
-					var speedX = rngRange(2,8)/10;
+					const speedX = rngRange(2,8)/10;
 
-					var sfxPlayed = false;
+					let sfxPlayed = false;
 
 					document.body.addEventListener('click', boost);						// Adds click boost event listener
-					var boostCounter = rngRange(0,5)/10;								// initialize sinewave, slight RNG
-					var boostable = true;												// initialize logic to prevent click spamming
+					let boostCounter = rngRange(0,5)/10;								// initialize sinewave, slight RNG
+					let boostable = true;												// initialize logic to prevent click spamming
 																						//
 					function boost() {													// click boost animation
 						if (boostable == true) { go(); }								//
@@ -489,8 +493,8 @@ function rareSpawnController() {
 					window.requestAnimationFrame(move);									// starts the animation moving
 				}
 
-				var s = rngRange(1, 3);													// Randomize the number of UFOs
-				for (var i=0; i<s; i++){												// Spawn S UFOs
+				const numberOfUFOs = rngRange(1, 3);									// Randomize the number of UFOs
+				for (let i=0; i<numberOfUFOs; i++){										// Spawn UFOs
 					setTimeout(spawnUFO, i*4000);										//
 				}
 				break;
@@ -513,7 +517,7 @@ function rareSpawnController() {
 			case 6:
 				// Hexes jump from point to point
 				function spawnHexagonScanner() {
-					var hex = new PIXI.Graphics();										// create a shape in the PIXI engine
+					let hex = new PIXI.Graphics();										// create a shape in the PIXI engine
 					hex.beginFill(randomColor({hue:'pink'}));							// set a fill and line style, then code in the points
 					hex.moveTo(0, 0);													// places the shape at the origin for easy drawing math
 
@@ -531,13 +535,13 @@ function rareSpawnController() {
 					hex.x = rngRange(100,800);											// Set fixed X position
 					hex.y = 750;
 
-					var counter = 0;
+					let counter = 0;
 
-					var sfxPlayed = false;
+					let sfxPlayed = false;
 
 					document.body.addEventListener('click', boost);						// Adds click boost event listener
-					var boostCounter = rngRange(0,5)/10;								// initialize sinewave, slight RNG
-					var boostable = true;												// initialize logic to prevent click spamming
+					let boostCounter = rngRange(0,5)/10;								// initialize sinewave, slight RNG
+					let boostable = true;												// initialize logic to prevent click spamming
 																						//
 					function boost() {													// click boost animation
 						if (boostable == true) { go(); }								//
@@ -554,8 +558,8 @@ function rareSpawnController() {
 					}																	//
 
 					function jumpShapeX() {
-						var xMovement = rngRange(-300,300);								// Same as jumpShapeY, but with extra shit to account for left/right movement
-						var xCounter = 0;
+						const xMovement = rngRange(-300,300);							// Same as jumpShapeY, but with extra shit to account for left/right movement
+						let xCounter = 0;
 						function move() {
 							if (xMovement > 0)  { hex.x+=3; }
 							if (xMovement <= 0) { hex.x-=3; }
@@ -567,8 +571,8 @@ function rareSpawnController() {
 					}
 
 					function jumpShapeY() {
-						var yMovement = rngRange(100,250);								// Define movement range for this jump
-						var yCounter = 0;												// set up variable to track movement
+						const yMovement = rngRange(100,250);							// Define movement range for this jump
+						let yCounter = 0;												// set up variable to track movement
 						function move() {
 							hex.y-=3;													// move
 							yCounter+=3;												// increment counter
@@ -603,8 +607,8 @@ function rareSpawnController() {
 					window.requestAnimationFrame(timer);								// starts the animation moving
 				}
 
-				var s = rngRange(2,5);
-				for (var i=0; i<s; i++){												// Spawn S scanners
+				const numberOfHexes = rngRange(2,5);
+				for (let i=0; i<numberOfHexes; i++){									// Spawn scanners
 					setTimeout(spawnHexagonScanner, 500*i);
 				}
 				break;

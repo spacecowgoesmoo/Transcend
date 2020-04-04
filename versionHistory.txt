@@ -1,5 +1,5 @@
 v1.03 - Big maintenance patch 2020
-	Improved CPU performance by 20%
+	Improved CPU performance by up to 20%
 	Upgraded pixi.js from version 4.4.1 to 5.1.6
 	Changed music format from MP3 to OPUS, reducing asset filesize by 65% (54MB)
 	Changed SFX format from WAV to OPUS, reducing asset filesize by 85% (12MB)
@@ -7,7 +7,6 @@ v1.03 - Big maintenance patch 2020
 	Fixed broken music filepaths in the demo version
 	Throttled sky gradient to 4FPS to boost performance
 	Throttled stars and planets to 1FPS to boost performance
-	(CREDITS PERFORMANCE BOOST WIP)
 	Changed some CSS to prevent having two versions for iFrame and standalone hosting
 	Fixed all setTimeout() string evaluation anti-patterns
 	Replaced complicated Javascript fade animations with two lines of CSS

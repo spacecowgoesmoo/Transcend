@@ -384,7 +384,7 @@ function beginCredits() {
 				cow.muteMusic = true;											// save cpu
 				cow.muteSFX = true;												// save cpu
 			} else { window.requestAnimationFrame(fadeinBG); }					// otherwise, animate another frame and check again
-		}																		//
+		}
 
 		window.requestAnimationFrame(fadeinBG);									// starts the animation moving
 	}
@@ -408,10 +408,7 @@ function beginCredits() {
 
 		function fadeinG1() {
 			squareG1.alpha += 0.0001;
-
-			if (squareG1.alpha <= 0.02) {
-				window.requestAnimationFrame(fadeinG1);
-			}
+			if (squareG1.alpha <= 0.02) { window.requestAnimationFrame(fadeinG1); }
 		}
 
 		window.requestAnimationFrame(fadeinG1);									// starts the animation moving
@@ -436,10 +433,7 @@ function beginCredits() {
 
 		function fadeinG2() {
 			squareG2.alpha += 0.0001;
-
-			if (squareG2.alpha <= 0.02) {
-				window.requestAnimationFrame(fadeinG2);
-			}
+			if (squareG2.alpha <= 0.02) { window.requestAnimationFrame(fadeinG2); }
 		}
 
 		window.requestAnimationFrame(fadeinG2);									// starts the animation moving
