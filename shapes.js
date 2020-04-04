@@ -104,19 +104,19 @@ function spawnSkystar(luminosity, color, placement, lifespan, shape, counter) {
 			boostable = false;
 
 			star.alpha = (Math.sin(q));									// Same calculations as normal, but faster. Click = 6% progress
-			q += 1/lifespan/400;
+			q += 1/lifespan/6.6;
 
-			boostCounter += 0.04;
+			boostCounter += 2.4;
 			if (boostCounter >= 3.1) {
 				boostCounter = 0;
 				boostable = true;
-			} else { if (q < 3.1) { window.requestAnimationFrame(go); } }	// otherwise, animate another frame and check again
+			} else { if (q < 3.1) { setTimeout(function() { window.requestAnimationFrame(go); }, 1000) } }	// Throttled to 1FPS
 		}
 	}
 
 	function pulseBrightness() {
 		star.alpha = (Math.sin(q));										// calculate alpha with a sinewave
-		q += 1/lifespan/1150;											// increment. lifespan is tuned to be in minutes
+		q += 1/lifespan/19;												// increment. lifespan is tuned to be in minutes
 
 		if (q > 0.8 && sfxPlayed == false) {							// play sfx when the shape is mostly visible
 			switch (shape) {
@@ -145,7 +145,7 @@ function spawnSkystar(luminosity, color, placement, lifespan, shape, counter) {
 			}
 			updateResourceCounter(shape);										//
 			cow[counter]--;												// and remove the star from the capacity counter
-		 } else { window.requestAnimationFrame(pulseBrightness); }		// otherwise, animate another frame and check again
+		} else { setTimeout(function() { window.requestAnimationFrame(pulseBrightness); }, 1000) } // Throttled to 1FPS
 	}
 
 
