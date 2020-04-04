@@ -19,8 +19,7 @@ function rareSpawnController() {
 		else { var q = 200; }													// OK spawn rate during the start of phase 2
 	if (cow.stardustSpawnBoost1Owned == true) { q = 100; }
 	if (cow.stardustSpawnBoost2Owned == true) { q = 20; }
-	//if (rngRange(1, q) == 7 && !document.hidden){								// If RNG hits the magic number, and if the window isn't backgrounded
-	if (rngRange(6, 7) == 7 && !document.hidden){								// If RNG hits the magic number, and if the window isn't backgrounded
+	if (rngRange(1, q) == 7 && !document.hidden){								// If RNG hits the magic number, and if the window isn't backgrounded
 		var r = rngRange(1,12);
 
 
@@ -631,15 +630,16 @@ function rareSpawnController() {
 			case 7:
 				// Creepy small triangles with moving vertices
 				function spawnCreepyTriangle(color) {
-					var tri = new PIXI.Graphics();										// create a shape in the PIXI engine
+					let tri = new PIXI.Graphics();										// create a shape in the PIXI engine
 
+					let boostSpeed;
 					if (color == 'black') {
-						tri.beginFill(0x000000);										// set a fill color. Solid black, or..
-						var boostSpeed = -6; 											// Positive or negative boost speed
+						tri.beginFill(0x000000);											// set a fill color. Solid black, or..
+						boostSpeed = -6; 											// Positive or negative boost speed
 					}
 					else {
 						tri.beginFill(randomColor({hue:color})); 						// random red/green
-						var boostSpeed = 2;
+						boostSpeed = 2;
 					}
 
 					tri.moveTo(0, 0);													// places the shape at the origin for easy drawing math
@@ -650,16 +650,16 @@ function rareSpawnController() {
 
 					tri.x = rngRange(0, 900);
 					tri.y = rngRange(671, 1800);
-					var speedY = rngRange(4,20)/10;										// randomized Y speed
+					const speedY = rngRange(4,20)/10;									// randomized Y speed
 					tri.rotation = rngRange(1, 314)/100;								// randomized rotation
 
-					var counter = rngRange(0, 100);										// randomize the initial state
+					let counter = rngRange(0, 100);										// randomize the initial state
 
-					var sfxPlayed = false;
+					let sfxPlayed = false;
 
 					document.body.addEventListener('click', boost);						// Adds click boost event listener
-					var boostCounter = rngRange(0,5)/10;								// initialize sinewave, slight RNG
-					var boostable = true;												// initialize logic to prevent click spamming
+					let boostCounter = rngRange(0,5)/10;								// initialize sinewave, slight RNG
+					let boostable = true;												// initialize logic to prevent click spamming
 																						//
 					function boost() {													// click boost animation
 						if (boostable == true) { go(); }								//
@@ -698,13 +698,13 @@ function rareSpawnController() {
 					window.requestAnimationFrame(move);									// starts the animation moving
 				}
 
-				var x = rngRange(1,10);													// randomize color
-				if (x <= 4) { var q = 'red'; } else
-				if (x <= 9) { var q = 'green'; } else
-				if (x == 10) { var q = 'black'; }										// rare chance of spooky pure black
+				let color = rngRange(1,10);												// randomize color
+				if (color <= 4) { color = 'red'; } else
+				if (color <= 9) { color = 'green'; } else
+				if (color == 10) { color = 'black'; }									// rare chance of spooky pure black
 
-				var s = rngRange(5,10);													// randomize number of tri's
-				for (var i=0; i<s; i++) { spawnCreepyTriangle(q); }						// spawn S tri's
+				const numberOfTris = rngRange(5,10);									// randomize number of tri's
+				for (let i=0; i<numberOfTris; i++) { spawnCreepyTriangle(color); }		// spawn tri's
 				break;
 
 
@@ -725,7 +725,7 @@ function rareSpawnController() {
 			case 8:
 				// Concentric triangles launch
 				function spawnNestedTriangle(spawnX, scale) {
-					var tri = new PIXI.Graphics();										// create a shape in the PIXI engine
+					let tri = new PIXI.Graphics();										// create a shape in the PIXI engine
 					tri.beginFill(randomColor({hue:'hax'}));
 
 					tri.moveTo(0, 0);													// places the shape at the origin for easy drawing math
@@ -739,8 +739,8 @@ function rareSpawnController() {
 					tri.scale.set(scale);
 
 					document.body.addEventListener('click', boost);						// Adds click boost event listener
-					var boostCounter = rngRange(0,5)/10;								// initialize sinewave, slight RNG
-					var boostable = true;												// initialize logic to prevent click spamming
+					let boostCounter = rngRange(0,5)/10;								// initialize sinewave, slight RNG
+					let boostable = true;												// initialize logic to prevent click spamming
 																						//
 					function boost() {													// click boost animation
 						if (boostable == true) { go(); }								//
@@ -775,12 +775,12 @@ function rareSpawnController() {
 					setTimeout(function() { playAudio('./SFXb/triTower' + rngRange(1,3), 'sfx', pan) }, 1000)
 				}
 
-				var q = rngRange(50, 850);												// Randomize the fixed x spawn position
-				var s = rngRange(8, 15);												// Randomize the number of tris
-				sfxDelayedTritower(q);
+				const xSpawn2 = rngRange(50, 850);										// Randomize the fixed x spawn position
+				const numberOfTris2 = rngRange(8, 15);									// Randomize the number of tris
+				sfxDelayedTritower(xSpawn2);
 
-				for (var i=1; i<s; i++){												// Spawn S tris. Use i=1 instead of 0 because of scale also being used for y speed
-					spawnNestedTriangle(q, i);
+				for (let i=1; i<numberOfTris2; i++){									// Spawn tris. Use i=1 instead of 0 because of scale also being used for y speed
+					spawnNestedTriangle(xSpawn2, i);
 				}
 				break;
 
@@ -802,7 +802,7 @@ function rareSpawnController() {
 			case 9:
 				// A few of everything. Small, perfect shapes. Glitter
 				function spawnGlitterShape(selectShape) {
-					var shape = new PIXI.Graphics();									// create a shape in the PIXI engine
+					let shape = new PIXI.Graphics();									// create a shape in the PIXI engine
 
 					shape.beginFill(randomColor({hue:'hax'}));							// random color
 					shape.moveTo(0, 0);													// places the shape at the origin for easy drawing math
@@ -864,13 +864,13 @@ function rareSpawnController() {
 					shape.x = rngRange(0, 900);											// random shape location
 					shape.y = 630;
 
-					var speedY = rngRange(18,22)/10;									// randomized Y speed
+					const speedY = rngRange(18,22)/10;									// randomized Y speed
 
-					var sfxPlayed = false;
+					let sfxPlayed = false;
 
 					document.body.addEventListener('click', boost);						// Adds click boost event listener
-					var boostCounter = rngRange(0,5)/10;								// initialize sinewave, slight RNG
-					var boostable = true;												// initialize logic to prevent click spamming
+					let boostCounter = rngRange(0,5)/10;								// initialize sinewave, slight RNG
+					let boostable = true;												// initialize logic to prevent click spamming
 																						//
 					function boost() {													// click boost animation
 						if (boostable == true) { go(); }								//
@@ -921,10 +921,10 @@ function rareSpawnController() {
 					window.requestAnimationFrame(move);						// starts the animation moving
 				}
 
-				var s = rngRange(40,80);												// randomize number of tri's
-				for (var i=0; i<s; i++){												// Spawn S ships
-					var t = rngRange(1, 6);												// Select Shape
-					setTimeout(spawnGlitterShape, 500*i, t);							// Fixed spawn interval
+				const numberOfGlitters = rngRange(40,80);								// randomize number of shapes
+				for (let i=0; i<numberOfGlitters; i++){									// Spawn shapes
+					const randomShape = rngRange(1, 6);									// Select Shape
+					setTimeout(spawnGlitterShape, 500*i, randomShape);					// Fixed spawn interval
 				}
 				break;
 
@@ -948,7 +948,7 @@ function rareSpawnController() {
 				// Fake the effect by making them the grey window BG color or pure black
 				// Rare - Giant fucking black circle. Full 30 second eclipse
 				function spawnEvilCircle(radius, posX, speedY, spawnDelay) {
-					var circ = new PIXI.Graphics();										// create a shape in the PIXI engine
+					let circ = new PIXI.Graphics();										// create a shape in the PIXI engine
 
 					circ.beginFill(0x000000);											// set a fill color. Solid black, or..
 
@@ -961,11 +961,11 @@ function rareSpawnController() {
 					else { circ.x = posX; }												// or fixed X spawn
 					circ.y = radius + spawnDelay + 601;
 
-					var sfxPlayed = false;
+					let sfxPlayed = false;
 
 					document.body.addEventListener('click', boost);						// Adds click boost event listener
-					var boostCounter = rngRange(0,5)/10;								// initialize sinewave, slight RNG
-					var boostable = true;												// initialize logic to prevent click spamming
+					let boostCounter = rngRange(0,5)/10;								// initialize sinewave, slight RNG
+					let boostable = true;												// initialize logic to prevent click spamming
 																						//
 					function boost() {													// click boost animation
 						if (boostable == true) { go(); }								//
@@ -1001,16 +1001,16 @@ function rareSpawnController() {
 					window.requestAnimationFrame(move);									// starts the animation moving
 				}
 
-				var select = rngRange(1,100);
+				const select = rngRange(1,100);
 
 				if (select <= 98) {
-					var s = rngRange(10,20);											// randomize number of circles's
-					for (var i=0; i<s; i++) { spawnEvilCircle(30, 'random', rngRange(4,20)/10, rngRange(671, 1800)); }	// spawn a swarm of circles
+					const numberOfCircles = rngRange(10,20);							// randomize number of circles's
+					for (let i=0; i<numberOfCircles; i++) { spawnEvilCircle(30, 'random', rngRange(4,20)/10, rngRange(671, 1800)); }	// spawn a swarm of circles
 				} else
 				if (select <= 100) {
-					spawnEvilCircle(1200, 450, 0.4, 0); 								// spawn a big monster circle
-					cow.kongStrayNightmareDiscovered = true;
-					playAudio('./Music/sn', 'bgm', 450);
+					spawnEvilCircle(1200, 450, 0.4, 0); 			// spawn a big monster circle
+					cow.kongStrayNightmareDiscovered = true;		// this is the rarest thing in the game
+					playAudio('./Music/sn', 'bgm', 450);			// so congrats if you ever see it
 					displayMusicText('Stray Nightmare', 12);
 				}
 				break;
@@ -1035,12 +1035,12 @@ function rareSpawnController() {
 				// Looks very badass with 100% opacity black fill
 				// Crazy Diamond mix
 				function spawnTrace() {
-					var shape = rngRange(1, 8);
-					var paint = new PIXI.Graphics();									// create a shape in the PIXI engine
+					const shape = rngRange(1, 8);
+					let paint = new PIXI.Graphics();									// create a shape in the PIXI engine
 					paint.beginFill(0x000000, 0);										// empty, transparant fill color
 
 					switch (shape) {
-						// .8x.8 square
+						// 0.8x0.8 square
 						case 1:
 							paint.lineStyle(4, randomColor({luminosity:'light', hue:'blue'}), 0.5);
 							paint.moveTo(-15, -15);
@@ -1128,14 +1128,14 @@ function rareSpawnController() {
 					paint.x = rngRange(-500, 700);										// Randomly place the tetris offscreen
 					paint.y = rngRange(690, 800);										// Random starting height
 					paint.rotation = (rngRange(0,310)/100);								// Random starting rotation
-					var speedX = rngRange(6, 10)/10;									// Random X speed
-					var speedY = rngRange(6, 8)/10;										// Random Y speed
-					var rotateSpeed = rngRange(-4,4)/100;								// Random rotation speed
+					const speedX = rngRange(6, 10)/10;									// Random X speed
+					const speedY = rngRange(6, 8)/10;									// Random Y speed
+					let rotateSpeed = rngRange(-4,4)/100;								// Random rotation speed
 					if (rotateSpeed == 0) { rotateSpeed = 0.01; }
 
 					document.body.addEventListener('click', boost);						// Adds click boost event listener
-					var boostCounter = rngRange(0,5)/10;								// initialize sinewave, slight RNG
-					var boostable = true;												// initialize logic to prevent click spamming
+					let boostCounter = rngRange(0,5)/10;								// initialize sinewave, slight RNG
+					let boostable = true;												// initialize logic to prevent click spamming
 																						//
 					function boost() {													// click boost animation
 						if (boostable == true) { go(); }								//
@@ -1180,8 +1180,8 @@ function rareSpawnController() {
 
 				setTimeout(function() { playAudio('./SFXb/paint' + rngRange(1,3), 'sfx', 250) }, 8000)
 
-				var s = rngRange(5, 15);												// Randomize the number of shapes
-				for (var i=0; i<s; i++){												// Spawn S shapes
+				const numberOfTraces = rngRange(5, 15);									// Randomize the number of shapes
+				for (let i=0; i<numberOfTraces; i++){									// Spawn shapes
 					setTimeout(spawnTrace, i*4000);										//
 				}
 				break;
@@ -1204,7 +1204,7 @@ function rareSpawnController() {
 			case 12:
 				// Cute squares
 				function spawnCuteSquare() {
-					var square = new PIXI.Graphics();										// create a shape in the PIXI engine
+					let square = new PIXI.Graphics();										// create a shape in the PIXI engine
 					square.beginFill(randomColor({hue:'hax'}));								// set a fill and line style, then code in the points
 					square.moveTo(0, 0);													// places the shape at the origin for easy drawing math
 
@@ -1218,11 +1218,11 @@ function rareSpawnController() {
 					square.x = rngRange(1,900);												// Set fixed X position
 					square.y = 640;
 
-					var sfxPlayed = false;
+					let sfxPlayed = false;
 
 					document.body.addEventListener('click', boost);							// Adds click boost event listener
-					var boostCounter = rngRange(0,5)/10;									// initialize sinewave, slight RNG
-					var boostable = true;													// initialize logic to prevent click spamming
+					let boostCounter = rngRange(0,5)/10;									// initialize sinewave, slight RNG
+					let boostable = true;													// initialize logic to prevent click spamming
 																							//
 					function boost() {														// click boost animation
 						if (boostable == true) { go(); }									//
@@ -1248,7 +1248,7 @@ function rareSpawnController() {
 
 						if (square.y < -70) { 												// if shape is offscreen..
 							square.destroy(true); 											// kill it
-							document.body.removeEventListener('click', boost);			// Removes the click boost event listener from the HTML body
+							document.body.removeEventListener('click', boost);				// Removes the click boost event listener from the HTML body
 							cow.resourceSquares++;
 							cow.kongLifetimeShapes++;
 							updateResourceCounter('square');

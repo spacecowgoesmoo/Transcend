@@ -10,7 +10,7 @@ v1.03 - Big maintenance patch 2020
 	Changed some CSS to prevent having two versions for iFrame and standalone hosting
 	Fixed all setTimeout() string evaluation anti-patterns
 	Replaced complicated Javascript fade animations with two lines of CSS
-	Reduced number of Javascript var declarations from 269 to 173
+	Reduced number of Javascript var declarations from 269 to 25
 	Applied better image compression, reducing asset filesize by 45% (55KB)
 	Fixed many negative margin CSS anti-patterns
 	Fixed three bugs that would result in inaccurate preloader console messages
