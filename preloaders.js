@@ -8,7 +8,7 @@ function preloadFiles() {
 	// Preload
 	// NOTE: On tc.com, the last 10% of files loaded will usually fail when accessed over https
 	function load(filename) {		
-		var xmlhttp;
+		let xmlhttp;
 		if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
 			xmlhttp = new XMLHttpRequest();
 		} else { // code for IE6, IE5
@@ -16,7 +16,7 @@ function preloadFiles() {
 		}
 		xmlhttp.onreadystatechange = function() {
 			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-				var q = document.createElement('span');	// Extra stuff to make IE happy. Fuck IE
+				let q = document.createElement('span');	// Extra stuff to make IE happy. Fuck IE
 				q.setAttribute('id', 'loadSound');		//
 				q.setAttribute('class', 'invisible');	//
 				document.body.appendChild(q);			//

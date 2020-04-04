@@ -1,7 +1,5 @@
 function createBackground(luminosity1, color1, luminosity2, color2, lifespan, biome) {
-	if (bgSquare) { bgSquare.destroy(true); }							// deletes any existing background shapes
-
-	var bgSquare = new PIXI.Graphics();									// create a shape in the PIXI engine
+	let bgSquare = new PIXI.Graphics();									// create a shape in the PIXI engine
 	bgSquare.beginFill(0xffffff);										// This can be anything except black to make the gradient work
 	bgSquare.moveTo(0, 0);												// places the shape at the origin for easy drawing math
 	bgSquare.lineTo(900, 0);											//
@@ -30,7 +28,8 @@ function createBackground(luminosity1, color1, luminosity2, color2, lifespan, bi
 
 		if (q > 3.2 || bgSquare.alpha <= 0.01) {						// if gradient has faded out.. (3.14 is one sinwave cycle)
 			bgSquare.destroy(true);										// kill it
-		 } else { window.requestAnimationFrame(crossfade); }			// otherwise, animate another frame and check again
+			moo()
+		} else { window.requestAnimationFrame(crossfade); }				// otherwise, animate another frame and check again
 	}
 
 	window.requestAnimationFrame(crossfade);							// starts the animation moving
@@ -264,9 +263,9 @@ function spawnShape(size, speedY, speedX, widthX, rotation, luminosity, color, o
 
 	const speedYFinal = (speedY * rngRange (10,100)) / 100;				// randomize speed by -90% to 100%
 
-	if (speedX != 0) { var sinFinal = rngRange (-3, 3);	}				// Initialize sinwave counter and direction
+	if (speedX != 0) { let sinFinal = rngRange (-3, 3);	}				// Initialize sinwave counter and direction
 
- 	// var shader = plainGradient(0xffffff, 0x888888)					// Gradient overlay, soft overhead light
+ 	// const shader = plainGradient(0xffffff, 0x888888)					// Gradient overlay, soft overhead light
 	// shape1.filters = [shader];										// Note - Breaks antialiasing if the shape is moving
 
 	let sfxPlayed = false;												// Used for dynamically calling the SFX in the animation loop

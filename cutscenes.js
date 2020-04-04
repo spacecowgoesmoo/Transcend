@@ -6,7 +6,7 @@ function preloader() {
 	preloaderContainer.zIndex = 50;
 	app.stage.addChild(preloaderContainer);
 
-	var squareBG = new PIXI.Graphics();
+	let squareBG = new PIXI.Graphics();
 	squareBG.beginFill(0x000000);
 	squareBG.moveTo(0, 0);
 	squareBG.lineTo(900, 0);
@@ -35,8 +35,8 @@ function preloader() {
 	spawnDiamond(460, 'diam4', '0xFFFFFF');
 	spawnDiamond(480, 'diam5', '0xFFFFFF');
 	spawnDiamond(500, 'diam6', '0xFFFFFF');
-	//var cowColor = randomColor({ hue:'blue'});
-	var cowColor = '0x72BCD4';
+	//const cowColor = randomColor({ hue:'blue'});
+	const cowColor = '0x72BCD4';
 
 	function waitForLogin() {
 		if (cow.filesPreloaded >= 50 && diam1.alpha == 0.13)  { diam1.tint=cowColor; diam1.alpha=1;}	// Images load super fast so unbalancing the early progress bar stages is better
@@ -54,15 +54,12 @@ function preloader() {
 			fadeOutDiamond(6);
 			showStartGameButton();
 		}
-		else {
-			var q = ((cow.filesPreloaded/160)*100).toFixed(0);
-			setTimeout(waitForLogin, 500);										// Ghetto animation engine variation because we don't need 60FPS. 2FPS is fine.
-		}
+		else { setTimeout(waitForLogin, 500); }									// Throttle this to 2FPS instead of 60
 	}
 	waitForLogin();
 
 	function fadeOutDiamond(number) {
-		var qq = window['diam' + number]
+		let qq = window['diam' + number]
 		function fade() {
 			qq.alpha -= 0.025;
 
@@ -81,16 +78,16 @@ function showStartGameButton() {
 
 function startGame() {
 	if (cow.gameStarted == false && cow.preloaderComplete == true) {
-		newFade(startGameText, 0, 0.7);										// Fadeout the start game text
+		newFade(startGameText, 0, 0.7);											// Fadeout the start game text
 
-		initializeGameTwo();												// Start the game
+		initializeGameTwo();													// Start the game
 		initializeGameThree();
 		fadeOutPreloader();
 
 		showDiamondBar();
 		showEndgameBar();
-		newFade(optionsMenuButtonFadeinContainer, 1, 0.7);					// Fadein all the UI
-		optionsMenuButton.style.display = 'inline';							// This and the inline CSS on the HTML tag are required for IE and Edge. Fuck IE.
+		newFade(optionsMenuButtonFadeinContainer, 1, 0.7);						// Fadein all the UI
+		optionsMenuButton.style.display = 'inline';								// This and the inline CSS on the HTML tag are required for IE and Edge. Fuck IE.
 		newFade(resourceCounterFadeinContainer, 1, 0.7);
 		newFade(lowerRightFadeinContainer, 1, 0.7);
 
