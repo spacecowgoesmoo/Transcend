@@ -297,11 +297,11 @@ function spawnShape(size, speedY, speedX, widthX, rotation, luminosity, color, o
 
 		if (shape1.y <= 595 && sfxPlayed == false && counter != 'biome2CurrentBGHexagonCount' && shape != 'triangle') {
 			switch (shape) {													// play sfx when the shape spawns. 100% squares break the audio engine lol
-				case 'diamond':				playAudio('./SFX/diamond' + rngRange(1,5), 'sfx', shape1.x);	break;
-				case 'hexagon':				playAudio('./SFX/hexagon' + rngRange(1,5), 'sfx', shape1.x);	break;
-				case 'pillar':				if (rngRange(1,10) >= 9) { playAudio('./SFX/square' + rngRange(1,5), 'sfx', shape1.x); }	break;
-				case 'quad':				if (rngRange(1,10) >= 9) { playAudio('./SFX/square' + rngRange(1,5), 'sfx', shape1.x); }	break;
-				case 'star':				playAudio('./SFX/star' + rngRange(1,5), 'sfx', shape1.x);		break;
+				case 'diamond':	playAudio('./SFX/diamond' + rngRange(1,5), 'sfx', shape1.x);	break;
+				case 'hexagon':	playAudio('./SFX/hexagon' + rngRange(1,5), 'sfx', shape1.x);	break;
+				case 'pillar':	if (rngRange(1,10) >= 9) { playAudio('./SFX/square' + rngRange(1,5), 'sfx', shape1.x); }	break;
+				case 'quad':	if (rngRange(1,10) >= 9) { playAudio('./SFX/square' + rngRange(1,5), 'sfx', shape1.x); }	break;
+				case 'star':	playAudio('./SFX/star' + rngRange(1,5), 'sfx', shape1.x);		break;
 				default: break;
 			}
 			sfxPlayed = true;

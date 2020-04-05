@@ -5,13 +5,6 @@ function rngRange(min, max) {
 
 
 
-function randomColor100() {
-	return "0x111111".replace(/1/g,function(){return (~~(Math.random()*16)).toString(16);});
-}
-
-
-
-
 function modifyCSS(selector, property, value) {
 	for (let i=0; i<document.styleSheets.length; i++) {//Loop through all styles
 		//Try add rule
@@ -75,13 +68,6 @@ function preventParentClick(e) {									// You need to pass the string 'event' 
 	e.cancelBubble = true;
 	e.returnValue = false;
 	e.stopImmediatePropagation();
-}
-
-
-
-
-function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 
