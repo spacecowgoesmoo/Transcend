@@ -13,6 +13,7 @@ v1.03 - Big maintenance patch 2020
 	Replaced complicated Javascript fade animations with two lines of CSS
 	Applied better image compression, reducing asset filesize by 45% (55KB)
 	Fixed many negative margin CSS anti-patterns
+	Moved most of the inline CSS to classes
 	Fixed three bugs that would result in inaccurate preloader console messages
 	Improved unlockEverythingDevHack() to more effectively test all three game phases
 	Added new console messages for background music
