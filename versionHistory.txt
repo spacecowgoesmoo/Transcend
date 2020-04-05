@@ -1,5 +1,5 @@
 v1.03 - Big maintenance patch 2020
-	Improved CPU performance by up to 20%
+	Improved CPU performance by ???-20%, depending on how many shapes are onscreen
 	Upgraded pixi.js from version 4.4.1 to 5.1.6
 	Changed music format from MP3 to OPUS, reducing asset filesize by 65% (54MB)
 	Changed SFX format from WAV to OPUS, reducing asset filesize by 85% (12MB)
@@ -8,14 +8,14 @@ v1.03 - Big maintenance patch 2020
 	Throttled sky gradient to 4FPS to boost performance
 	Throttled stars and planets to 1FPS to boost performance
 	Changed some CSS to prevent having two versions for iFrame and standalone hosting
+	Reduced number of Javascript var declarations from 269 to 25
 	Fixed all setTimeout() string evaluation anti-patterns
 	Replaced complicated Javascript fade animations with two lines of CSS
-	Reduced number of Javascript var declarations from 269 to 25
 	Applied better image compression, reducing asset filesize by 45% (55KB)
 	Fixed many negative margin CSS anti-patterns
 	Fixed three bugs that would result in inaccurate preloader console messages
-	New console messages for background music
-	Removed some old commented-out code
+	Added new console messages for background music
+	Removed some old commented-out code, improved a few bits of confusing code
 	Stripped trailing whitespace and replaced overlooked space-indents with tabs
 
 v1.02 - Chrome breaks web audio standards
