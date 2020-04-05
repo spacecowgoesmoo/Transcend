@@ -154,7 +154,6 @@ var cow = {
 
 function updateResourceCounter(shape) {
 	// .toLocaleString(); adds comma separators
-	// rip →
 	switch (shape) {
 		case 'diamond': 	diamondCounterText.innerHTML = cow.diamondCapacity + ' / ' + cow.resourceDiamonds.toLocaleString();		break;
 		case 'star': 		starCounterText.innerHTML = cow.starCapacity + ' / ' + cow.resourceStars.toLocaleString();				break;
@@ -180,14 +179,14 @@ function updateResourceCounter(shape) {
 
 	if (cow.endgameBarOwned == true) {
 		switch (shape) {
-			case 'diamond': 	endgameBarPart1.value = cow.resourceEndgameBarDiamonds;				break;
-			case 'star': 		endgameBarPart2.value = cow.resourceEndgameBarStars;				break;
-			case 'hexagon': 	endgameBarPart3.value = cow.resourceEndgameBarHexagons;				break;
-			case 'triangle': 	endgameBarPart4.value = cow.resourceEndgameBarTriangles;			break;
-			case 'circle': 		endgameBarPart5.value = cow.resourceEndgameBarCircles;				break;
-			case 'square': 		endgameBarPart6.value = cow.resourceEndgameBarSquares;				break;
-			case 'pillar': 		endgameBarPart6.value = cow.resourceEndgameBarSquares;				break;
-			case 'quad': 		endgameBarPart6.value = cow.resourceEndgameBarSquares;				break;
+			case 'diamond': 	endgameBarPart1.value = cow.resourceEndgameBarDiamonds;		break;
+			case 'star': 		endgameBarPart2.value = cow.resourceEndgameBarStars;		break;
+			case 'hexagon': 	endgameBarPart3.value = cow.resourceEndgameBarHexagons;		break;
+			case 'triangle': 	endgameBarPart4.value = cow.resourceEndgameBarTriangles;	break;
+			case 'circle': 		endgameBarPart5.value = cow.resourceEndgameBarCircles;		break;
+			case 'square': 		endgameBarPart6.value = cow.resourceEndgameBarSquares;		break;
+			case 'pillar': 		endgameBarPart6.value = cow.resourceEndgameBarSquares;		break;
+			case 'quad': 		endgameBarPart6.value = cow.resourceEndgameBarSquares;		break;
 			default: break;
 		}
 	}

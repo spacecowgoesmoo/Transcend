@@ -262,7 +262,7 @@ function spawnShape(size, speedY, speedX, widthX, rotation, luminosity, color, o
 
 	const speedYFinal = (speedY * rngRange (10,100)) / 100;				// randomize speed by -90% to 100%
 
-	if (speedX != 0) { let sinFinal = rngRange (-3, 3);	}				// Initialize sinwave counter and direction
+	if (speedX != 0) { var sinFinal = rngRange (-3, 3);	}				// Initialize sinwave counter and direction
 
  	// const shader = plainGradient(0xffffff, 0x888888)					// Gradient overlay, soft overhead light
 	// shape1.filters = [shader];										// Note - Breaks antialiasing if the shape is moving

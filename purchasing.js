@@ -320,11 +320,15 @@ function showStardustUpgradeCost20(q) { displayPriceText('sd 150'); }
 
 
 
-function unlockEverythingDevHack() {
-	cow.randomBiomesUnlocked = false;
-	cow.endgameBarOwned = false;
-	cow.diamondBarOwned = true;
 
+
+
+
+
+
+
+
+function unlockEverythingPhase1() {
 	cow.resourceDiamonds = 20000;
 	cow.resourceStars = 20000;
 	cow.resourceHexagons = 20000;
@@ -333,28 +337,57 @@ function unlockEverythingDevHack() {
 	cow.resourceSquares = 200000;
 	cow.resourceStardust = 2000;
 
-	cow.diamondCapacity = 10;
+	cow.diamondCapacity = 10;		// 17 (+170 squares) in all of these unlocks the diamondBar
 	cow.starCapacity = 10;
 	cow.hexagonCapacity = 10;
 	cow.triangleCapacity = 10;
 	cow.circleCapacity = 10;
-	cow.squareCapacity = 50;
+	cow.squareCapacity = 100;
 
-	cow.resourceStardustBiome1 = 10;
-	cow.resourceStardustBiome2 = 10;
-	cow.resourceStardustBiome3 = 10;
-	cow.resourceStardustBiome4 = 10;
-	cow.resourceStardustBiome5 = 10;
-	cow.resourceStardustBiome6 = 10;
-
-	cow.resourceEndgameBarDiamonds = 20;
-	cow.resourceEndgameBarStars = 20;
-	cow.resourceEndgameBarHexagons = 20;
-	cow.resourceEndgameBarTriangles = 20;
-	cow.resourceEndgameBarCircles = 20;
-	cow.resourceEndgameBarSquares = 20;
+	updateResourceCounter('diamond');
+	updateResourceCounter('star');
+	updateResourceCounter('hexagon');
+	updateResourceCounter('triangle');
+	updateResourceCounter('circle');
+	updateResourceCounter('square');
+	updateResourceCounter('stardust');
 	saveGame();
 }
+
+function unlockEverythingPhase2() {
+	cow.resourceStardustBiome1 = 19;	// 20 in all these unlocks the endgameBar
+	cow.resourceStardustBiome2 = 20;	// Biome 1 is set lower so it can trigger naturally
+	cow.resourceStardustBiome3 = 20;
+	cow.resourceStardustBiome4 = 20;
+	cow.resourceStardustBiome5 = 20;
+	cow.resourceStardustBiome6 = 20;
+	updateResourceCounter('stardust');
+	saveGame();
+}
+
+function unlockEverythingPhase3() {
+	cow.resourceEndgameBarDiamonds = 990;	// Unlocks the credits
+	cow.resourceEndgameBarStars = 3000;		// Biome 1 a bit short again so it can trigger naturally
+	cow.resourceEndgameBarHexagons = 4000;
+	cow.resourceEndgameBarTriangles = 6000;
+	cow.resourceEndgameBarCircles = 3000;
+	cow.resourceEndgameBarSquares = 8000;
+	updateResourceCounter('diamond');
+	updateResourceCounter('star');
+	updateResourceCounter('hexagon');
+	updateResourceCounter('triangle');
+	updateResourceCounter('circle');
+	updateResourceCounter('square');
+	saveGame();
+}
+
+
+
+
+
+
+
+
 
 
 

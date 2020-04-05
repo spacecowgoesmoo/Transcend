@@ -430,7 +430,6 @@ progress {
 	height: 21px;
 	position: absolute;
 	z-index: 10;
-	opacity: 0.7;
 	margin-top: -19px;
 }
 
@@ -637,13 +636,9 @@ progress { background-color: #222222; }
 }
 
 /* Hiding stuff */
-.invisible {
-	display: none;
-}
-
-.visible {
-	display: inline;
-}
+.invisible { display: none; }
+.visible { display: inline; }
+.opacityZero { opacity: 0; }
 
 
 
