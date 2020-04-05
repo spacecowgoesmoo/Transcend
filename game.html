@@ -58,7 +58,7 @@
 
 
 <!-- Includes extra stuff for the eraseSave behavior -->
-<span id='optionsMenuButtonFadeinContainer' style='opacity:0;'>
+<span id='optionsMenuButtonFadeinContainer' class='opacityZero'>
 <button id='optionsMenuButton' class='invisible' onClick="newFadePlusToggleAndVisibility(optionsMenu, 0.7, 0.25, true); eraseSaveText.innerHTML = 'Erase Save'; hoverWhite(eraseSaveText); preventParentClick(event);"><img width=18 src='Images/gear.png'></button>
 </span>
 
@@ -143,7 +143,7 @@
 
 
 
-<span id='resourceCounterFadeinContainer' style='opacity:0;'>
+<span id='resourceCounterFadeinContainer' class='opacityZero'>
 <span id='resourceCounter' style='display: none; opacity: 0.7;' onMouseLeave='clearPricesSpan();' onclick='preventParentClick(event);'>
 <button id='diamondCounter' class='upperLeftButton' onClick='buyDiamond();' onMouseOver='showDiamondCost();'><span id='diamondCounterImage'><image id='buttID21' src='Images/diamond.png' class='diamondCounterShape firefoxHack2'></image></span><span id='diamondCounterText' class='firefoxHack4'></span></button><br>
 <span id='starButtonSpan'><button id='starCounter' class='upperLeftButton' onClick='buyStar();' onMouseOver='showStarCost();'><span id='starCounterImage'><image id='buttID22' src='Images/star.png' class='starCounterShape firefoxHack2'></image></span><span id='starCounterText' class='firefoxHack4'></span></button><br>
@@ -161,8 +161,8 @@
 
 
 
-<div id='songTitleSuperdiv' style='opacity:1; z-index:5;'><span id='songTitle' class='lowerLeftTextBar' style='opacity:0;' onclick='preventParentClick(event);'></span></div>
-<span id='pricesTextBox' class='lowerLeftTextBar' style='opacity:0'></span>
+<div id='songTitleSuperdiv' style='opacity:1; z-index:5;'><span id='songTitle' class='lowerLeftTextBar opacityZero' onclick='preventParentClick(event);'></span></div>
+<span id='pricesTextBox' class='lowerLeftTextBar opacityZero'></span>
 
 
 
@@ -170,7 +170,7 @@
 
 
 
-<span id='lowerRightFadeinContainer' style='opacity:0;'>
+<span id='lowerRightFadeinContainer' class='opacityZero'>
 <span id='biomeSelectBar' style='opacity:0.7; display:none;' onclick='preventParentClick(event);'>
 <button id='biome1Button' class='lowerRightButton' onClick="stopRandomization(); changeBiome('biome1');"><image src='Images/diamond.png' id='biome1ButtonImage' class='diamondButtonImage firefoxHack'></image></button><button id='biome2Button' class='lowerRightButton' onClick="stopRandomization(); changeBiome('biome2');"><image src='Images/hexagon.png' id='biome2ButtonImage' class='hexagonButtonImage firefoxHack3'></iamge></button><button id='biome3Button' class='lowerRightButton' onClick="stopRandomization(); changeBiome('biome3');"><image src='Images/triangle.png' id='biome3ButtonImage' class='triangleButtonImage firefoxHack'></button><button id='biome4Button' class='lowerRightButton' onClick="stopRandomization(); changeBiome('biome4');"><span style='font-size: 21px;'><image src='Images/square.png' id='biome4ButtonImage' class='squareButtonImage firefoxHack'></button><button id='biome5Button' class='lowerRightButton' onClick="stopRandomization(); changeBiome('biome5');"><image src='Images/circle.png' id='biome5ButtonImage' class='circleButtonImage firefoxHack'></image></button><button id='biome6Button' class='lowerRightButton' onClick="stopRandomization(); changeBiome('biome6');"><image src='Images/star.png' id='biome6ButtonImage' class='starButtonImage firefoxHack'></image></button><button id='biomeRandomButton' class='lowerRightButton' onClick="randomBiomes('activate');"><image id='biomeRandomPNG' src='Images/diamondBar.png' class='biomeRandomImage firefoxHack6'></image></button>
 </span>

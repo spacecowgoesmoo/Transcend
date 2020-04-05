@@ -14,6 +14,7 @@ v1.03 - Big maintenance patch 2020
 	Applied better image compression, reducing asset filesize by 45% (55KB)
 	Fixed many negative margin CSS anti-patterns
 	Fixed three bugs that would result in inaccurate preloader console messages
+	Improved unlockEverythingDevHack() to more effectively test all three game phases
 	Added new console messages for background music
 	Removed some old commented-out code, improved a few bits of confusing code
 	Stripped trailing whitespace and replaced overlooked space-indents with tabs
