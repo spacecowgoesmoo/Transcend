@@ -444,16 +444,9 @@ function beginCredits() {
 
 	function fadeSineForever(id, lifespan) {
 		id.className = 'visible';
-		id.style.opacity = 0;
-		let q = 0.06;												// bullshit variable required; += doesn't work
-		const randomize = rngRange(100,150)/100;
-		function cow() {
-			id.style.opacity = Math.sin(q);
-			q += 0.06 * (1/lifespan) * randomize;
-			if (id.style.opacity > 0.7) { id.style.opacity = 0.7; } // Cap opacity
-			window.requestAnimationFrame(cow);						// Animate forever
-		}
-		window.requestAnimationFrame(cow);							// starts the animation moving
+		const alteredLifespan = lifespan * (rngRange(100,150)/100);	// +0-50%
+		newFadeInOut(id, alteredLifespan);
+		setTimeout(function() { fadeSineForever(id, lifespan) }, alteredLifespan * 2000);
 	}
 
 
@@ -475,9 +468,9 @@ function beginCredits() {
 	setTimeout(fadeToWhite, 115000);
 	setTimeout(spawnWhiteGlass1, 155000);
 	setTimeout(spawnWhiteGlass2, 155000);
-	setTimeout(fadeSineForever, 150000, creditsText1, 16);
-	setTimeout(fadeSineForever, 155000, creditsText2, 16);
-	setTimeout(fadeSineForever, 165000, creditsText3, 16);
+	setTimeout(fadeSineForever, 150000, creditsText1, 6);
+	setTimeout(fadeSineForever, 155000, creditsText2, 6);
+	setTimeout(fadeSineForever, 165000, creditsText3, 6);
 }
 
 
