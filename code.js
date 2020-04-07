@@ -73,6 +73,7 @@ var cow = {
 	resourceTriangles: 0,
 	resourceCircles: 0,
 	resourceSquares: 0,
+	resourceCounterWidth: 115,
 
 	diamondBarOwned: false,
 	resourceStardust: 0,
@@ -173,7 +174,7 @@ function updateResourceCounter(shape) {
 								diamondBarPart4.value = cow.resourceStardustBiome4;
 								diamondBarPart5.value = cow.resourceStardustBiome5;
 								diamondBarPart6.value = cow.resourceStardustBiome6;
-								checkForDiamondBarCompletion();													break;
+								checkForDiamondBarCompletion();								break;
 		default: break;
 	}
 
@@ -192,16 +193,20 @@ function updateResourceCounter(shape) {
 	}
 	checkForGameVictory();
 	// Upper left dynamic box resizing
-	cow.resourceCounterWidthArray[0] = cow.diamondCapacity.toString().length + cow.resourceDiamonds.toLocaleString().length;	// Collect the string lenghts of all the shapes
-	cow.resourceCounterWidthArray[1] = cow.starCapacity.toString().length + cow.resourceStars.toLocaleString().length;
-	cow.resourceCounterWidthArray[2] = cow.hexagonCapacity.toString().length + cow.resourceHexagons.toLocaleString().length;
-	cow.resourceCounterWidthArray[3] = cow.triangleCapacity.toString().length + cow.resourceTriangles.toLocaleString().length;
-	cow.resourceCounterWidthArray[4] = cow.circleCapacity.toString().length + cow.resourceCircles.toLocaleString().length;
-	cow.resourceCounterWidthArray[5] = cow.squareCapacity.toString().length + cow.resourceSquares.toLocaleString().length;
-	const q = Math.max.apply(Math,cow.resourceCounterWidthArray);									// Grab the largest number in the array
-	const newSize = 100 + (q*7);
-	if (diamondCounter.offsetWidth != newSize) {													// If the calculated size is different than the current size..
-		modifyCSS('.upperLeftButton', 'width', newSize);											// ..Resize the resource box based on this number
+	// Throttled a bit because accessing the DOM in the if statement below is expensive
+	if (rngRange(1,3) == 1) {
+		cow.resourceCounterWidthArray[0] = cow.diamondCapacity.toString().length + cow.resourceDiamonds.toLocaleString().length;	// Collect the string lenghts of all the shapes
+		cow.resourceCounterWidthArray[1] = cow.starCapacity.toString().length + cow.resourceStars.toLocaleString().length;
+		cow.resourceCounterWidthArray[2] = cow.hexagonCapacity.toString().length + cow.resourceHexagons.toLocaleString().length;
+		cow.resourceCounterWidthArray[3] = cow.triangleCapacity.toString().length + cow.resourceTriangles.toLocaleString().length;
+		cow.resourceCounterWidthArray[4] = cow.circleCapacity.toString().length + cow.resourceCircles.toLocaleString().length;
+		cow.resourceCounterWidthArray[5] = cow.squareCapacity.toString().length + cow.resourceSquares.toLocaleString().length;
+		const q = Math.max.apply(Math,cow.resourceCounterWidthArray);								// Grab the largest number in the array
+		const newSize = 100 + (q*7);
+		if (cow.resourceCounterWidth != newSize) {													// If the calculated size is different than the current size..
+			cow.resourceCounterWidth = newSize;
+			modifyCSS('.upperLeftButton', 'width', newSize);										// ..Resize the resource box based on this number
+		}
 	}
 }
 
