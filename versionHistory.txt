@@ -1,27 +1,44 @@
 v1.03 - Big maintenance patch 2020
-	Improved CPU performance by ???-20%, depending on how many shapes are onscreen
-	Upgraded pixi.js from version 4.4.1 to 5.1.6
-	Changed music format from MP3 to OPUS, reducing asset filesize by 65% (54MB)
-	Changed SFX format from WAV to OPUS, reducing asset filesize by 85% (12MB)
-	Rewrote the gradient shader. Lots of extra steps removed and it's now fully documented
-	Fixed broken music filepaths in the demo version
-	Throttled sky gradient to 4FPS to boost performance
-	Throttled stars and planets to 1FPS to boost performance
-	Further optimized CPU hogs updateResourceCounter() and recheckItemCostHighlighting()
-	UI color changes now happen immediately instead of delaying for up to three seconds
-	Changed some CSS to prevent having two versions for iFrame and standalone hosting
-	Reduced number of Javascript var declarations from 269 to 26
-	Fixed all setTimeout() string evaluation anti-patterns
-	Replaced complicated Javascript fade animations with two lines of CSS
-	Applied better image compression, reducing asset filesize by 45% (55KB)
-	Fixed many negative margin CSS anti-patterns
-	Moved most of the inline CSS to classes
-	Fixed three bugs that would result in inaccurate preloader console messages
-	Improved unlockEverythingDevHack() to more effectively test all three game phases
-	Fixed a tiny edge case bug when purchasing biome 4
-	Added new console messages for background music
-	Removed some old commented-out code, improved a few bits of confusing code
-	Stripped trailing whitespace and replaced overlooked space-indents with tabs
+	Summary
+		Improved CPU performance by ???-20%, depending on how many shapes are onscreen
+		Reduced download size by 63% (66MB)
+		..and a few other things
+	Performance
+		Optimized updateResourceCounter() to not use the DOM state as a source of data
+		Optimized recheckItemCostHighlighting() to only fire when collecting shapes, not every three seconds
+		Throttled less essential parts of updateResourceCounter() when there's a ton of shapes onscreen
+		Throttled all of recheckItemCostHighlighting() when there's a ton of shapes onscreen
+		Fixed significant amounts of JS garbage being created (and collected)
+		Throttled sky gradients from 60FPS to 4FPS
+		Throttled stars and planets from 60FPS to 1FPS
+	Audio
+		Changed music format from MP3 to OPUS, reducing asset filesize by 65% (54MB)
+		Changed SFX format from WAV to OPUS, reducing asset filesize by 85% (12MB)
+		Fixed broken music filepaths in the demo version
+	Graphics
+		Upgraded pixi.js from version 4.4.1 to 5.1.6
+		Rewrote the gradient shader. Lots of extra steps removed and it's now fully documented
+		UI color changes now happen instantly instead of being delayed for up to three seconds
+		Applied better image compression, reducing asset filesize by 45% (55KB)
+	Bugfixes
+		Fixed three bugs that would result in inaccurate preloader console messages
+		Fixed a tiny edge case bug when purchasing biome 4
+	Code Cleanup
+		Changed some CSS to prevent having two versions for iFrame and standalone hosting
+		Reduced number of Javascript var declarations from 269 to 26
+		Fixed all setTimeout() string evaluation anti-patterns
+		Replaced complicated Javascript fade animations with two lines of CSS
+		Fixed many negative margin CSS anti-patterns
+		Moved most of the inline CSS to classes
+		Removed some utility functions that weren't being used anywhere
+		Removed some commented-out code, improved a few bits of confusing code
+		Stripped trailing whitespace and replaced overlooked space-indents with tabs
+	Devtools
+		Improved unlockEverythingDevHack() to more effectively test all three game phases
+		Added new console messages for background music
+
+
+
 
 v1.02 - Chrome breaks web audio standards
 	Added a 'click to start' page to account for the new Chrome autoplay protection
