@@ -7,7 +7,8 @@ v1.03 - Big maintenance patch 2020
 	Fixed broken music filepaths in the demo version
 	Throttled sky gradient to 4FPS to boost performance
 	Throttled stars and planets to 1FPS to boost performance
-	Optimized updateResourceCounter() again
+	Further optimized CPU hogs updateResourceCounter() and recheckItemCostHighlighting()
+	UI color changes now happen immediately instead of delaying for up to three seconds
 	Changed some CSS to prevent having two versions for iFrame and standalone hosting
 	Reduced number of Javascript var declarations from 269 to 26
 	Fixed all setTimeout() string evaluation anti-patterns
@@ -17,6 +18,7 @@ v1.03 - Big maintenance patch 2020
 	Moved most of the inline CSS to classes
 	Fixed three bugs that would result in inaccurate preloader console messages
 	Improved unlockEverythingDevHack() to more effectively test all three game phases
+	Fixed a tiny edge case bug when purchasing biome 4
 	Added new console messages for background music
 	Removed some old commented-out code, improved a few bits of confusing code
 	Stripped trailing whitespace and replaced overlooked space-indents with tabs

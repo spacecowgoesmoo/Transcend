@@ -191,14 +191,11 @@ function updateResourceCounter(shape) {
 			default: break;
 		}
 	}
+	recheckItemCostHighlighting();
 	checkForGameVictory();
 	// Upper left dynamic box resizing
-	// Throttled in phase 2/3 because this is performed more than necessary at that point
-	let resizeCounter;
-	if (cow.diamondBarOwned == true || cow.endgameBarOwned == true) { resizeCounter = rngRange(1,3); }
-	else { resizeCounter = 1 }
-
-	if (resizeCounter == 1) {
+	// Throttled in biome 4 and phase 3/postgame because this is performed more than necessary at those points
+	if (lategameThrottle() == false) {
 		cow.resourceCounterWidthArray[0] = cow.diamondCapacity.toString().length + cow.resourceDiamonds.toLocaleString().length;	// Collect the string lenghts of all the shapes
 		cow.resourceCounterWidthArray[1] = cow.starCapacity.toString().length + cow.resourceStars.toLocaleString().length;
 		cow.resourceCounterWidthArray[2] = cow.hexagonCapacity.toString().length + cow.resourceHexagons.toLocaleString().length;
@@ -225,8 +222,8 @@ function checkToDisableBiome4Filter() {
 
 
 
-function updateTextSpans(recursive) {
-	recheckItemCostHighlighting();
+function updateTextSpans(recursionTime) {
+	// recheckItemCostHighlighting();			// Safer but very CPU intensive. Moved to updateResourceCounter() in v1.03
 	// Shows or hides the buttons in the lower right biome select
 	let r = 0;																						// Used to size the biome select bar
 	if (cow.biome1Owned == true) { biome1Button.style.display = 'inline'; r++; } 				else { biome1Button.style.display = 'none'; }
@@ -278,7 +275,7 @@ function updateTextSpans(recursive) {
 	if (cow.biome4Owned == true || cow.resourceSquares >= 1 || cow.squareCapacity >= 1)															{ squareButtonSpan.style.display = 'inline'; }		else { squareButtonSpan.style.display = 'none'; }
 	if (cow.resourceStardust >= 1 || cow.stardustSpawnBoost1Owned == true || cow.stardustSpawnBoost2Owned == true)								{ stardustButtonSpan.style.display = 'inline'; } 	else { stardustButtonSpan.style.display = 'none'; }
 
-	if (recursive != false) { setTimeout(updateTextSpans, 3000); }	// Allows the function to be called recursively or not
+	if (recursionTime > 1000) { setTimeout(updateTextSpans, recursionTime); }	// Allows the function to be called recursively or not
 }
 
 
@@ -543,11 +540,11 @@ function initializeGameTwo() {
 	if (cow.randomBiomesActive == false) { changeBiome(cow.currentBiome); }	// Activate biome from last play session
 	if (cow.randomBiomesActive == true) { randomBiomes('activate'); }		// Or randomBiome, if applicable
 	// Things that should load first to look good
-	updateTextSpans(true);													// Every 3 seconds
+	updateTextSpans(3000);													// Every 3 seconds
 	initializeProgressBars();
 	// Things that affect the UI but can take a while
 	updateResourceCounter('diamond');										// Takes a few milleseconds each time, noticeable in Firefox
-	updateResourceCounter('star');
+	updateResourceCounter('star');											// Includes recheckItemCostHighlighting() as of v1.03
 	updateResourceCounter('hexagon');
 	updateResourceCounter('triangle');
 	updateResourceCounter('circle');

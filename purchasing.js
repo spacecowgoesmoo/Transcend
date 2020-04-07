@@ -398,160 +398,165 @@ function unlockEverythingPhase3() {
 
 function recheckItemCostHighlighting() {
 	// Very overcomplicated to minimize redraws as much as possible since this gets called every time a shape is collected
-	// The slice function reads the .png filenames, checking if a number is present at the end which would represent a colored image
-	// If upgrade is too expensive and the icon is colored, white it out
-	// Biome purchase buttons
-	if (cow.resourceTriangles < 600 	&& buttID1.src.slice(-10,-5) == 'Color') 	{ buttID1.src = 'Images/hexagon.png'; }
-	if (cow.resourceDiamonds < 100		&& buttID2.src.slice(-10,-5) == 'Color') 	{ buttID2.src = 'Images/triangle.png'; }
-	if (cow.resourceStars < 30 			&& buttID3.src.slice(-10,-5) == 'Color') 	{ buttID3.src = 'Images/square.png'; }
-	if (cow.resourceDiamonds < 100 		&& buttID4.src.slice(-10,-5) == 'Color') 	{ buttID4.src = 'Images/circle.png'; }
-	if (cow.resourceCircles < 1200 		&& buttID5.src.slice(-10,-5) == 'Color') 	{ buttID5.src = 'Images/star.png'; }
-	// Phase 2/3 things
-	if (cow.resourceStars < 800			&& buttID6.src.slice(-10,-5) == 'Color')	{ buttID6.src = 'Images/diamondBarHollow.png'; }
-	if (cow.resourceStardust < 30 		&& buttID7.src.slice(-10,-5) == 'Color')	{ buttID7.src = 'Images/stardustHollow.png'; }
-	if (cow.resourceStardust < 150 		&& buttID8.src.slice(-10,-5) == 'Color') 	{ buttID8.src = 'Images/stardustHollow.png'; }
-	// Capacity upgrades
-	if (cow.resourceDiamonds < 150 		&& buttID9.src.slice(-10,-5) == 'Color') 	{ buttID9.src = 'Images/diamondHollow.png'; }
-	if (cow.resourceDiamonds < 600 		&& buttID10.src.slice(-10,-5) == 'Color')	{ buttID10.src = 'Images/diamondHollow.png'; }
-	if (cow.resourceStars < 200 		&& buttID11.src.slice(-10,-5) == 'Color')	{ buttID11.src = 'Images/starHollow.png'; }
-	if (cow.resourceStars < 400 		&& buttID12.src.slice(-10,-5) == 'Color')	{ buttID12.src = 'Images/starHollow.png'; }
-	if (cow.resourceHexagons < 500 		&& buttID13.src.slice(-10,-5) == 'Color')	{ buttID13.src = 'Images/hexagonHollow.png'; }
-	if (cow.resourceHexagons < 1200 	&& buttID14.src.slice(-10,-5) == 'Color')	{ buttID14.src = 'Images/hexagonHollow.png'; }
-	if (cow.resourceTriangles < 500 	&& buttID15.src.slice(-10,-5) == 'Color')	{ buttID15.src = 'Images/triangleHollow.png'; }
-	if (cow.resourceTriangles < 2000	&& buttID16.src.slice(-10,-5) == 'Color')	{ buttID16.src = 'Images/triangleHollow.png'; }
-	if (cow.resourceCircles < 250 		&& buttID17.src.slice(-10,-5) == 'Color')	{ buttID17.src = 'Images/circleHollow.png'; }
-	if (cow.resourceCircles < 1000 		&& buttID18.src.slice(-10,-5) == 'Color')	{ buttID18.src = 'Images/circleHollow.png'; }
-	if (cow.resourceSquares < 3000 		&& buttID19.src.slice(-10,-5) == 'Color')	{ buttID19.src = 'Images/squareHollow.png'; }
-	if (cow.resourceSquares < 8000 		&& buttID20.src.slice(-10,-5) == 'Color')	{ buttID20.src = 'Images/squareHollow.png'; }
-	// Resource counter numbers and shapes
-	if (buttID21.src.slice(-10,-5) == 'Color' || diamondCounter.style.color != 'rgb(249, 249, 249)') {
-		if (cow.resourceDiamonds < cow.nextDiamondPrice	|| cow.diamondCapacity >= cow.maxDiamondCapacity) {
-			diamondCounter.style.color = "F9F9F9";
-			buttID21.src = 'Images/diamond.png';
-		}
-	}
-	if (buttID22.src.slice(-10,-5) == 'Color' || starCounter.style.color != 'rgb(249, 249, 249)') {
-		if (cow.resourceStars < cow.nextStarPrice || cow.starCapacity >= cow.maxStarCapacity) {
-			starCounter.style.color = "F9F9F9";
-			buttID22.src = 'Images/star.png';
-		}
-	}
-	if (buttID23.src.slice(-10,-5) == 'Color' || hexagonCounter.style.color != 'rgb(249, 249, 249)') {
-		if (cow.resourceHexagons < cow.nextHexagonPrice	|| cow.hexagonCapacity >= cow.maxHexagonCapacity) {
-			hexagonCounter.style.color = "F9F9F9";
-			buttID23.src = 'Images/hexagon.png';
-		}
-	}
-	if (buttID24.src.slice(-10,-5) == 'Color' || triangleCounter.style.color != 'rgb(249, 249, 249)') {
-		if (cow.resourceTriangles < cow.nextTrianglePrice || cow.triangleCapacity >= cow.maxTriangleCapacity) {
-			triangleCounter.style.color = "F9F9F9";
-			buttID24.src = 'Images/triangle.png';
-		}
-	}
-	if (buttID25.src.slice(-10,-5) == 'Color' || circleCounter.style.color != 'rgb(249, 249, 249)') {
-		if (cow.resourceCircles < cow.nextCirclePrice || cow.circleCapacity >= cow.maxCircleCapacity) {
-			circleCounter.style.color = "F9F9F9";
-			buttID25.src = 'Images/circle.png';
-		}
-	}
-	if (buttID26.src.slice(-10,-5) == 'Color' || squareCounter.style.color != 'rgb(249, 249, 249)') {
-		if (cow.resourceSquares < cow.nextSquarePrice || cow.squareCapacity >= cow.maxSquareCapacity) {
-			squareCounter.style.color = "F9F9F9";
-			buttID26.src = 'Images/square.png';
-		}
-	}
-	// If upgrade is buyable and the icon is white, colorize it
-	// Biome purchase buttons
-	if (cow.resourceTriangles >= 600 	&& buttID1.src.slice(-10,-5) != 'Color') 	{ buttID1.src = 'Images/hexagonColor'+ rngRange(4,7) + '.png'; }
-	if (cow.resourceDiamonds >= 100		&& buttID2.src.slice(-10,-5) != 'Color') 	{ buttID2.src = 'Images/triangleColor' + rngRange(4,7) + '.png'; }
-	if (cow.resourceStars >= 30 		&& buttID3.src.slice(-10,-5) != 'Color') 	{ buttID3.src = 'Images/squareColor'+ rngRange(4,7) + '.png'; }
-	if (cow.resourceDiamonds >= 100 	&& buttID4.src.slice(-10,-5) != 'Color') 	{ buttID4.src = 'Images/circleColor'+ rngRange(4,7) + '.png'; }
-	if (cow.resourceCircles >= 1200 	&& buttID5.src.slice(-10,-5) != 'Color') 	{ buttID5.src = 'Images/starColor' + rngRange(4,7) + '.png' }
-	// Phase 2/3 things
-	if (cow.resourceStars >= 800 		&& buttID6.src.slice(-10,-5) != 'Color')	{ buttID6.src = 'Images/diamondBarHollowColor' + rngRange(1,3) + '.png'; }
-	if (cow.resourceStardust >= 30 		&& buttID7.src.slice(-10,-5) != 'Color')	{ buttID7.src = 'Images/stardustHollowColor' + rngRange(1,3) + '.png'; }
-	if (cow.resourceStardust >= 150 	&& buttID8.src.slice(-10,-5) != 'Color')	{ buttID8.src = 'Images/stardustHollowColor' + rngRange(1,3) + '.png' }
-	// Capacity upgrades
-	if (cow.resourceDiamonds >= 150 	&& buttID9.src.slice(-10,-5) != 'Color') 	{ buttID9.src = 'Images/diamondHollowColor' + rngRange(1,3) + '.png'; }
-	if (cow.resourceDiamonds >= 600		&& buttID10.src.slice(-10,-5) != 'Color')	{ buttID10.src = 'Images/diamondHollowColor' + rngRange(1,3) + '.png'; }
-	if (cow.resourceStars >= 200 		&& buttID11.src.slice(-10,-5) != 'Color')	{ buttID11.src = 'Images/starHollowColor' + rngRange(1,3) + '.png'; }
-	if (cow.resourceStars >= 400 		&& buttID12.src.slice(-10,-5) != 'Color')	{ buttID12.src = 'Images/starHollowColor' + rngRange(1,3) + '.png'; }
-	if (cow.resourceHexagons >= 500 	&& buttID13.src.slice(-10,-5) != 'Color')	{ buttID13.src = 'Images/hexagonHollowColor' + rngRange(1,3) + '.png'; }
-	if (cow.resourceHexagons >= 1200 	&& buttID14.src.slice(-10,-5) != 'Color')	{ buttID14.src = 'Images/hexagonHollowColor' + rngRange(1,3) + '.png'; }
-	if (cow.resourceTriangles >= 500 	&& buttID15.src.slice(-10,-5) != 'Color')	{ buttID15.src = 'Images/triangleHollowColor' + rngRange(1,3) + '.png'; }
-	if (cow.resourceTriangles >= 2000 	&& buttID16.src.slice(-10,-5) != 'Color')	{ buttID16.src = 'Images/triangleHollowColor' + rngRange(1,3) + '.png'; }
-	if (cow.resourceCircles >= 250 		&& buttID17.src.slice(-10,-5) != 'Color')	{ buttID17.src = 'Images/circleHollowColor' + rngRange(1,3) + '.png'; }
-	if (cow.resourceCircles >= 1000 	&& buttID18.src.slice(-10,-5) != 'Color')	{ buttID18.src = 'Images/circleHollowColor' + rngRange(1,3) + '.png'; }
-	if (cow.resourceSquares >= 3000 	&& buttID19.src.slice(-10,-5) != 'Color')	{ buttID19.src = 'Images/squareHollowColor' + rngRange(1,3) + '.png'; }
-	if (cow.resourceSquares >= 8000 	&& buttID20.src.slice(-10,-5) != 'Color')	{ buttID20.src = 'Images/squareHollowColor' + rngRange(1,3) + '.png'; }
 
-	// Resource counter numbers and shapes
-	function getRNG() { return rngRange(4,7); }
-	if (cow.resourceDiamonds >= cow.nextDiamondPrice 	&& cow.diamondCapacity < cow.maxDiamondCapacity 	&& (buttID21.src.slice(-10,-5) != 'Color' || diamondCounter.style.color == 'rgb(249, 249, 249)')) {
-		const q = getRNG()
-		switch (q) {
-			case 4: diamondCounter.style.color = '#B0B22C'; break;
-			case 5: diamondCounter.style.color = '#DE8F49'; break;
-			case 6: diamondCounter.style.color = '#21C65E'; break;
-			case 7: diamondCounter.style.color = '#6A5096'; break;
-			default: break;
+	// The slice function reads the .png filenames, checking if a number is present at the end which would represent a colored image
+	// If upgrade is too expensive, and the icon is colored, white it out
+
+	// Throttled in biome 4 and phase 3/postgame because this is performed more than necessary at those points
+	if (lategameThrottle() == false) {
+		// Biome purchase buttons
+		if (cow.resourceTriangles < 600 	&& buttID1.src.slice(-10,-5) == 'Color') 	{ buttID1.src = 'Images/hexagon.png'; }
+		if (cow.resourceDiamonds < 100		&& buttID2.src.slice(-10,-5) == 'Color') 	{ buttID2.src = 'Images/triangle.png'; }
+		if (cow.resourceStars < 30 			&& buttID3.src.slice(-10,-5) == 'Color') 	{ buttID3.src = 'Images/square.png'; }
+		if (cow.resourceDiamonds < 100 		&& buttID4.src.slice(-10,-5) == 'Color') 	{ buttID4.src = 'Images/circle.png'; }
+		if (cow.resourceCircles < 1200 		&& buttID5.src.slice(-10,-5) == 'Color') 	{ buttID5.src = 'Images/star.png'; }
+		// Phase 2/3 things
+		if (cow.resourceStars < 800			&& buttID6.src.slice(-10,-5) == 'Color')	{ buttID6.src = 'Images/diamondBarHollow.png'; }
+		if (cow.resourceStardust < 30 		&& buttID7.src.slice(-10,-5) == 'Color')	{ buttID7.src = 'Images/stardustHollow.png'; }
+		if (cow.resourceStardust < 150 		&& buttID8.src.slice(-10,-5) == 'Color') 	{ buttID8.src = 'Images/stardustHollow.png'; }
+		// Capacity upgrades
+		if (cow.resourceDiamonds < 150 		&& buttID9.src.slice(-10,-5) == 'Color') 	{ buttID9.src = 'Images/diamondHollow.png'; }
+		if (cow.resourceDiamonds < 600 		&& buttID10.src.slice(-10,-5) == 'Color')	{ buttID10.src = 'Images/diamondHollow.png'; }
+		if (cow.resourceStars < 200 		&& buttID11.src.slice(-10,-5) == 'Color')	{ buttID11.src = 'Images/starHollow.png'; }
+		if (cow.resourceStars < 400 		&& buttID12.src.slice(-10,-5) == 'Color')	{ buttID12.src = 'Images/starHollow.png'; }
+		if (cow.resourceHexagons < 500 		&& buttID13.src.slice(-10,-5) == 'Color')	{ buttID13.src = 'Images/hexagonHollow.png'; }
+		if (cow.resourceHexagons < 1200 	&& buttID14.src.slice(-10,-5) == 'Color')	{ buttID14.src = 'Images/hexagonHollow.png'; }
+		if (cow.resourceTriangles < 500 	&& buttID15.src.slice(-10,-5) == 'Color')	{ buttID15.src = 'Images/triangleHollow.png'; }
+		if (cow.resourceTriangles < 2000	&& buttID16.src.slice(-10,-5) == 'Color')	{ buttID16.src = 'Images/triangleHollow.png'; }
+		if (cow.resourceCircles < 250 		&& buttID17.src.slice(-10,-5) == 'Color')	{ buttID17.src = 'Images/circleHollow.png'; }
+		if (cow.resourceCircles < 1000 		&& buttID18.src.slice(-10,-5) == 'Color')	{ buttID18.src = 'Images/circleHollow.png'; }
+		if (cow.resourceSquares < 3000 		&& buttID19.src.slice(-10,-5) == 'Color')	{ buttID19.src = 'Images/squareHollow.png'; }
+		if (cow.resourceSquares < 8000 		&& buttID20.src.slice(-10,-5) == 'Color')	{ buttID20.src = 'Images/squareHollow.png'; }
+		// Resource counter numbers and shapes
+		if (buttID21.src.slice(-10,-5) == 'Color' || diamondCounter.style.color != 'rgb(249, 249, 249)') {
+			if (cow.resourceDiamonds < cow.nextDiamondPrice	|| cow.diamondCapacity >= cow.maxDiamondCapacity) {
+				diamondCounter.style.color = "F9F9F9";
+				buttID21.src = 'Images/diamond.png';
 			}
-		buttID21.src = 'Images/diamondColor' + q + '.png';
-	}
-	if (cow.resourceStars >= cow.nextStarPrice 			&& cow.starCapacity < cow.maxStarCapacity 			&& (buttID22.src.slice(-10,-5) != 'Color' || starCounter.style.color == 'rgb(249, 249, 249)')) {
-		const q = getRNG()
-		switch (q) {
-			case 4: starCounter.style.color = '#439C9E'; break;
-			case 5: starCounter.style.color = '#B658A5'; break;
-			case 6: starCounter.style.color = '#C19B3A'; break;
-			case 7: starCounter.style.color = '#73B47C'; break;
-			default: break;
+		}
+		if (buttID22.src.slice(-10,-5) == 'Color' || starCounter.style.color != 'rgb(249, 249, 249)') {
+			if (cow.resourceStars < cow.nextStarPrice || cow.starCapacity >= cow.maxStarCapacity) {
+				starCounter.style.color = "F9F9F9";
+				buttID22.src = 'Images/star.png';
 			}
-		buttID22.src = 'Images/starColor' + q + '.png';
-	}
-	if (cow.resourceHexagons >= cow.nextHexagonPrice 	&& cow.hexagonCapacity < cow.maxHexagonCapacity 	&& (buttID23.src.slice(-10,-5) != 'Color' || hexagonCounter.style.color == 'rgb(249, 249, 249)')) {
-		const q = getRNG()
-		switch (q) {
-			case 4: hexagonCounter.style.color = '#24A952'; break;
-			case 5: hexagonCounter.style.color = '#3B5DA2'; break;
-			case 6: hexagonCounter.style.color = '#AC49A9'; break;
-			case 7: hexagonCounter.style.color = '#CA5D5D'; break;
-			default: break;
+		}
+		if (buttID23.src.slice(-10,-5) == 'Color' || hexagonCounter.style.color != 'rgb(249, 249, 249)') {
+			if (cow.resourceHexagons < cow.nextHexagonPrice	|| cow.hexagonCapacity >= cow.maxHexagonCapacity) {
+				hexagonCounter.style.color = "F9F9F9";
+				buttID23.src = 'Images/hexagon.png';
 			}
-		buttID23.src = 'Images/hexagonColor' + q + '.png';
-	}
-	if (cow.resourceTriangles >= cow.nextTrianglePrice 	&& cow.triangleCapacity < cow.maxTriangleCapacity 	&& (buttID24.src.slice(-10,-5) != 'Color' || triangleCounter.style.color == 'rgb(249, 249, 249)')) {
-		const q = getRNG()
-		switch (q) {
-			case 4: triangleCounter.style.color = '#2B7A94'; break;
-			case 5: triangleCounter.style.color = '#932340'; break;
-			case 6: triangleCounter.style.color = '#BBB21C'; break;
-			case 7: triangleCounter.style.color = '#9A537B'; break;
-			default: break;
+		}
+		if (buttID24.src.slice(-10,-5) == 'Color' || triangleCounter.style.color != 'rgb(249, 249, 249)') {
+			if (cow.resourceTriangles < cow.nextTrianglePrice || cow.triangleCapacity >= cow.maxTriangleCapacity) {
+				triangleCounter.style.color = "F9F9F9";
+				buttID24.src = 'Images/triangle.png';
 			}
-		buttID24.src = 'Images/triangleColor' + q + '.png';
-	}
-	if (cow.resourceCircles >= cow.nextCirclePrice 		&& cow.circleCapacity < cow.maxCircleCapacity 		&& (buttID25.src.slice(-10,-5) != 'Color' || circleCounter.style.color == 'rgb(249, 249, 249)')) {
-		const q = getRNG()
-		switch (q) {
-			case 4: circleCounter.style.color = '#119E8D'; break;
-			case 5: circleCounter.style.color = '#E9525E'; break;
-			case 6: circleCounter.style.color = '#8B6FD0'; break;
-			case 7: circleCounter.style.color = '#B8803D'; break;
-			default: break;
+		}
+		if (buttID25.src.slice(-10,-5) == 'Color' || circleCounter.style.color != 'rgb(249, 249, 249)') {
+			if (cow.resourceCircles < cow.nextCirclePrice || cow.circleCapacity >= cow.maxCircleCapacity) {
+				circleCounter.style.color = "F9F9F9";
+				buttID25.src = 'Images/circle.png';
 			}
-		buttID25.src = 'Images/circleColor' + q + '.png';
-	}
-	if (cow.resourceSquares >= cow.nextSquarePrice 		&& cow.squareCapacity < cow.maxSquareCapacity 		&& (buttID26.src.slice(-10,-5) != 'Color' || squareCounter.style.color == 'rgb(249, 249, 249)')) {
-		const q = getRNG()
-		switch (q) {
-			case 4: squareCounter.style.color = '#9052D0'; break;
-			case 5: squareCounter.style.color = '#307A93'; break;
-			case 6: squareCounter.style.color = '#279C32'; break;
-			case 7: squareCounter.style.color = '#B1B23B'; break;
-			default: break;
+		}
+		if (buttID26.src.slice(-10,-5) == 'Color' || squareCounter.style.color != 'rgb(249, 249, 249)') {
+			if (cow.resourceSquares < cow.nextSquarePrice || cow.squareCapacity >= cow.maxSquareCapacity) {
+				squareCounter.style.color = "F9F9F9";
+				buttID26.src = 'Images/square.png';
 			}
-		buttID26.src = 'Images/squareColor' + q + '.png';
+		}
+		// If upgrade is buyable, and the icon is white, colorize it
+		// Biome purchase buttons
+		if (cow.resourceTriangles >= 600 	&& buttID1.src.slice(-10,-5) != 'Color') 	{ buttID1.src = 'Images/hexagonColor'+ rngRange(4,7) + '.png'; }
+		if (cow.resourceDiamonds >= 100		&& buttID2.src.slice(-10,-5) != 'Color') 	{ buttID2.src = 'Images/triangleColor' + rngRange(4,7) + '.png'; }
+		if (cow.resourceStars >= 30 		&& buttID3.src.slice(-10,-5) != 'Color') 	{ buttID3.src = 'Images/squareColor'+ rngRange(4,7) + '.png'; }
+		if (cow.resourceDiamonds >= 100 	&& buttID4.src.slice(-10,-5) != 'Color') 	{ buttID4.src = 'Images/circleColor'+ rngRange(4,7) + '.png'; }
+		if (cow.resourceCircles >= 1200 	&& buttID5.src.slice(-10,-5) != 'Color') 	{ buttID5.src = 'Images/starColor' + rngRange(4,7) + '.png' }
+		// Phase 2/3 things
+		if (cow.resourceStars >= 800 		&& buttID6.src.slice(-10,-5) != 'Color')	{ buttID6.src = 'Images/diamondBarHollowColor' + rngRange(1,3) + '.png'; }
+		if (cow.resourceStardust >= 30 		&& buttID7.src.slice(-10,-5) != 'Color')	{ buttID7.src = 'Images/stardustHollowColor' + rngRange(1,3) + '.png'; }
+		if (cow.resourceStardust >= 150 	&& buttID8.src.slice(-10,-5) != 'Color')	{ buttID8.src = 'Images/stardustHollowColor' + rngRange(1,3) + '.png' }
+		// Capacity upgrades
+		if (cow.resourceDiamonds >= 150 	&& buttID9.src.slice(-10,-5) != 'Color') 	{ buttID9.src = 'Images/diamondHollowColor' + rngRange(1,3) + '.png'; }
+		if (cow.resourceDiamonds >= 600		&& buttID10.src.slice(-10,-5) != 'Color')	{ buttID10.src = 'Images/diamondHollowColor' + rngRange(1,3) + '.png'; }
+		if (cow.resourceStars >= 200 		&& buttID11.src.slice(-10,-5) != 'Color')	{ buttID11.src = 'Images/starHollowColor' + rngRange(1,3) + '.png'; }
+		if (cow.resourceStars >= 400 		&& buttID12.src.slice(-10,-5) != 'Color')	{ buttID12.src = 'Images/starHollowColor' + rngRange(1,3) + '.png'; }
+		if (cow.resourceHexagons >= 500 	&& buttID13.src.slice(-10,-5) != 'Color')	{ buttID13.src = 'Images/hexagonHollowColor' + rngRange(1,3) + '.png'; }
+		if (cow.resourceHexagons >= 1200 	&& buttID14.src.slice(-10,-5) != 'Color')	{ buttID14.src = 'Images/hexagonHollowColor' + rngRange(1,3) + '.png'; }
+		if (cow.resourceTriangles >= 500 	&& buttID15.src.slice(-10,-5) != 'Color')	{ buttID15.src = 'Images/triangleHollowColor' + rngRange(1,3) + '.png'; }
+		if (cow.resourceTriangles >= 2000 	&& buttID16.src.slice(-10,-5) != 'Color')	{ buttID16.src = 'Images/triangleHollowColor' + rngRange(1,3) + '.png'; }
+		if (cow.resourceCircles >= 250 		&& buttID17.src.slice(-10,-5) != 'Color')	{ buttID17.src = 'Images/circleHollowColor' + rngRange(1,3) + '.png'; }
+		if (cow.resourceCircles >= 1000 	&& buttID18.src.slice(-10,-5) != 'Color')	{ buttID18.src = 'Images/circleHollowColor' + rngRange(1,3) + '.png'; }
+		if (cow.resourceSquares >= 3000 	&& buttID19.src.slice(-10,-5) != 'Color')	{ buttID19.src = 'Images/squareHollowColor' + rngRange(1,3) + '.png'; }
+		if (cow.resourceSquares >= 8000 	&& buttID20.src.slice(-10,-5) != 'Color')	{ buttID20.src = 'Images/squareHollowColor' + rngRange(1,3) + '.png'; }
+	
+		// Resource counter numbers and shapes
+		function getRNG() { return rngRange(4,7); }
+		if (cow.resourceDiamonds >= cow.nextDiamondPrice 	&& cow.diamondCapacity < cow.maxDiamondCapacity 	&& (buttID21.src.slice(-10,-5) != 'Color' || diamondCounter.style.color == 'rgb(249, 249, 249)')) {
+			const q = getRNG()
+			switch (q) {
+				case 4: diamondCounter.style.color = '#B0B22C'; break;
+				case 5: diamondCounter.style.color = '#DE8F49'; break;
+				case 6: diamondCounter.style.color = '#21C65E'; break;
+				case 7: diamondCounter.style.color = '#6A5096'; break;
+				default: break;
+				}
+			buttID21.src = 'Images/diamondColor' + q + '.png';
+		}
+		if (cow.resourceStars >= cow.nextStarPrice 			&& cow.starCapacity < cow.maxStarCapacity 			&& (buttID22.src.slice(-10,-5) != 'Color' || starCounter.style.color == 'rgb(249, 249, 249)')) {
+			const q = getRNG()
+			switch (q) {
+				case 4: starCounter.style.color = '#439C9E'; break;
+				case 5: starCounter.style.color = '#B658A5'; break;
+				case 6: starCounter.style.color = '#C19B3A'; break;
+				case 7: starCounter.style.color = '#73B47C'; break;
+				default: break;
+				}
+			buttID22.src = 'Images/starColor' + q + '.png';
+		}
+		if (cow.resourceHexagons >= cow.nextHexagonPrice 	&& cow.hexagonCapacity < cow.maxHexagonCapacity 	&& (buttID23.src.slice(-10,-5) != 'Color' || hexagonCounter.style.color == 'rgb(249, 249, 249)')) {
+			const q = getRNG()
+			switch (q) {
+				case 4: hexagonCounter.style.color = '#24A952'; break;
+				case 5: hexagonCounter.style.color = '#3B5DA2'; break;
+				case 6: hexagonCounter.style.color = '#AC49A9'; break;
+				case 7: hexagonCounter.style.color = '#CA5D5D'; break;
+				default: break;
+				}
+			buttID23.src = 'Images/hexagonColor' + q + '.png';
+		}
+		if (cow.resourceTriangles >= cow.nextTrianglePrice 	&& cow.triangleCapacity < cow.maxTriangleCapacity 	&& (buttID24.src.slice(-10,-5) != 'Color' || triangleCounter.style.color == 'rgb(249, 249, 249)')) {
+			const q = getRNG()
+			switch (q) {
+				case 4: triangleCounter.style.color = '#2B7A94'; break;
+				case 5: triangleCounter.style.color = '#932340'; break;
+				case 6: triangleCounter.style.color = '#BBB21C'; break;
+				case 7: triangleCounter.style.color = '#9A537B'; break;
+				default: break;
+				}
+			buttID24.src = 'Images/triangleColor' + q + '.png';
+		}
+		if (cow.resourceCircles >= cow.nextCirclePrice 		&& cow.circleCapacity < cow.maxCircleCapacity 		&& (buttID25.src.slice(-10,-5) != 'Color' || circleCounter.style.color == 'rgb(249, 249, 249)')) {
+			const q = getRNG()
+			switch (q) {
+				case 4: circleCounter.style.color = '#119E8D'; break;
+				case 5: circleCounter.style.color = '#E9525E'; break;
+				case 6: circleCounter.style.color = '#8B6FD0'; break;
+				case 7: circleCounter.style.color = '#B8803D'; break;
+				default: break;
+				}
+			buttID25.src = 'Images/circleColor' + q + '.png';
+		}
+		if (cow.resourceSquares >= cow.nextSquarePrice 		&& cow.squareCapacity < cow.maxSquareCapacity 		&& (buttID26.src.slice(-10,-5) != 'Color' || squareCounter.style.color == 'rgb(249, 249, 249)')) {
+			const q = getRNG()
+			switch (q) {
+				case 4: squareCounter.style.color = '#9052D0'; break;
+				case 5: squareCounter.style.color = '#307A93'; break;
+				case 6: squareCounter.style.color = '#279C32'; break;
+				case 7: squareCounter.style.color = '#B1B23B'; break;
+				default: break;
+				}
+			buttID26.src = 'Images/squareColor' + q + '.png';
+		}
 	}
 }
 

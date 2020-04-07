@@ -26,6 +26,16 @@ function randomColorPound(luminosity, color) {
 
 
 
+function lategameThrottle() {
+	let throttle;
+	if ((cow.currentBiome == 'biome4' || cow.endgameBarOwned == true || cow.gameClear == true) && rngRange(1,3) == 1) { throttle = true; }
+	else { throttle = false; }
+	return throttle;
+}
+
+
+
+
 function newFade(id, targetOpacity, time) {
 	// targetOpacity should always be 0 or 0.7
 	id.style.transition = 'opacity ' + time + 's ease';

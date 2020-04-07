@@ -36,6 +36,7 @@ function importEncryptedSave() {
 		cow.currentBiome = 'biome1';
 		cow.gameStarted = false;
 		cow.spawnNewBGgradient = true;
+		cow.resourceCounterWidth = 115;
 		cow.biome1CurrentDiamondCount = 0;
 		cow.biome1CurrentStarCount = 0;
 		cow.biome2CurrentHexagonCount = 0;
@@ -91,6 +92,8 @@ function loadGame() {
 		cow.filesPreloaded = cowTemp;
 
 		cow.bgTransitionSpeed = 5;
+
+		cow.resourceCounterWidth = 115;
 
 		cow.biome1CurrentDiamondCount = 0;
 		cow.biome1CurrentStarCount = 0;
