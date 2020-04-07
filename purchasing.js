@@ -128,7 +128,7 @@ function buyBiome4() {
 	if (cow.resourceStars >= 30) {
 		cow.resourceStars -= 30;
 		cow.biome4Owned = true;
-		cow.squareCapacity = 10;
+		if (cow.squareCapacity == 0) { cow.squareCapacity = 10; }
 		clearPricesSpan();
 		updateResourceCounter('star');
 		updateResourceCounter('square');
