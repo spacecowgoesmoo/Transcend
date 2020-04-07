@@ -193,8 +193,12 @@ function updateResourceCounter(shape) {
 	}
 	checkForGameVictory();
 	// Upper left dynamic box resizing
-	// Throttled a bit because accessing the DOM in the if statement below is expensive
-	if (rngRange(1,3) == 1) {
+	// Throttled in phase 2/3 because this is performed more than necessary at that point
+	let resizeCounter;
+	if (cow.diamondBarOwned == true || cow.endgameBarOwned == true) { resizeCounter = rngRange(1,3); }
+	else { resizeCounter = 1 }
+
+	if (resizeCounter == 1) {
 		cow.resourceCounterWidthArray[0] = cow.diamondCapacity.toString().length + cow.resourceDiamonds.toLocaleString().length;	// Collect the string lenghts of all the shapes
 		cow.resourceCounterWidthArray[1] = cow.starCapacity.toString().length + cow.resourceStars.toLocaleString().length;
 		cow.resourceCounterWidthArray[2] = cow.hexagonCapacity.toString().length + cow.resourceHexagons.toLocaleString().length;
