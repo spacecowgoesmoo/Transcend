@@ -155,16 +155,17 @@ var cow = {
 
 function updateResourceCounter(shape) {
 	// .toLocaleString(); adds comma separators
+	const separator = '»';
 	switch (shape) {
-		case 'diamond': 	diamondCounterText.innerHTML = cow.diamondCapacity + ' / ' + cow.resourceDiamonds.toLocaleString();		break;
-		case 'star': 		starCounterText.innerHTML = cow.starCapacity + ' / ' + cow.resourceStars.toLocaleString();				break;
-		case 'hexagon': 	hexagonCounterText.innerHTML = cow.hexagonCapacity + ' / ' + cow.resourceHexagons.toLocaleString();		break;
-		case 'triangle': 	triangleCounterText.innerHTML = cow.triangleCapacity + ' / ' + cow.resourceTriangles.toLocaleString();	break;
-		case 'circle': 		circleCounterText.innerHTML = cow.circleCapacity + ' / ' + cow.resourceCircles.toLocaleString();		break;
-		case 'square': 		squareCounterText.innerHTML = cow.squareCapacity + ' / ' + cow.resourceSquares.toLocaleString();		break;		// Leaving out the filter check here as a hack for making the load order work. Biome4 only spawns quads and pillars.
-		case 'pillar': 		squareCounterText.innerHTML = cow.squareCapacity + ' / ' + cow.resourceSquares.toLocaleString();
+		case 'diamond': 	diamondCounterText.innerHTML = cow.diamondCapacity + separator + cow.resourceDiamonds.toLocaleString();		break;
+		case 'star': 		starCounterText.innerHTML = cow.starCapacity + separator + cow.resourceStars.toLocaleString();				break;
+		case 'hexagon': 	hexagonCounterText.innerHTML = cow.hexagonCapacity + separator + cow.resourceHexagons.toLocaleString();		break;
+		case 'triangle': 	triangleCounterText.innerHTML = cow.triangleCapacity + separator + cow.resourceTriangles.toLocaleString();	break;
+		case 'circle': 		circleCounterText.innerHTML = cow.circleCapacity + separator + cow.resourceCircles.toLocaleString();		break;
+		case 'square': 		squareCounterText.innerHTML = cow.squareCapacity + separator + cow.resourceSquares.toLocaleString();		break;		// Leaving out the filter check here as a hack for making the load order work. Biome4 only spawns quads and pillars.
+		case 'pillar': 		squareCounterText.innerHTML = cow.squareCapacity + separator + cow.resourceSquares.toLocaleString();
 								checkToDisableBiome4Filter();																										break;
-		case 'quad': 		squareCounterText.innerHTML = cow.squareCapacity + ' / ' + cow.resourceSquares.toLocaleString();
+		case 'quad': 		squareCounterText.innerHTML = cow.squareCapacity + separator + cow.resourceSquares.toLocaleString();
 								checkToDisableBiome4Filter();																										break;
 		case 'stardust':  	stardustCounterText.innerHTML = cow.resourceStardust.toLocaleString();
 								// Update the Diamond Bar
