@@ -23,81 +23,91 @@ function playAudio(filename, type, pan, noFilter) {
 	if (((cow.sfxVolume >= 5 && type == 'sfx') || type == 'bgm') && cow.muteAudioForIE == false) {			// Prevents SFX from loading if SFX are muted. Saves CPU
 		let snd = new Pizzicato.Sound(filename + cow.audioFormat, function() {
 
-		if (rngRange(1,10) < 3 && type == 'sfx') {							// Set up effects and add them to the signal chain one by one
-			const distortion = new Pizzicato.Effects.Distortion({			// No distortion allowed on music
-				gain: rngRange(20,50)/100,
+			if (rngRange(1,10) < 3 && type == 'sfx') {							// Set up effects and add them to the signal chain one by one
+				const distortion = new Pizzicato.Effects.Distortion({			// No distortion allowed on music
+					gain: rngRange(20,50)/100,
+				});
+				snd.addEffect(distortion);
+			}
+	
+			// if (rngRange(1,10) < 3) {										// Probably more CPU intensive than distortion and not much different
+			// 	const quadrafuzz = new Pizzicato.Effects.Quadrafuzz({			// Can add too much high statics
+			// 	    lowGain: rngRange(3,7)/10,
+			// 	    midLowGain: rngRange(3,7)/10,
+			// 	    midHighGain: rngRange(3,7)/10,
+			// 	    highGain: rngRange(3,7)/10,
+			// 	    mix: rngRange(5,10)/10
+			// 	});
+			// 	snd.addEffect(quadrafuzz);
+			// }
+
+			// if (rngRange(1,100) < 7 && type == 'sfx') {						// Sounds good but murders the CPU and audio engine
+			// 	const delay = new Pizzicato.Effects.Delay({						// Each +10% chance costs about 20% more CPU at endgame
+			// 		feedback: rngRange(4,8)/10,
+			//     	time: rngRange(2,20)/10,
+			//     	mix: rngRange(6,10)/10
+			// 	});
+			// 	snd.addEffect(delay);
+			// }
+
+			// if (rngRange(1,10) < 3 && type == 'sfx') {						// Sounds good but murders the CPU and audio engine
+			// 	const reverb = new Pizzicato.Effects.Reverb({					// SFX also sound less muddier without it..
+			// 	    time: rngRange(100,300)/100,
+			// 	    decay: rngRange(100,300)/100,
+			// 	    mix: rngRange(6,10)/10
+			// 	});
+			// 	if (rngRange(1,10) < 5) { reverb.reverse = true; }
+			// 	snd.addEffect(reverb);
+			// }
+
+			if (rngRange(1,10) < 2 && noFilter != true) {						// the != saves me from having to add 'noFilter=false' to everything
+				const lowPassFilter = new Pizzicato.Effects.LowPassFilter({		// noFilter is used for the evilCircles whose SFX are only bass
+				    frequency: rngRange(200,600),
+				    peak: rngRange(5,15)
+				});
+				snd.addEffect(lowPassFilter);
+			}
+
+			if (rngRange(1,10) < 2 && noFilter != true) {
+				const highPassFilter = new Pizzicato.Effects.HighPassFilter({
+				    frequency: rngRange(1000,5000),
+				    peak: rngRange(5,15)
+				});
+				snd.addEffect(highPassFilter);
+			}
+
+			// if (rngRange(1,10) < 3) {										// Not noticible enough when low, sounds bad when high
+			// 	const flanger = new Pizzicato.Effects.Flanger({
+			// 		time: rngRange(5,7)/10,
+			// 	    speed: rngRange(5,7)/10,
+			// 	    depth: rngRange(1,2)/10,
+			// 		feedback: rngRange(1,5)/10,
+			// 	    mix: rngRange(4,6)/10
+			// 	});
+			// 	snd.addEffect(flanger);
+			// }
+
+			const stereoPanner = new Pizzicato.Effects.StereoPanner({			// Applied to every SFX
+			    pan: (pan-450)/450												// Converts X position to panning. (0, 900) to (-1, 1)
 			});
-			snd.addEffect(distortion);
-		}
-
-		// if (rngRange(1,10) < 3) {										// Probably more CPU intensive than distortion and not much different
-		// 	const quadrafuzz = new Pizzicato.Effects.Quadrafuzz({			// Can add too much high statics
-		// 	    lowGain: rngRange(3,7)/10,
-		// 	    midLowGain: rngRange(3,7)/10,
-		// 	    midHighGain: rngRange(3,7)/10,
-		// 	    highGain: rngRange(3,7)/10,
-		// 	    mix: rngRange(5,10)/10
-		// 	});
-		// 	snd.addEffect(quadrafuzz);
-		// }
-
-		// if (rngRange(1,100) < 7 && type == 'sfx') {							// Sounds good but murders the CPU and audio engine
-		// 	const delay = new Pizzicato.Effects.Delay({						// Each +10% chance costs about 20% more CPU at endgame
-		// 		feedback: rngRange(4,8)/10,
-		//     	time: rngRange(2,20)/10,
-		//     	mix: rngRange(6,10)/10
-		// 	});
-		// 	snd.addEffect(delay);
-		// }
-
-		// if (rngRange(1,10) < 3 && type == 'sfx') {						// Sounds good but murders the CPU and audio engine
-// 			const reverb = new Pizzicato.Effects.Reverb({					// SFX also sound less muddier without it..
-// 			    time: rngRange(100,300)/100,
-// 			    decay: rngRange(100,300)/100,
-// 			    mix: rngRange(6,10)/10
-// 			});
-// 			if (rngRange(1,10) < 5) { reverb.reverse = true; }
-// 			snd.addEffect(reverb);
-// 		}
-
-		if (rngRange(1,10) < 2 && noFilter != true) {						// the != saves me from having to add 'noFilter=false' to everything
-			const lowPassFilter = new Pizzicato.Effects.LowPassFilter({		// noFilter is used for the evilCircles whose SFX are only bass
-			    frequency: rngRange(200,600),
-			    peak: rngRange(5,15)
-			});
-			snd.addEffect(lowPassFilter);
-		}
-
-		if (rngRange(1,10) < 2 && noFilter != true) {
-			const highPassFilter = new Pizzicato.Effects.HighPassFilter({
-			    frequency: rngRange(1000,5000),
-			    peak: rngRange(5,15)
-			});
-			snd.addEffect(highPassFilter);
-		}
-
-		// if (rngRange(1,10) < 3) {										// Not noticible enough when low, sounds bad when high
-// 			const flanger = new Pizzicato.Effects.Flanger({
-// 				time: rngRange(5,7)/10,
-// 			    speed: rngRange(5,7)/10,
-// 			    depth: rngRange(1,2)/10,
-// 				feedback: rngRange(1,5)/10,
-// 			    mix: rngRange(4,6)/10
-// 			});
-// 			snd.addEffect(flanger);
-// 		}
-
-		const stereoPanner = new Pizzicato.Effects.StereoPanner({			// Applied to every SFX
-		    pan: (pan-450)/450												// Converts X position to panning. (0, 900) to (-1, 1)
-		});
-		snd.addEffect(stereoPanner);
-
-		if (type == 'sfx') { snd.volume = cow.sfxVolume/100; sfxGroup.addSound(snd); sfxGroup.play(); 	sfxGroup.removeSound(snd); }											// Add, play, and remove sound.	Set volume takes place at different times for reasons below
-		if (type == 'bgm') { 								 bgmGroup.addSound(snd); bgmGroup.play(); 	bgmGroup.volume = cow.bgmVolume/100; 	setTimeout(killBGM, 240000); }	// Annoying scope-y setTimeout to remove the BGM after 4 minutes
-
+			snd.addEffect(stereoPanner);
+	
+			// Add, play, and remove sound.	Set volume takes place at different times for reasons below
+			if (type == 'sfx') { 
+				snd.volume = cow.sfxVolume/100; 
+				sfxGroup.addSound(snd); 
+				sfxGroup.play(); 	
+				sfxGroup.removeSound(snd);
+			}		
+			if (type == 'bgm') { 
+				bgmGroup.addSound(snd);
+				bgmGroup.play();
+				bgmGroup.volume = cow.bgmVolume/100;
+				setTimeout(killBGM, 240000);	// Annoying scope-y setTimeout to remove the BGM after 4 minutes
+			}
 		});
 	}
-	function killBGM() { bgmGroup.removeSound(snd); }
+	function killBGM() { console.log('bgm deleted'); bgmGroup.removeSound(snd); }
 }
 
 

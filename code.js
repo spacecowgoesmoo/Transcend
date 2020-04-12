@@ -164,9 +164,9 @@ function updateResourceCounter(shape) {
 		case 'circle': 		circleCounterText.innerHTML = cow.circleCapacity + separator + cow.resourceCircles.toLocaleString();		break;
 		case 'square': 		squareCounterText.innerHTML = cow.squareCapacity + separator + cow.resourceSquares.toLocaleString();		break;		// Leaving out the filter check here as a hack for making the load order work. Biome4 only spawns quads and pillars.
 		case 'pillar': 		squareCounterText.innerHTML = cow.squareCapacity + separator + cow.resourceSquares.toLocaleString();
-								checkToDisableBiome4Filter();																										break;
+								checkToDisableBiome4Filter();																			break;
 		case 'quad': 		squareCounterText.innerHTML = cow.squareCapacity + separator + cow.resourceSquares.toLocaleString();
-								checkToDisableBiome4Filter();																										break;
+								checkToDisableBiome4Filter();																			break;
 		case 'stardust':  	stardustCounterText.innerHTML = cow.resourceStardust.toLocaleString();
 								// Update the Diamond Bar
 								diamondBarPart1.value = cow.resourceStardustBiome1;
@@ -276,7 +276,7 @@ function updateTextSpans(recursionTime) {
 	if (cow.biome4Owned == true || cow.resourceSquares >= 1 || cow.squareCapacity >= 1)															{ squareButtonSpan.style.display = 'inline'; }		else { squareButtonSpan.style.display = 'none'; }
 	if (cow.resourceStardust >= 1 || cow.stardustSpawnBoost1Owned == true || cow.stardustSpawnBoost2Owned == true)								{ stardustButtonSpan.style.display = 'inline'; } 	else { stardustButtonSpan.style.display = 'none'; }
 
-	if (recursionTime > 1000) { setTimeout(updateTextSpans, recursionTime); }	// Allows the function to be called recursively or not
+	if (recursionTime > 1000) { setTimeout(updateTextSpans, recursionTime, recursionTime); }	// Allows the function to be called recursively or not
 }
 
 
