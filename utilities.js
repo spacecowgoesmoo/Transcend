@@ -53,18 +53,17 @@ function newFadeInOut(id, time) {
 
 
 
-// TODO: Fading in doesn't work right with visibility
-// TODO: Prevent errors from clickspamming, in both directions
+// TODO: This can look weird if the user spams clicks
 function newFadePlusToggleAndVisibility(id, targetOpacity, time, toggle) {
 	// First part makes this also toggle opacity when used as a fadeIn
 	if (id.style.opacity >= 0.3 && toggle == true) {
-		newFadePlusToggleAndVisibility(id, 0, time)
+		newFadePlusToggleAndVisibility(id, 0, time, false)
 	} else {
 		// Visibility
-		if (targetOpacity > 0) { id.className = 'visible'; id.style.opacity = 0; }
+		if (targetOpacity > 0) { id.className = 'visible'; }
 		else { setTimeout(function() { id.className = 'invisible'; }, time * 1000) }
-		// Opacity
-		newFade(id, targetOpacity, time)
+		// Opacity (the setTimeout patches a bug where it fades in instantly, no idea why)
+		setTimeout(function() { newFade(id, targetOpacity, time) }, 5)
 	}
 }
 
