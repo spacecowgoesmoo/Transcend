@@ -20,6 +20,8 @@ v1.03 - Big maintenance patch 2020
 		Rewrote the gradient shader. Lots of extra steps removed and it's now fully documented
 		UI color changes now happen instantly instead of being delayed for up to three seconds
 		Applied better image compression, reducing asset filesize by 45% (55KB)
+	New player experience
+		Changed the separator character in the upper left to be less confusing
 	Bugfixes
 		Fixed three bugs that would result in inaccurate preloader console messages
 		Fixed a tiny edge case bug when purchasing biome 4
