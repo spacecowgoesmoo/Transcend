@@ -246,7 +246,7 @@ function updateTextSpans(recursionTime) {
 	if (cow.starCapacity >= 2 && cow.biome4Owned == false) {		biome4PurchaseButton.style.display = 'inline'; s++; } 	else { biome4PurchaseButton.style.display = 'none'; }
 	if (cow.diamondCapacity >= 6 && cow.biome5Owned == false) { 	biome5PurchaseButton.style.display = 'inline'; s++; } 	else { biome5PurchaseButton.style.display = 'none'; }
 	if (cow.circleCapacity >= 6 && cow.biome6Owned == false) { 		biome6PurchaseButton.style.display = 'inline'; s++; } 	else { biome6PurchaseButton.style.display = 'none'; }
-	if (cow.diamondCapacity >= 7 && cow.maxDiamondCapacity == 10) {  									diamondMaxCapacity20PurchaseButton.style.display = 'inline'; 	s++; } 		else { diamondMaxCapacity20PurchaseButton.style.display = 'none'; }
+	if (cow.diamondCapacity >= 4 && cow.maxDiamondCapacity == 10) {  									diamondMaxCapacity20PurchaseButton.style.display = 'inline'; 	s++; } 		else { diamondMaxCapacity20PurchaseButton.style.display = 'none'; }
 	if (cow.diamondCapacity >= 17 && cow.maxDiamondCapacity == 20 && cow.diamondBarOwned == true) { 	diamondMaxCapacity30PurchaseButton.style.display = 'inline'; 	s++; } 		else { diamondMaxCapacity30PurchaseButton.style.display = 'none'; }
 	if (cow.starCapacity >= 7 && cow.maxStarCapacity == 10) {											starMaxCapacity20PurchaseButton.style.display = 'inline'; 		s++; } 		else { starMaxCapacity20PurchaseButton.style.display = 'none'; }
 	if (cow.starCapacity >= 17 && cow.maxStarCapacity == 20 && cow.diamondBarOwned == true) { 			starMaxCapacity30PurchaseButton.style.display = 'inline'; 		s++; } 		else { starMaxCapacity30PurchaseButton.style.display = 'none'; }

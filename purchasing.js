@@ -240,14 +240,14 @@ function increaseStardustChance20() {
 
 function buyMaxShapeCapacity(q) {
 	switch (q) {
-		case 'diamond20': 	if (cow.resourceDiamonds >= 150) { 	cow.resourceDiamonds -= 150; 	cow.maxDiamondCapacity = 20; 	cow.diamondCapacity++; 		updateResourceCounter('diamond');	stuff();} 	break;
+		case 'diamond20': 	if (cow.resourceDiamonds >= 125) { 	cow.resourceDiamonds -= 125; 	cow.maxDiamondCapacity = 20; 	cow.diamondCapacity++; 		updateResourceCounter('diamond');	stuff();} 	break;
 		case 'diamond30': 	if (cow.resourceDiamonds >= 600) { 	cow.resourceDiamonds -= 600; 	cow.maxDiamondCapacity = 30; 	cow.diamondCapacity++; 		updateResourceCounter('diamond');	stuff();} 	break;
 		case 'star20': 		if (cow.resourceStars >= 200) {		cow.resourceStars -= 200; 		cow.maxStarCapacity = 20; 	 	cow.starCapacity++; 		updateResourceCounter('star');		stuff();} 	break;
 		case 'star30': 		if (cow.resourceStars >= 400) { 	cow.resourceStars -= 400; 		cow.maxStarCapacity = 30; 	 	cow.starCapacity++; 		updateResourceCounter('star');		stuff();} 	break;
 		case 'hexagon20': 	if (cow.resourceHexagons >= 500) { 	cow.resourceHexagons -= 500; 	cow.maxHexagonCapacity = 20; 	cow.hexagonCapacity++; 		updateResourceCounter('hexagon');	stuff();} 	break;
 		case 'hexagon30': 	if (cow.resourceHexagons >= 1200) {	cow.resourceHexagons -= 1200; 	cow.maxHexagonCapacity = 30; 	cow.hexagonCapacity++; 		updateResourceCounter('hexagon');	stuff();} 	break;
 		case 'triangle20': 	if (cow.resourceTriangles >= 500) { cow.resourceTriangles -= 500; 	cow.maxTriangleCapacity = 20;	cow.triangleCapacity++; 	updateResourceCounter('triangle');	stuff();} 	break;
-		case 'triangle30': 	if (cow.resourceTriangles >= 2000) {cow.resourceTriangles -= 2000;	cow.maxTriangleCapacity = 30;	cow.triangleCapacity++; 	updateResourceCounter('triangle');	stuff();} 	break;
+		case 'triangle30': 	if (cow.resourceTriangles >= 2000){ cow.resourceTriangles -= 2000;	cow.maxTriangleCapacity = 30;	cow.triangleCapacity++; 	updateResourceCounter('triangle');	stuff();} 	break;
 		case 'circle20': 	if (cow.resourceCircles >= 250) { 	cow.resourceCircles -= 250;		cow.maxCircleCapacity = 20;  	cow.circleCapacity++; 		updateResourceCounter('circle');	stuff();} 	break;
 		case 'circle30': 	if (cow.resourceCircles >= 1000) { 	cow.resourceCircles -= 1000;	cow.maxCircleCapacity = 30;  	cow.circleCapacity++; 		updateResourceCounter('circle');	stuff();} 	break;
 		case 'square200': 	if (cow.resourceSquares >= 3000) { 	cow.resourceSquares -= 3000; 	cow.maxSquareCapacity = 200; 	cow.squareCapacity += 10;	updateResourceCounter('square');	stuff();} 	break;
@@ -293,7 +293,7 @@ function showBiome6Cost() {	displayPriceText('ci 1200'); }
 
 function showMaxShapeCapacityCost(q) {
 	switch (q) {
-		case 'diamond20': displayPriceText('di 150'); break;
+		case 'diamond20': displayPriceText('di 125'); break;
 		case 'diamond30': displayPriceText('di 600'); break;
 		case 'star20': displayPriceText('st 200'); break;
 		case 'star30': displayPriceText('st 400'); break;

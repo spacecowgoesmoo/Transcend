@@ -22,6 +22,7 @@ v1.03 - Big maintenance patch 2020
 		Applied better image compression, reducing asset filesize by 45% (55KB)
 	New player experience
 		Changed the separator character in the upper left to be less confusing
+		Made the first upgrade display onscreen earlier and lowered the price
 	Bugfixes
 		Fixed three bugs that would result in inaccurate preloader console messages
 		Fixed a tiny edge case bug when purchasing biome 4
