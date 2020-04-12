@@ -415,7 +415,7 @@ function recheckItemCostHighlighting() {
 		if (cow.resourceStardust < 30 		&& buttID7.src.slice(-10,-5) == 'Color')	{ buttID7.src = 'Images/stardustHollow.png'; }
 		if (cow.resourceStardust < 150 		&& buttID8.src.slice(-10,-5) == 'Color') 	{ buttID8.src = 'Images/stardustHollow.png'; }
 		// Capacity upgrades
-		if (cow.resourceDiamonds < 150 		&& buttID9.src.slice(-10,-5) == 'Color') 	{ buttID9.src = 'Images/diamondHollow.png'; }
+		if (cow.resourceDiamonds < 125 		&& buttID9.src.slice(-10,-5) == 'Color') 	{ buttID9.src = 'Images/diamondHollow.png'; }
 		if (cow.resourceDiamonds < 600 		&& buttID10.src.slice(-10,-5) == 'Color')	{ buttID10.src = 'Images/diamondHollow.png'; }
 		if (cow.resourceStars < 200 		&& buttID11.src.slice(-10,-5) == 'Color')	{ buttID11.src = 'Images/starHollow.png'; }
 		if (cow.resourceStars < 400 		&& buttID12.src.slice(-10,-5) == 'Color')	{ buttID12.src = 'Images/starHollow.png'; }
@@ -476,7 +476,7 @@ function recheckItemCostHighlighting() {
 		if (cow.resourceStardust >= 30 		&& buttID7.src.slice(-10,-5) != 'Color')	{ buttID7.src = 'Images/stardustHollowColor' + rngRange(1,3) + '.png'; }
 		if (cow.resourceStardust >= 150 	&& buttID8.src.slice(-10,-5) != 'Color')	{ buttID8.src = 'Images/stardustHollowColor' + rngRange(1,3) + '.png' }
 		// Capacity upgrades
-		if (cow.resourceDiamonds >= 150 	&& buttID9.src.slice(-10,-5) != 'Color') 	{ buttID9.src = 'Images/diamondHollowColor' + rngRange(1,3) + '.png'; }
+		if (cow.resourceDiamonds >= 125 	&& buttID9.src.slice(-10,-5) != 'Color') 	{ buttID9.src = 'Images/diamondHollowColor' + rngRange(1,3) + '.png'; }
 		if (cow.resourceDiamonds >= 600		&& buttID10.src.slice(-10,-5) != 'Color')	{ buttID10.src = 'Images/diamondHollowColor' + rngRange(1,3) + '.png'; }
 		if (cow.resourceStars >= 200 		&& buttID11.src.slice(-10,-5) != 'Color')	{ buttID11.src = 'Images/starHollowColor' + rngRange(1,3) + '.png'; }
 		if (cow.resourceStars >= 400 		&& buttID12.src.slice(-10,-5) != 'Color')	{ buttID12.src = 'Images/starHollowColor' + rngRange(1,3) + '.png'; }
@@ -588,7 +588,7 @@ function forceIconRecolorize() {
 	if (cow.resourceStardust >= 30		&& cow.stardustSpawnBoost1Owned == false)	{ buttID7.src = 'Images/stardustHollowColor' + rngRange(1,3) + '.png'; }
 	if (cow.resourceStardust >= 150		&& cow.stardustSpawnBoost2Owned == false)	{ buttID8.src = 'Images/stardustHollowColor' + rngRange(1,3) + '.png' }
 	// Capacity upgrades
-	if (cow.resourceDiamonds >= 150		&& cow.maxDiamondCapacity < 20) 			{ buttID9.src = 'Images/diamondHollowColor' + rngRange(1,3) + '.png'; }
+	if (cow.resourceDiamonds >= 125		&& cow.maxDiamondCapacity < 20) 			{ buttID9.src = 'Images/diamondHollowColor' + rngRange(1,3) + '.png'; }
 	if (cow.resourceDiamonds >= 600		&& cow.maxDiamondCapacity < 30)				{ buttID10.src = 'Images/diamondHollowColor' + rngRange(1,3) + '.png'; }
 	if (cow.resourceStars >= 200		&& cow.maxStarCapacity < 20) 				{ buttID11.src = 'Images/starHollowColor' + rngRange(1,3) + '.png'; }
 	if (cow.resourceStars >= 400		&& cow.maxStarCapacity < 30) 				{ buttID12.src = 'Images/starHollowColor' + rngRange(1,3) + '.png'; }

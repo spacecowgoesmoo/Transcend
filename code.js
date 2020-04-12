@@ -276,7 +276,8 @@ function updateTextSpans(recursionTime) {
 	if (cow.biome4Owned == true || cow.resourceSquares >= 1 || cow.squareCapacity >= 1)															{ squareButtonSpan.style.display = 'inline'; }		else { squareButtonSpan.style.display = 'none'; }
 	if (cow.resourceStardust >= 1 || cow.stardustSpawnBoost1Owned == true || cow.stardustSpawnBoost2Owned == true)								{ stardustButtonSpan.style.display = 'inline'; } 	else { stardustButtonSpan.style.display = 'none'; }
 
-	if (recursionTime > 1000) { setTimeout(updateTextSpans, recursionTime, recursionTime); }	// Allows the function to be called recursively or not
+	// Allows the function to be called recursively or not
+	if (recursionTime > 1000) { setTimeout(updateTextSpans, recursionTime, recursionTime); }
 }
 
 
