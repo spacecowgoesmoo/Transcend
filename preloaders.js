@@ -26,7 +26,7 @@ function preloadFiles() {
 				console.log('Loaded file ' + cow.filesPreloaded + '/159 - ' + filename);
 				cow.filesPreloaded++;
 				if (cow.filesPreloaded >= 159) { 
-					setTimeout(function() { cow.preloaderComplete = true; }, 2000);
+					setTimeout(function() { cow.preloaderComplete = true; }, 1500);
 				}
 			}
 		}
@@ -34,6 +34,18 @@ function preloadFiles() {
 		xmlhttp.send();
 	}
 	
+	// Start loading the biggest SFX first
+	load('SFXb/triTower1' + cow.audioFormat);
+	load('SFXb/triTower2' + cow.audioFormat);
+	load('SFXb/triTower3' + cow.audioFormat);
+	load('SFXb/constellation1' + cow.audioFormat);
+	load('SFXb/constellation2' + cow.audioFormat);
+	load('SFXb/constellation3' + cow.audioFormat);
+	load('SFXc/diamondBarClear' + cow.audioFormat);
+	load('SFXb/ufo1' + cow.audioFormat);
+	load('SFXb/ufo2' + cow.audioFormat);
+	load('SFXb/ufo3' + cow.audioFormat);
+
 	// Images
 	load('Images/gear.png');
 	load('Images/diamond.png');
@@ -118,18 +130,6 @@ function preloadFiles() {
 	load('Images/diamondBarHollowColor1.png');
 	load('Images/diamondBarHollowColor2.png');
 	load('Images/diamondBarHollowColor3.png');
-	
-	// Start loading the biggest SFX first
-	load('SFXb/triTower1' + cow.audioFormat);
-	load('SFXb/triTower2' + cow.audioFormat);
-	load('SFXb/triTower3' + cow.audioFormat);
-	load('SFXb/constellation1' + cow.audioFormat);
-	load('SFXb/constellation2' + cow.audioFormat);
-	load('SFXb/constellation3' + cow.audioFormat);
-	load('SFXc/diamondBarClear' + cow.audioFormat);
-	load('SFXb/ufo1' + cow.audioFormat);
-	load('SFXb/ufo2' + cow.audioFormat);
-	load('SFXb/ufo3' + cow.audioFormat);
 
 	// Shape SFX
 	load('SFX/diamond1' + cow.audioFormat);
