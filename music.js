@@ -310,4 +310,16 @@ function browserAudioCheck() {
 	// Check for Safari
 	if (navigator.userAgent.indexOf('Safari') > -1 && navigator.vendor.indexOf('Apple') > -1) { cow.audioFormat = '.caf'; }
 	else { cow.audioFormat = '.opus'; }
+
+	// Prevent Automuted audio
+	// For now this is only needed in Safari, but it might future proof other browsers too
+	// So all browsers will do this
+	document.addEventListener('click', preventAutomutedAudio);
+}
+
+
+function preventAutomutedAudio() {
+	const myAudio = new Audio('./SFX/diamond' + rngRange(1,5) + cow.audioFormat);
+	myAudio.play();
+	document.removeEventListener('click', preventAutomutedAudio);
 }
