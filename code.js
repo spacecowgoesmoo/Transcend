@@ -537,7 +537,7 @@ function initializeGameOne() {
 function initializeGameTwo() {
 	// Things that need to load first
 	loadGame();
-	browserAudioCheck();													// This line is a patch but fixing it properly would be even more fragile
+	browserAudioCheck();													// This line is a patch for the data being overwritten by loading, fixing it properly would be more fragile
 	newGameStuff();
 	if (cow.randomBiomesActive == false) { changeBiome(cow.currentBiome); }	// Activate biome from last play session
 	if (cow.randomBiomesActive == true) { randomBiomes('activate'); }		// Or randomBiome, if applicable
