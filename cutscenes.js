@@ -54,7 +54,7 @@ function preloader() {
 			fadeOutDiamond(6);
 			showStartGameButton();
 		}
-		else { setTimeout(waitForLogin, 500); }									// Throttle this to 2FPS instead of 60
+		else { setTimeout(waitForLogin, 250); }									// Throttle this to 4FPS instead of 60
 	}
 	waitForLogin();
 
