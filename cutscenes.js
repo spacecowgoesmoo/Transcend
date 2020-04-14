@@ -77,7 +77,7 @@ function showStartGameButton() {
 }
 
 function startGame() {
-	if (cow.gameStarted == false && cow.preloaderComplete == true) {
+	if (cow.gameStarted == false && cow.preloaderComplete == true && startGameText.style.opacity == 1) {
 		newFade(startGameText, 0, 0.7);											// Fadeout the start game text
 
 		initializeGameTwo();													// Start the game
