@@ -1,8 +1,10 @@
 function preloadFiles() {
 	// Force the preloader to abort if it hasn't finished quickly enough
 	setTimeout( function() { 
-		cow.preloaderComplete = true;
-		console.log('Preloader is taking too long, forcing game initialization..')
+		if (cow.preloaderComplete == false) {
+			cow.preloaderComplete = true;
+			console.log('Preloader is taking too long, forcing game initialization..')
+		}
 	 }, 2500)
 
 	// Preload
