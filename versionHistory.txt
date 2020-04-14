@@ -1,6 +1,7 @@
 v1.03 - Big maintenance patch 2020
 	Summary
 		Improved CPU performance by ???-20%, depending on how many shapes are onscreen
+		Fixed a bug where audio was completely dead in Safari due to new autoplay protection
 		Reduced download size by 63% (66MB)
 		..and a few other things
 	Performance
@@ -12,6 +13,7 @@ v1.03 - Big maintenance patch 2020
 		Throttled sky gradients from 60FPS to 4FPS
 		Throttled stars and planets from 60FPS to 1FPS
 	Audio
+		Fixed a bug where audio was completely dead in Safari due to new autoplay protection
 		Changed music format from MP3 to OPUS, reducing asset filesize by 65% (54MB)
 		Changed SFX format from WAV to OPUS, reducing asset filesize by 85% (12MB)
 		Fixed broken music filepaths in the demo version
