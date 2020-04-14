@@ -23,6 +23,10 @@ function preloadFiles() {
 				q.setAttribute('class', 'invisible');	//
 				document.body.appendChild(q);			//
 				document.getElementById("loadSound").innerHTML = '<embed src="' + filename + '" controller="1" autoplay="0" autostart="0"/>';
+				// Prevents Firefox from audibly playing preloaded SFX
+				if (navigator.userAgent.indexOf('Firefox') > -1 && navigator.userAgent.indexOf('Seamonkey') == -1) {
+					document.getElementById("loadSound").innerHTML = '';
+				}
 				console.log('Loaded file ' + cow.filesPreloaded + '/159 - ' + filename);
 				cow.filesPreloaded++;
 				if (cow.filesPreloaded >= 159) { 
