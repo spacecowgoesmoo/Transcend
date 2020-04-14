@@ -117,6 +117,18 @@ function preloadFiles() {
 	load('Images/diamondBarHollowColor2.png');
 	load('Images/diamondBarHollowColor3.png');
 	
+	// Start loading the biggest SFX first
+	load('SFXb/triTower1' + cow.audioFormat);
+	load('SFXb/triTower2' + cow.audioFormat);
+	load('SFXb/triTower3' + cow.audioFormat);
+	load('SFXb/constellation1' + cow.audioFormat);
+	load('SFXb/constellation2' + cow.audioFormat);
+	load('SFXb/constellation3' + cow.audioFormat);
+	load('SFXc/diamondBarClear' + cow.audioFormat);
+	load('SFXb/ufo1' + cow.audioFormat);
+	load('SFXb/ufo2' + cow.audioFormat);
+	load('SFXb/ufo3' + cow.audioFormat);
+
 	// Shape SFX
 	load('SFX/diamond1' + cow.audioFormat);
 	load('SFX/diamond2' + cow.audioFormat);
@@ -153,9 +165,7 @@ function preloadFiles() {
 	load('SFXb/blackCircle1' + cow.audioFormat);
 	load('SFXb/blackCircle2' + cow.audioFormat);
 	load('SFXb/blackCircle3' + cow.audioFormat);
-	load('SFXb/constellation1' + cow.audioFormat);
-	load('SFXb/constellation2' + cow.audioFormat);
-	load('SFXb/constellation3' + cow.audioFormat);
+	// constellation 1 2 3
 	load('SFXb/cuteSquare1' + cow.audioFormat);
 	load('SFXb/cuteSquare2' + cow.audioFormat);
 	load('SFXb/cuteSquare3' + cow.audioFormat);
@@ -174,12 +184,8 @@ function preloadFiles() {
 	load('SFXb/triCreepy1' + cow.audioFormat);
 	load('SFXb/triCreepy2' + cow.audioFormat);
 	load('SFXb/triCreepy3' + cow.audioFormat);
-	load('SFXb/triTower1' + cow.audioFormat);
-	load('SFXb/triTower2' + cow.audioFormat);
-	load('SFXb/triTower3' + cow.audioFormat);
-	load('SFXb/ufo1' + cow.audioFormat);
-	load('SFXb/ufo2' + cow.audioFormat);
-	load('SFXb/ufo3' + cow.audioFormat);
+	// triTower 1 2 3
+	// ufo 1 2 3
 	
 	// UI SFX
 	load('SFXc/buyShape1' + cow.audioFormat);
@@ -192,7 +198,7 @@ function preloadFiles() {
 	load('SFXc/capacityBoost1' + cow.audioFormat);
 	load('SFXc/capacityBoost2' + cow.audioFormat);
 	load('SFXc/capacityBoost3' + cow.audioFormat);
-	load('SFXc/diamondBarClear' + cow.audioFormat);
+	// diamondBarClear
 	load('SFXc/newBiome1' + cow.audioFormat);
 	load('SFXc/newBiome2' + cow.audioFormat);
 	load('SFXc/newBiome3' + cow.audioFormat);
