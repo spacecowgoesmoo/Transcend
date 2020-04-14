@@ -5,11 +5,11 @@ function preloadFiles() {
 			cow.preloaderComplete = true;
 			console.log('Preloader is taking too long, forcing game initialization..')
 		}
-	 }, 2500)
+	}, 2500)
 
 	// Preload
 	// NOTE: On tc.com, the last 10% of files loaded will usually fail when accessed over https
-	function load(filename) {		
+	function load(filename) {
 		let xmlhttp;
 		if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
 			xmlhttp = new XMLHttpRequest();
@@ -22,7 +22,7 @@ function preloadFiles() {
 				q.setAttribute('id', 'loadSound');		//
 				q.setAttribute('class', 'invisible');	//
 				document.body.appendChild(q);			//
-				document.getElementById("loadSound").innerHTML = '<embed src="' + filename + '" controller="1" autoplay="0" autostart="0" />';
+				document.getElementById("loadSound").innerHTML = '<embed src="' + filename + '" controller="1" autoplay="0" autostart="0"/>';
 				console.log('Loaded file ' + cow.filesPreloaded + '/159 - ' + filename);
 				cow.filesPreloaded++;
 				if (cow.filesPreloaded >= 159) { cow.preloaderComplete = true; }
