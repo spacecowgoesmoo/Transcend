@@ -308,13 +308,11 @@ function browserAudioCheck() {
 	} else { cow.muteAudioForIE = false; }							// Extra security for Windows Chrome
 
 	// Check for Safari
-	if (navigator.userAgent.indexOf('Safari') > -1 && navigator.vendor.indexOf('Apple') > -1) { cow.audioFormat = '.caf'; }
+	if (navigator.userAgent.indexOf('Safari') > -1 && navigator.vendor.indexOf('Apple') > -1) { 
+		cow.audioFormat = '.caf'; 
+		document.addEventListener('click', preventAutomutedAudio);	// For now this is only needed in Safari
+	}
 	else { cow.audioFormat = '.opus'; }
-
-	// Prevent Automuted audio
-	// For now this is only needed in Safari, but it might future proof other browsers too
-	// So all browsers will do this
-	document.addEventListener('click', preventAutomutedAudio);
 }
 
 
