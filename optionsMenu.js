@@ -78,7 +78,9 @@ function saveGameRecursive() {
 function loadGame() {
 	const zzz = "transcendSAVEFILE" + cow.kongUsername;
 	const q = localStorage.getItem(zzz);
-	const cowTemp = cow.filesPreloaded;
+	const cowTemp1 = cow.filesPreloaded;
+	const cowTemp2 = cow.muteAudioForIE;
+	const cowTemp3 = cow.audioFormat;
 	console.log('Attempting login with Kong username: ' + cow.kongUsername);
 	if (q != null) {
 		// Load the save file
@@ -89,7 +91,10 @@ function loadGame() {
 		cow.hideMusicText = false;
 		cow.muteAudioForIE = false;
 		cow.gameStarted = true;
-		cow.filesPreloaded = cowTemp;
+		cow.filesPreloaded = cowTemp1;
+
+		cow.muteAudioForIE = cowTemp2;
+		cow.audioFormat = cowTemp3;
 
 		cow.bgTransitionSpeed = 5;
 
