@@ -25,7 +25,9 @@ function preloadFiles() {
 				document.getElementById("loadSound").innerHTML = '<embed src="' + filename + '" controller="1" autoplay="0" autostart="0"/>';
 				console.log('Loaded file ' + cow.filesPreloaded + '/159 - ' + filename);
 				cow.filesPreloaded++;
-				if (cow.filesPreloaded >= 159) { cow.preloaderComplete = true; }
+				if (cow.filesPreloaded >= 159) { 
+					setTimeout(function() { cow.preloaderComplete = true; }, 2000);
+				}
 			}
 		}
 		xmlhttp.open("GET", filename, true);
