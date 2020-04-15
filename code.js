@@ -347,12 +347,12 @@ function hideUpgradeBar() {
 
 
 function disableBiomeButtons() {
-	if (biome1ButtonImage.src.slice(biome1ButtonImage.src.length-18) != 'Images/diamond.png') 	{ biome1ButtonImage.src = 'Images/diamond.png'; }		// Sets all the images to white
-	if (biome2ButtonImage.src.slice(biome2ButtonImage.src.length-18) != 'Images/hexagon.png') 	{ biome2ButtonImage.src = 'Images/hexagon.png'; }		// But not if they're already white
-	if (biome3ButtonImage.src.slice(biome3ButtonImage.src.length-19) != 'Images/triangle.png')	{ biome3ButtonImage.src = 'Images/triangle.png'; }
-	if (biome4ButtonImage.src.slice(biome4ButtonImage.src.length-17) != 'Images/square.png') 	{ biome4ButtonImage.src = 'Images/square.png'; }
-	if (biome5ButtonImage.src.slice(biome5ButtonImage.src.length-17) != 'Images/circle.png') 	{ biome5ButtonImage.src = 'Images/circle.png'; }
-	if (biome6ButtonImage.src.slice(biome6ButtonImage.src.length-15) != 'Images/star.png') 		{ biome6ButtonImage.src = 'Images/star.png'; }
+	if (biome1ButtonImage.src.slice(biome1ButtonImage.src.length-16) != 'Images/biome1.png') 	{ biome1ButtonImage.src = 'Images/biome1.png'; }		// Sets all the images to white
+	if (biome2ButtonImage.src.slice(biome2ButtonImage.src.length-16) != 'Images/biome2.png') 	{ biome2ButtonImage.src = 'Images/biome2.png'; }		// But not if they're already white
+	if (biome3ButtonImage.src.slice(biome3ButtonImage.src.length-16) != 'Images/biome3.png')	{ biome3ButtonImage.src = 'Images/biome3.png'; }
+	if (biome4ButtonImage.src.slice(biome4ButtonImage.src.length-16) != 'Images/biome4.png') 	{ biome4ButtonImage.src = 'Images/biome4.png'; }
+	if (biome5ButtonImage.src.slice(biome5ButtonImage.src.length-16) != 'Images/biome5.png') 	{ biome5ButtonImage.src = 'Images/biome5.png'; }
+	if (biome6ButtonImage.src.slice(biome6ButtonImage.src.length-16) != 'Images/biome6.png') 	{ biome6ButtonImage.src = 'Images/biome6.png'; }
 	biome1ButtonImage.style.opacity = 0.075;							// Turn down all the opacities
 	biome2ButtonImage.style.opacity = 0.075;
 	biome3ButtonImage.style.opacity = 0.075;
