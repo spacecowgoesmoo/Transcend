@@ -389,37 +389,37 @@ function changeBiome(location, randomSaveCPU) {
 		switch (location) {
 			case 'biome1':
 				biome1ButtonImage.style.opacity = 0.7;					// Turns the opacity up
-				biome1Button.innerHTML = "<image src='Images/diamondColor" + rngRange(1,3) + ".png' id='biome1ButtonImage' class='diamondButtonImage firefoxHack'></image>";		// color change
+				biome1Button.innerHTML = "<image src='Images/biome1Color" + rngRange(1,3) + ".png' id='biome1ButtonImage' class='diamondButtonImage firefoxHack'></image>";		// color change
 				biome1Button.disabled = true;							// prevent the button from being clicked
 				break;
 			case 'biome2':
 				biome2ButtonImage.style.opacity = 0.7;
-				biome2Button.innerHTML = "<image src='Images/hexagonColor" + rngRange(1,3) + ".png' id='biome2ButtonImage' class='hexagonButtonImage firefoxHack3'></image>";
+				biome2Button.innerHTML = "<image src='Images/biome2Color" + rngRange(1,3) + ".png' id='biome2ButtonImage' class='hexagonButtonImage firefoxHack3'></image>";
 				biome2Button.disabled = true;
 				break;
 			case 'biome3':
 				biome3ButtonImage.style.opacity = 0.7;
-				biome3Button.innerHTML = "<image src='Images/triangleColor" + rngRange(1,3) + ".png' id='biome3ButtonImage' class='triangleButtonImage firefoxHack'></image>";
+				biome3Button.innerHTML = "<image src='Images/biome3Color" + rngRange(1,3) + ".png' id='biome3ButtonImage' class='triangleButtonImage firefoxHack'></image>";
 				biome3Button.disabled = true;
 				break;
 			case 'biome4':
 				biome4ButtonImage.style.opacity = 0.7;
-				biome4Button.innerHTML = "<image src='Images/squareColor" + rngRange(1,3) + ".png' id='biome4ButtonImage' class='squareButtonImage firefoxHack'></image>";
+				biome4Button.innerHTML = "<image src='Images/biome4Color" + rngRange(1,3) + ".png' id='biome4ButtonImage' class='squareButtonImage firefoxHack'></image>";
 				biome4Button.disabled = true;
 				break;
 			case 'biome5':
 				biome5ButtonImage.style.opacity = 0.7;
-				biome5Button.innerHTML = "<image src='Images/circleColor" + rngRange(1,3) + ".png' id='biome5ButtonImage' class='circleButtonImage firefoxHack'></image>";
+				biome5Button.innerHTML = "<image src='Images/biome5Color" + rngRange(1,3) + ".png' id='biome5ButtonImage' class='circleButtonImage firefoxHack'></image>";
 				biome5Button.disabled = true;
 				break;
 			case 'biome6':
 				biome6ButtonImage.style.opacity = 0.7;
-				biome6Button.innerHTML = "<image src='Images/starColor" + rngRange(1,3) + ".png' id='biome6ButtonImage' class='starButtonImage firefoxHack3'></image>";
+				biome6Button.innerHTML = "<image src='Images/biome6Color" + rngRange(1,3) + ".png' id='biome6ButtonImage' class='starButtonImage firefoxHack3'></image>";
 				biome6Button.disabled = true;
 				break;
 			default: break;
 		}
-		// Icon colors: yellow red lightM blue red lightM
+		// Icon colors: yellow red lightMonochrome blue red lightMonochrome
 		saveGame();
 	}
 }

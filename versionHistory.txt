@@ -3,6 +3,7 @@ v2.0 - Big maintenance patch 2020
 		Improved CPU performance by ???-20%, depending on how many shapes are onscreen
 		Fixed a bug where audio was completely dead in Safari due to new autoplay protection
 		Reduced download size by 63% (66MB)
+		Made some changes to the early game and UI to reduce crypticness
 		..and a few other things
 	Performance
 		Optimized updateResourceCounter() to not use the DOM state as a source of data
