@@ -1,4 +1,4 @@
-v1.03 - Big maintenance patch 2020
+v2.0 - Big maintenance patch 2020
 	Summary
 		Improved CPU performance by ???-20%, depending on how many shapes are onscreen
 		Fixed a bug where audio was completely dead in Safari due to new autoplay protection

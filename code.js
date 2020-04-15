@@ -224,7 +224,7 @@ function checkToDisableBiome4Filter() {
 
 
 function updateTextSpans(recursionTime) {
-	// recheckItemCostHighlighting();			// Safer but very CPU intensive. Moved to updateResourceCounter() in v1.03
+	// recheckItemCostHighlighting();			// Safer but very CPU intensive. Moved to updateResourceCounter() in v2.0
 	// Shows or hides the buttons in the lower right biome select
 	let r = 0;																						// Used to size the biome select bar
 	if (cow.biome1Owned == true) { biome1Button.style.display = 'inline'; r++; } 				else { biome1Button.style.display = 'none'; }
@@ -545,7 +545,7 @@ function initializeGameTwo() {
 	initializeProgressBars();
 	// Things that affect the UI but can take a while
 	updateResourceCounter('diamond');										// Takes a few milleseconds each time, noticeable in Firefox
-	updateResourceCounter('star');											// Includes recheckItemCostHighlighting() as of v1.03
+	updateResourceCounter('star');											// Includes recheckItemCostHighlighting() as of v2.0
 	updateResourceCounter('hexagon');
 	updateResourceCounter('triangle');
 	updateResourceCounter('circle');
