@@ -26,6 +26,7 @@ v2.0 - Big maintenance patch 2020
 	New player experience
 		Changed the separator character in the upper left to be less confusing
 		Made the first upgrade display onscreen earlier and lowered the price
+		Increased visibility of inactive biome icons
 	Other Bugfixes
 		Fixed three bugs that would result in inaccurate preloader console messages
 		Fixed a tiny edge case bug when purchasing biome 4
