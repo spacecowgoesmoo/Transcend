@@ -353,13 +353,14 @@ function disableBiomeButtons() {
 	if (biome4ButtonImage.src.slice(biome4ButtonImage.src.length-16) != 'Images/biome4.png') 	{ biome4ButtonImage.src = 'Images/biome4.png'; }
 	if (biome5ButtonImage.src.slice(biome5ButtonImage.src.length-16) != 'Images/biome5.png') 	{ biome5ButtonImage.src = 'Images/biome5.png'; }
 	if (biome6ButtonImage.src.slice(biome6ButtonImage.src.length-16) != 'Images/biome6.png') 	{ biome6ButtonImage.src = 'Images/biome6.png'; }
-	biome1ButtonImage.style.opacity = 0.075;							// Turn down all the opacities
-	biome2ButtonImage.style.opacity = 0.075;
-	biome3ButtonImage.style.opacity = 0.075;
-	biome4ButtonImage.style.opacity = 0.075;
-	biome5ButtonImage.style.opacity = 0.075;
-	biome6ButtonImage.style.opacity = 0.075;
-	biomeRandomPNG.style.opacity = 0.075;
+	const q = 0.5;
+	biome1ButtonImage.style.opacity = q;								// Turn down all the opacities
+	biome2ButtonImage.style.opacity = q;
+	biome3ButtonImage.style.opacity = q;
+	biome4ButtonImage.style.opacity = q;
+	biome5ButtonImage.style.opacity = q;
+	biome6ButtonImage.style.opacity = q;
+	biomeRandomPNG.style.opacity = q;
 	biome1Button.disabled = false;										// Activate all the biome buttons
 	biome2Button.disabled = false;
 	biome3Button.disabled = false;
