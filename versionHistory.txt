@@ -26,6 +26,7 @@ v2.0 - Big maintenance patch 2020
 		Applied better image compression, reducing asset filesize by 45% (55KB)
 	New player experience
 		Changed the separator character in the upper left to be less confusing
+		Added new biome icons to better represent setting and reduce confusing icon reuse
 		Made the first upgrade display onscreen earlier and lowered the price
 		Increased visibility of inactive biome icons
 	Other Bugfixes
