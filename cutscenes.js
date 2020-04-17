@@ -40,11 +40,11 @@ function preloader() {
 
 	function waitForLogin() {
 		if (cow.filesPreloaded >= 50 && diam1.alpha == 0.13)  { diam1.tint=cowColor; diam1.alpha=1;}	// Images load super fast so unbalancing the early progress bar stages is better
-		if (cow.filesPreloaded >= 90 && diam2.alpha == 0.13)  { diam2.tint=cowColor; diam2.alpha=1;}	// The alpha check makes sure the color change only occurs once
-		if (cow.filesPreloaded >= 115 && diam3.alpha == 0.13) { diam3.tint=cowColor; diam3.alpha=1;}
-		if (cow.filesPreloaded >= 135 && diam4.alpha == 0.13) { diam4.tint=cowColor; diam4.alpha=1;}
-		if (cow.filesPreloaded >= 150 && diam5.alpha == 0.13) { diam5.tint=cowColor; diam5.alpha=1;}
-		if (cow.filesPreloaded >= 159 && diam6.alpha == 0.13) { diam6.tint=cowColor; diam6.alpha=1;}
+		if (cow.filesPreloaded >= 100 && diam2.alpha == 0.13) { diam2.tint=cowColor; diam2.alpha=1;}	// The alpha check makes sure the color change only occurs once
+		if (cow.filesPreloaded >= 125 && diam3.alpha == 0.13) { diam3.tint=cowColor; diam3.alpha=1;}
+		if (cow.filesPreloaded >= 145 && diam4.alpha == 0.13) { diam4.tint=cowColor; diam4.alpha=1;}
+		if (cow.filesPreloaded >= 160 && diam5.alpha == 0.13) { diam5.tint=cowColor; diam5.alpha=1;}
+		if (cow.filesPreloaded >= 167 && diam6.alpha == 0.13) { diam6.tint=cowColor; diam6.alpha=1;}
 		if (cow.kongUsername && cow.preloaderComplete == true) {				// NOTE - This username login part doubles as a sitelock
 			fadeOutDiamond(1);
 			fadeOutDiamond(2);
