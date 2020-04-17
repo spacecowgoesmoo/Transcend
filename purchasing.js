@@ -490,14 +490,14 @@ function recheckItemCostHighlighting() {
 		if (cow.resourceSquares >= 8000 	&& buttID20.src.slice(-10,-5) != 'Color')	{ buttID20.src = 'Images/squareHollowColor' + rngRange(1,3) + '.png'; }
 	
 		// Resource counter numbers and shapes
-		function getRNG() { return rngRange(4,7); }
+		function getRNG() { return rngRange(1,4); }
 		if (cow.resourceDiamonds >= cow.nextDiamondPrice 	&& cow.diamondCapacity < cow.maxDiamondCapacity 	&& (buttID21.src.slice(-10,-5) != 'Color' || diamondCounter.style.color == 'rgb(249, 249, 249)')) {
 			const q = getRNG()
 			switch (q) {
-				case 4: diamondCounter.style.color = '#B0B22C'; break;
-				case 5: diamondCounter.style.color = '#DE8F49'; break;
-				case 6: diamondCounter.style.color = '#21C65E'; break;
-				case 7: diamondCounter.style.color = '#6A5096'; break;
+				case 1: diamondCounter.style.color = '#B0B22C'; break;
+				case 2: diamondCounter.style.color = '#DE8F49'; break;
+				case 3: diamondCounter.style.color = '#21C65E'; break;
+				case 4: diamondCounter.style.color = '#6A5096'; break;
 				default: break;
 				}
 			buttID21.src = 'Images/diamondColor' + q + '.png';
@@ -505,10 +505,10 @@ function recheckItemCostHighlighting() {
 		if (cow.resourceStars >= cow.nextStarPrice 			&& cow.starCapacity < cow.maxStarCapacity 			&& (buttID22.src.slice(-10,-5) != 'Color' || starCounter.style.color == 'rgb(249, 249, 249)')) {
 			const q = getRNG()
 			switch (q) {
-				case 4: starCounter.style.color = '#439C9E'; break;
-				case 5: starCounter.style.color = '#B658A5'; break;
-				case 6: starCounter.style.color = '#C19B3A'; break;
-				case 7: starCounter.style.color = '#73B47C'; break;
+				case 1: starCounter.style.color = '#439C9E'; break;
+				case 2: starCounter.style.color = '#B658A5'; break;
+				case 3: starCounter.style.color = '#C19B3A'; break;
+				case 4: starCounter.style.color = '#73B47C'; break;
 				default: break;
 				}
 			buttID22.src = 'Images/starColor' + q + '.png';
@@ -516,10 +516,10 @@ function recheckItemCostHighlighting() {
 		if (cow.resourceHexagons >= cow.nextHexagonPrice 	&& cow.hexagonCapacity < cow.maxHexagonCapacity 	&& (buttID23.src.slice(-10,-5) != 'Color' || hexagonCounter.style.color == 'rgb(249, 249, 249)')) {
 			const q = getRNG()
 			switch (q) {
-				case 4: hexagonCounter.style.color = '#24A952'; break;
-				case 5: hexagonCounter.style.color = '#3B5DA2'; break;
-				case 6: hexagonCounter.style.color = '#AC49A9'; break;
-				case 7: hexagonCounter.style.color = '#CA5D5D'; break;
+				case 1: hexagonCounter.style.color = '#24A952'; break;
+				case 2: hexagonCounter.style.color = '#3B5DA2'; break;
+				case 3: hexagonCounter.style.color = '#AC49A9'; break;
+				case 4: hexagonCounter.style.color = '#CA5D5D'; break;
 				default: break;
 				}
 			buttID23.src = 'Images/hexagonColor' + q + '.png';
@@ -527,10 +527,10 @@ function recheckItemCostHighlighting() {
 		if (cow.resourceTriangles >= cow.nextTrianglePrice 	&& cow.triangleCapacity < cow.maxTriangleCapacity 	&& (buttID24.src.slice(-10,-5) != 'Color' || triangleCounter.style.color == 'rgb(249, 249, 249)')) {
 			const q = getRNG()
 			switch (q) {
-				case 4: triangleCounter.style.color = '#2B7A94'; break;
-				case 5: triangleCounter.style.color = '#932340'; break;
-				case 6: triangleCounter.style.color = '#BBB21C'; break;
-				case 7: triangleCounter.style.color = '#9A537B'; break;
+				case 1: triangleCounter.style.color = '#2B7A94'; break;
+				case 2: triangleCounter.style.color = '#932340'; break;
+				case 3: triangleCounter.style.color = '#BBB21C'; break;
+				case 4: triangleCounter.style.color = '#9A537B'; break;
 				default: break;
 				}
 			buttID24.src = 'Images/triangleColor' + q + '.png';
@@ -538,10 +538,10 @@ function recheckItemCostHighlighting() {
 		if (cow.resourceCircles >= cow.nextCirclePrice 		&& cow.circleCapacity < cow.maxCircleCapacity 		&& (buttID25.src.slice(-10,-5) != 'Color' || circleCounter.style.color == 'rgb(249, 249, 249)')) {
 			const q = getRNG()
 			switch (q) {
-				case 4: circleCounter.style.color = '#119E8D'; break;
-				case 5: circleCounter.style.color = '#E9525E'; break;
-				case 6: circleCounter.style.color = '#8B6FD0'; break;
-				case 7: circleCounter.style.color = '#B8803D'; break;
+				case 1: circleCounter.style.color = '#119E8D'; break;
+				case 2: circleCounter.style.color = '#E9525E'; break;
+				case 3: circleCounter.style.color = '#8B6FD0'; break;
+				case 4: circleCounter.style.color = '#B8803D'; break;
 				default: break;
 				}
 			buttID25.src = 'Images/circleColor' + q + '.png';
@@ -549,10 +549,10 @@ function recheckItemCostHighlighting() {
 		if (cow.resourceSquares >= cow.nextSquarePrice 		&& cow.squareCapacity < cow.maxSquareCapacity 		&& (buttID26.src.slice(-10,-5) != 'Color' || squareCounter.style.color == 'rgb(249, 249, 249)')) {
 			const q = getRNG()
 			switch (q) {
-				case 4: squareCounter.style.color = '#9052D0'; break;
-				case 5: squareCounter.style.color = '#307A93'; break;
-				case 6: squareCounter.style.color = '#279C32'; break;
-				case 7: squareCounter.style.color = '#B1B23B'; break;
+				case 1: squareCounter.style.color = '#9052D0'; break;
+				case 2: squareCounter.style.color = '#307A93'; break;
+				case 3: squareCounter.style.color = '#279C32'; break;
+				case 4: squareCounter.style.color = '#B1B23B'; break;
 				default: break;
 				}
 			buttID26.src = 'Images/squareColor' + q + '.png';
@@ -602,14 +602,14 @@ function forceIconRecolorize() {
 	if (cow.resourceSquares >= 8000		&& cow.maxSquareCapacity < 30) 				{ buttID20.src = 'Images/squareHollowColor' + rngRange(1,3) + '.png'; }
 
 	// Resource counter numbers and shapes
-	function getRNG() { return rngRange(4,7); }
+	function getRNG() { return rngRange(1,4); }
 	if (cow.resourceDiamonds >= cow.nextDiamondPrice 	&& cow.diamondCapacity < cow.maxDiamondCapacity) {
 		const q = getRNG()
 		switch (q) {
-			case 4: diamondCounter.style.color = '#B0B22C'; break;
-			case 5: diamondCounter.style.color = '#DE8F49'; break;
-			case 6: diamondCounter.style.color = '#21C65E'; break;
-			case 7: diamondCounter.style.color = '#6A5096'; break;
+			case 1: diamondCounter.style.color = '#B0B22C'; break;
+			case 2: diamondCounter.style.color = '#DE8F49'; break;
+			case 3: diamondCounter.style.color = '#21C65E'; break;
+			case 4: diamondCounter.style.color = '#6A5096'; break;
 			default: break;
 			}
 		buttID21.src = 'Images/diamondColor' + q + '.png';
@@ -617,10 +617,10 @@ function forceIconRecolorize() {
 	if (cow.resourceStars >= cow.nextStarPrice 			&& cow.starCapacity < cow.maxStarCapacity) {
 		const q = getRNG()
 		switch (q) {
-			case 4: starCounter.style.color = '#439C9E'; break;
-			case 5: starCounter.style.color = '#B658A5'; break;
-			case 6: starCounter.style.color = '#C19B3A'; break;
-			case 7: starCounter.style.color = '#73B47C'; break;
+			case 1: starCounter.style.color = '#439C9E'; break;
+			case 2: starCounter.style.color = '#B658A5'; break;
+			case 3: starCounter.style.color = '#C19B3A'; break;
+			case 4: starCounter.style.color = '#73B47C'; break;
 			default: break;
 			}
 		buttID22.src = 'Images/starColor' + q + '.png';
@@ -628,10 +628,10 @@ function forceIconRecolorize() {
 	if (cow.resourceHexagons >= cow.nextHexagonPrice 	&& cow.hexagonCapacity < cow.maxHexagonCapacity) {
 		const q = getRNG()
 		switch (q) {
-			case 4: hexagonCounter.style.color = '#24A952'; break;
-			case 5: hexagonCounter.style.color = '#3B5DA2'; break;
-			case 6: hexagonCounter.style.color = '#AC49A9'; break;
-			case 7: hexagonCounter.style.color = '#CA5D5D'; break;
+			case 1: hexagonCounter.style.color = '#24A952'; break;
+			case 2: hexagonCounter.style.color = '#3B5DA2'; break;
+			case 3: hexagonCounter.style.color = '#AC49A9'; break;
+			case 4: hexagonCounter.style.color = '#CA5D5D'; break;
 			default: break;
 			}
 		buttID23.src = 'Images/hexagonColor' + q + '.png';
@@ -639,10 +639,10 @@ function forceIconRecolorize() {
 	if (cow.resourceTriangles >= cow.nextTrianglePrice 	&& cow.triangleCapacity < cow.maxTriangleCapacity) {
 		const q = getRNG()
 		switch (q) {
-			case 4: triangleCounter.style.color = '#2B7A94'; break;
-			case 5: triangleCounter.style.color = '#923240'; break;
-			case 6: triangleCounter.style.color = '#BBB21C'; break;
-			case 7: triangleCounter.style.color = '#9A537B'; break;
+			case 1: triangleCounter.style.color = '#2B7A94'; break;
+			case 2: triangleCounter.style.color = '#923240'; break;
+			case 3: triangleCounter.style.color = '#BBB21C'; break;
+			case 4: triangleCounter.style.color = '#9A537B'; break;
 			default: break;
 			}
 		buttID24.src = 'Images/triangleColor' + q + '.png';
@@ -650,10 +650,10 @@ function forceIconRecolorize() {
 	if (cow.resourceCircles >= cow.nextCirclePrice 		&& cow.circleCapacity < cow.maxCircleCapacity) {
 		const q = getRNG()
 		switch (q) {
-			case 4: circleCounter.style.color = '#119E8D'; break;
-			case 5: circleCounter.style.color = '#E9525E'; break;
-			case 6: circleCounter.style.color = '#8B6FD0'; break;
-			case 7: circleCounter.style.color = '#B8803D'; break;
+			case 1: circleCounter.style.color = '#119E8D'; break;
+			case 2: circleCounter.style.color = '#E9525E'; break;
+			case 3: circleCounter.style.color = '#8B6FD0'; break;
+			case 4: circleCounter.style.color = '#B8803D'; break;
 			default: break;
 			}
 		buttID25.src = 'Images/circleColor' + q + '.png';
@@ -661,10 +661,10 @@ function forceIconRecolorize() {
 	if (cow.resourceSquares >= cow.nextSquarePrice 		&& cow.squareCapacity < cow.maxSquareCapacity) {
 		const q = getRNG()
 		switch (q) {
-			case 4: squareCounter.style.color = '#9052D0'; break;
-			case 5: squareCounter.style.color = '#307A93'; break;
-			case 6: squareCounter.style.color = '#279C32'; break;
-			case 7: squareCounter.style.color = '#B1B23B'; break;
+			case 1: squareCounter.style.color = '#9052D0'; break;
+			case 2: squareCounter.style.color = '#307A93'; break;
+			case 3: squareCounter.style.color = '#279C32'; break;
+			case 4: squareCounter.style.color = '#B1B23B'; break;
 			default: break;
 			}
 		buttID26.src = 'Images/squareColor' + q + '.png';
