@@ -16,6 +16,7 @@ function preloadFiles() {
 		} else { // code for IE6, IE5
 			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 		}
+		// Note: As of Apr 2020, this doesn't work locally with safari anymore, even with CORS protection off
 		xmlhttp.onreadystatechange = function() {
 			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 				let q = document.createElement('span');	// Extra stuff to make IE happy. Fuck IE
