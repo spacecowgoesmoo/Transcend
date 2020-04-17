@@ -12,7 +12,7 @@ v2.0 - Big maintenance patch 2020
 		Throttled all of recheckItemCostHighlighting() when there's a ton of shapes onscreen
 		Fixed significant amounts of JS garbage being created (and collected)
 		Throttled sky gradients from 60FPS to 4FPS
-		Throttled stars and planets from 60FPS to 1FPS
+		Throttled stars and planets from 60FPS to 10FPS
 	Audio
 		Fixed a bug where audio was completely dead in Safari due to new autoplay protection
 		Changed music format from MP3 to OPUS, reducing asset filesize by 65% (54MB)

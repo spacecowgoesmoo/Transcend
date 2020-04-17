@@ -116,12 +116,12 @@ function spawnSkystar(luminosity, color, placement, lifespan, shape, counter) {
 
 	function pulseBrightness() {
 		star.alpha = (Math.sin(q));										// calculate alpha with a sinewave
-		q += 1/lifespan/19;												// increment. lifespan is tuned to be in minutes
+		q += 1/lifespan/190;											// increment. lifespan is tuned to be in minutes
 
 		if (q > 0.8 && sfxPlayed == false) {							// play sfx when the shape is mostly visible
 			switch (shape) {
-				case 'star':				playAudio('./SFX/star' + rngRange(1,5), 'sfx', star.x);			break;
-				case 'circle':				playAudio('./SFX/circle' + rngRange(1,5), 'sfx', star.x);		break;
+				case 'star':	playAudio('./SFX/star' + rngRange(1,5), 'sfx', star.x);		break;
+				case 'circle':	playAudio('./SFX/circle' + rngRange(1,5), 'sfx', star.x);	break;
 				default: break;
 			}
 			sfxPlayed = true;
@@ -143,9 +143,9 @@ function spawnSkystar(luminosity, color, placement, lifespan, shape, counter) {
 					default: break;												//
 				}
 			}
-			updateResourceCounter(shape);										//
+			updateResourceCounter(shape);
 			cow[counter]--;												// and remove the star from the capacity counter
-		} else { setTimeout(function() { window.requestAnimationFrame(pulseBrightness); }, 1000) } // Throttled to 1FPS
+		} else { setTimeout(function() { window.requestAnimationFrame(pulseBrightness); }, 100) } // Throttled to 10FPS
 	}
 
 
