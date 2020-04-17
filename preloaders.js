@@ -27,9 +27,9 @@ function preloadFiles() {
 				if (navigator.userAgent.indexOf('Firefox') > -1 && navigator.userAgent.indexOf('Seamonkey') == -1) {
 					document.getElementById("loadSound").innerHTML = '';
 				}
-				console.log('Loaded file ' + cow.filesPreloaded + '/167 - ' + filename);
+				console.log('Loaded file ' + cow.filesPreloaded + '/166 - ' + filename);
 				cow.filesPreloaded++;
-				if (cow.filesPreloaded >= 167) { 
+				if (cow.filesPreloaded >= 166) { 
 					setTimeout(function() { cow.preloaderComplete = true; }, 1500);
 				}
 			}
