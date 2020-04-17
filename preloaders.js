@@ -17,8 +17,7 @@ function preloadFiles() {
 			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 		}
 		xmlhttp.onreadystatechange = function() {
-			/*console.log(xmlhttp.readyState + ' ' + xmlhttp.status)*/
-			if (xmlhttp.readyState == 4/* && xmlhttp.status == 200*/) {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 				let q = document.createElement('span');	// Extra stuff to make IE happy. Fuck IE
 				q.setAttribute('id', 'loadSound');		//
 				q.setAttribute('class', 'invisible');	//
