@@ -440,7 +440,7 @@ function randomBiomes(trigger) {
 			default: break;
 		}
 		disableBiomeButtons();
-		biomeRandomPNG.style.opacity = rngRange(4,7)/10;			// Simulates color changes, but more cheaply
+		biomeRandomButton.innerHTML = "<image id='biomeRandomPNG' src='Images/diamondBarColor" + rngRange(1,7) + ".png' class='biomeRandomImage firefoxHack6'></image>";
 		biomeRandomButton.disabled = true;
 		setTimeout(randomBiomes, 5000);								// 5 seconds
 	}
@@ -450,6 +450,7 @@ function randomBiomes(trigger) {
 
 
 function stopRandomization() {
+	biomeRandomButton.innerHTML = "<image id='biomeRandomPNG' src='Images/diamondBar.png' class='biomeRandomImage firefoxHack6'></image>";
 	cow.randomBiomesActive = false;
 	cow.bgTransitionSpeed = 5;
 }

@@ -27,6 +27,7 @@ v2.0 - Big maintenance patch 2020
 	New player experience
 		Changed the separator character in the upper left to be less confusing
 		Added new biome icons to better represent setting and reduce confusing icon reuse
+		Added color to the three biome icon sets that were in greyscale
 		Made the first upgrade display onscreen earlier and lowered the price
 		Increased visibility of inactive biome icons
 	Other Bugfixes

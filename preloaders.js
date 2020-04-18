@@ -28,9 +28,9 @@ function preloadFiles() {
 				if (navigator.userAgent.indexOf('Firefox') > -1 && navigator.userAgent.indexOf('Seamonkey') == -1) {
 					document.getElementById("loadSound").innerHTML = '';
 				}
-				console.log('Loaded file ' + cow.filesPreloaded + '/166 - ' + filename);
+				console.log('Loaded file ' + cow.filesPreloaded + '/173 - ' + filename);
 				cow.filesPreloaded++;
-				if (cow.filesPreloaded >= 166) { 
+				if (cow.filesPreloaded >= 173) { 
 					setTimeout(function() { cow.preloaderComplete = true; }, 1500);
 				}
 			}
@@ -87,6 +87,13 @@ function preloadFiles() {
 	load('Images/circleHollowColor3.png');
 	load('Images/diamond.png');
 	load('Images/diamondBar.png');
+	load('Images/diamondBarColor1.png');
+	load('Images/diamondBarColor2.png');
+	load('Images/diamondBarColor3.png');
+	load('Images/diamondBarColor4.png');
+	load('Images/diamondBarColor5.png');
+	load('Images/diamondBarColor6.png');
+	load('Images/diamondBarColor7.png');
 	load('Images/diamondBarHollow.png');
 	load('Images/diamondBarHollowColor1.png');
 	load('Images/diamondBarHollowColor2.png');
