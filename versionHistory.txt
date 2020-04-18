@@ -30,6 +30,7 @@ v2.0 - Big maintenance patch 2020
 		Made the first upgrade display onscreen earlier and lowered the price
 		Increased visibility of inactive biome icons
 	Other Bugfixes
+		Fixed a bug where the availability of shape30 upgrades didn't work as intended
 		Fixed three bugs that would result in inaccurate preloader console messages
 		Fixed a tiny edge case bug when purchasing biome 4
 	Code Cleanup
