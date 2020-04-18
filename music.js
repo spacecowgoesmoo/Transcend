@@ -310,14 +310,19 @@ function browserAudioCheck() {
 	// Check for Safari
 	if (navigator.userAgent.indexOf('Safari') > -1 && navigator.vendor.indexOf('Apple') > -1) { 
 		cow.audioFormat = '.caf'; 
-		window.document.addEventListener('click', preventAutomutedAudio);	// For now this is only needed in Safari
 	}
 	else { cow.audioFormat = '.opus'; }
+
+	// This is only required for Safari, but it might help future proof other browsers
+	window.document.addEventListener('click', preventAutomutedAudio);
 }
 
 
 function preventAutomutedAudio() {
-	const myAudio = new Audio('./SFX/diamond' + rngRange(1,5) + cow.audioFormat);
-	myAudio.play();
+	let q = sfxGroup.masterVolume.context;
+	let r = bgmGroup.masterVolume.context;
+	q.resume();
+	r.resume();
+
 	window.document.removeEventListener('click', preventAutomutedAudio);
 }
