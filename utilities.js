@@ -65,7 +65,7 @@ function newFadePlusToggleAndVisibility(id, targetOpacity, time, toggle) {
 			if (window.getComputedStyle(id).opacity <= 0.01) { id.className = 'invisible'; } }, time * 1000)
 		}
 		// Opacity (the setTimeout patches a bug where it fades in instantly, no idea why)
-		setTimeout(function() { newFade(id, targetOpacity, time) }, 5)
+		setTimeout(function() { newFade(id, targetOpacity, time) }, 20)
 	}
 }
 
