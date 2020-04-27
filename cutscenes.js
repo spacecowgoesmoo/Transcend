@@ -45,7 +45,7 @@ function preloader() {
 		if (cow.filesPreloaded >= 145 && diam4.alpha == 0.13) { diam4.tint=cowColor; diam4.alpha=1;}
 		if (cow.filesPreloaded >= 160 && diam5.alpha == 0.13) { diam5.tint=cowColor; diam5.alpha=1;}
 		if (cow.filesPreloaded >= 173 && diam6.alpha == 0.13) { diam6.tint=cowColor; diam6.alpha=1;}
-		if (cow.kongUsername && cow.preloaderComplete == true) {				// NOTE - This username login part doubles as a sitelock
+		if (cow.preloaderComplete == true) {
 			fadeOutDiamond(1);
 			fadeOutDiamond(2);
 			fadeOutDiamond(3);
