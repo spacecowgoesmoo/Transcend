@@ -775,17 +775,23 @@ canvas {
 
 /* Chrome Hacks */
 @media all and (-webkit-min-device-pixel-ratio:0) and (min-resolution: .001dpcm) { 
-	.selector:not(*:root) {
-		body { image-rendering: -webkit-optimize-contrast; } 			/* Fixes shitty blurry image scaling in Chrome. Breaks Safari so keep it on Chrome only */		
-		button { line-height: 23px; }									/* Fixes uneven options menu line spacing */
-		.firefoxHack { top: 0px; }										/* These all break OSX intentionally. 5% market share :( */
-		.triangleButtonImage { top: -1px; }
-		.stardustButtonImage { top: -1px; }
-		#starCounterText { bottom: 4px; }
-		#hexagonCounterText { bottom: 4px; }
-		.diamondCounterShape { top: 2px; }
-		#diamondCounterText { bottom: 4px; }
-		.hexagonCounterShape { top: 2px; }
-		.starCounterShape { top: 2px; }
-	}
+	.selector:not(*:root), body { image-rendering: -webkit-optimize-contrast; } 			/* Fixes shitty blurry image scaling in Chrome. Breaks Safari so keep it on Chrome only */		
+	.selector:not(*:root), button { line-height: 23px; }									/* Fixes uneven options menu line spacing */
+	.selector:not(*:root), .firefoxHack { top: 0px; }										/* These all break OSX intentionally. 5% market share :( */
+	.selector:not(*:root), .diamondButtonImage { right: 6px; }
+	.selector:not(*:root), .starButtonImage { right: 6px; }
+	.selector:not(*:root), .hexagonButtonImage { right: 6px; bottom: 0px; }
+	.selector:not(*:root), .circleButtonImage { right: 5px; }
+	.selector:not(*:root), .squareButtonImage { right: 5px; }
+	.selector:not(*:root), .diamondBarPurchaseImage { right: 5px; }
+	.selector:not(*:root), .biomeRandomImage { right: 7px; }
+	.selector:not(*:root), .stardustButtonImage { right: 5px; }
+	.selector:not(*:root), .triangleButtonImage { top: -1px; }
+	.selector:not(*:root), .stardustButtonImage { top: -1px; }
+	.selector:not(*:root), #starCounterText { bottom: 4px; }
+	.selector:not(*:root), #hexagonCounterText { bottom: 4px; }
+	.selector:not(*:root), .diamondCounterShape { top: 2px; }
+	.selector:not(*:root), #diamondCounterText { bottom: 4px; }
+	.selector:not(*:root), .hexagonCounterShape { top: 2px; }
+	.selector:not(*:root), .starCounterShape { top: 2px; }
 }
