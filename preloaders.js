@@ -16,17 +16,18 @@ function preloadFiles() {
 		} else { // code for IE6, IE5
 			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 		}
+
 		// Note: As of Apr 2020, this doesn't work locally with safari anymore, even with CORS protection off
 		xmlhttp.onreadystatechange = function() {
 			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 				let q = document.createElement('span');	// Extra stuff to make IE happy. Fuck IE
-				q.setAttribute('id', 'loadSound');		//
+				q.setAttribute('id', 'loadFile');		//
 				q.setAttribute('class', 'invisible');	//
 				document.body.appendChild(q);			//
-				document.getElementById("loadSound").innerHTML = '<embed src="' + filename + '" controller="1" autoplay="0" autostart="0"/>';
+				document.getElementById("loadFile").innerHTML = '<embed src="' + filename + '" controller="1" autoplay="0" autostart="0"/>';
 				// Prevents Firefox from audibly playing preloaded SFX
 				if (navigator.userAgent.indexOf('Firefox') > -1 && navigator.userAgent.indexOf('Seamonkey') == -1) {
-					document.getElementById("loadSound").innerHTML = '';
+					document.getElementById("loadFile").innerHTML = '';
 				}
 				console.log('Loaded file ' + cow.filesPreloaded + '/173 - ' + filename);
 				cow.filesPreloaded++;
@@ -35,7 +36,14 @@ function preloadFiles() {
 				}
 			}
 		}
-		xmlhttp.open("GET", filename, true);
+		
+		// Prevents some harmless console errors in Firefox
+		const period = filename.lastIndexOf('.');
+		const filetype = filename.substring(period + 1);
+		if (filetype == 'opus' || filetype == 'caf') { xmlhttp.overrideMimeType('audio/' + filetype); }
+
+		// Start!
+		xmlhttp.open('GET', filename, true);
 		xmlhttp.send();
 	}
 	
