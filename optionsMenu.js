@@ -115,6 +115,48 @@ function loadGame() {
 	}
 }
 
+function startGameResumeDemo() {
+	cow.currentBiome = 'biome1';
+	cow.spawnNewBGgradient = true;
+
+	cow.creditsActivated = false;
+	cow.gameStarted = true;
+
+	cow.hideMusicText = false;
+	cow.muteAudioForIE = false;
+
+	cow.randomBiomesUnlocked = true;
+	cow.bgTransitionSpeed = 5;
+
+	cow.endgameBarOwned = true;
+
+	cow.stardustSpawnBoost1Owned = true;
+	cow.stardustSpawnBoost2Owned = true;
+
+	cow.resourceCounterWidth = 115;
+
+	cow.biome1Owned = true;
+	cow.biome2Owned = true;
+	cow.biome3Owned = true;
+	cow.biome4Owned = true;
+	cow.biome5Owned = true;
+	cow.biome6Owned = true;
+
+	cow.diamondCapacity = 30;
+	cow.starCapacity = 30;
+	cow.hexagonCapacity = 30;
+	cow.triangleCapacity = 30;
+	cow.circleCapacity = 30;
+	cow.squareCapacity = 300;
+
+	cow.maxDiamondCapacity = 30;
+	cow.maxStarCapacity = 30;
+	cow.maxHexagonCapacity = 30;
+	cow.maxTriangleCapacity = 30;
+	cow.maxCircleCapacity = 30;
+	cow.maxSquareCapacity = 300;
+}
+
 
 
 

@@ -45,8 +45,13 @@ v2.0 - Big maintenance patch 2020
 		Removed some commented-out code, improved a few bits of confusing code
 		Stripped trailing whitespace and replaced overlooked space-indents with tabs
 	Devtools
+		Added a builtin toggle for the demo version so I don't have to maintain two codebases anymore
 		Improved unlockEverythingDevHack() to more effectively test all three game phases
 		Added new console messages for background music
+
+
+
+
 
 
 

@@ -529,16 +529,17 @@ function kongregateStuff() {
 
 // Activate the game and everything
 // Safer to use as an onLoad function in case something (pixi.js) stalls the HTML elements from loading..
-// ..which breaks the game when they then get called before they exist
+// ..which breaks the game when they then get referenced before they exist
 function initializeGameOne() {
 	browserAudioCheck();													// We need the CAF/OPUS data for the preloader
 	preloadFiles();
 	kongregateStuff();
 }
 
-function initializeGameTwo() {
+function initializeGameTwo(gameType) {
 	// Things that need to load first
-	loadGame();
+	if (gameType == 'normal') { loadGame(); }
+	if (gameType == 'resumeDemo' ) { startGameResumeDemo(); }
 	newGameStuff();
 	if (cow.randomBiomesActive == false) { changeBiome(cow.currentBiome); }	// Activate biome from last play session
 	if (cow.randomBiomesActive == true) { randomBiomes('activate'); }		// Or randomBiome, if applicable
