@@ -716,7 +716,8 @@ canvas {
 	#biomeSelectBar { width: 100%; }			/* Idiotic hack that's required to prevent sprite colors being inverted */
 	#resourceCounter { height: 63px; }			/* Idiotic hack that's required to prevent sprite colors being inverted. Bit of a bug at the very start, but that's OK */
 	#upgradeBar { width: 100%; }
-	#squareCounterText { bottom: 3.5px;	}
+	#squareCounterText, #stardustCounterText { bottom: 3.5px; }
+	.squareCounterShape { top: 1px; }
 	#optionsMenu { left: 331px; }
 }
 
@@ -794,4 +795,5 @@ canvas {
 	.selector:not(*:root), #diamondCounterText { bottom: 4px; }
 	.selector:not(*:root), .hexagonCounterShape { top: 2px; }
 	.selector:not(*:root), .starCounterShape { top: 2px; }
+	.selector:not(*:root), .squareCounterShape { top: 2px; }
 }
