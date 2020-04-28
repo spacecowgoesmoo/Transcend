@@ -143,6 +143,13 @@ button:disabled:hover {
 	bottom: 1px;
 }
 
+.biome3ButtonImage {
+	height: 24px;
+	position: relative;
+	right: 6px;
+	top: 1px;
+}
+
 .squareButtonImage {
 	height: 21px;
 	position: relative;
@@ -695,7 +702,7 @@ canvas {
 	.optionTextLast { margin-right: -2px; }
 	.extraMarginRight {	margin-right: -9px; }
 	#optionsMenu { line-height: 26px; width: 190px; left: 330px; top: 90px; }
-	.triangleButtonImage { right: 8px; }
+	.triangleButtonImage, .biome3ButtonImage { right: 8px; }
 	.lowerLeftTextBar { line-height: 10px; }
 }					
 
@@ -721,6 +728,7 @@ canvas {
 	.starButtonImage { left: -7px; }
 	.hexagonButtonImage { left: -7px; }
 	.triangleButtonImage { right: 8px; top: -1px; }
+	.biome3ButtonImage { right: 8px; }
 	.stardustButtonImage { left: -6px; top: -1px; }
 	#starCounterText { bottom: 4px; }
 	#hexagonCounterText { bottom: 4px; }
@@ -746,6 +754,7 @@ canvas {
 	.firefoxHack { top: 0px; } 					/* Pushes biome select images down 1px and overwrites the rightside spacing */
 	#diamondCounterText { bottom: 5px; }
 	.triangleButtonImage { right: 6px; top: -1px; }
+	.biome3ButtonImage { right: 6px; }
 	.stardustButtonImage { top: -1px; }
 	#starCounterText { bottom: 4px; }
 	#hexagonCounterText { bottom: 4px; }
@@ -766,15 +775,17 @@ canvas {
 
 /* Chrome Hacks */
 @media all and (-webkit-min-device-pixel-ratio:0) and (min-resolution: .001dpcm) { 
-	body { image-rendering: -webkit-optimize-contrast; } 			/* Fixes shitty blurry image scaling in Chrome. Breaks Safari so keep it on Chrome only */		
-	button { line-height: 23px; }									/* Fixes uneven options menu line spacing */
-	.firefoxHack { top: 0px; }										/* These all break OSX intentionally. 5% market share :( */
-	.triangleButtonImage { top: -1px; }
-	.stardustButtonImage { top: -1px; }
-	#starCounterText { bottom: 4px; }
-	#hexagonCounterText { bottom: 4px; }
-	.diamondCounterShape { top: 2px; }
-	#diamondCounterText { bottom: 4px; }
-	.hexagonCounterShape { top: 2px; }
-	.starCounterShape { top: 2px; }
+	.selector:not(*:root) {
+		body { image-rendering: -webkit-optimize-contrast; } 			/* Fixes shitty blurry image scaling in Chrome. Breaks Safari so keep it on Chrome only */		
+		button { line-height: 23px; }									/* Fixes uneven options menu line spacing */
+		.firefoxHack { top: 0px; }										/* These all break OSX intentionally. 5% market share :( */
+		.triangleButtonImage { top: -1px; }
+		.stardustButtonImage { top: -1px; }
+		#starCounterText { bottom: 4px; }
+		#hexagonCounterText { bottom: 4px; }
+		.diamondCounterShape { top: 2px; }
+		#diamondCounterText { bottom: 4px; }
+		.hexagonCounterShape { top: 2px; }
+		.starCounterShape { top: 2px; }
+	}
 }

@@ -30,12 +30,14 @@ v2.0 - Big maintenance patch 2020
 		Added color to the three biome icon sets that were in greyscale
 		Made the first upgrade display onscreen earlier and lowered the price
 		Increased visibility of inactive biome icons
-	Other Bugfixes
+	General Bugfixes
 		Fixed a bug where the availability of shape30 upgrades didn't work as intended
 		Fixed three bugs that would result in inaccurate preloader console messages
 		Fixed a tiny edge case bug when purchasing biome 4
+		Fixed some harmless preloader console errors in Firefox
 	Code Cleanup
-		Changed some CSS to prevent having two versions for iFrame and standalone hosting
+		Changed some CSS to prevent extra codebases for iFrame and standalone hosting
+		Added a builtin toggle for the demo version to prevent extra codebases
 		Reduced number of Javascript var declarations from 269 to 26
 		Fixed all setTimeout() string evaluation anti-patterns
 		Replaced complicated Javascript fade animations with two lines of CSS
@@ -45,7 +47,6 @@ v2.0 - Big maintenance patch 2020
 		Removed some commented-out code, improved a few bits of confusing code
 		Stripped trailing whitespace and replaced overlooked space-indents with tabs
 	Devtools
-		Added a builtin toggle for the demo version so I don't have to maintain two codebases anymore
 		Improved unlockEverythingDevHack() to more effectively test all three game phases
 		Added new console messages for background music
 
