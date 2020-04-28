@@ -313,7 +313,6 @@ function initializeProgressBars() {
 function checkForGameVictory() {
 	if (cow.resourceEndgameBarDiamonds >=1000 && cow.resourceEndgameBarStars >=3000 && cow.resourceEndgameBarHexagons >=4000 && cow.resourceEndgameBarTriangles >=6000 && cow.resourceEndgameBarCircles >=3000 && cow.resourceEndgameBarSquares >=8000
 		&& cow.creditsActivated == false && cow.endgameBarOwned == true) {
-		cow.creditsActivated = true;									// prevents credits sequence from spawning with every shape lol
 		beginCredits();
 	}
 }

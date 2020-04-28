@@ -53,9 +53,8 @@ function newFadeInOut(id, time) {
 
 
 
-// TODO: This can look weird if the user spams clicks
 function newFadePlusToggleAndVisibility(id, targetOpacity, time, toggle) {
-	// First part makes this also toggle opacity when used as a fadeIn
+	// First part makes this also act as toggle when used as a fadeIn
 	if (id.style.opacity >= 0.3 && toggle == true) {
 		newFadePlusToggleAndVisibility(id, 0, time, false)
 	} else {
