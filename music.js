@@ -319,10 +319,12 @@ function browserAudioCheck() {
 
 
 function preventAutomutedAudio() {
-	let q = sfxGroup.masterVolume.context;
-	let r = bgmGroup.masterVolume.context;
-	q.resume();
-	r.resume();
+	if (cow.muteAudioForIE == false) {
+		let q = sfxGroup.masterVolume.context;
+		let r = bgmGroup.masterVolume.context;
+		q.resume();
+		r.resume();
 
-	window.document.removeEventListener('click', preventAutomutedAudio);
+		window.document.removeEventListener('click', preventAutomutedAudio);
+	}
 }

@@ -89,7 +89,6 @@ function loadGame() {
 		cow.spawnNewBGgradient = true;
 		cow.creditsActivated = false;
 		cow.hideMusicText = false;
-		cow.muteAudioForIE = false;
 		cow.gameStarted = true;
 		cow.filesPreloaded = cowTemp1;
 
@@ -123,7 +122,6 @@ function startGameResumeDemo() {
 	cow.gameStarted = true;
 
 	cow.hideMusicText = false;
-	cow.muteAudioForIE = false;
 
 	cow.randomBiomesUnlocked = true;
 	cow.bgTransitionSpeed = 5;
