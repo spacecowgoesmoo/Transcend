@@ -78,7 +78,7 @@ function showStartGameButton() {
 
 function startGame(gameType) {
 	if (cow.gameStarted == false && cow.preloaderComplete == true && startGameText.style.opacity == 1) {
-		newFade(startGameText, 0, 0.7);											// Fadeout the start game text
+		newFadePlusToggleAndVisibility(startGameText, 0, 0.7)					// Fadeout the start game text
 
 		initializeGameTwo(gameType);											// Start the game
 		initializeGameThree();
