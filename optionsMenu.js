@@ -155,6 +155,13 @@ function startGameResumeDemo() {
 	cow.maxTriangleCapacity = 30;
 	cow.maxCircleCapacity = 30;
 	cow.maxSquareCapacity = 300;
+
+	let q = document.createElement('span');
+	q.setAttribute('id', 'resumeText');
+	q.setAttribute('style', 'text-align: center; width: 700px; padding: 0 100px; display: block; transition: all ease 2s; opacity: 0;');
+	document.body.appendChild(q);
+	setTimeout(function() { resumeText.style.opacity = 1; }, 500);
+	resumeText.innerHTML = '<br>This is a modified demo version of Transcend created for my resume.<br><br>All content has been automatically unlocked for quick viewing. Click the buttons in the lower right to cycle through the game content. For more information on this genre, please visit <a href="https://www.reddit.com/r/incremental_games/" target="_blank">r/incremental_games</a>. The full game is hosted on <a href="http://www.kongregate.com/games/spacecowgoesmoo/transcend" target="_blank">Kongregate</a>.<br><br><br><br>';
 }
 
 
