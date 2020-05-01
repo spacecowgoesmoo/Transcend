@@ -223,6 +223,8 @@ function checkToDisableBiome4Filter() {
 
 
 
+
+
 function updateTextSpans(recursionTime) {
 	// recheckItemCostHighlighting();			// Safer but very CPU intensive. Moved to updateResourceCounter() in v2.0
 	// Shows or hides the buttons in the lower right biome select
