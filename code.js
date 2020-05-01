@@ -296,6 +296,23 @@ function updateTextSpans(recursionTime) {
 
 
 function initializeProgressBars() {
+	// Current (redundant but added for safety)
+	diamondBarPart1.value = cow.resourceStardustBiome1;
+	diamondBarPart2.value = cow.resourceStardustBiome2;
+	diamondBarPart3.value = cow.resourceStardustBiome3;
+	diamondBarPart4.value = cow.resourceStardustBiome4;
+	diamondBarPart5.value = cow.resourceStardustBiome5;
+	diamondBarPart6.value = cow.resourceStardustBiome6;
+	endgameBarPart1.value = cow.resourceEndgameBarDiamonds;	
+	endgameBarPart2.value = cow.resourceEndgameBarStars;	
+	endgameBarPart3.value = cow.resourceEndgameBarHexagons;	
+	endgameBarPart4.value = cow.resourceEndgameBarTriangles;
+	endgameBarPart5.value = cow.resourceEndgameBarCircles;	
+	endgameBarPart6.value = cow.resourceEndgameBarSquares;	
+	endgameBarPart6.value = cow.resourceEndgameBarSquares;	
+	endgameBarPart6.value = cow.resourceEndgameBarSquares;	
+
+	// Maximums
 	diamondBarPart1.max = 20;
 	diamondBarPart2.max = 20;
 	diamondBarPart3.max = 20;
