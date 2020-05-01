@@ -309,8 +309,6 @@ function initializeProgressBars() {
 	endgameBarPart4.value = cow.resourceEndgameBarTriangles;
 	endgameBarPart5.value = cow.resourceEndgameBarCircles;	
 	endgameBarPart6.value = cow.resourceEndgameBarSquares;	
-	endgameBarPart6.value = cow.resourceEndgameBarSquares;	
-	endgameBarPart6.value = cow.resourceEndgameBarSquares;	
 
 	// Maximums
 	diamondBarPart1.max = 20;
