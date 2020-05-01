@@ -487,6 +487,7 @@ progress::-webkit-progress-bar { background: #222222; }
 
 /* Color for IE & Edge */
 progress { background-color: #222222; }
+progress::-ms-fill { border: none }									/* Fixes 1px of #000000 at the end of each bar */
 #diamondBarPart1 { color: #9292BB; }								/* Darkness +1 so that diamondBarLabelImage is legible */
 #diamondBarPart2 { color: #A3CCA3; }
 #diamondBarPart3 { color: #A777BA; }

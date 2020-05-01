@@ -23,7 +23,8 @@ v2.0 - Big maintenance patch 2020
 		Upgraded pixi.js from version 4.4.1 to 5.2.1
 		Rewrote the gradient shader. Lots of extra steps removed and it's now fully documented
 		UI color changes now happen instantly instead of being delayed for up to three seconds
-		Fixed some outdated shape CSS. Code's still bad but maybe we'll redo it another time
+		Fixed some bugs with progress bar graphics in IE11
+		Fixed some outdated shape icon CSS
 		Applied better image compression, reducing asset filesize by 45% (55KB)
 	New player experience
 		Changed the separator character in the upper left to be less confusing
