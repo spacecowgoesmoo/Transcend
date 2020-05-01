@@ -55,13 +55,14 @@ function newFadeInOut(id, time) {
 
 function newFadePlusToggleAndVisibility(id, targetOpacity, time, toggle) {
 	// First part makes this also act as toggle when used as a fadeIn
-	if (id.style.opacity >= 0.3 && toggle == true) {
+	if (id.style.opacity >= (targetOpacity * 0.5) && toggle == true) {
 		newFadePlusToggleAndVisibility(id, 0, time, false)
 	} else {
 		// Visibility
 		if (targetOpacity > 0) { id.className = 'visible'; }
+		// Ideally this would be <= 0, but the CSS animation's end result always varies a bit
 		else { setTimeout(function() {
-			if (window.getComputedStyle(id).opacity <= 0.01) { id.className = 'invisible'; } }, time * 1000)
+			if (window.getComputedStyle(id).opacity <= 0.025) { id.className = 'invisible'; } }, time * 1000)
 		}
 		// Opacity (the setTimeout patches a bug where it fades in instantly, no idea why)
 		setTimeout(function() { newFade(id, targetOpacity, time) }, 20)

@@ -50,7 +50,7 @@ function importEncryptedSave() {
 		saveGame();
 		window.location.reload();
 	} else alert("Save import cancelled");
-	newFade(optionsMenu, 0, 0.25);
+	newFadePlusToggleAndVisibility(optionsMenu, 0, 0.25);
 }
 
 
