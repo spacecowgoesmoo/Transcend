@@ -245,25 +245,27 @@ function initializeVolumeDisplays() {
 // BGM modifies the group instead, so that you can change volume during a song
 
 function increaseVolume(bus) {
-	let q;
-	let r;
+	if (cow.muteAudioForIE == false) {
+		let q;
+		let r;
 
-	switch (bus) {
-		case 'bgm': q=bgmGroup; r=cow.bgmVolume; break;
-		case 'sfx': q=sfxGroup; r=cow.sfxVolume; break;
-		default: break;
-	}
-
-	if (r < 99) {
 		switch (bus) {
-			case 'bgm': cow.bgmVolume += 10; bgmDisplay.innerHTML = cow.bgmVolume; r=cow.bgmVolume; hoverRNGColor(increaseBGMvolumeButton); break;
-			case 'sfx': cow.sfxVolume += 10; sfxDisplay.innerHTML = cow.sfxVolume; r=cow.sfxVolume; hoverRNGColor(increaseSFXvolumeButton); break;
+			case 'bgm': q=bgmGroup; r=cow.bgmVolume; break;
+			case 'sfx': q=sfxGroup; r=cow.sfxVolume; break;
 			default: break;
 		}
 
-		q.volume += 0.1;						// Set volume to target
-		if (r >= 100) { q.volume = 1; }
-		saveGame();
+		if (r < 99) {
+			switch (bus) {
+				case 'bgm': cow.bgmVolume += 10; bgmDisplay.innerHTML = cow.bgmVolume; r=cow.bgmVolume; hoverRNGColor(increaseBGMvolumeButton); break;
+				case 'sfx': cow.sfxVolume += 10; sfxDisplay.innerHTML = cow.sfxVolume; r=cow.sfxVolume; hoverRNGColor(increaseSFXvolumeButton); break;
+				default: break;
+			}
+
+			q.volume += 0.1;						// Set volume to target
+			if (r >= 100) { q.volume = 1; }
+			saveGame();
+		}
 	}
 }
 
@@ -271,25 +273,27 @@ function increaseVolume(bus) {
 
 
 function decreaseVolume(bus) {
-	let q;
-	let r;
+	if (cow.muteAudioForIE == false) {
+		let q;
+		let r;
 
-	switch (bus) {
-		case 'bgm': q=bgmGroup; r=cow.bgmVolume; break;
-		case 'sfx': q=sfxGroup; r=cow.sfxVolume; break;
-		default: break;
-	}
-
-	if (r > 1) {
 		switch (bus) {
-			case 'bgm': cow.bgmVolume -= 10; bgmDisplay.innerHTML = cow.bgmVolume; r=cow.bgmVolume; hoverRNGColor(decreaseBGMvolumeButton); break;
-			case 'sfx': cow.sfxVolume -= 10; sfxDisplay.innerHTML = cow.sfxVolume; r=cow.sfxVolume; hoverRNGColor(decreaseSFXvolumeButton); break;
+			case 'bgm': q=bgmGroup; r=cow.bgmVolume; break;
+			case 'sfx': q=sfxGroup; r=cow.sfxVolume; break;
 			default: break;
 		}
 
-		q.volume -= 0.1;						// Set volume to target
-		if (r <= 0) { q.volume = 0; }
-		saveGame();
+		if (r > 1) {
+			switch (bus) {
+				case 'bgm': cow.bgmVolume -= 10; bgmDisplay.innerHTML = cow.bgmVolume; r=cow.bgmVolume; hoverRNGColor(decreaseBGMvolumeButton); break;
+				case 'sfx': cow.sfxVolume -= 10; sfxDisplay.innerHTML = cow.sfxVolume; r=cow.sfxVolume; hoverRNGColor(decreaseSFXvolumeButton); break;
+				default: break;
+			}
+
+			q.volume -= 0.1;						// Set volume to target
+			if (r <= 0) { q.volume = 0; }
+			saveGame();
+		}
 	}
 }
 
