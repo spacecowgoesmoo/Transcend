@@ -169,26 +169,26 @@ function updateResourceCounter(shape) {
 								checkToDisableBiome4Filter();																			break;
 		case 'stardust':  	stardustCounterText.innerHTML = cow.resourceStardust.toLocaleString();
 								// Update the Diamond Bar
-								diamondBarPart1.value = cow.resourceStardustBiome1;
-								diamondBarPart2.value = cow.resourceStardustBiome2;
-								diamondBarPart3.value = cow.resourceStardustBiome3;
-								diamondBarPart4.value = cow.resourceStardustBiome4;
-								diamondBarPart5.value = cow.resourceStardustBiome5;
-								diamondBarPart6.value = cow.resourceStardustBiome6;
+								if (cow.resourceStardustBiome1 >= 1) { diamondBarPart1.value = cow.resourceStardustBiome1; }
+								if (cow.resourceStardustBiome2 >= 1) { diamondBarPart2.value = cow.resourceStardustBiome2; }
+								if (cow.resourceStardustBiome3 >= 1) { diamondBarPart3.value = cow.resourceStardustBiome3; }
+								if (cow.resourceStardustBiome4 >= 1) { diamondBarPart4.value = cow.resourceStardustBiome4; }
+								if (cow.resourceStardustBiome5 >= 1) { diamondBarPart5.value = cow.resourceStardustBiome5; }
+								if (cow.resourceStardustBiome6 >= 1) { diamondBarPart6.value = cow.resourceStardustBiome6; }
 								checkForDiamondBarCompletion();								break;
 		default: break;
 	}
 
 	if (cow.endgameBarOwned == true) {
 		switch (shape) {
-			case 'diamond': 	endgameBarPart1.value = cow.resourceEndgameBarDiamonds;		break;
-			case 'star': 		endgameBarPart2.value = cow.resourceEndgameBarStars;		break;
-			case 'hexagon': 	endgameBarPart3.value = cow.resourceEndgameBarHexagons;		break;
-			case 'triangle': 	endgameBarPart4.value = cow.resourceEndgameBarTriangles;	break;
-			case 'circle': 		endgameBarPart5.value = cow.resourceEndgameBarCircles;		break;
-			case 'square': 		endgameBarPart6.value = cow.resourceEndgameBarSquares;		break;
-			case 'pillar': 		endgameBarPart6.value = cow.resourceEndgameBarSquares;		break;
-			case 'quad': 		endgameBarPart6.value = cow.resourceEndgameBarSquares;		break;
+			case 'diamond': 	if (cow.resourceEndgameBarDiamonds >= 1) { endgameBarPart1.value = cow.resourceEndgameBarDiamonds; }	break;
+			case 'star': 		if (cow.resourceEndgameBarStars >= 1) { endgameBarPart2.value = cow.resourceEndgameBarStars; }			break;
+			case 'hexagon': 	if (cow.resourceEndgameBarHexagons >= 1) { endgameBarPart3.value = cow.resourceEndgameBarHexagons; }	break;
+			case 'triangle': 	if (cow.resourceEndgameBarTriangles >= 1) { endgameBarPart4.value = cow.resourceEndgameBarTriangles; }	break;
+			case 'circle': 		if (cow.resourceEndgameBarCircles >= 1) { endgameBarPart5.value = cow.resourceEndgameBarCircles; }		break;
+			case 'square': 		if (cow.resourceEndgameBarSquares >= 1) { endgameBarPart6.value = cow.resourceEndgameBarSquares; }		break;
+			case 'pillar': 		if (cow.resourceEndgameBarSquares >= 1) { endgameBarPart6.value = cow.resourceEndgameBarSquares; }		break;
+			case 'quad': 		if (cow.resourceEndgameBarSquares >= 1) { endgameBarPart6.value = cow.resourceEndgameBarSquares; }		break;
 			default: break;
 		}
 	}
@@ -298,20 +298,6 @@ function updateTextSpans(recursionTime) {
 
 
 function initializeProgressBars() {
-	// Current (redundant but added for safety)
-	diamondBarPart1.value = cow.resourceStardustBiome1;
-	diamondBarPart2.value = cow.resourceStardustBiome2;
-	diamondBarPart3.value = cow.resourceStardustBiome3;
-	diamondBarPart4.value = cow.resourceStardustBiome4;
-	diamondBarPart5.value = cow.resourceStardustBiome5;
-	diamondBarPart6.value = cow.resourceStardustBiome6;
-	endgameBarPart1.value = cow.resourceEndgameBarDiamonds;	
-	endgameBarPart2.value = cow.resourceEndgameBarStars;	
-	endgameBarPart3.value = cow.resourceEndgameBarHexagons;	
-	endgameBarPart4.value = cow.resourceEndgameBarTriangles;
-	endgameBarPart5.value = cow.resourceEndgameBarCircles;	
-	endgameBarPart6.value = cow.resourceEndgameBarSquares;	
-
 	// Maximums
 	diamondBarPart1.max = 20;
 	diamondBarPart2.max = 20;
@@ -325,6 +311,38 @@ function initializeProgressBars() {
 	endgameBarPart4.max = 6000;
 	endgameBarPart5.max = 3000;
 	endgameBarPart6.max = 8000;
+
+	// Current progress bar state (somewhat redundant but added for safety after a weird Firefox behavior)
+	diamondBarPart1.value = cow.resourceStardustBiome1;
+	diamondBarPart2.value = cow.resourceStardustBiome2;
+	diamondBarPart3.value = cow.resourceStardustBiome3;
+	diamondBarPart4.value = cow.resourceStardustBiome4;
+	diamondBarPart5.value = cow.resourceStardustBiome5;
+	diamondBarPart6.value = cow.resourceStardustBiome6;
+	endgameBarPart1.value = cow.resourceEndgameBarDiamonds;
+	endgameBarPart2.value = cow.resourceEndgameBarStars;
+	endgameBarPart3.value = cow.resourceEndgameBarHexagons;
+	endgameBarPart4.value = cow.resourceEndgameBarTriangles;
+	endgameBarPart5.value = cow.resourceEndgameBarCircles;
+	endgameBarPart6.value = cow.resourceEndgameBarSquares;
+
+	// Prevents IE from displaying annoying pre-progress animation
+	// These get overwritten later in the loading process if the value is going to be >= 1
+	if (cow.userWebBrowser == 'IE') {
+		const q = 0.01;
+		if (cow.resourceStardustBiome1 == 0) 		{ diamondBarPart1.value = q; }
+		if (cow.resourceStardustBiome2 == 0) 		{ diamondBarPart2.value = q; }
+		if (cow.resourceStardustBiome3 == 0) 		{ diamondBarPart3.value = q; }
+		if (cow.resourceStardustBiome4 == 0) 		{ diamondBarPart4.value = q; }
+		if (cow.resourceStardustBiome5 == 0) 		{ diamondBarPart5.value = q; }
+		if (cow.resourceStardustBiome6 == 0) 		{ diamondBarPart6.value = q; }
+		if (cow.resourceEndgameBarDiamonds == 0) 	{ endgameBarPart1.value = q; }
+		if (cow.resourceEndgameBarStars == 0) 		{ endgameBarPart2.value = q; }
+		if (cow.resourceEndgameBarHexagons == 0) 	{ endgameBarPart3.value = q; }
+		if (cow.resourceEndgameBarTriangles == 0) 	{ endgameBarPart4.value = q; }
+		if (cow.resourceEndgameBarCircles == 0) 	{ endgameBarPart5.value = q; }
+		if (cow.resourceEndgameBarSquares == 0) 	{ endgameBarPart6.value = q; }
+	}
 }
 
 function checkForGameVictory() {
