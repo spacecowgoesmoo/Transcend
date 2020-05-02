@@ -18,6 +18,7 @@ function eraseSave() {
 			resourceCounterWidthArray: [],
 			filesPreloaded: 0,
 			preloaderComplete: false,
+			userWebBrowser: '',
 
 			kongUsername: temp,
 			kongLifetimeShapes: 0,
@@ -28,7 +29,6 @@ function eraseSave() {
 			bgmVolume: 80,
 			sfxVolume: 80,
 			audioFormat: '.opus',
-			muteAudioForIE: false,
 			hideMusicText: false,
 
 			randomBiomesUnlocked: false,
@@ -175,7 +175,7 @@ function loadGame() {
 	const zzz = "transcendSAVEFILE" + cow.kongUsername;
 	const q = localStorage.getItem(zzz);
 	const cowTemp1 = cow.filesPreloaded;
-	const cowTemp2 = cow.muteAudioForIE;
+	const cowTemp2 = cow.userWebBrowser;
 	const cowTemp3 = cow.audioFormat;
 	console.log('Attempting login with Kong username: ' + cow.kongUsername);
 	if (q != null) {
@@ -188,7 +188,7 @@ function loadGame() {
 		cow.gameStarted = true;
 		cow.filesPreloaded = cowTemp1;
 
-		cow.muteAudioForIE = cowTemp2;
+		cow.userWebBrowser = cowTemp2;
 		cow.audioFormat = cowTemp3;
 
 		cow.bgTransitionSpeed = 5;

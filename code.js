@@ -50,6 +50,7 @@ var cow = {
 	resourceCounterWidthArray: [],
 	filesPreloaded: 0,
 	preloaderComplete: false,
+	userWebBrowser: '',
 
 	kongUsername: '',
 	kongLifetimeShapes: 0,
@@ -60,7 +61,6 @@ var cow = {
 	bgmVolume: 80,
 	sfxVolume: 80,
 	audioFormat: '.opus',
-	muteAudioForIE: false,
 	hideMusicText: false,
 
 	randomBiomesUnlocked: false,
@@ -547,7 +547,8 @@ function kongregateStuff() {
 // Safer to use as an onLoad function in case something (pixi.js) stalls the HTML elements from loading..
 // ..which breaks the game when they then get referenced before they exist
 function initializeGameOne() {
-	browserAudioCheck();													// We need the CAF/OPUS data for the preloader
+	browserCheck()															// We need the CAF/OPUS data for the preloader
+	audioFormatSetup();													
 	preloadFiles();
 	kongregateStuff();
 }

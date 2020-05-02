@@ -20,7 +20,7 @@ let sfxGroup = new Pizzicato.Group;
 
 
 function playAudio(filename, type, pan, noFilter) {
-	if (((cow.sfxVolume >= 5 && type == 'sfx') || type == 'bgm') && cow.muteAudioForIE == false) {	// Prevents SFX from loading if SFX are muted. Saves CPU
+	if (((cow.sfxVolume >= 5 && type == 'sfx') || type == 'bgm') && cow.userWebBrowser !== 'IE') {	// Prevents SFX from loading if SFX are muted. Saves CPU
 		let snd = new Pizzicato.Sound(filename + cow.audioFormat, function() {
 
 			if (rngRange(1,10) < 3 && type == 'sfx') {						// Set up effects and add them to the signal chain one by one
@@ -245,7 +245,7 @@ function initializeVolumeDisplays() {
 // BGM modifies the group instead, so that you can change volume during a song
 
 function increaseVolume(bus) {
-	if (cow.muteAudioForIE == false) {
+	if (cow.userWebBrowser !== 'IE') {
 		let q;
 		let r;
 
@@ -273,7 +273,7 @@ function increaseVolume(bus) {
 
 
 function decreaseVolume(bus) {
-	if (cow.muteAudioForIE == false) {
+	if (cow.userWebBrowser !== 'IE') {
 		let q;
 		let r;
 
@@ -304,17 +304,14 @@ function decreaseVolume(bus) {
 
 
 
-function browserAudioCheck() {
-	// Check for IE
-	if (navigator.appName == 'Microsoft Internet Explorer' || !!(navigator.userAgent.match(/Trident/) || navigator.userAgent.match(/rv:11/))) {
+function audioFormatSetup() {
+	// Internet Explorer
+	if (cow.userWebBrowser == 'IE') {
 		alert("Developer's note: This game doesn't support audio on Internet Explorer. Please consider using a more modern web browser like Firefox or Chrome.");
-		cow.muteAudioForIE = true;
-	} else { cow.muteAudioForIE = false; }							// Extra security for Windows Chrome
-
-	// Check for Safari
-	if (navigator.userAgent.indexOf('Safari') > -1 && navigator.vendor.indexOf('Apple') > -1) { 
-		cow.audioFormat = '.caf'; 
 	}
+
+	// Safari
+	if (cow.userWebBrowser == 'Safari') { cow.audioFormat = '.caf'; }
 	else { cow.audioFormat = '.opus'; }
 
 	// This is only required for Safari, but it might help future proof other browsers
@@ -323,7 +320,7 @@ function browserAudioCheck() {
 
 
 function preventAutomutedAudio() {
-	if (cow.muteAudioForIE == false) {
+	if (cow.userWebBrowser !== 'IE') {
 		let q = sfxGroup.masterVolume.context;
 		let r = bgmGroup.masterVolume.context;
 		q.resume();

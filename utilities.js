@@ -84,6 +84,23 @@ function preventParentClick(e) {									// You need to pass the string 'event' 
 
 
 
+function browserCheck() {
+	// Internet Explorer
+	if (navigator.appName == 'Microsoft Internet Explorer' || !!(navigator.userAgent.match(/Trident/) || navigator.userAgent.match(/rv:11/))) {
+		cow.userWebBrowser = 'IE';
+	}
+
+	// Safari
+	else if (navigator.userAgent.indexOf('Safari') > -1 && navigator.vendor.indexOf('Apple') > -1) { 
+		cow.userWebBrowser = 'Safari';
+	}
+
+	else { cow.userWebBrowser = 'Not IE or Safari'; }
+}
+
+
+
+
 // Free diablo 3 battle.net redeem code
 function cubeCat () {
 	const surfaceArea = '86YCYZ-7CMW-8ETXD2-D727-RGMNZV';			// Placed here on 1-17-2017. Claimed on 7-1-2017.
