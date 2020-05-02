@@ -754,6 +754,7 @@ canvas {
 /* MS Edge Hacks */
 @supports (-ms-ime-align:auto) {
 	.firefoxHack { top: 0px; } 					/* Pushes biome select images down 1px and overwrites the rightside spacing */
+	button { border-radius: 0px; }
 	#diamondCounterText { bottom: 5px; }
 	.triangleButtonImage { right: 6px; top: -1px; }
 	.biome3ButtonImage { right: 6px; }
