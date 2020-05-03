@@ -6,10 +6,13 @@ function rngRange(min, max) {
 
 
 function modifyCSS(selector, property, value) {
-	for (let i=0; i<document.styleSheets.length; i++) {//Loop through all styles
-		//Try add rule
+	// Loop through all styles
+	for (let i=0; i<document.styleSheets.length; i++) {
+		// Try to add the rule
 		try { document.styleSheets[i].insertRule(selector+ ' {'+property+':'+value+'}', document.styleSheets[i].cssRules.length);
-	} catch(err) {try { document.styleSheets[i].addRule(selector, property+':'+value);} catch(err) {}}//IE
+		} catch(err) {
+			try { document.styleSheets[i].addRule(selector, property+':'+value); } 
+			catch(err) {} }	//IE
 	}
 }
 
@@ -37,6 +40,7 @@ function lategameThrottle() {
 
 
 function newFade(id, targetOpacity, time) {
+	// UI standards for this game:
 	// targetOpacity should always be 0 or 0.7
 	id.style.transition = 'opacity ' + time + 's ease';
 	id.style.opacity = targetOpacity;
