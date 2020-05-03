@@ -756,7 +756,7 @@ canvas {
 /* MS Edge Hacks */
 button { border-radius: 0px; }
 @supports (-ms-ime-align:auto) {
-	.firefoxHack { top: 0px; } 					/* Pushes biome select images down 1px and overwrites the rightside spacing */
+	/*.firefoxHack { top: 0px; }
 	#diamondCounterText { bottom: 5px; }
 	.triangleButtonImage { right: 6px; top: -1px; }
 	.biome3ButtonImage { right: 6px; }
@@ -770,12 +770,12 @@ button { border-radius: 0px; }
 	#bgmDisplay { margin-left: 10px; }
 	#sfxDisplay { margin-left: 10px; }
 	.lowerLeftTextBar { line-height: 13px; }
-	.visible { display: block; }				/* Fucking stupid hack to make the options menu not be invisible */
-	#resourceCounterFadeInContainer { position: relative; }		/* Fucking stupid hack to fix an IE bug that prevents opacity inheritance */
-	#songTitleSuperdiv { position: relative; }					/* Fucking stupid hack to fix an IE bug that prevents opacity inheritance */
-	#optionsMenuButtonFadeInContainer { position: relative; }	/* Fucking stupid hack to fix an IE bug that prevents opacity inheritance */
-	#lowerRightFadeInContainer { position: relative; display: block; }			/* Fucking stupid hack to fix an IE bug that prevents opacity inheritance */
-	.ieHack { display: inline; }												/* display: block doesn't work, makes it vertical text */
+	.visible { display: block; }
+	#resourceCounterFadeInContainer { position: relative; }
+	#songTitleSuperdiv { position: relative; }
+	#optionsMenuButtonFadeInContainer { position: relative; }
+	#lowerRightFadeInContainer { position: relative; display: block; }
+	.ieHack { display: inline; }*/
 }
 
 /* Chrome Hacks */
