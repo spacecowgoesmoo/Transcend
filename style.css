@@ -713,13 +713,15 @@ canvas {
 }
 
 /* Safari Hacks. Also affects Chrome */
-@supports (-webkit-appearance:none) {
-	#biomeSelectBar { width: 100%; }			/* Idiotic hack that's required to prevent sprite colors being inverted */
-	#resourceCounter { height: 63px; }			/* Idiotic hack that's required to prevent sprite colors being inverted. Bit of a bug at the very start, but that's OK */
-	#upgradeBar { width: 100%; }
-	#squareCounterText, #stardustCounterText { bottom: 3.5px; }
-	.squareCounterShape { top: 1px; }
-	#optionsMenu { left: 331px; }
+@media not all and (min-resolution:.001dpcm) {
+	@supports (-webkit-appearance:none) and (stroke-color:transparent) {
+		#biomeSelectBar { width: 100%; }			/* Idiotic hack that's required to prevent sprite colors being inverted */
+		#resourceCounter { height: 63px; }			/* Idiotic hack that's required to prevent sprite colors being inverted. Bit of a bug at the very start, but that's OK */
+		#upgradeBar { width: 100%; }
+		#squareCounterText, #stardustCounterText { bottom: 3.5px; }
+		.squareCounterShape { top: 1px; }
+		#optionsMenu { left: 331px; }
+	}
 }
 
 /* IE Hacks (>= 10) */
