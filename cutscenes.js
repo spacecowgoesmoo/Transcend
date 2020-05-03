@@ -441,18 +441,19 @@ function beginCredits() {
 
 	setTimeout(spawnCreditsPillar, 1, '0x000099', 600);
 	setTimeout(spawnCreditsPillar, 20000, '0x990000', 0);
-	setTimeout(newFade, 35000, resourceCounter, 0, 10);
+	setTimeout(newFadePlusToggleAndVisibility, 35000, resourceCounter, 0, 10);
 	setTimeout(newFade, 35000, pricesTextBoxContainer, 0, 10);
 	setTimeout(spawnCreditsPillar, 40000, '0x996300', 150);
 	setTimeout(spawnCreditsPillar, 60000, '0x009900', 450);
-	setTimeout(newFade, 70000, biomeSelectBar, 0, 10);
-	setTimeout(newFade, 70000, upgradeBar, 0, 10);
+	setTimeout(newFadePlusToggleAndVisibility, 70000, biomeSelectBar, 0, 10);
+	setTimeout(newFadePlusToggleAndVisibility, 70000, upgradeBar, 0, 10);
 	setTimeout(spawnCreditsPillar, 80000, '0x990099', 750);
 	setTimeout(function() { optionsMenuButton.style.opacity = 0.4; }, 94500);	// Required to make this button fadeout. Opacity must 'exist' in the correct place before it can be modified
 	setTimeout(newFadePlusToggleAndVisibility, 95000, optionsMenuButton, 0, 10);
 	setTimeout(newFadePlusToggleAndVisibility, 95000, optionsMenu, 0, 10);
 	setTimeout(spawnCreditsPillar, 100000, '0x999900', 300);
 	setTimeout(fadeToWhite, 115000);
+	setTimeout(function() { cow.hideMusicText = true; }, 115000)
 	setTimeout(spawnWhiteGlass1, 155000);
 	setTimeout(spawnWhiteGlass2, 155000);
 	setTimeout(fadeSineForever, 150000, creditsText1, 6);

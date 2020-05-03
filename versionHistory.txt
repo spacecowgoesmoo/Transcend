@@ -26,6 +26,7 @@ v2.0 - Big maintenance patch 2020
 		Fixed a bug where the song title display became 30% dimmer after highlighting an upgrade price
 		Updated a bunch of outdated CSS hacks
 		Fixed some bugs with progress bar graphics in IE11
+		Fixed a bug where invisible buttons were still clickable during the credits sequence
 		Applied better image compression, reducing asset filesize by 45% (55KB)
 	New player experience
 		Changed the separator character in the upper left to be less confusing

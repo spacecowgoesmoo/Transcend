@@ -644,7 +644,7 @@ progress::-ms-fill { border: none }									/* Fixes 1px of #000000 at the end o
 }
 
 /* Hiding stuff */
-.invisible { display: none; }
+.invisible { display: none !important; }
 .visible { display: inline; }
 .opacityZero { opacity: 0; }
 

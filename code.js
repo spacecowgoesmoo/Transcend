@@ -590,6 +590,7 @@ function initializeGameTwo(gameType) {
 	updateResourceCounter('square');
 	updateResourceCounter('stardust');
 	resourceCounter.style.display = 'inline';								// Hides resourceCounter until the previous things have completed. Makes startup look cleaner
+	optionsMenuButton.className = 'visible';
 }
 
 function initializeGameThree() {
