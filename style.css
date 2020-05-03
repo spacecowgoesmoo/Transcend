@@ -687,6 +687,7 @@ canvas {
 */
 
 /* Firefox Hacks */
+/* Firefox 16+ */
 @supports (-moz-appearance:meterbar) { 
 	.firefoxHack { top: 0px; right: 6px; } 		/* Pushes biome select images down 1px and overwrites the rightside spacing */
 	.firefoxHack3 { top: 0px; right: 7px; } 	/* Pushes biome select images down 1px and overwrites the rightside spacing */
@@ -707,24 +708,17 @@ canvas {
 	.lowerLeftTextBar { line-height: 10px; }
 }					
 
-/* Firefox Windows Hacks */
-@media screen and (-moz-windows-theme) {
-
-}
-
-/* Safari Hacks. Also affects Chrome */
+/* Safari Hacks. Used to also affect Chrome before v2.0 */
+/* Safari 11+ */
 @media not all and (min-resolution:.001dpcm) {
 	@supports (-webkit-appearance:none) and (stroke-color:transparent) {
-		#biomeSelectBar { width: 100%; }			/* Idiotic hack that's required to prevent sprite colors being inverted */
-		#resourceCounter { height: 63px; }			/* Idiotic hack that's required to prevent sprite colors being inverted. Bit of a bug at the very start, but that's OK */
-		#upgradeBar { width: 100%; }
 		#squareCounterText, #stardustCounterText { bottom: 3.5px; }
 		.squareCounterShape { top: 1px; }
-		#optionsMenu { left: 331px; }
 	}
 }
 
-/* IE Hacks (>= 10) */
+/* Intenet Explorer Hacks */
+/* IE 10+ */
 @media screen and (-ms-high-contrast:active), (-ms-high-contrast: none) {
 	.firefoxHack { top: 0px; right: 6px; } 		/* Pushes biome select images down 1px and overwrites the rightside spacing */
 	.firefoxHack3 { top: 0px; right: 7px; } 	/* Pushes biome select images down 1px and overwrites the rightside spacing */
@@ -744,45 +738,24 @@ canvas {
 	#optionsMenu { width: 190px; left: 330px; line-height: 26px; }
 	.optionTextLast { position: relative; top: 3px; right: -2px; }
 	.lowerLeftTextBar { line-height: 13px; }
-	.visible { display: block; }				/* Fucking stupid hack to make the options menu not be invisible */
-	#resourceCounterFadeInContainer { position: relative; }						/* Fucking stupid hack to fix an IE bug that prevents opacity inheritance */
-	#songTitleSuperdiv { position: relative; }									/* Fucking stupid hack to fix an IE bug that prevents opacity inheritance */
-	#optionsMenuButtonFadeInContainer { position: relative; }					/* Fucking stupid hack to fix an IE bug that prevents opacity inheritance */
-	#lowerRightFadeInContainer { position: relative; display: block; }			/* Fucking stupid hack to fix an IE bug that prevents opacity inheritance */
-	#progressBarIEopacityCancerBugfix { position: relative; display: block; }	/* Fucking stupid hack to fix an IE bug that prevents opacity inheritance */
+	.visible { display: block; }				/* Stupid hack to make the options menu not be invisible */
+	#resourceCounterFadeInContainer { position: relative; }						/* Stupid hack to fix an IE bug that prevents opacity inheritance */
+	#songTitleSuperdiv { position: relative; }									/* Stupid hack to fix an IE bug that prevents opacity inheritance */
+	#optionsMenuButtonFadeInContainer { position: relative; }					/* Stupid hack to fix an IE bug that prevents opacity inheritance */
+	#lowerRightFadeInContainer { position: relative; display: block; }			/* Stupid hack to fix an IE bug that prevents opacity inheritance */
+	#progressBarIEopacityCancerBugfix { position: relative; display: block; }	/* Stupid hack to fix an IE bug that prevents opacity inheritance */
 	.ieHack { display: inline; }											/* display: block doesn't work, makes it vertical text */
 }
 
 /* MS Edge Hacks */
 button { border-radius: 0px; }
-@supports (-ms-ime-align:auto) {
-	/*.firefoxHack { top: 0px; }
-	#diamondCounterText { bottom: 5px; }
-	.triangleButtonImage { right: 6px; top: -1px; }
-	.biome3ButtonImage { right: 6px; }
-	.stardustButtonImage { top: -1px; }
-	#starCounterText { bottom: 4px; }
-	#hexagonCounterText { bottom: 4px; }
-	.hexagonCounterShape { top: 2px; }
-	#squareCounterText { bottom: 3.5px; }
-	#stardustCounterText { bottom: 3.5; }	
-	#optionsMenu { width: 190px; left: 330px; line-height: 26px; }
-	#bgmDisplay { margin-left: 10px; }
-	#sfxDisplay { margin-left: 10px; }
-	.lowerLeftTextBar { line-height: 13px; }
-	.visible { display: block; }
-	#resourceCounterFadeInContainer { position: relative; }
-	#songTitleSuperdiv { position: relative; }
-	#optionsMenuButtonFadeInContainer { position: relative; }
-	#lowerRightFadeInContainer { position: relative; display: block; }
-	.ieHack { display: inline; }*/
-}
 
 /* Chrome Hacks */
+/* Chrome 29+ and Opera 16+ */
 @media all and (-webkit-min-device-pixel-ratio:0) and (min-resolution: .001dpcm) { 
-	.selector:not(*:root), body { image-rendering: -webkit-optimize-contrast; } 			/* Fixes shitty blurry image scaling in Chrome. Breaks Safari so keep it on Chrome only */		
-	.selector:not(*:root), button { line-height: 23px; }									/* Fixes uneven options menu line spacing */
-	.selector:not(*:root), .firefoxHack { top: 0px; }										/* These all break OSX intentionally. 5% market share :( */
+	.selector:not(*:root), body { image-rendering: -webkit-optimize-contrast; } 		/* Fixes blurry image scaling in Chrome. Breaks Safari so keep it on Chrome only */		
+	.selector:not(*:root), button { line-height: 23px; }								/* Fixes uneven options menu line spacing */
+	.selector:not(*:root), .firefoxHack { top: 0px; }									/* These all break OSX intentionally. 5% market share :( */
 	.selector:not(*:root), .diamondButtonImage { right: 6px; }
 	.selector:not(*:root), .starButtonImage { right: 6px; }
 	.selector:not(*:root), .hexagonButtonImage { right: 6px; bottom: 0px; }
@@ -799,5 +772,5 @@ button { border-radius: 0px; }
 	.selector:not(*:root), #diamondCounterText { bottom: 4px; }
 	.selector:not(*:root), .hexagonCounterShape { top: 2px; }
 	.selector:not(*:root), .starCounterShape { top: 2px; }
-	.selector:not(*:root), .squareCounterShape { top: 2px; }
+	.selector:not(*:root), .squareCounterShape { top: 3px; }
 }
