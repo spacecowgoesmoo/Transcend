@@ -147,13 +147,13 @@ function displayPriceText(x) {
 	const d = '</span>';
 
 	pricesTextBox.innerHTML = a + b + c + d;													// Display the shape and the price number
-   	if (pricesTextBox.style.opacity <= 0.2) { fadeInPrices(pricesTextBox); }					// Fade in the price span. the IF prevents extra animations
+   	if (pricesTextBox.style.opacity <= 0.2) { fadeInPrices(pricesTextBox, 0.7); }				// Fade in the price span. the IF prevents extra animations
    	if (songTitleSuperdiv.style.opacity >= 0.2) { fadeOutPrices(songTitleSuperdiv); }			// Fade out the song title span. The numbers in the IFs are really important, behavior would be weird without them
 }
 
 function clearPricesSpan() {
 	if (pricesTextBox.style.opacity >= 0.025) { fadeOutPrices(pricesTextBox); }					// Fade out the price span
-    if (songTitleSuperdiv.style.opacity <= 0.75) { fadeInPrices(songTitleSuperdiv); }			// Fade in the song title span. Must be above 0.7 or it won't work sometimes
+    if (songTitleSuperdiv.style.opacity <= 0.9) { fadeInPrices(songTitleSuperdiv, 1); }			// Fade in the song title span. Must be above 0.7 or it won't work sometimes
 }
 
 function displayMusicText(x, lifespan) {
@@ -162,26 +162,11 @@ function displayMusicText(x, lifespan) {
     console.log('Now loading music - ' + x);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function fadeInPrices(id, lifespan) {
-	id.style.opacity = 0.7;
+function fadeInPrices(id, opacity) {
+	id.style.opacity = opacity;
 	id.style.transition = 'visibility 0s 0.3s, opacity 0.3s linear';
 }
-function fadeOutPrices(id, lifespan) {
+function fadeOutPrices(id) {
 	id.style.opacity = 0;
 	id.style.transition = 'visibility 0s 0.3s, opacity 0.3s linear';
 }
