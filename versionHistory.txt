@@ -27,6 +27,7 @@ v2.0 - Big maintenance patch 2020
 		Updated a bunch of outdated CSS hacks
 		Fixed some bugs with progress bar graphics in IE11
 		Fixed a bug where invisible buttons were still clickable during the credits sequence
+		Fixed a bug in Safari where upgrade prices would flicker with mouse movement
 		Applied better image compression, reducing asset filesize by 45% (55KB)
 	New player experience
 		Changed the separator character in the upper left to be less confusing
