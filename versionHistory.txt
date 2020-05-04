@@ -24,9 +24,9 @@ v2.0 - Big maintenance patch 2020
 		Rewrote the gradient shader. Lots of extra steps removed and it's now fully documented
 		UI color changes now happen instantly instead of being delayed for up to three seconds
 		Fixed a bug where the song title display became 30% dimmer after highlighting an upgrade price
-		Updated a bunch of outdated CSS hacks
+		Updated some outdated CSS selectors. It's still badly written so I might redo it in a future update
 		Fixed some bugs with progress bar graphics in IE11
-		Fixed a bug where invisible buttons were still clickable during the credits sequence
+		Fixed a bug where invisible buttons were clickable during the credits sequence
 		Fixed a bug in Safari where upgrade prices would flicker with mouse movement
 		Applied better image compression, reducing asset filesize by 45% (55KB)
 	New player experience
