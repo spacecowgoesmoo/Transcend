@@ -25,6 +25,7 @@ v2.0 - Big maintenance patch 2020
 		UI color changes now happen instantly instead of being delayed for up to three seconds
 		Fixed a bug where the song title display became 30% dimmer after highlighting an upgrade price
 		Updated some outdated CSS selectors. It's still badly written so I might redo it in a future update
+		Fixed most of the CSS when the demo version is viewed on iOS
 		Fixed some bugs with progress bar graphics in IE11
 		Fixed a bug where invisible buttons were clickable during the credits sequence
 		Fixed a bug in Safari where upgrade prices would flicker with mouse movement

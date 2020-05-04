@@ -717,6 +717,12 @@ canvas {
 	}
 }
 
+/* Safari iOS Hacks */
+@supports (-webkit-touch-callout: none) {
+	button { padding: 0px; }						/* Fixes broken button widths */
+	#upgradeBar, #biomeSelectBar { width: auto; }	/* This breaks the viewport, so remove it */
+}
+
 /* Intenet Explorer Hacks */
 /* IE 10+ */
 @media screen and (-ms-high-contrast:active), (-ms-high-contrast: none) {
