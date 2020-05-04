@@ -725,9 +725,9 @@ canvas {
 	.diamondButtonImage { left: -7px; }
 	.starButtonImage { left: -7px; }
 	.hexagonButtonImage { left: -7px; }
-	.triangleButtonImage { right: 8px; top: -1px; }
+	.triangleButtonImage { right: 8px; }
 	.biome3ButtonImage { right: 8px; }
-	.stardustButtonImage { left: -6px; top: -1px; }
+	.stardustButtonImage { left: -6px; }
 	#starCounterText { bottom: 4px; }
 	#hexagonCounterText { bottom: 4px; }
 	.diamondCounterShape { top: 2px; }

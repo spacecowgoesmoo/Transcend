@@ -465,7 +465,7 @@ function beginCredits() {
 
 
 function exitCredits() {
-	if (creditsText3.style.opacity > 0) {
+	if (window.getComputedStyle(creditsText3).opacity > 0.1) {
 		cow.endgameBarOwned = false;
 		cow.muteMusic = false;
 		cow.muteSFX = false;

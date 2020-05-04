@@ -39,6 +39,7 @@ v2.0 - Big maintenance patch 2020
 		Fixed a bug that broke save importing if the Kongregate usernames didn't match
 		Fixed a bug where the availability of shape30 upgrades didn't work as intended
 		Fixed bugs preventing some upgrades from being purchased after the credits sequence
+		Improved >click button responsiveness during the credits sequence
 		Fixed three bugs that would result in inaccurate preloader console messages
 		Fixed a tiny edge case bug when purchasing biome 4
 		Fixed some harmless preloader console errors in Firefox
