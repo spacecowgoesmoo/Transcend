@@ -125,13 +125,15 @@ function exportEncryptedSave() {
 function importEncryptedSave() {
 	let q = prompt('Paste your save file here');
 	if (q != null) {
+		const temp = cow.kongUsername;
 		q = CryptoJS.AES.decrypt(q, 'notVerySecretHash');		// Decrypt save file
 		q = q.toString(CryptoJS.enc.Utf8);						// Required because the decrypter outputs hex instead of ascii by default. This reconverts it
 		window.cow = JSON.parse(q);
 		// Modify some temporary stats for a cleaner game load
 		cow.currentBiome = 'biome1';
-		cow.gameStarted = false;
 		cow.spawnNewBGgradient = true;
+		cow.gameStarted = false;
+		cow.kongUsername = temp;
 		cow.resourceCounterWidth = 115;
 		cow.biome1CurrentDiamondCount = 0;
 		cow.biome1CurrentStarCount = 0;
