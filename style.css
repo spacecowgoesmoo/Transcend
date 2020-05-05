@@ -43,7 +43,10 @@ body {
 html {										/* Zeroes out the margin padding */
     margin: -8px;			
     padding: 0;  
-    overflow: hidden;						/* Prevents all (?) page scrolling */
+}
+
+body { 
+	overflow: hidden;						/* Prevents all (?) page scrolling */
 }
 
 canvas {
