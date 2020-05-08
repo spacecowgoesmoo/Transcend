@@ -1,16 +1,17 @@
-v2.0 - Big maintenance patch 2020
+v2.0 - Big maintenance patch for 2020
 	Summary
-		Improved CPU performance by up to 20%, depending on how many shapes are onscreen
+		Improved CPU performance by up to 20% when lots of shapes are onscreen
 		Fixed a bug where audio was completely dead in Safari due to new autoplay protection
+		Reduced most upgrade prices by 20%
 		Reduced download size by 63% (66MB)
-		Made some changes to the early game and UI to reduce crypticness
-		..and a few other things
+		Changed some UI to reduce crypticness
+		Many bugfixes
 	Performance
 		Optimized updateResourceCounter() to not use the DOM state as a source of data
 		Optimized recheckItemCostHighlighting() to only fire when collecting shapes, not every three seconds
 		Throttled less essential parts of updateResourceCounter() when there's a ton of shapes onscreen
 		Throttled all of recheckItemCostHighlighting() when there's a ton of shapes onscreen
-		Fixed significant amounts of JS garbage being created (and collected)
+		Fixed significant amounts of JS garbage being created / collected
 		Throttled sky gradients from 60FPS to 4FPS
 		Throttled stars and planets from 60FPS to 10FPS
 	Audio
@@ -19,24 +20,24 @@ v2.0 - Big maintenance patch 2020
 		Changed SFX format from WAV to OPUS, reducing asset filesize by 85% (12MB)
 		Fixed broken music filepaths in the demo version
 		Fixed a bug where multiple music tracks could sometimes play at once
-	Graphics
-		Upgraded pixi.js from version 4.4.1 to 5.2.1
-		Rewrote the gradient shader. Lots of extra steps removed and it's now fully documented
-		UI color changes now happen instantly instead of being delayed for up to three seconds
-		Fixed a bug where the song title display became 30% dimmer after highlighting an upgrade price
-		Updated some outdated CSS selectors. It's still badly written so I might redo it in a future update
-		Fixed most of the CSS when the demo version is viewed on iOS
-		Fixed some bugs with progress bar graphics in IE11
-		Fixed a bug where invisible buttons were clickable during the credits sequence
-		Fixed a bug in Safari where upgrade prices would flicker with mouse movement
-		Applied better image compression, reducing asset filesize by 45% (55KB)
 	New player experience
 		Reduced most upgrade prices by 20%
 		Changed the separator character in the upper left to be less confusing
 		Added new biome icons to better represent setting and reduce confusing icon reuse
 		Added color to the three biome icon sets that were in greyscale
-		Made the first upgrade display onscreen earlier and lowered the price
+		Made the first upgrade display onscreen earlier
 		Increased visibility of inactive biome icons
+	Graphics
+		Upgraded graphics engine pixi.js from version 4.4.1 to 5.2.1
+		Rewrote the gradient shader. Lots of extra steps removed and it's now fully documented
+		UI color changes now happen instantly instead of being delayed for up to three seconds
+		Fixed a bug where the song title display became 30% dimmer after highlighting an upgrade price
+		Updated some outdated CSS selectors. They're still a mess so I might redo this in a future update
+		Fixed most of the broken CSS when the demo version is viewed on iOS
+		Fixed multiple bugs with progress bar graphics in IE11
+		Fixed a bug where invisible buttons were clickable during the credits sequence
+		Fixed a bug in Safari where upgrade prices would flicker with mouse movement
+		Applied better image compression, reducing asset filesize by 45% (55KB)
 	General Bugfixes
 		Fixed a bug that broke save importing if the Kongregate usernames didn't match
 		Fixed a bug where the availability of shape30 upgrades didn't work as intended
@@ -46,16 +47,16 @@ v2.0 - Big maintenance patch 2020
 		Fixed a tiny edge case bug when purchasing biome 4
 		Fixed some harmless preloader console errors in Firefox
 	Code Cleanup
+		Added a builtin toggle to run as the demo version to prevent extra codebases
 		Changed some CSS to prevent extra codebases for iFrame and standalone hosting
-		Added a builtin toggle for the demo version to prevent extra codebases
-		Reduced number of Javascript var declarations from 269 to 26
 		Fixed all setTimeout() string evaluation anti-patterns
+		Reduced number of Javascript var declarations from 269 to 26
 		Replaced complicated Javascript fade animations with two lines of CSS
 		Fixed many negative margin CSS anti-patterns
 		Moved most of the inline CSS to classes
 		Removed some utility functions that weren't being used anywhere
 		Removed some commented-out code, improved a few bits of confusing code
-		Stripped trailing whitespace and replaced overlooked space-indents with tabs
+		Stripped trailing whitespace and replaced any space-indents with tabs
 	Devtools
 		Improved unlockEverythingDevHack() to more effectively test all three game phases
 		Added new console messages for background music
