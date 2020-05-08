@@ -31,6 +31,7 @@ v2.0 - Big maintenance patch 2020
 		Fixed a bug in Safari where upgrade prices would flicker with mouse movement
 		Applied better image compression, reducing asset filesize by 45% (55KB)
 	New player experience
+		Reduced most upgrade prices by 20%
 		Changed the separator character in the upper left to be less confusing
 		Added new biome icons to better represent setting and reduce confusing icon reuse
 		Added color to the three biome icon sets that were in greyscale
