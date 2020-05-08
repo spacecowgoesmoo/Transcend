@@ -273,25 +273,6 @@ function showEndgameBar() {
 	}
 }
 
-function checkForDiamondBarCompletion() {
-	if (cow.resourceStardustBiome1 >=20 && cow.resourceStardustBiome2 >=20 && cow.resourceStardustBiome3 >=20 && cow.resourceStardustBiome4 >=20 && cow.resourceStardustBiome5 >=20 && cow.resourceStardustBiome6 >=20 && cow.diamondBarOwned == true && cow.resourceEndgameBarDiamonds == 0) {
-		cow.resourceEndgameBarDiamonds = 1;							// Minor hack to prevent this from being called twice if two rare spawns happen at once to finish off the Diamond Bar
-		setTimeout(hideDiamondBar, 10000);							// Bunch of time delays so that you can see the diamond bar be 100% filled for a moment, and so that no player progress is lost
-		setTimeout(function() { playAudio('SFXc/diamondBarClear', 'sfx', 450, true); }, 10000);
-		setTimeout(function() { cow.diamondBarOwned = false; }, 14500);
-		setTimeout(function() { cow.endgameBarOwned = true; }, 14500);
-		setTimeout(showEndgameBar, 15000);
-		setTimeout(function() { cow.resourceStardustBiome1 = 0; }, 15500);
-		setTimeout(function() { cow.resourceStardustBiome2 = 0; }, 15500);
-		setTimeout(function() { cow.resourceStardustBiome3 = 0; }, 15500);
-		setTimeout(function() { cow.resourceStardustBiome4 = 0; }, 15500);
-		setTimeout(function() { cow.resourceStardustBiome5 = 0; }, 15500);
-		setTimeout(function() { cow.resourceStardustBiome6 = 0; }, 15500);
-		setTimeout(function() { cow.randomBiomesUnlocked = true; }, 15500);
-		setTimeout(saveGame, 15555);
-	}
-}
-
 
 
 

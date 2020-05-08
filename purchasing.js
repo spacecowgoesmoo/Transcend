@@ -355,23 +355,23 @@ function unlockEverythingPhase1() {
 }
 
 function unlockEverythingPhase2() {
-	cow.resourceStardustBiome1 = 19;	// 20 in all these unlocks the endgameBar
-	cow.resourceStardustBiome2 = 20;	// Biome 1 is set lower so it can trigger naturally
-	cow.resourceStardustBiome3 = 20;
-	cow.resourceStardustBiome4 = 20;
-	cow.resourceStardustBiome5 = 20;
-	cow.resourceStardustBiome6 = 20;
+	cow.resourceStardustBiome1 = 14;	// Unlocks the endgameBar
+	cow.resourceStardustBiome2 = 15;	// Biome 1 is set lower so it can trigger naturally
+	cow.resourceStardustBiome3 = 15;
+	cow.resourceStardustBiome4 = 15;
+	cow.resourceStardustBiome5 = 15;
+	cow.resourceStardustBiome6 = 15;
 	updateResourceCounter('stardust');
 	saveGame();
 }
 
 function unlockEverythingPhase3() {
-	cow.resourceEndgameBarDiamonds = 990;	// Unlocks the credits
-	cow.resourceEndgameBarStars = 3000;		// Biome 1 a bit short again so it can trigger naturally
-	cow.resourceEndgameBarHexagons = 4000;
-	cow.resourceEndgameBarTriangles = 6000;
-	cow.resourceEndgameBarCircles = 3000;
-	cow.resourceEndgameBarSquares = 8000;
+	cow.resourceEndgameBarDiamonds = 790;	// Unlocks the credits
+	cow.resourceEndgameBarStars = 2400;		// Biome 1 a bit short again so it can trigger naturally
+	cow.resourceEndgameBarHexagons = 3200;
+	cow.resourceEndgameBarTriangles = 4800;
+	cow.resourceEndgameBarCircles = 2400;
+	cow.resourceEndgameBarSquares = 6400;
 	updateResourceCounter('diamond');
 	updateResourceCounter('star');
 	updateResourceCounter('hexagon');

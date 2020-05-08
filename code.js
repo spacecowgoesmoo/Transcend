@@ -299,18 +299,18 @@ function updateTextSpans(recursionTime) {
 
 function initializeProgressBars() {
 	// Maximums
-	diamondBarPart1.max = 20;
-	diamondBarPart2.max = 20;
-	diamondBarPart3.max = 20;
-	diamondBarPart4.max = 20;
-	diamondBarPart5.max = 20;
-	diamondBarPart6.max = 20;
-	endgameBarPart1.max = 1000;
-	endgameBarPart2.max = 3000;
-	endgameBarPart3.max = 4000;
-	endgameBarPart4.max = 6000;
-	endgameBarPart5.max = 3000;
-	endgameBarPart6.max = 8000;
+	diamondBarPart1.max = 15;
+	diamondBarPart2.max = 15;
+	diamondBarPart3.max = 15;
+	diamondBarPart4.max = 15;
+	diamondBarPart5.max = 15;
+	diamondBarPart6.max = 15;
+	endgameBarPart1.max = 800;
+	endgameBarPart2.max = 2400;
+	endgameBarPart3.max = 3200;
+	endgameBarPart4.max = 4800;
+	endgameBarPart5.max = 2400;
+	endgameBarPart6.max = 6400;
 
 	// Current progress bar state (somewhat redundant but added for safety after a weird Firefox behavior)
 	diamondBarPart1.value = cow.resourceStardustBiome1;
@@ -345,8 +345,27 @@ function initializeProgressBars() {
 	}
 }
 
+function checkForDiamondBarCompletion() {
+	if (cow.resourceStardustBiome1 >=15 && cow.resourceStardustBiome2 >=15 && cow.resourceStardustBiome3 >=15 && cow.resourceStardustBiome4 >=15 && cow.resourceStardustBiome5 >=15 && cow.resourceStardustBiome6 >=15 && cow.diamondBarOwned == true && cow.resourceEndgameBarDiamonds == 0) {
+		cow.resourceEndgameBarDiamonds = 1;							// Minor hack to prevent this from being called twice if two rare spawns happen at once to finish off the Diamond Bar
+		setTimeout(hideDiamondBar, 10000);							// Bunch of time delays so that you can see the diamond bar be 100% filled for a moment, and so that no player progress is lost
+		setTimeout(function() { playAudio('SFXc/diamondBarClear', 'sfx', 450, true); }, 10000);
+		setTimeout(function() { cow.diamondBarOwned = false; }, 14500);
+		setTimeout(function() { cow.endgameBarOwned = true; }, 14500);
+		setTimeout(showEndgameBar, 15000);
+		setTimeout(function() { cow.resourceStardustBiome1 = 0; }, 15500);
+		setTimeout(function() { cow.resourceStardustBiome2 = 0; }, 15500);
+		setTimeout(function() { cow.resourceStardustBiome3 = 0; }, 15500);
+		setTimeout(function() { cow.resourceStardustBiome4 = 0; }, 15500);
+		setTimeout(function() { cow.resourceStardustBiome5 = 0; }, 15500);
+		setTimeout(function() { cow.resourceStardustBiome6 = 0; }, 15500);
+		setTimeout(function() { cow.randomBiomesUnlocked = true; }, 15500);
+		setTimeout(saveGame, 15555);
+	}
+}
+
 function checkForGameVictory() {
-	if (cow.resourceEndgameBarDiamonds >=1000 && cow.resourceEndgameBarStars >=3000 && cow.resourceEndgameBarHexagons >=4000 && cow.resourceEndgameBarTriangles >=6000 && cow.resourceEndgameBarCircles >=3000 && cow.resourceEndgameBarSquares >=8000
+	if (cow.resourceEndgameBarDiamonds >=800 && cow.resourceEndgameBarStars >=2400 && cow.resourceEndgameBarHexagons >=3200 && cow.resourceEndgameBarTriangles >=4800 && cow.resourceEndgameBarCircles >=2400 && cow.resourceEndgameBarSquares >=6400
 		&& cow.creditsActivated == false && cow.endgameBarOwned == true) {
 		beginCredits();
 	}
