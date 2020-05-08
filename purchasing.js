@@ -93,8 +93,8 @@ function buySquare() {
 
 
 function buyBiome2() {
-	if (cow.resourceTriangles >= 600) {
-		cow.resourceTriangles -= 600;
+	if (cow.resourceTriangles >= 480) {
+		cow.resourceTriangles -= 480;
 		cow.biome2Owned = true;
 		if (cow.hexagonCapacity == 0) { cow.hexagonCapacity = 1; }
 		clearPricesSpan();
@@ -108,8 +108,8 @@ function buyBiome2() {
 }
 
 function buyBiome3() {
-	if (cow.resourceDiamonds >= 100) {
-		cow.resourceDiamonds -= 100;
+	if (cow.resourceDiamonds >= 80) {
+		cow.resourceDiamonds -= 80;
 		cow.biome3Owned = true;
 		if (cow.triangleCapacity == 0) { cow.triangleCapacity = 1; }
 		if (cow.circleCapacity == 0) { cow.circleCapacity = 1; }
@@ -140,8 +140,8 @@ function buyBiome4() {
 }
 
 function buyBiome5() {
-	if (cow.resourceDiamonds >= 100) {
-		cow.resourceDiamonds -= 100;
+	if (cow.resourceDiamonds >= 80) {
+		cow.resourceDiamonds -= 80;
 		cow.biome5Owned = true;
 		if (cow.hexagonCapacity == 0) { cow.hexagonCapacity = 1; }
 		if (cow.circleCapacity == 0) { cow.circleCapacity = 1; }
@@ -157,8 +157,8 @@ function buyBiome5() {
 }
 
 function buyBiome6() {
-	if (cow.resourceCircles >= 1200) {
-		cow.resourceCircles -= 1200;
+	if (cow.resourceCircles >= 1000) {
+		cow.resourceCircles -= 1000;
 		cow.biome6Owned = true;
 		if (cow.circleCapacity == 0) { cow.circleCapacity = 1; }
 		clearPricesSpan();
@@ -285,11 +285,11 @@ function showTriangleCost() { if (cow.triangleCapacity < cow.maxTriangleCapacity
 function showCircleCost() 	{ if (cow.circleCapacity < cow.maxCircleCapacity) 		{ displayPriceText('ci ' + cow.nextCirclePrice); } 		else clearPricesSpan(); }
 function showSquareCost() 	{ if (cow.squareCapacity < cow.maxSquareCapacity) 		{ displayPriceText('sq ' + cow.nextSquarePrice); } 		else clearPricesSpan(); }
 
-function showBiome2Cost() {	displayPriceText('tr 600'); }
-function showBiome3Cost() {	displayPriceText('di 100'); }
+function showBiome2Cost() {	displayPriceText('tr 480'); }
+function showBiome3Cost() {	displayPriceText('di 80'); }
 function showBiome4Cost() {	displayPriceText('st 30'); }
-function showBiome5Cost() {	displayPriceText('di 100'); }
-function showBiome6Cost() {	displayPriceText('ci 1200'); }
+function showBiome5Cost() {	displayPriceText('di 80'); }
+function showBiome6Cost() {	displayPriceText('ci 1000'); }
 
 function showMaxShapeCapacityCost(q) {
 	switch (q) {
@@ -405,11 +405,11 @@ function recheckItemCostHighlighting() {
 	// Throttled in biome 4 and phase 3/postgame because this is performed more than necessary at those points
 	if (lategameThrottle() == false) {
 		// Biome purchase buttons
-		if (cow.resourceTriangles < 600 	&& buttID1.src.slice(-10,-5) == 'Color') 	{ buttID1.src = 'Images/biome2.png'; }
-		if (cow.resourceDiamonds < 100		&& buttID2.src.slice(-10,-5) == 'Color') 	{ buttID2.src = 'Images/biome3.png'; }
+		if (cow.resourceTriangles < 480 	&& buttID1.src.slice(-10,-5) == 'Color') 	{ buttID1.src = 'Images/biome2.png'; }
+		if (cow.resourceDiamonds < 80		&& buttID2.src.slice(-10,-5) == 'Color') 	{ buttID2.src = 'Images/biome3.png'; }
 		if (cow.resourceStars < 30 			&& buttID3.src.slice(-10,-5) == 'Color') 	{ buttID3.src = 'Images/biome4.png'; }
-		if (cow.resourceDiamonds < 100 		&& buttID4.src.slice(-10,-5) == 'Color') 	{ buttID4.src = 'Images/biome5.png'; }
-		if (cow.resourceCircles < 1200 		&& buttID5.src.slice(-10,-5) == 'Color') 	{ buttID5.src = 'Images/biome6.png'; }
+		if (cow.resourceDiamonds < 80 		&& buttID4.src.slice(-10,-5) == 'Color') 	{ buttID4.src = 'Images/biome5.png'; }
+		if (cow.resourceCircles < 1000 		&& buttID5.src.slice(-10,-5) == 'Color') 	{ buttID5.src = 'Images/biome6.png'; }
 		// Phase 2/3 things
 		if (cow.resourceStars < 800			&& buttID6.src.slice(-10,-5) == 'Color')	{ buttID6.src = 'Images/diamondBarHollow.png'; }
 		if (cow.resourceStardust < 30 		&& buttID7.src.slice(-10,-5) == 'Color')	{ buttID7.src = 'Images/stardustHollow.png'; }
@@ -466,11 +466,11 @@ function recheckItemCostHighlighting() {
 		}
 		// If upgrade is buyable, and the icon is white, colorize it
 		// Biome purchase buttons
-		if (cow.resourceTriangles >= 600 	&& buttID1.src.slice(-10,-5) != 'Color') 	{ buttID1.src = 'Images/biome2Color'+ rngRange(1,3) + '.png'; }
-		if (cow.resourceDiamonds >= 100		&& buttID2.src.slice(-10,-5) != 'Color') 	{ buttID2.src = 'Images/biome3Color' + rngRange(1,3) + '.png'; }
+		if (cow.resourceTriangles >= 480 	&& buttID1.src.slice(-10,-5) != 'Color') 	{ buttID1.src = 'Images/biome2Color'+ rngRange(1,3) + '.png'; }
+		if (cow.resourceDiamonds >= 80		&& buttID2.src.slice(-10,-5) != 'Color') 	{ buttID2.src = 'Images/biome3Color' + rngRange(1,3) + '.png'; }
 		if (cow.resourceStars >= 30 		&& buttID3.src.slice(-10,-5) != 'Color') 	{ buttID3.src = 'Images/biome4Color'+ rngRange(1,3) + '.png'; }
-		if (cow.resourceDiamonds >= 100 	&& buttID4.src.slice(-10,-5) != 'Color') 	{ buttID4.src = 'Images/biome5Color'+ rngRange(1,3) + '.png'; }
-		if (cow.resourceCircles >= 1200 	&& buttID5.src.slice(-10,-5) != 'Color') 	{ buttID5.src = 'Images/biome6Color' + rngRange(1,3) + '.png' }
+		if (cow.resourceDiamonds >= 80 		&& buttID4.src.slice(-10,-5) != 'Color') 	{ buttID4.src = 'Images/biome5Color'+ rngRange(1,3) + '.png'; }
+		if (cow.resourceCircles >= 1000 	&& buttID5.src.slice(-10,-5) != 'Color') 	{ buttID5.src = 'Images/biome6Color' + rngRange(1,3) + '.png' }
 		// Phase 2/3 things
 		if (cow.resourceStars >= 800 		&& buttID6.src.slice(-10,-5) != 'Color')	{ buttID6.src = 'Images/diamondBarHollowColor' + rngRange(1,3) + '.png'; }
 		if (cow.resourceStardust >= 30 		&& buttID7.src.slice(-10,-5) != 'Color')	{ buttID7.src = 'Images/stardustHollowColor' + rngRange(1,3) + '.png'; }
@@ -578,11 +578,11 @@ function recheckItemCostHighlighting() {
 function forceIconRecolorize() {
 	// Horrible copypaste function
 	// Biome purchase buttons
-	if (cow.resourceTriangles >= 600  	&& cow.biome2Owned == false) 				{ buttID1.src = 'Images/biome2Color'+ rngRange(1,3) + '.png'; }
-	if (cow.resourceDiamonds >= 100	 	&& cow.biome3Owned == false)				{ buttID2.src = 'Images/biome3Color' + rngRange(1,3) + '.png'; }
+	if (cow.resourceTriangles >= 480  	&& cow.biome2Owned == false) 				{ buttID1.src = 'Images/biome2Color'+ rngRange(1,3) + '.png'; }
+	if (cow.resourceDiamonds >= 80	 	&& cow.biome3Owned == false)				{ buttID2.src = 'Images/biome3Color' + rngRange(1,3) + '.png'; }
 	if (cow.resourceStars >= 30			&& cow.biome4Owned == false) 				{ buttID3.src = 'Images/biome4Color'+ rngRange(1,3) + '.png'; }
-	if (cow.resourceDiamonds >= 100		&& cow.biome5Owned == false) 				{ buttID4.src = 'Images/biome5Color'+ rngRange(1,3) + '.png'; }
-	if (cow.resourceCircles >= 1200		&& cow.biome6Owned == false) 				{ buttID5.src = 'Images/biome6Color' + rngRange(1,3) + '.png' }
+	if (cow.resourceDiamonds >= 80		&& cow.biome5Owned == false) 				{ buttID4.src = 'Images/biome5Color'+ rngRange(1,3) + '.png'; }
+	if (cow.resourceCircles >= 1000		&& cow.biome6Owned == false) 				{ buttID5.src = 'Images/biome6Color' + rngRange(1,3) + '.png' }
 	// Phase 2/3 things
 	if (cow.resourceStars >= 800		&& cow.diamondBarOwned == false)	 		{ buttID6.src = 'Images/diamondBarHollowColor' + rngRange(1,3) + '.png'; }
 	if (cow.resourceStardust >= 30		&& cow.stardustSpawnBoost1Owned == false)	{ buttID7.src = 'Images/stardustHollowColor' + rngRange(1,3) + '.png'; }
