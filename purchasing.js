@@ -186,8 +186,8 @@ function buyBiome6() {
 
 
 function buyDiamondBar() {
-	if (cow.resourceStars >= 800) {
-		cow.resourceStars -= 800;
+	if (cow.resourceStars >= 600) {
+		cow.resourceStars -= 600;
 		cow.diamondBarOwned = true;
 		clearPricesSpan();
 		updateResourceCounter('star');
@@ -200,8 +200,8 @@ function buyDiamondBar() {
 }
 
 function increaseStardustChance100() {
-	if (cow.resourceStardust >= 30) {
-		cow.resourceStardust -= 30;
+	if (cow.resourceStardust >= 25) {
+		cow.resourceStardust -= 25;
 		cow.stardustSpawnBoost1Owned = true;
 		clearPricesSpan();
 		updateResourceCounter('stardust');
@@ -212,8 +212,8 @@ function increaseStardustChance100() {
 }
 
 function increaseStardustChance20() {
-	if (cow.resourceStardust >= 150) {
-		cow.resourceStardust -= 150;
+	if (cow.resourceStardust >= 120) {
+		cow.resourceStardust -= 120;
 		cow.stardustSpawnBoost2Owned = true;
 		clearPricesSpan();
 		updateResourceCounter('stardust');
@@ -309,9 +309,9 @@ function showMaxShapeCapacityCost(q) {
 	}
 }
 
-function showDiamondBarCost() {	displayPriceText('st 800'); }
-function showStardustUpgradeCost100(q) { displayPriceText('sd 30'); }
-function showStardustUpgradeCost20(q) { displayPriceText('sd 150'); }
+function showDiamondBarCost() {	displayPriceText('st 600'); }
+function showStardustUpgradeCost100(q) { displayPriceText('sd 25'); }
+function showStardustUpgradeCost20(q) { displayPriceText('sd 120'); }
 
 
 
@@ -411,9 +411,9 @@ function recheckItemCostHighlighting() {
 		if (cow.resourceDiamonds < 80 		&& buttID4.src.slice(-10,-5) == 'Color') 	{ buttID4.src = 'Images/biome5.png'; }
 		if (cow.resourceCircles < 1000 		&& buttID5.src.slice(-10,-5) == 'Color') 	{ buttID5.src = 'Images/biome6.png'; }
 		// Phase 2/3 things
-		if (cow.resourceStars < 800			&& buttID6.src.slice(-10,-5) == 'Color')	{ buttID6.src = 'Images/diamondBarHollow.png'; }
-		if (cow.resourceStardust < 30 		&& buttID7.src.slice(-10,-5) == 'Color')	{ buttID7.src = 'Images/stardustHollow.png'; }
-		if (cow.resourceStardust < 150 		&& buttID8.src.slice(-10,-5) == 'Color') 	{ buttID8.src = 'Images/stardustHollow.png'; }
+		if (cow.resourceStars < 600			&& buttID6.src.slice(-10,-5) == 'Color')	{ buttID6.src = 'Images/diamondBarHollow.png'; }
+		if (cow.resourceStardust < 25 		&& buttID7.src.slice(-10,-5) == 'Color')	{ buttID7.src = 'Images/stardustHollow.png'; }
+		if (cow.resourceStardust < 120 		&& buttID8.src.slice(-10,-5) == 'Color') 	{ buttID8.src = 'Images/stardustHollow.png'; }
 		// Capacity upgrades
 		if (cow.resourceDiamonds < 125 		&& buttID9.src.slice(-10,-5) == 'Color') 	{ buttID9.src = 'Images/diamondHollow.png'; }
 		if (cow.resourceDiamonds < 600 		&& buttID10.src.slice(-10,-5) == 'Color')	{ buttID10.src = 'Images/diamondHollow.png'; }
@@ -472,9 +472,9 @@ function recheckItemCostHighlighting() {
 		if (cow.resourceDiamonds >= 80 		&& buttID4.src.slice(-10,-5) != 'Color') 	{ buttID4.src = 'Images/biome5Color'+ rngRange(1,3) + '.png'; }
 		if (cow.resourceCircles >= 1000 	&& buttID5.src.slice(-10,-5) != 'Color') 	{ buttID5.src = 'Images/biome6Color' + rngRange(1,3) + '.png' }
 		// Phase 2/3 things
-		if (cow.resourceStars >= 800 		&& buttID6.src.slice(-10,-5) != 'Color')	{ buttID6.src = 'Images/diamondBarHollowColor' + rngRange(1,3) + '.png'; }
-		if (cow.resourceStardust >= 30 		&& buttID7.src.slice(-10,-5) != 'Color')	{ buttID7.src = 'Images/stardustHollowColor' + rngRange(1,3) + '.png'; }
-		if (cow.resourceStardust >= 150 	&& buttID8.src.slice(-10,-5) != 'Color')	{ buttID8.src = 'Images/stardustHollowColor' + rngRange(1,3) + '.png' }
+		if (cow.resourceStars >= 600 		&& buttID6.src.slice(-10,-5) != 'Color')	{ buttID6.src = 'Images/diamondBarHollowColor' + rngRange(1,3) + '.png'; }
+		if (cow.resourceStardust >= 25 		&& buttID7.src.slice(-10,-5) != 'Color')	{ buttID7.src = 'Images/stardustHollowColor' + rngRange(1,3) + '.png'; }
+		if (cow.resourceStardust >= 120 	&& buttID8.src.slice(-10,-5) != 'Color')	{ buttID8.src = 'Images/stardustHollowColor' + rngRange(1,3) + '.png' }
 		// Capacity upgrades
 		if (cow.resourceDiamonds >= 125 	&& buttID9.src.slice(-10,-5) != 'Color') 	{ buttID9.src = 'Images/diamondHollowColor' + rngRange(1,3) + '.png'; }
 		if (cow.resourceDiamonds >= 600		&& buttID10.src.slice(-10,-5) != 'Color')	{ buttID10.src = 'Images/diamondHollowColor' + rngRange(1,3) + '.png'; }
@@ -584,9 +584,9 @@ function forceIconRecolorize() {
 	if (cow.resourceDiamonds >= 80		&& cow.biome5Owned == false) 				{ buttID4.src = 'Images/biome5Color'+ rngRange(1,3) + '.png'; }
 	if (cow.resourceCircles >= 1000		&& cow.biome6Owned == false) 				{ buttID5.src = 'Images/biome6Color' + rngRange(1,3) + '.png' }
 	// Phase 2/3 things
-	if (cow.resourceStars >= 800		&& cow.diamondBarOwned == false)	 		{ buttID6.src = 'Images/diamondBarHollowColor' + rngRange(1,3) + '.png'; }
-	if (cow.resourceStardust >= 30		&& cow.stardustSpawnBoost1Owned == false)	{ buttID7.src = 'Images/stardustHollowColor' + rngRange(1,3) + '.png'; }
-	if (cow.resourceStardust >= 150		&& cow.stardustSpawnBoost2Owned == false)	{ buttID8.src = 'Images/stardustHollowColor' + rngRange(1,3) + '.png' }
+	if (cow.resourceStars >= 600		&& cow.diamondBarOwned == false)	 		{ buttID6.src = 'Images/diamondBarHollowColor' + rngRange(1,3) + '.png'; }
+	if (cow.resourceStardust >= 25		&& cow.stardustSpawnBoost1Owned == false)	{ buttID7.src = 'Images/stardustHollowColor' + rngRange(1,3) + '.png'; }
+	if (cow.resourceStardust >= 120		&& cow.stardustSpawnBoost2Owned == false)	{ buttID8.src = 'Images/stardustHollowColor' + rngRange(1,3) + '.png' }
 	// Capacity upgrades
 	if (cow.resourceDiamonds >= 125		&& cow.maxDiamondCapacity < 20) 			{ buttID9.src = 'Images/diamondHollowColor' + rngRange(1,3) + '.png'; }
 	if (cow.resourceDiamonds >= 600		&& cow.maxDiamondCapacity < 30)				{ buttID10.src = 'Images/diamondHollowColor' + rngRange(1,3) + '.png'; }
