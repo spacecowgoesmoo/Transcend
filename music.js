@@ -197,7 +197,7 @@ function musicSpawnController() {
 		}
 	}
 
-	setTimeout(musicSpawnController, rngRange(270000,430000));							// 300k = five minutes
+	setTimeout(musicSpawnController, rngRange(330000,490000));							// 300k = five minutes
 }
 
 
