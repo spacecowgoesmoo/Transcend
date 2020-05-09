@@ -1,199 +1,237 @@
 function preloadFiles() {
 	// Force the preloader to abort if it hasn't finished quickly enough
 	setTimeout( function() { 
-		cow.filesPreloaded = 160
-		console.log('Preloader is taking too long, forcing game initialization..')
-	 }, 25000)
+		if (cow.preloaderComplete == false) {
+			cow.preloaderComplete = true;
+			console.log('Preloader is taking too long, forcing game initialization..')
+		}
+	}, 25000)
 
 	// Preload
 	// NOTE: On tc.com, the last 10% of files loaded will usually fail when accessed over https
 	function load(filename) {
-	    var xmlhttp;
-	    if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
-	        xmlhttp = new XMLHttpRequest();
-	    } else { // code for IE6, IE5
-	        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-	    }
-	    xmlhttp.onreadystatechange = function() {
-	        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-				var q = document.createElement('span');	// Extra stuff to make IE happy. Fuck IE
-				q.setAttribute('id', 'loadSound');		//
+		let xmlhttp;
+		if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
+			xmlhttp = new XMLHttpRequest();
+		} else { // code for IE6, IE5
+			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+
+		// Note: As of Apr 2020, this doesn't work locally with safari anymore, even with CORS protection off
+		xmlhttp.onreadystatechange = function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				let q = document.createElement('span');	// Extra stuff to make IE happy. Fuck IE
+				q.setAttribute('id', 'loadFile');		//
 				q.setAttribute('class', 'invisible');	//
 				document.body.appendChild(q);			//
-	            document.getElementById("loadSound").innerHTML = '<embed src="' + filename + '" controller="1" autoplay="0" autostart="0" />';
-				//console.log(cow.filesPreloaded);
+				document.getElementById("loadFile").innerHTML = '<embed src="' + filename + '" controller="1" autoplay="0" autostart="0"/>';
+				// Prevents Firefox from audibly playing preloaded SFX
+				if (navigator.userAgent.indexOf('Firefox') > -1 && navigator.userAgent.indexOf('Seamonkey') == -1) {
+					document.getElementById("loadFile").innerHTML = '';
+				}
+				console.log('Loaded file ' + cow.filesPreloaded + '/173 - ' + filename);
 				cow.filesPreloaded++;
-	        }
-	    }
-	    xmlhttp.open("GET", filename, true);
-	    xmlhttp.send();
+				if (cow.filesPreloaded >= 173) { 
+					setTimeout(function() { cow.preloaderComplete = true; }, 1500);
+				}
+			}
+		}
+		
+		// Prevents some harmless console errors in Firefox
+		const period = filename.lastIndexOf('.');
+		const filetype = filename.substring(period + 1);
+		if (filetype == 'opus' || filetype == 'caf') { xmlhttp.overrideMimeType('audio/' + filetype); }
+
+		// Start!
+		xmlhttp.open('GET', filename, true);
+		xmlhttp.send();
 	}
 	
+	// Start loading the biggest SFX first
+	load('SFXb/triTower1' + cow.audioFormat);
+	load('SFXb/triTower2' + cow.audioFormat);
+	load('SFXb/triTower3' + cow.audioFormat);
+	load('SFXb/constellation1' + cow.audioFormat);
+	load('SFXb/constellation2' + cow.audioFormat);
+	load('SFXb/constellation3' + cow.audioFormat);
+	load('SFXc/diamondBarClear' + cow.audioFormat);
+	load('SFXb/ufo1' + cow.audioFormat);
+	load('SFXb/ufo2' + cow.audioFormat);
+	load('SFXb/ufo3' + cow.audioFormat);
+
 	// Images
-	load('Images/gear.png');
-	load('Images/diamond.png');
-	load('Images/diamondColor1.png');
-	load('Images/diamondColor2.png');
-	load('Images/diamondColor3.png');
-	load('Images/diamondColor4.png');
-	load('Images/diamondColor5.png');
-	load('Images/diamondColor6.png');
-	load('Images/diamondColor7.png');
-	load('Images/star.png');
-	load('Images/starColor1.png');
-	load('Images/starColor2.png');
-	load('Images/starColor3.png');
-	load('Images/starColor4.png');
-	load('Images/starColor5.png');
-	load('Images/starColor6.png');
-	load('Images/starColor7.png');
-	load('Images/hexagon.png');
-	load('Images/hexagonColor1.png');
-	load('Images/hexagonColor2.png');
-	load('Images/hexagonColor3.png');
-	load('Images/hexagonColor4.png');
-	load('Images/hexagonColor5.png');
-	load('Images/hexagonColor6.png');
-	load('Images/hexagonColor7.png');
-	load('Images/triangle.png');
-	load('Images/triangleColor1.png');
-	load('Images/triangleColor2.png');
-	load('Images/triangleColor3.png');
-	load('Images/triangleColor4.png');
-	load('Images/triangleColor5.png');
-	load('Images/triangleColor6.png');
-	load('Images/triangleColor7.png');
+	load('Images/biome1.png');
+	load('Images/biome1Color1.png');
+	load('Images/biome1Color2.png');
+	load('Images/biome1Color3.png');
+	load('Images/biome2.png');
+	load('Images/biome2Color1.png');
+	load('Images/biome2Color2.png');
+	load('Images/biome2Color3.png');
+	load('Images/biome3.png');
+	load('Images/biome3Color1.png');
+	load('Images/biome3Color2.png');
+	load('Images/biome3Color3.png');
+	load('Images/biome4.png');
+	load('Images/biome4Color1.png');
+	load('Images/biome4Color2.png');
+	load('Images/biome4Color3.png');
+	load('Images/biome5.png');
+	load('Images/biome5Color1.png');
+	load('Images/biome5Color2.png');
+	load('Images/biome5Color3.png');
+	load('Images/biome6.png');
+	load('Images/biome6Color1.png');
+	load('Images/biome6Color2.png');
+	load('Images/biome6Color3.png');
 	load('Images/circle.png');
 	load('Images/circleColor1.png');
 	load('Images/circleColor2.png');
 	load('Images/circleColor3.png');
 	load('Images/circleColor4.png');
-	load('Images/circleColor5.png');
-	load('Images/circleColor6.png');
-	load('Images/circleColor7.png');
+	load('Images/circleHollow.png');
+	load('Images/circleHollowColor1.png');
+	load('Images/circleHollowColor2.png');
+	load('Images/circleHollowColor3.png');
+	load('Images/diamond.png');
+	load('Images/diamondBar.png');
+	load('Images/diamondBarColor1.png');
+	load('Images/diamondBarColor2.png');
+	load('Images/diamondBarColor3.png');
+	load('Images/diamondBarColor4.png');
+	load('Images/diamondBarColor5.png');
+	load('Images/diamondBarColor6.png');
+	load('Images/diamondBarColor7.png');
+	load('Images/diamondBarHollow.png');
+	load('Images/diamondBarHollowColor1.png');
+	load('Images/diamondBarHollowColor2.png');
+	load('Images/diamondBarHollowColor3.png');
+	load('Images/diamondColor1.png');
+	load('Images/diamondColor2.png');
+	load('Images/diamondColor3.png');
+	load('Images/diamondColor4.png');
+	load('Images/diamondHollow.png');
+	load('Images/diamondHollowColor1.png');
+	load('Images/diamondHollowColor2.png');
+	load('Images/diamondHollowColor3.png');
+	load('Images/fuzz.png');
+	load('Images/gear.png');
+	load('Images/hexagon.png');
+	load('Images/hexagonColor1.png');
+	load('Images/hexagonColor2.png');
+	load('Images/hexagonColor3.png');
+	load('Images/hexagonColor4.png');
+	load('Images/hexagonHollow.png');
+	load('Images/hexagonHollowColor1.png');
+	load('Images/hexagonHollowColor2.png');
+	load('Images/hexagonHollowColor3.png');
 	load('Images/square.png');
 	load('Images/squareColor1.png');
 	load('Images/squareColor2.png');
 	load('Images/squareColor3.png');
 	load('Images/squareColor4.png');
-	load('Images/squareColor5.png');
-	load('Images/squareColor6.png');
-	load('Images/squareColor7.png');
-	load('Images/stardust.png');
-	load('Images/diamondHollow.png');
-	load('Images/diamondHollowColor1.png');
-	load('Images/diamondHollowColor2.png');
-	load('Images/diamondHollowColor3.png');
-	load('Images/starHollow.png');
-	load('Images/starHollowColor1.png');
-	load('Images/starHollowColor2.png');
-	load('Images/starHollowColor3.png');
-	load('Images/hexagonHollow.png');
-	load('Images/hexagonHollowColor1.png');
-	load('Images/hexagonHollowColor2.png');
-	load('Images/hexagonHollowColor3.png');
-	load('Images/triangleHollow.png');
-	load('Images/triangleHollowColor1.png');
-	load('Images/triangleHollowColor2.png');
-	load('Images/triangleHollowColor3.png');
-	load('Images/circleHollow.png');
-	load('Images/circleHollowColor1.png');
-	load('Images/circleHollowColor2.png');
-	load('Images/circleHollowColor3.png');
 	load('Images/squareHollow.png');
 	load('Images/squareHollowColor1.png');
 	load('Images/squareHollowColor2.png');
 	load('Images/squareHollowColor3.png');
+	load('Images/star.png');
+	load('Images/starColor1.png');
+	load('Images/starColor2.png');
+	load('Images/starColor3.png');
+	load('Images/starColor4.png');
+	load('Images/stardust.png');
 	load('Images/stardustHollow.png');
 	load('Images/stardustHollowColor1.png');
 	load('Images/stardustHollowColor2.png');
 	load('Images/stardustHollowColor3.png');
-	load('Images/diamondBar.png');
-	load('Images/diamondBarHollow.png');
-	load('Images/diamondBarHollowColor1.png');
-	load('Images/diamondBarHollowColor2.png');
-	load('Images/diamondBarHollowColor3.png');
-	
+	load('Images/starHollow.png');
+	load('Images/starHollowColor1.png');
+	load('Images/starHollowColor2.png');
+	load('Images/starHollowColor3.png');
+	load('Images/triangle.png');
+	load('Images/triangleColor1.png');
+	load('Images/triangleColor2.png');
+	load('Images/triangleColor3.png');
+	load('Images/triangleColor4.png');
+	load('Images/triangleHollow.png');
+	load('Images/triangleHollowColor1.png');
+	load('Images/triangleHollowColor2.png');
+	load('Images/triangleHollowColor3.png');
+
 	// Shape SFX
-	load('SFX/diamond1.wav');
-	load('SFX/diamond2.wav');
-	load('SFX/diamond3.wav');
-	load('SFX/diamond4.wav');
-	load('SFX/diamond5.wav');
-	load('SFX/star1.wav');
-	load('SFX/star2.wav');
-	load('SFX/star3.wav');
-	load('SFX/star4.wav');
-	load('SFX/star5.wav');
-	load('SFX/hexagon1.wav');
-	load('SFX/hexagon2.wav');
-	load('SFX/hexagon3.wav');
-	load('SFX/hexagon4.wav');
-	load('SFX/hexagon5.wav');
-	load('SFX/triangle1.wav');
-	load('SFX/triangle2.wav');
-	load('SFX/triangle3.wav');
-	load('SFX/triangle4.wav');
-	load('SFX/triangle5.wav');
-	load('SFX/square1.wav');
-	load('SFX/square2.wav');
-	load('SFX/square3.wav');
-	load('SFX/square4.wav');
-	load('SFX/square5.wav');
-	load('SFX/circle1.wav');
-	load('SFX/circle2.wav');
-	load('SFX/circle3.wav');
-	load('SFX/circle4.wav');
-	load('SFX/circle5.wav');
+	load('SFX/diamond1' + cow.audioFormat);
+	load('SFX/diamond2' + cow.audioFormat);
+	load('SFX/diamond3' + cow.audioFormat);
+	load('SFX/diamond4' + cow.audioFormat);
+	load('SFX/diamond5' + cow.audioFormat);
+	load('SFX/star1' + cow.audioFormat);
+	load('SFX/star2' + cow.audioFormat);
+	load('SFX/star3' + cow.audioFormat);
+	load('SFX/star4' + cow.audioFormat);
+	load('SFX/star5' + cow.audioFormat);
+	load('SFX/hexagon1' + cow.audioFormat);
+	load('SFX/hexagon2' + cow.audioFormat);
+	load('SFX/hexagon3' + cow.audioFormat);
+	load('SFX/hexagon4' + cow.audioFormat);
+	load('SFX/hexagon5' + cow.audioFormat);
+	load('SFX/triangle1' + cow.audioFormat);
+	load('SFX/triangle2' + cow.audioFormat);
+	load('SFX/triangle3' + cow.audioFormat);
+	load('SFX/triangle4' + cow.audioFormat);
+	load('SFX/triangle5' + cow.audioFormat);
+	load('SFX/square1' + cow.audioFormat);
+	load('SFX/square2' + cow.audioFormat);
+	load('SFX/square3' + cow.audioFormat);
+	load('SFX/square4' + cow.audioFormat);
+	load('SFX/square5' + cow.audioFormat);
+	load('SFX/circle1' + cow.audioFormat);
+	load('SFX/circle2' + cow.audioFormat);
+	load('SFX/circle3' + cow.audioFormat);
+	load('SFX/circle4' + cow.audioFormat);
+	load('SFX/circle5' + cow.audioFormat);
 	
 	// Rare Spawn SFX
-	load('SFXb/blackCircle1.wav');
-	load('SFXb/blackCircle2.wav');
-	load('SFXb/blackCircle3.wav');
-	load('SFXb/constellation1.wav');
-	load('SFXb/constellation2.wav');
-	load('SFXb/constellation3.wav');
-	load('SFXb/cuteSquare1.wav');
-	load('SFXb/cuteSquare2.wav');
-	load('SFXb/cuteSquare3.wav');
-	load('SFXb/fallingStar1.wav');
-	load('SFXb/fallingStar2.wav');
-	load('SFXb/fallingStar3.wav');
-	load('SFXb/hexScanner1.wav');
-	load('SFXb/hexScanner2.wav');
-	load('SFXb/hexScanner3.wav');
-	load('SFXb/paint1.wav');
-	load('SFXb/paint2.wav');
-	load('SFXb/paint3.wav');
-	load('SFXb/quadQuad1.wav');
-	load('SFXb/quadQuad2.wav');
-	load('SFXb/quadQuad3.wav');
-	load('SFXb/triCreepy1.wav');
-	load('SFXb/triCreepy2.wav');
-	load('SFXb/triCreepy3.wav');
-	load('SFXb/triTower1.wav');
-	load('SFXb/triTower2.wav');
-	load('SFXb/triTower3.wav');
-	load('SFXb/ufo1.wav');
-	load('SFXb/ufo2.wav');
-	load('SFXb/ufo3.wav');
+	load('SFXb/blackCircle1' + cow.audioFormat);
+	load('SFXb/blackCircle2' + cow.audioFormat);
+	load('SFXb/blackCircle3' + cow.audioFormat);
+	// constellation 1 2 3
+	load('SFXb/cuteSquare1' + cow.audioFormat);
+	load('SFXb/cuteSquare2' + cow.audioFormat);
+	load('SFXb/cuteSquare3' + cow.audioFormat);
+	load('SFXb/fallingStar1' + cow.audioFormat);
+	load('SFXb/fallingStar2' + cow.audioFormat);
+	load('SFXb/fallingStar3' + cow.audioFormat);
+	load('SFXb/hexScanner1' + cow.audioFormat);
+	load('SFXb/hexScanner2' + cow.audioFormat);
+	load('SFXb/hexScanner3' + cow.audioFormat);
+	load('SFXb/paint1' + cow.audioFormat);
+	load('SFXb/paint2' + cow.audioFormat);
+	load('SFXb/paint3' + cow.audioFormat);
+	load('SFXb/quadQuad1' + cow.audioFormat);
+	load('SFXb/quadQuad2' + cow.audioFormat);
+	load('SFXb/quadQuad3' + cow.audioFormat);
+	load('SFXb/triCreepy1' + cow.audioFormat);
+	load('SFXb/triCreepy2' + cow.audioFormat);
+	load('SFXb/triCreepy3' + cow.audioFormat);
+	// triTower 1 2 3
+	// ufo 1 2 3
 	
 	// UI SFX
-	load('SFXc/buyShape1.wav');
-	load('SFXc/buyShape2.wav');
-	load('SFXc/buyShape3.wav');
-	load('SFXc/buyShape4.wav');
-	load('SFXc/buyShape5.wav');
-	load('SFXc/buyShape6.wav');
-	load('SFXc/buyShape7.wav');
-	load('SFXc/capacityBoost1.wav');
-	load('SFXc/capacityBoost2.wav');
-	load('SFXc/capacityBoost3.wav');
-	load('SFXc/diamondBarClear.wav');
-	load('SFXc/newBiome1.wav');
-	load('SFXc/newBiome2.wav');
-	load('SFXc/newBiome3.wav');
-	load('SFXc/stardustBoost1.wav');
-	load('SFXc/stardustBoost2.wav');
-	load('SFXc/stardustBoost3.wav');
+	load('SFXc/buyShape1' + cow.audioFormat);
+	load('SFXc/buyShape2' + cow.audioFormat);
+	load('SFXc/buyShape3' + cow.audioFormat);
+	load('SFXc/buyShape4' + cow.audioFormat);
+	load('SFXc/buyShape5' + cow.audioFormat);
+	load('SFXc/buyShape6' + cow.audioFormat);
+	load('SFXc/buyShape7' + cow.audioFormat);
+	load('SFXc/capacityBoost1' + cow.audioFormat);
+	load('SFXc/capacityBoost2' + cow.audioFormat);
+	load('SFXc/capacityBoost3' + cow.audioFormat);
+	// diamondBarClear
+	load('SFXc/newBiome1' + cow.audioFormat);
+	load('SFXc/newBiome2' + cow.audioFormat);
+	load('SFXc/newBiome3' + cow.audioFormat);
+	load('SFXc/stardustBoost1' + cow.audioFormat);
+	load('SFXc/stardustBoost2' + cow.audioFormat);
+	load('SFXc/stardustBoost3' + cow.audioFormat);
 }

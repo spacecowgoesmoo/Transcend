@@ -4,21 +4,36 @@
 
 
 <head>
-<link REL="SHORTCUT ICON" HREF="favicon.ico">
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<title>Transcend</title>
-<meta charset="UTF-8">
-<link rel="stylesheet" href="style.css">
-<script src='https://cdn1.kongregate.com/javascripts/kongregate_api.js'></script>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>Transcend</title>
+	<meta name="Description" content="Transcend">
+	<meta charset="UTF-8">
+	<!-- External Files -->
+		<link rel="stylesheet" href="style.css">
+		<script src='https://cdn1.kongregate.com/javascripts/kongregate_api.js'></script>
+	<!-- Favicons -->
+		<link rel="apple-touch-icon" sizes="180x180" href="https://www.taylorcalderone.com/Images/Favicons/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="https://www.taylorcalderone.com/Images/Favicons/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="https://www.taylorcalderone.com/Images/Favicons/favicon-16x16.png">
+		<link rel="manifest" href="https://www.taylorcalderone.com/Images/Favicons/site.webmanifest">
+		<link rel="mask-icon" href="https://www.taylorcalderone.com/Images/Favicons/safari-pinned-tab.svg" color="#5bbad5">
+		<link rel="shortcut icon" href="https://www.taylorcalderone.com/Images/Favicons/favicon.ico">
+		<meta name="msapplication-TileColor" content="#2b5797">
+		<meta name="msapplication-config" content="https://www.taylorcalderone.com/Images/Favicons/browserconfig.xml">
+		<meta name="theme-color" content="#ffffff">
 </head>
-<body onload="preloader();" onClick="fadeOut(optionsMenu, 1);">
-<!-- call saveGame() onLoad to fix any permanent bad data crashes -->
+
+
+
+
+<body onload="preloader();" onClick="newFadePlusToggleAndVisibility(optionsMenu, 0, 0.25);">
+<!-- dev tip: temporarily add saveGame() to the onload function here to fix any permanent bad data crashes -->
 
 
 
 
 <!-- Include libraries -->
-<script src="Libraries/pixi.min.js"></script>
+<script src="Libraries/pixi-legacy.min.js"></script>
 <script src="Libraries/randomColor.js"></script>
 <script src="Libraries/aes.js"></script>
 <script src="Libraries/Pizzicato.js"></script>
@@ -54,8 +69,8 @@
 
 
 <!-- Includes extra stuff for the eraseSave behavior -->
-<span id='optionsMenuButtonFadeinContainer' style='opacity:0;'>
-<button id='optionsMenuButton' style='display: none;' onClick="fadeIn(optionsMenu, 1); eraseSaveText.innerHTML = 'Erase Save'; hoverWhite(eraseSaveText); preventParentClick(event);"><img width=18 src='Images/gear.png'></button>
+<span id='optionsMenuButtonFadeinContainer' class='opacityZero'>
+<button id='optionsMenuButton' class='invisible' onClick="newFadePlusToggleAndVisibility(optionsMenu, 0.7, 0.25, true); eraseSaveText.innerHTML = 'Erase Save'; hoverWhite(eraseSaveText); preventParentClick(event);"><img width=18 src='Images/gear.png'></button>
 </span>
 
 
@@ -68,12 +83,12 @@
 <!-- The Erase Save button has a bunch of hax to make the extra warning colors work -->
 <!-- Firefox doesn't like it when class='optionText' is applied to buttons instead of spans -->
 <div id='optionsMenu' class='invisible' onclick='preventParentClick(event);'>
-<span class='optionText'>Transcend v1.02</span>
+<span class='optionText'>Transcend v2.0</span>
 <span class='optionText'><br><br>Design, Programming, Music</span>
 <span class='optionText'><br>© Taylor Calderone, 2017</span>
-<span class='optionText'><br><button class='noBG' onMouseOver='hoverRNGColor(this);' onMouseOut='hoverWhite(this);' onClick="window.open('https://twitter.com/spacecowgoesmoo', 'moo', 'location=0'); hoverWhite(this); fadeOut(optionsMenu, 1);">@spacecowgoesmoo</button></span>
-<span class='optionText'><br><br><button class='noBG' onMouseOver='hoverRNGColor(this);' onMouseOut='hoverWhite(this);' onClick="window.open('versionHistory.txt', 'moo', 'location=0'); hoverWhite(this); fadeOut(optionsMenu, 1);">Version History</button></span>
-<span class='optionText'><br><button class='noBG' onMouseOver='hoverRNGColor(this);' onMouseOut='hoverWhite(this);' onClick="window.open('http://taylorcalderone.com/games', 'moo', 'location=0'); hoverWhite(this); fadeOut(optionsMenu, 1);">More Games Here!</button></span>
+<span class='optionText'><br><button class='noBG' onMouseOver='hoverRNGColor(this);' onMouseOut='hoverWhite(this);' onClick="window.open('https://twitter.com/spacecowgoesmoo', 'moo', 'location=0'); hoverWhite(this); newFadePlusToggleAndVisibility(optionsMenu, 0, 0.25);">@spacecowgoesmoo</button></span>
+<span class='optionText'><br><br><button class='noBG' onMouseOver='hoverRNGColor(this);' onMouseOut='hoverWhite(this);' onClick="window.open('versionHistory.txt', 'moo', 'location=0'); hoverWhite(this); newFadePlusToggleAndVisibility(optionsMenu, 0, 0.25);">Version History</button></span>
+<span class='optionText'><br><button class='noBG' onMouseOver='hoverRNGColor(this);' onMouseOut='hoverWhite(this);' onClick="window.open('http://taylorcalderone.com/games', 'moo', 'location=0'); hoverWhite(this); newFadePlusToggleAndVisibility(optionsMenu, 0, 0.25);">More Games Here!</button></span>
 <span class='optionText extraMarginRight'><br><br><span>Music Volume:<button id='decreaseBGMvolumeButton' class='noBG' onMouseOver='hoverRNGColor(this);' onMouseOut='hoverWhite(this);' onClick="decreaseVolume('bgm');"><</button><span id='bgmDisplay'>q</span><button id='increaseBGMvolumeButton' class='noBG' onMouseOver='hoverRNGColor(this);' onMouseOut='hoverWhite(this);' onClick="increaseVolume('bgm');">></button></span></span>
 <span class='optionText extraMarginRight'><br><span id='muteMusicSpan'>SFX Volume:<button id='decreaseSFXvolumeButton' class='noBG' onMouseOver='hoverRNGColor(this);' onMouseOut='hoverWhite(this);' onClick="decreaseVolume('sfx');"><</button><span id='sfxDisplay'>q</span><button id='increaseSFXvolumeButton' class='noBG' onMouseOver='hoverRNGColor(this);' onMouseOut='hoverWhite(this);' onClick="increaseVolume('sfx');">></button></span></span><span class='optionText'><br><button class='noBG' onMouseOver='hoverRNGColor(this);' onMouseOut='hoverWhite(this);' onClick="window.open('exportSave.html','moo', 'menubar=no, status=no, location=0, toolbar=0, titlebar=no, addressbar=no, width=500, height=235'); hoverWhite(this);">Export Save</button></span>
 <span class='optionText'><br><button class='noBG' onMouseOver='hoverRNGColor(this);' onMouseOut='hoverWhite(this);' onClick='importEncryptedSave(); hoverWhite(this);'>Import Save</button></span>
@@ -88,25 +103,28 @@
 
 
 <div id='titleCardComplete'>
-<span id='titleCard1' class='ieHack' style='opacity: 0'>T</span>
-<span id='titleCard2' class='ieHack' style='opacity: 0'>R</span>
-<span id='titleCard3' class='ieHack' style='opacity: 0'>A</span>
-<span id='titleCard4' class='ieHack' style='opacity: 0'>N</span>
-<span id='titleCard5' class='ieHack' style='opacity: 0'>S</span>
-<span id='titleCard6' class='ieHack' style='opacity: 0'>C</span>
-<span id='titleCard7' class='ieHack' style='opacity: 0'>E</span>
-<span id='titleCard8' class='ieHack' style='opacity: 0'>N</span>
-<span id='titleCard9' class='ieHack' style='opacity: 0'>D</span>
+<span id='titleCard1' class='ieHack opacityZero'>T</span>
+<span id='titleCard2' class='ieHack opacityZero'>R</span>
+<span id='titleCard3' class='ieHack opacityZero'>A</span>
+<span id='titleCard4' class='ieHack opacityZero'>N</span>
+<span id='titleCard5' class='ieHack opacityZero'>S</span>
+<span id='titleCard6' class='ieHack opacityZero'>C</span>
+<span id='titleCard7' class='ieHack opacityZero'>E</span>
+<span id='titleCard8' class='ieHack opacityZero'>N</span>
+<span id='titleCard9' class='ieHack opacityZero'>D</span>
 </div>
 
 
 
 
 <div id='creditsText'>
-<span id='creditsText1' style='opacity: 0'>T R A N S C E N D</span>
-<span id='creditsText2' style='opacity: 0'>Thank you for playing!</span>
-<span id='creditsText3' style='opacity: 0' onClick='exitCredits();'>> click</span>
-<span id='startGameText' style='opacity: 0' onClick='startGame()'>> click</span>
+<span id='creditsText1' class='opacityZero'>T R A N S C E N D</span>
+<span id='creditsText2' class='opacityZero'>Thank you for playing!</span>
+<span id='creditsText3' class='opacityZero' onClick='exitCredits();'>> click</span>
+<span id='startGameText' class='opacityZero' onClick='startGame("normal");'>> click</span>
+<!-- IMPORTANT OPTION HERE -->
+<!-- 'resumeDemo' = auto unlock everything for the resume demo version -->
+<!-- 'normal' = normal game -->
 </div>
 
 
@@ -118,20 +136,20 @@
 
 
 <span id='progressBarIEopacityCancerBugfix'>
-<progress id='diamondBarPart1' style='opacity: 0'></progress>
-<progress id='diamondBarPart2' style='opacity: 0'></progress>
-<progress id='diamondBarPart3' style='opacity: 0'></progress>
-<progress id='diamondBarPart4' style='opacity: 0'></progress>
-<progress id='diamondBarPart5' style='opacity: 0'></progress>
-<progress id='diamondBarPart6' style='opacity: 0'></progress>
-<image id='diamondBarLabelImage' style='opacity: 0' src='Images/diamondBarHollow.png'></image>
+<progress id='diamondBarPart1' class='opacityZero'></progress>
+<progress id='diamondBarPart2' class='opacityZero'></progress>
+<progress id='diamondBarPart3' class='opacityZero'></progress>
+<progress id='diamondBarPart4' class='opacityZero'></progress>
+<progress id='diamondBarPart5' class='opacityZero'></progress>
+<progress id='diamondBarPart6' class='opacityZero'></progress>
+<image id='diamondBarLabelImage' class='opacityZero' src='Images/diamondBarHollow.png'></image>
 
-<progress id='endgameBarPart1' style='opacity: 0'></progress>
-<progress id='endgameBarPart2' style='opacity: 0'></progress>
-<progress id='endgameBarPart3' style='opacity: 0'></progress>
-<progress id='endgameBarPart4' style='opacity: 0'></progress>
-<progress id='endgameBarPart5' style='opacity: 0'></progress>
-<progress id='endgameBarPart6' style='opacity: 0'></progress>
+<progress id='endgameBarPart1' class='opacityZero'></progress>
+<progress id='endgameBarPart2' class='opacityZero'></progress>
+<progress id='endgameBarPart3' class='opacityZero'></progress>
+<progress id='endgameBarPart4' class='opacityZero'></progress>
+<progress id='endgameBarPart5' class='opacityZero'></progress>
+<progress id='endgameBarPart6' class='opacityZero'></progress>
 </span>
 
 
@@ -139,15 +157,15 @@
 
 
 
-<span id='resourceCounterFadeinContainer' style='opacity:0;'>
+<span id='resourceCounterFadeinContainer' class='opacityZero'>
 <span id='resourceCounter' style='display: none; opacity: 0.7;' onMouseLeave='clearPricesSpan();' onclick='preventParentClick(event);'>
-<button id='diamondCounter' class='upperLeftButton' onClick='buyDiamond();' onMouseOver='showDiamondCost();'><span id='diamondCounterImage'><image id='buttID21' src='Images/diamond.png' class='diamondCounterShape firefoxHack2'></image></span><span id='diamondCounterText' class='firefoxHack4'></span></button><br>
-<span id='starButtonSpan'><button id='starCounter' class='upperLeftButton' onClick='buyStar();' onMouseOver='showStarCost();'><span id='starCounterImage'><image id='buttID22' src='Images/star.png' class='starCounterShape firefoxHack2'></image></span><span id='starCounterText' class='firefoxHack4'></span></button><br>
-</span><span id='hexagonButtonSpan'><button id='hexagonCounter' class='upperLeftButton' onClick='buyHexagon();' onMouseOver='showHexagonCost();'><span id='hexagonCounterImage'><image id='buttID23' src='Images/hexagon.png' class='hexagonCounterShape firefoxHack2'></image></span><span id='hexagonCounterText' class='firefoxHack4'></span></button><br>
-</span><span id='triangleButtonSpan'><button id='triangleCounter' class='upperLeftButton' onClick='buyTriangle();' onMouseOver='showTriangleCost();'><span id='triangleCounterImage'><image id='buttID24' src='Images/triangle.png' class='triangleCounterShape firefoxHack2'></image></span><span id='triangleCounterText' class='firefoxHack5'></span></button><br>
-</span><span id='circleButtonSpan'><button id='circleCounter' class='upperLeftButton' onClick='buyCircle();' onMouseOver='showCircleCost();'><span id='circleCounterImage'><image id='buttID25' src='Images/circle.png' class='circleCounterShape firefoxHack2'></image></span><span id='circleCounterText' class='firefoxHack5'></span></button><br>
-</span><span id='squareButtonSpan'><button id='squareCounter' class='upperLeftButton' onClick='buySquare();' onMouseOver='showSquareCost();'><span id='squareCounterImage'><image id='buttID26' src='Images/square.png' class='squareCounterShape firefoxHack2'></image></span><span id='squareCounterText' class='firefoxHack5'></span></button><br>
-</span><span id='stardustButtonSpan'><button id='stardustCounter' class='upperLeftButton' onMouseOver='clearPricesSpan();'><image src='Images/stardust.png' class='stardustCounterShape firefoxHack2'></image><span id='stardustCounterText' class='firefoxHack5'></span></button></span>
+<button id='diamondCounter' class='upperLeftButton' onClick='buyDiamond();' onMouseEnter='showDiamondCost();'><span id='diamondCounterImage'><image id='buttID21' src='Images/diamond.png' class='diamondCounterShape firefoxHack2'></image></span><span id='diamondCounterText' class='firefoxHack4'></span></button><br>
+<span id='starButtonSpan'><button id='starCounter' class='upperLeftButton' onClick='buyStar();' onMouseEnter='showStarCost();'><span id='starCounterImage'><image id='buttID22' src='Images/star.png' class='starCounterShape firefoxHack2'></image></span><span id='starCounterText' class='firefoxHack4'></span></button><br>
+</span><span id='hexagonButtonSpan'><button id='hexagonCounter' class='upperLeftButton' onClick='buyHexagon();' onMouseEnter='showHexagonCost();'><span id='hexagonCounterImage'><image id='buttID23' src='Images/hexagon.png' class='hexagonCounterShape firefoxHack2'></image></span><span id='hexagonCounterText' class='firefoxHack4'></span></button><br>
+</span><span id='triangleButtonSpan'><button id='triangleCounter' class='upperLeftButton' onClick='buyTriangle();' onMouseEnter='showTriangleCost();'><span id='triangleCounterImage'><image id='buttID24' src='Images/triangle.png' class='triangleCounterShape firefoxHack2'></image></span><span id='triangleCounterText' class='firefoxHack5'></span></button><br>
+</span><span id='circleButtonSpan'><button id='circleCounter' class='upperLeftButton' onClick='buyCircle();' onMouseEnter='showCircleCost();'><span id='circleCounterImage'><image id='buttID25' src='Images/circle.png' class='circleCounterShape firefoxHack2'></image></span><span id='circleCounterText' class='firefoxHack5'></span></button><br>
+</span><span id='squareButtonSpan'><button id='squareCounter' class='upperLeftButton' onClick='buySquare();' onMouseEnter='showSquareCost();'><span id='squareCounterImage'><image id='buttID26' src='Images/square.png' class='squareCounterShape firefoxHack2'></image></span><span id='squareCounterText' class='firefoxHack5'></span></button><br>
+</span><span id='stardustButtonSpan'><button id='stardustCounter' class='upperLeftButton' onMouseEnter='clearPricesSpan();'><image src='Images/stardust.png' class='stardustCounterShape firefoxHack2'></image><span id='stardustCounterText' class='firefoxHack5'></span></button></span>
 </span>
 </span>
 
@@ -157,18 +175,19 @@
 
 
 
-<div id='songTitleSuperdiv' style='opacity:1; z-index:5;'><span id='songTitle' class='lowerLeftTextBar' style='opacity:0;' onclick='preventParentClick(event);'></span></div>
-<span id='pricesTextBox' class='lowerLeftTextBar' style='opacity:0'></span>
-
-
-	
+<div id='songTitleSuperdiv' style='opacity:1; z-index:5;'><span id='songTitle' class='lowerLeftTextBar opacityZero' onclick='preventParentClick(event);'></span></div>
+<span id='pricesTextBoxContainer'><span id='pricesTextBox' class='lowerLeftTextBar opacityZero'></span></span>
 
 
 
 
-<span id='lowerRightFadeinContainer' style='opacity:0;'>
+
+
+
+
+<span id='lowerRightFadeinContainer' class='opacityZero'>
 <span id='biomeSelectBar' style='opacity:0.7; display:none;' onclick='preventParentClick(event);'>
-<button id='biome1Button' class='lowerRightButton' onClick="stopRandomization(); changeBiome('biome1');"><image src='Images/diamond.png' id='biome1ButtonImage' class='diamondButtonImage firefoxHack'></image></button><button id='biome2Button' class='lowerRightButton' onClick="stopRandomization(); changeBiome('biome2');"><image src='Images/hexagon.png' id='biome2ButtonImage' class='hexagonButtonImage firefoxHack3'></iamge></button><button id='biome3Button' class='lowerRightButton' onClick="stopRandomization(); changeBiome('biome3');"><image src='Images/triangle.png' id='biome3ButtonImage' class='triangleButtonImage firefoxHack'></button><button id='biome4Button' class='lowerRightButton' onClick="stopRandomization(); changeBiome('biome4');"><span style='font-size: 21px;'><image src='Images/square.png' id='biome4ButtonImage' class='squareButtonImage firefoxHack'></button><button id='biome5Button' class='lowerRightButton' onClick="stopRandomization(); changeBiome('biome5');"><image src='Images/circle.png' id='biome5ButtonImage' class='circleButtonImage firefoxHack'></image></button><button id='biome6Button' class='lowerRightButton' onClick="stopRandomization(); changeBiome('biome6');"><image src='Images/star.png' id='biome6ButtonImage' class='starButtonImage firefoxHack'></image></button><button id='biomeRandomButton' class='lowerRightButton' onClick="randomBiomes('activate');"><image id='biomeRandomPNG' src='Images/diamondBar.png' class='biomeRandomImage firefoxHack6'></image></button>
+<button id='biome1Button' class='lowerRightButton' onClick="stopRandomization(); changeBiome('biome1');"><image src='Images/biome1.png' id='biome1ButtonImage' class='diamondButtonImage firefoxHack'></image></button><button id='biome2Button' class='lowerRightButton' onClick="stopRandomization(); changeBiome('biome2');"><image src='Images/biome2.png' id='biome2ButtonImage' class='hexagonButtonImage firefoxHack3'></iamge></button><button id='biome3Button' class='lowerRightButton' onClick="stopRandomization(); changeBiome('biome3');"><image src='Images/biome3.png' id='biome3ButtonImage' class='biome3ButtonImage'></button><button id='biome4Button' class='lowerRightButton' onClick="stopRandomization(); changeBiome('biome4');"><span style='font-size: 21px;'><image src='Images/biome4.png' id='biome4ButtonImage' class='squareButtonImage firefoxHack'></button><button id='biome5Button' class='lowerRightButton' onClick="stopRandomization(); changeBiome('biome5');"><image src='Images/biome5.png' id='biome5ButtonImage' class='circleButtonImage firefoxHack'></image></button><button id='biome6Button' class='lowerRightButton' onClick="stopRandomization(); changeBiome('biome6');"><image src='Images/biome6.png' id='biome6ButtonImage' class='starButtonImage firefoxHack'></image></button><button id='biomeRandomButton' class='lowerRightButton' onClick="randomBiomes('activate');"><image id='biomeRandomPNG' src='Images/diamondBar.png' class='biomeRandomImage firefoxHack6'></image></button>
 </span>
 
 
@@ -179,7 +198,7 @@
 
 
 <span id='upgradeBar' style='opacity: 0.7;' onMouseLeave='clearPricesSpan();' onclick='preventParentClick(event);'>
-<button id='diamondMaxCapacity20PurchaseButton' class='lowerRightButton' onClick="buyMaxShapeCapacity('diamond20');" onMouseOver="showMaxShapeCapacityCost('diamond20');"><image id='buttID9' src='Images/diamondHollow.png' class='diamondButtonImage firefoxHack'></image></button><button id='diamondMaxCapacity30PurchaseButton' class='lowerRightButton' onClick="buyMaxShapeCapacity('diamond30');" onMouseOver="showMaxShapeCapacityCost('diamond30');"><image id='buttID10' src='Images/diamondHollow.png' class='diamondButtonImage firefoxHack'></image></button><button id='starMaxCapacity20PurchaseButton' class='lowerRightButton' onClick="buyMaxShapeCapacity('star20');" onMouseOver="showMaxShapeCapacityCost('star20');"><image id='buttID11' src='Images/starHollow.png' class='starButtonImage firefoxHack'></image></button><button id='starMaxCapacity30PurchaseButton' class='lowerRightButton' onClick="buyMaxShapeCapacity('star30');" onMouseOver="showMaxShapeCapacityCost('star30');"><image id='buttID12' src='Images/starHollow.png' class='starButtonImage firefoxHack'></image></button><button id='hexagonMaxCapacity20PurchaseButton' class='lowerRightButton' onClick="buyMaxShapeCapacity('hexagon20');" onMouseOver="showMaxShapeCapacityCost('hexagon20');"><image id='buttID13' src='Images/hexagonHollow.png' class='hexagonButtonImage firefoxHack'></image></button><button id='hexagonMaxCapacity30PurchaseButton' class='lowerRightButton' onClick="buyMaxShapeCapacity('hexagon30');" onMouseOver="showMaxShapeCapacityCost('hexagon30');"><image id='buttID14' src='Images/hexagonHollow.png' class='hexagonButtonImage firefoxHack'></image></button><button id='triangleMaxCapacity20PurchaseButton' class='lowerRightButton' onClick="buyMaxShapeCapacity('triangle20');" onMouseOver="showMaxShapeCapacityCost('triangle20');"><image id='buttID15' src='Images/triangleHollow.png' class='triangleButtonImage firefoxHack'></image></button><button id='triangleMaxCapacity30PurchaseButton' class='lowerRightButton' onClick="buyMaxShapeCapacity('triangle30');" onMouseOver="showMaxShapeCapacityCost('triangle30');"><image id='buttID16' src='Images/triangleHollow.png' class='triangleButtonImage firefoxHack'></image></button><button id='circleMaxCapacity20PurchaseButton' class='lowerRightButton' onClick="buyMaxShapeCapacity('circle20');" onMouseOver="showMaxShapeCapacityCost('circle20');"><image id='buttID17' src='Images/circleHollow.png' class='circleButtonImage firefoxHack'></image>
-</button><button id='circleMaxCapacity30PurchaseButton' class='lowerRightButton' onClick="buyMaxShapeCapacity('circle30');" onMouseOver="showMaxShapeCapacityCost('circle30');"><image id='buttID18' src='Images/circleHollow.png' class='circleButtonImage firefoxHack'></image></button><button id='squareMaxCapacity200PurchaseButton' class='lowerRightButton' onClick="buyMaxShapeCapacity('square200');" onMouseOver="showMaxShapeCapacityCost('square200');"><image id='buttID19' src='Images/squareHollow.png' class='squareButtonImage firefoxHack'></image></button><button id='squareMaxCapacity300PurchaseButton' class='lowerRightButton' onClick="buyMaxShapeCapacity('square300');" onMouseOver="showMaxShapeCapacityCost('square300');"><image id='buttID20' src='Images/squareHollow.png' class='squareButtonImage firefoxHack'></image></button><button id='stardustChance100PurchaseButton' class='lowerRightButton' onClick="increaseStardustChance100();" onMouseOver="showStardustUpgradeCost100()"><image id='buttID7' src='Images/stardustHollow.png' class='stardustButtonImage firefoxHack'></image></button><button id='stardustChance20PurchaseButton' class='lowerRightButton' onClick="increaseStardustChance20();" onMouseOver="showStardustUpgradeCost20()"><image id='buttID8' src='Images/stardustHollow.png' class='stardustButtonImage firefoxHack'></image></button><button id='biome2PurchaseButton' class='lowerRightButton' onClick='buyBiome2();' onMouseOver='showBiome2Cost();'><image id='buttID1' src='Images/hexagon.png' class='hexagonButtonImage firefoxHack'></image></button><button id='biome3PurchaseButton' class='lowerRightButton' onClick='buyBiome3();' onMouseOver='showBiome3Cost();'><image id='buttID2' src='Images/triangle.png' class='triangleButtonImage firefoxHack'></image></button><button id='biome4PurchaseButton' class='lowerRightButton' onClick='buyBiome4();' onMouseOver='showBiome4Cost();'><span style='font-size: 21px;'><image id='buttID3' src='Images/square.png' class='squareButtonImage firefoxHack'></image></button><button id='biome5PurchaseButton' class='lowerRightButton' onClick='buyBiome5();' onMouseOver='showBiome5Cost();'><image id='buttID4' src='Images/circle.png' class='circleButtonImage firefoxHack'></image></button><button id='biome6PurchaseButton' class='lowerRightButton' onClick='buyBiome6();' onMouseOver='showBiome6Cost();'><image id='buttID5' src='Images/star.png' class='starButtonImage firefoxHack'></image></button><button id='diamondBarPurchaseButton' class='lowerRightButton' onClick="buyDiamondBar();" onMouseOver="showDiamondBarCost()"><image id='buttID6' src='Images/diamondBarHollow.png' class='diamondBarPurchaseImage firefoxHack'></image></button><span style='width:25px; padding-top:30px; opacity:0;' onMouseOver='clearPricesSpan();'>Cow</span>
+<button id='diamondMaxCapacity20PurchaseButton' class='lowerRightButton' onClick="buyMaxShapeCapacity('diamond20');" onMouseEnter="showMaxShapeCapacityCost('diamond20');"><image id='buttID9' src='Images/diamondHollow.png' class='diamondButtonImage firefoxHack'></image></button><button id='diamondMaxCapacity30PurchaseButton' class='lowerRightButton' onClick="buyMaxShapeCapacity('diamond30');" onMouseEnter="showMaxShapeCapacityCost('diamond30');"><image id='buttID10' src='Images/diamondHollow.png' class='diamondButtonImage firefoxHack'></image></button><button id='starMaxCapacity20PurchaseButton' class='lowerRightButton' onClick="buyMaxShapeCapacity('star20');" onMouseEnter="showMaxShapeCapacityCost('star20');"><image id='buttID11' src='Images/starHollow.png' class='starButtonImage firefoxHack'></image></button><button id='starMaxCapacity30PurchaseButton' class='lowerRightButton' onClick="buyMaxShapeCapacity('star30');" onMouseEnter="showMaxShapeCapacityCost('star30');"><image id='buttID12' src='Images/starHollow.png' class='starButtonImage firefoxHack'></image></button><button id='hexagonMaxCapacity20PurchaseButton' class='lowerRightButton' onClick="buyMaxShapeCapacity('hexagon20');" onMouseEnter="showMaxShapeCapacityCost('hexagon20');"><image id='buttID13' src='Images/hexagonHollow.png' class='hexagonButtonImage firefoxHack'></image></button><button id='hexagonMaxCapacity30PurchaseButton' class='lowerRightButton' onClick="buyMaxShapeCapacity('hexagon30');" onMouseEnter="showMaxShapeCapacityCost('hexagon30');"><image id='buttID14' src='Images/hexagonHollow.png' class='hexagonButtonImage firefoxHack'></image></button><button id='triangleMaxCapacity20PurchaseButton' class='lowerRightButton' onClick="buyMaxShapeCapacity('triangle20');" onMouseEnter="showMaxShapeCapacityCost('triangle20');"><image id='buttID15' src='Images/triangleHollow.png' class='triangleButtonImage firefoxHack'></image></button><button id='triangleMaxCapacity30PurchaseButton' class='lowerRightButton' onClick="buyMaxShapeCapacity('triangle30');" onMouseEnter="showMaxShapeCapacityCost('triangle30');"><image id='buttID16' src='Images/triangleHollow.png' class='triangleButtonImage firefoxHack'></image></button><button id='circleMaxCapacity20PurchaseButton' class='lowerRightButton' onClick="buyMaxShapeCapacity('circle20');" onMouseEnter="showMaxShapeCapacityCost('circle20');"><image id='buttID17' src='Images/circleHollow.png' class='circleButtonImage firefoxHack'></image>
+</button><button id='circleMaxCapacity30PurchaseButton' class='lowerRightButton' onClick="buyMaxShapeCapacity('circle30');" onMouseEnter="showMaxShapeCapacityCost('circle30');"><image id='buttID18' src='Images/circleHollow.png' class='circleButtonImage firefoxHack'></image></button><button id='squareMaxCapacity200PurchaseButton' class='lowerRightButton' onClick="buyMaxShapeCapacity('square200');" onMouseEnter="showMaxShapeCapacityCost('square200');"><image id='buttID19' src='Images/squareHollow.png' class='squareButtonImage firefoxHack'></image></button><button id='squareMaxCapacity300PurchaseButton' class='lowerRightButton' onClick="buyMaxShapeCapacity('square300');" onMouseEnter="showMaxShapeCapacityCost('square300');"><image id='buttID20' src='Images/squareHollow.png' class='squareButtonImage firefoxHack'></image></button><button id='stardustChance100PurchaseButton' class='lowerRightButton' onClick="increaseStardustChance100();" onMouseEnter="showStardustUpgradeCost100()"><image id='buttID7' src='Images/stardustHollow.png' class='stardustButtonImage firefoxHack'></image></button><button id='stardustChance20PurchaseButton' class='lowerRightButton' onClick="increaseStardustChance20();" onMouseEnter="showStardustUpgradeCost20()"><image id='buttID8' src='Images/stardustHollow.png' class='stardustButtonImage firefoxHack'></image></button><button id='biome2PurchaseButton' class='lowerRightButton' onClick='buyBiome2();' onMouseEnter='showBiome2Cost();'><image id='buttID1' src='Images/biome2.png' class='hexagonButtonImage firefoxHack'></image></button><button id='biome3PurchaseButton' class='lowerRightButton' onClick='buyBiome3();' onMouseEnter='showBiome3Cost();'><image id='buttID2' src='Images/biome3.png' class='biome3ButtonImage'></image></button><button id='biome4PurchaseButton' class='lowerRightButton' onClick='buyBiome4();' onMouseEnter='showBiome4Cost();'><span style='font-size: 21px;'><image id='buttID3' src='Images/biome4.png' class='squareButtonImage firefoxHack'></image></button><button id='biome5PurchaseButton' class='lowerRightButton' onClick='buyBiome5();' onMouseEnter='showBiome5Cost();'><image id='buttID4' src='Images/biome5.png' class='circleButtonImage firefoxHack'></image></button><button id='biome6PurchaseButton' class='lowerRightButton' onClick='buyBiome6();' onMouseEnter='showBiome6Cost();'><image id='buttID5' src='Images/biome6.png' class='starButtonImage firefoxHack'></image></button><button id='diamondBarPurchaseButton' class='lowerRightButton' onClick="buyDiamondBar();" onMouseEnter="showDiamondBarCost()"><image id='buttID6' src='Images/diamondBarHollow.png' class='diamondBarPurchaseImage firefoxHack'></image></button><span style='width:25px; padding-top:30px; opacity:0;' onMouseEnter='clearPricesSpan();'>Cow</span>
 </span>
 </span>
