@@ -31,8 +31,14 @@ function randomColorPound(luminosity, color) {
 
 function lategameThrottle() {
 	let throttle;
-	if ((cow.currentBiome == 'biome4' || cow.endgameBarOwned == true || cow.gameClear == true) && rngRange(1,3) == 1) { throttle = true; }
-	else { throttle = false; }
+	if (rngRange(1,100) >= 5) {
+		if (cow.currentBiome == 'biome4' ||
+			cow.endgameBarOwned == true ||
+			cow.gameClear == true) {
+				throttle = true;
+		}
+	}
+	else { moo(); throttle = false; }
 	return throttle;
 }
 

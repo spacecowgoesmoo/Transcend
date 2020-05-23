@@ -1,5 +1,6 @@
 v2.01 - ???
 	Optimized basic shape movement code
+	Increased throttling rate of lategameThrottle() from 30% to 95%
 	Optimized rare spawn 'hexScanner' movement code
 
 v2.0 - Big maintenance patch for 2020
