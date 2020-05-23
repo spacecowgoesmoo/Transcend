@@ -295,26 +295,28 @@ function spawnShape(size, speedY, speedX, widthX, rotation, luminosity, color, o
 			sinFinal += (speedX/widthX);								// Equation isn't accurate, but it looks ok
 		}
 
-		if (shape1.y <= 595 && sfxPlayed == false && counter != 'biome2CurrentBGHexagonCount' && shape != 'triangle') {
-			switch (shape) {													// play sfx when the shape spawns. 100% squares break the audio engine lol
-				case 'diamond':	playAudio('./SFX/diamond' + rngRange(1,5), 'sfx', shape1.x);	break;
-				case 'hexagon':	playAudio('./SFX/hexagon' + rngRange(1,5), 'sfx', shape1.x);	break;
-				case 'pillar':	if (rngRange(1,10) >= 9) { playAudio('./SFX/square' + rngRange(1,5), 'sfx', shape1.x); }	break;
-				case 'quad':	if (rngRange(1,10) >= 9) { playAudio('./SFX/square' + rngRange(1,5), 'sfx', shape1.x); }	break;
-				case 'star':	playAudio('./SFX/star' + rngRange(1,5), 'sfx', shape1.x);		break;
-				default: break;
+		if (sfxPlayed == false) {
+			if (shape1.y <= 595 && counter != 'biome2CurrentBGHexagonCount' && shape != 'triangle') {
+				switch (shape) {													// play sfx when the shape spawns. 100% squares break the audio engine lol
+					case 'diamond':	playAudio('./SFX/diamond' + rngRange(1,5), 'sfx', shape1.x);	break;
+					case 'hexagon':	playAudio('./SFX/hexagon' + rngRange(1,5), 'sfx', shape1.x);	break;
+					case 'pillar':	if (rngRange(1,10) >= 9) { playAudio('./SFX/square' + rngRange(1,5), 'sfx', shape1.x); }	break;
+					case 'quad':	if (rngRange(1,10) >= 9) { playAudio('./SFX/square' + rngRange(1,5), 'sfx', shape1.x); }	break;
+					case 'star':	playAudio('./SFX/star' + rngRange(1,5), 'sfx', shape1.x);		break;
+					default: break;
+				}
+				sfxPlayed = true;
 			}
-			sfxPlayed = true;
-		}
 
-		if (shape1.y <= (595-(offscreen/2)) && sfxPlayed == false && shape == 'triangle') {	// Special case for triangle to compensate for rotation. Play the SFX 50% pixels early
-			playAudio('./SFX/triangle' + rngRange(1,5), 'sfx', shape1.x);
-			sfxPlayed = true;
-		}
+			if (shape1.y <= (595-(offscreen/2)) && shape == 'triangle') {	// Special case for triangle to compensate for rotation. Play the SFX 50% pixels early
+				playAudio('./SFX/triangle' + rngRange(1,5), 'sfx', shape1.x);
+				sfxPlayed = true;
+			}
 
-		if (shape1.y <= (595-offscreen) && sfxPlayed == false && shape == 'circle') {		// Special case for circles to compensate for centered origins
-			playAudio('./SFX/circle' + rngRange(1,5), 'sfx', shape1.x);
-			sfxPlayed = true;
+			if (shape1.y <= (595-offscreen) && shape == 'circle') {		// Special case for circles to compensate for centered origins
+				playAudio('./SFX/circle' + rngRange(1,5), 'sfx', shape1.x);
+				sfxPlayed = true;
+			}
 		}
 
 		if (shape1.y < offscreen) { 									// if shape is offscreen..
