@@ -187,7 +187,6 @@ function loadGame() {
 		cow.spawnNewBGgradient = true;
 		cow.creditsActivated = false;
 		cow.hideMusicText = false;
-		cow.gameStarted = true;
 		cow.filesPreloaded = cowTemp1;
 
 		cow.userWebBrowser = cowTemp2;
@@ -217,7 +216,6 @@ function startGameResumeDemo() {
 	cow.spawnNewBGgradient = true;
 
 	cow.creditsActivated = false;
-	cow.gameStarted = true;
 
 	cow.hideMusicText = false;
 
