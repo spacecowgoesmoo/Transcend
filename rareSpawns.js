@@ -576,7 +576,7 @@ function rareSpawnController() {
 							hex.y-=3;													// move
 							yCounter+=3;												// increment counter
 							if (yCounter < yMovement && hex.y > -149) { window.requestAnimationFrame(move); } // If movement isn't done yet and the hex isn't offscreen, keep going
-							if (hex.y <= -149) {										// This is here for quick updating of the resource counter
+							else if (hex.y <= -149) {									// This is here for quick updating of the resource counter
 								cow.resourceHexagons++;
 								cow.kongLifetimeShapes++;
 								updateResourceCounter('hexagon');
@@ -587,7 +587,7 @@ function rareSpawnController() {
 
 					function timer() {
 						counter += 1;													// Increment timer
-						if (counter % 2 === 0 || counter == 1) { 						// Every few seconds (or once it spawns), move the hexagon
+						if ((counter % 2 === 0 || counter == 1) && hex.y > -149) { 						// Every few seconds (or once it spawns), move the hexagon
 							jumpShapeX();
 							jumpShapeY();
 						}
@@ -597,7 +597,7 @@ function rareSpawnController() {
 							sfxPlayed = true;
 						}
 
-						if (hex.y < -150) {												// if shape is offscreen..
+						if (hex.y <= -149) {												// if shape is offscreen..
 							hex.destroy(true); 											// kill it
 							document.body.removeEventListener('click', boost);			// Removes the click boost event listener from the HTML body
 						} else { setTimeout(function() { window.requestAnimationFrame(timer); }, 1000) } // otherwise, animate another frame and check again
