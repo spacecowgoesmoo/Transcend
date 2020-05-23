@@ -587,7 +587,7 @@ function rareSpawnController() {
 
 					function timer() {
 						counter += 1;													// Increment timer
-						if (counter % 150 === 0 || counter == 1) { 						// Every few seconds (or once it spawns), move the hexagon
+						if (counter % 2 === 0 || counter == 1) { 						// Every few seconds (or once it spawns), move the hexagon
 							jumpShapeX();
 							jumpShapeY();
 						}
@@ -600,8 +600,8 @@ function rareSpawnController() {
 						if (hex.y < -150) {												// if shape is offscreen..
 							hex.destroy(true); 											// kill it
 							document.body.removeEventListener('click', boost);			// Removes the click boost event listener from the HTML body
-						} else { window.requestAnimationFrame(timer); }					// otherwise, animate another frame and check again
-					}																	//
+						} else { setTimeout(function() { window.requestAnimationFrame(timer); }, 1000) } // otherwise, animate another frame and check again
+					}																	// Throttled to 1FPS	
 
 					window.requestAnimationFrame(timer);								// starts the animation moving
 				}

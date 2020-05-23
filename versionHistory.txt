@@ -1,5 +1,6 @@
 v2.01 - ???
-	Optimized move() function
+	Optimized basic shape movement code
+	Optimized rare spawn 'hexScanner' movement code
 
 v2.0 - Big maintenance patch for 2020
 	Summary
