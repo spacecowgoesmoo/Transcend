@@ -93,30 +93,14 @@ function spawnSkystar(luminosity, color, placement, lifespan, shape, counter) {
 																		// also staggers spawn rate. Max of 314 or it will overflow
 	let sfxPlayed = false;												// Used for dynamically calling the SFX in the animation loop
 
-	document.body.addEventListener('click', boost);						// Adds click boost event listener
-	let boostCounter = rngRange(0,5)/10;								// initialize sinewave, slight RNG
-	let boostable = true;												// initialize logic to prevent click spamming
-
-	function boost() {													// click boost animation
-		if (boostable == true) { go(); }
-
-		function go() {
-			boostable = false;
-
-			star.alpha = (Math.sin(q));									// Same calculations as normal, but faster. Click = 6% progress
-			q += 1/lifespan/6.6;
-
-			boostCounter += 2.4;
-			if (boostCounter >= 3.1) {
-				boostCounter = 0;
-				boostable = true;
-			} else { if (q < 3.1) { setTimeout(function() { window.requestAnimationFrame(go); }, 1000) } }	// Throttled to 1FPS
-		}
-	}
 
 	function pulseBrightness() {
-		star.alpha = (Math.sin(q));										// calculate alpha with a sinewave
+		star.alpha = Math.sin(q);										// calculate alpha with a sinewave
 		q += 1/lifespan/190;											// increment. lifespan is tuned to be in minutes
+
+		if (cow.boostMultiplier > 0) {									// click boost
+			q += 1/lifespan/66;											// Same calculations as normal, but faster. Click = 6% progress
+		}
 
 		if (q > 0.8 && sfxPlayed == false) {							// play sfx when the shape is mostly visible
 			switch (shape) {
@@ -129,7 +113,6 @@ function spawnSkystar(luminosity, color, placement, lifespan, shape, counter) {
 
 		if (q > 3.2) {													// if star has faded out.. (3.14 is one sinwave cycle)
 			star.destroy(true);											// kill it
-			document.body.removeEventListener('click', boost);			// Removes the click boost event listener from the HTML body
 			switch (shape) {											// add one shape to the player's inventory
 				case 'circle': cow.resourceCircles++; break;			//
 				case 'star': cow.resourceStars++; break;				//
@@ -269,26 +252,12 @@ function spawnShape(size, speedY, speedX, widthX, rotation, luminosity, color, o
 
 	let sfxPlayed = false;												// Used for dynamically calling the SFX in the animation loop
 
-	document.body.addEventListener('click', boost);						// Adds click boost event listener
-	let boostCounter = rngRange(0,5)/10;								// initialize sinewave, slight RNG
-	let boostable = true;												// initialize logic to prevent click spamming
 
-	function boost() {													// click boost animation
-		if (boostable == true && counter != 'biome2CurrentBGHexagonCount') { go(); }	// Disabled for biome2 BG hexes
-
-		function go() {
-			boostable = false;
-			shape1.y -= Math.sin(boostCounter) * speedYFinal * 2;		//	Accounts for base speed and parallax
-			boostCounter += 0.04;
-			if (boostCounter >= 3.1) {
-				boostCounter = 0;
-				boostable = true;
-			} else { if (shape1.y > offscreen +5) { window.requestAnimationFrame(go); } }	// otherwise, animate another frame and check again
+	function move() {	
+		shape1.y -= speedYFinal;										// basic movement
+		if (cow.boostMultiplier > 0 && counter != 'biome2CurrentBGHexagonCount') {	
+			shape1.y -= cow.boostMultiplier * speedYFinal;				// click boost
 		}
-	}
-
-	function move() {													//
-		shape1.y -= speedYFinal;										// Does one frame of 60FPS animation
 
 		if (speedX != 0) {												// sinwave animation
 			shape1.x += (Math.sin(sinFinal));							//
@@ -322,7 +291,6 @@ function spawnShape(size, speedY, speedX, widthX, rotation, luminosity, color, o
 		if (shape1.y < offscreen) { 									// if shape is offscreen..
 			shape1.destroy(true); 										// kill it
 			cow[counter]--;												// remove the shape from the resource counter
-			document.body.removeEventListener('click', boost);			// Removes the click boost event listener from the HTML body
 			switch (shape) {											// and add one shape to the player's inventory
 				case 'diamond': cow.resourceDiamonds++; break;			//
 				case 'hexagon':

@@ -31,6 +31,10 @@ function eraseSave() {
 			audioFormat: '.opus',
 			hideMusicText: false,
 
+			allowClickBoost: true,
+			boostMultiplier: 0,
+			boostCounter: 0,
+
 			randomBiomesUnlocked: false,
 			randomBiomesActive: false,
 			bgTransitionSpeed: 5,

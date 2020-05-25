@@ -38,7 +38,6 @@ function lategameThrottle() {
 				throttle = true;
 		}
 	}
-	console.log(throttle)
 	return throttle;
 }
 

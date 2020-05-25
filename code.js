@@ -63,6 +63,10 @@ var cow = {
 	audioFormat: '.opus',
 	hideMusicText: false,
 
+	allowClickBoost: true,
+	boostMultiplier: 0,
+	boostCounter: 0,
+
 	randomBiomesUnlocked: false,
 	randomBiomesActive: false,
 	bgTransitionSpeed: 5,
@@ -519,6 +523,24 @@ function clearUIwhenMouseExitsWindow() {
 
 
 
+function globalClickBoost() {
+	if (cow.allowClickBoost == true) { go(); }
+
+	function go() {
+		cow.allowClickBoost = false;
+		cow.boostMultiplier = Math.sin(cow.boostCounter) * 2;
+		cow.boostCounter += 0.04;
+		if (cow.boostCounter >= 3.1) {
+			cow.boostCounter = 0;
+			cow.boostMultiplier = 0;
+			cow.allowClickBoost = true;
+		} else { window.requestAnimationFrame(go); }
+	}
+}
+
+
+
+
 function newGameStuff() {
 	if (cow.diamondCapacity == 1 && cow.resourceDiamonds == 0) { 					// Triggers on a new game only
 		cow.currentBiome = 'biome1';
@@ -608,6 +630,7 @@ function initializeGameTwo(gameType) {
 	updateResourceCounter('circle');
 	updateResourceCounter('square');
 	updateResourceCounter('stardust');
+	document.body.addEventListener('click', globalClickBoost);
 	resourceCounter.style.display = 'inline';								// Hides resourceCounter until the previous things have completed. Makes startup look cleaner
 	optionsMenuButton.className = 'visible';
 }

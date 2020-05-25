@@ -1,8 +1,13 @@
 v2.01 - Still not good enough!
-	Optimized basic shape movement code
-	Increased activation rate of lategameThrottle() from 30% to 95%
-	Optimized rare spawn 'hexScanner' movement code
-	Fixed a bug where lategameThrottle() could temporarily break game initialization
+	Performance
+		Optimized click boost from O(n) to O(1) complexity, massively reducing CPU usage
+		Increased activation rate of lategameThrottle() from 30% to 95%
+		Optimized logic in basic shape movement 
+		Throttled hexScanner movement controller from 60FPS to 1FPS
+		Optimized hexScanner movement controller to not use complex math operations
+	General Bugfixes
+		Fixed a bug where 2.0's throttled FPS of stars and planets made click boosting look bad
+		Fixed a bug where lategameThrottle() could temporarily break game initialization
 
 
 
