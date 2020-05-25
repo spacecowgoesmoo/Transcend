@@ -89,27 +89,13 @@ function rareSpawnController() {
 
 					let sfxPlayed = false;
 
-					document.body.addEventListener('click', boost);							// Adds click boost event listener
-					let boostCounter = rngRange(0,5)/10;									// initialize sinewave, slight RNG
-					let boostable = true;													// initialize logic to prevent click spamming
-																							//
-					function boost() {														// click boost animation
-						if (boostable == true) { go(); }									//
-																							//
-						function go() {														//
-							boostable = false;												//
-							quadQuad.y -= Math.sin(boostCounter) * 0.4 * 2;					// Accounts for base speed and parallax
-							boostCounter += 0.04;											//
-							if (boostCounter >= 3.1) {										//
-								boostCounter = 0;											//
-								boostable = true;											//
-							} else { if (quadQuad.y > -85) { window.requestAnimationFrame(go); } }	// otherwise, animate another frame and check again
-						}																	//
-					}																		//
-
 					function move() {
 						quadQuad.y -= 0.4;													// Standard vertical movement
 						quadQuad.rotation += rotateSpeed;
+
+						if (cow.boostMultiplier > 0) {										// click boost
+							quadQuad.y -= cow.boostMultiplier * 0.8;
+						}
 
 						if (quadQuad.y <= 648 && sfxPlayed == false) {						// Play SFX, early to compensate for rotation and the central anchor point
 							playAudio('./SFXb/quadQuad' + rngRange(1,3), 'sfx', quadQuad.x);
@@ -119,7 +105,6 @@ function rareSpawnController() {
 						if (quadQuad.y < -90) { 											// if shape is offscreen..
 							quadQuad.destroy(true); 										// kill it
 							cow.kongLifetimeShapes+=5;
-							document.body.removeEventListener('click', boost);				// Removes the click boost event listener from the HTML body
 							if (rngRange(1,2) == 1) { cow.resourceDiamonds+=5; updateResourceCounter('diamond'); }			// Random shape rewards
 							else { cow.resourceSquares+=5; updateResourceCounter('square'); }
 						} else { window.requestAnimationFrame(move); }						// otherwise, animate another frame and check again
@@ -169,28 +154,14 @@ function rareSpawnController() {
 
 					sfxPlayed = false;
 
-					document.body.addEventListener('click', boost);						// Adds click boost event listener
-					let boostCounter = rngRange(0,5)/10;								// initialize sinewave, slight RNG
-					let boostable = true;												// initialize logic to prevent click spamming
-																						//
-					function boost() {													// click boost animation
-						if (boostable == true) { go(); }								//
-																						//
-						function go() {													//
-							boostable = false;											//
-							diam.y -= Math.sin(boostCounter) * 2;						// Accounts for base speed and parallax
-							boostCounter += 0.04;										//
-							if (boostCounter >= 3.1) {									//
-								boostCounter = 0;										//
-								boostable = true;										//
-							} else { if (diam.y > -35) { window.requestAnimationFrame(go); } }	// otherwise, animate another frame and check again
-						}																//
-					}																	//
-
 					function move() {
 						diam.y -= 3.0;													// vertical movement
 						diam.x += (Math.sin(counter))*3;								// X sinewave movement
 						counter += 0.03;
+
+						if (cow.boostMultiplier > 0) {									// click boost
+							diam.y -= cow.boostMultiplier * 2;
+						}
 
 						if (diam.y <= 645 && sfxPlayed == false) {						// Play SFX, plus 50 to account for rotation and scale
 							playAudio('./SFX/diamond' + rngRange(1,5), 'sfx', diam.x);
@@ -199,7 +170,6 @@ function rareSpawnController() {
 
 						if (diam.y < -40) { 											// if shape is offscreen..
 							diam.destroy(true); 										// kill it
-							document.body.removeEventListener('click', boost);			// Removes the click boost event listener from the HTML body
 							cow.resourceDiamonds++;
 							cow.kongLifetimeShapes++;
 							updateResourceCounter('diamond');
@@ -261,34 +231,16 @@ function rareSpawnController() {
 					var q = -.001;														// variable for calculating the brightness using a sinwave
                 	const lifespan = 2;
 
-					document.body.addEventListener('click', boost);						// Adds click boost event listener
-					let boostCounter = rngRange(0,5)/10;								// initialize sinewave, slight RNG
-					let boostable = true;												// initialize logic to prevent click spamming
-																						//
-					function boost() {													// click boost animation
-						if (boostable == true) { go(); }								//
-																						//
-						function go() {													//
-							boostable = false;											//
-																						//
-							star.alpha = (Math.sin(q));									// Same calculations as normal, but faster. Click = 6% progress
-							q += 1/lifespan/6.6;										//
-																						//
-							boostCounter += 2.4;										//
-							if (boostCounter >= 3.1) {									//
-								boostCounter = 0;										//
-								boostable = true;										//
-							} else { if (q < 3.1) { setTimeout(function() { window.requestAnimationFrame(go); }, 1000) } }	// Throttled to 1FPS
-						}																//
-					}																	//
-
 					function pulseBrightness() {
 						star.alpha = (Math.sin(q));										// calculate alpha with a sinewave
 						q += 1/lifespan/19;												// increment. lifespan is tuned to be in minutes
 
+						if (cow.boostMultiplier > 0) {									// click boost
+							q += 1/lifespan/6.6;										// Same calculations as normal, but faster. Click = 6% progress
+						}
+
 						if (q > 3.2) {													// if star has faded out.. (3.14 is one sinwave cycle)
 							star.destroy(true);											// kill it
-							document.body.removeEventListener('click', boost);			// Removes the click boost event listener from the HTML body
 							cow.resourceStars++;										//
 							cow.kongLifetimeShapes++;
 							updateResourceCounter('star');								//
@@ -454,26 +406,13 @@ function rareSpawnController() {
 
 					let sfxPlayed = false;
 
-					document.body.addEventListener('click', boost);						// Adds click boost event listener
-					let boostCounter = rngRange(0,5)/10;								// initialize sinewave, slight RNG
-					let boostable = true;												// initialize logic to prevent click spamming
-																						//
-					function boost() {													// click boost animation
-						if (boostable == true) { go(); }								//
-																						//
-						function go() {													//
-							boostable = false;											//
-							ufo.x -= Math.sin(boostCounter) * speedX * 2;				// Accounts for base speed and parallax
-							boostCounter += 0.04;										//
-							if (boostCounter >= 3.1) {									//
-								boostCounter = 0;										//
-								boostable = true;										//
-							} else { if (ufo.x > -25) { window.requestAnimationFrame(go); } }	// otherwise, animate another frame and check again
-						}																//
-					}																	//
 
 					function move() {													//
 						ufo.x -= speedX;												// move left
+
+						if (cow.boostMultiplier > 0) {									// click boost
+							ufo.x -= cow.boostMultiplier * speedX * 2;
+						}
 
 						if (ufo.x <= 900 && sfxPlayed == false) {						// Play SFX, 5px early because the left isn't the origin
 							playAudio('./SFXb/ufo' + rngRange(1,3), 'sfx', ufo.x);
@@ -482,7 +421,6 @@ function rareSpawnController() {
 
 						if (ufo.x < -30) { 												// if shape is offscreen..
 							ufo.destroy(true); 											// kill it
-							document.body.removeEventListener('click', boost);			// Removes the click boost event listener from the HTML body
 							cow.resourceHexagons++;
 							cow.kongLifetimeShapes++;
 							updateResourceCounter('hexagon');
@@ -538,24 +476,6 @@ function rareSpawnController() {
 
 					let sfxPlayed = false;
 
-					document.body.addEventListener('click', boost);						// Adds click boost event listener
-					let boostCounter = rngRange(0,5)/10;								// initialize sinewave, slight RNG
-					let boostable = true;												// initialize logic to prevent click spamming
-																						//
-					function boost() {													// click boost animation
-						if (boostable == true) { go(); }								//
-																						//
-						function go() {													//
-							boostable = false;											//
-							hex.y -= Math.sin(boostCounter) * 2 * 2;					// Accounts for base speed and parallax
-							boostCounter += 0.04;										//
-							if (boostCounter >= 3.1) {									//
-								boostCounter = 0;										//
-								boostable = true;										//
-							} else { if (hex.y > -145) { window.requestAnimationFrame(go); } }	// otherwise, animate another frame and check again
-						}																//
-					}																	//
-
 					function jumpShapeX() {
 						const xMovement = rngRange(-300,300);							// Same as jumpShapeY, but with extra shit to account for left/right movement
 						let xCounter = 0;
@@ -587,7 +507,7 @@ function rareSpawnController() {
 
 					function timer() {
 						counter += 1;													// Increment timer
-						if ((counter % 2 === 0 || counter == 1) && hex.y > -149) { 						// Every few seconds (or once it spawns), move the hexagon
+						if ((counter % 2 === 0 || counter == 1) && hex.y > -149) { 		// Every few seconds (or once it spawns), move the hexagon
 							jumpShapeX();
 							jumpShapeY();
 						}
@@ -597,9 +517,8 @@ function rareSpawnController() {
 							sfxPlayed = true;
 						}
 
-						if (hex.y <= -149) {												// if shape is offscreen..
+						if (hex.y <= -149) {											// if shape is offscreen..
 							hex.destroy(true); 											// kill it
-							document.body.removeEventListener('click', boost);			// Removes the click boost event listener from the HTML body
 						} else { setTimeout(function() { window.requestAnimationFrame(timer); }, 1000) } // otherwise, animate another frame and check again
 					}																	// Throttled to 1FPS	
 
@@ -634,8 +553,8 @@ function rareSpawnController() {
 
 					let boostSpeed;
 					if (color == 'black') {
-						tri.beginFill(0x000000);											// set a fill color. Solid black, or..
-						boostSpeed = -6; 											// Positive or negative boost speed
+						tri.beginFill(0x000000);										// set a fill color. Solid black, or..
+						boostSpeed = -6; 												// Positive or negative boost speed
 					}
 					else {
 						tri.beginFill(randomColor({hue:color})); 						// random red/green
@@ -657,28 +576,14 @@ function rareSpawnController() {
 
 					let sfxPlayed = false;
 
-					document.body.addEventListener('click', boost);						// Adds click boost event listener
-					let boostCounter = rngRange(0,5)/10;								// initialize sinewave, slight RNG
-					let boostable = true;												// initialize logic to prevent click spamming
-																						//
-					function boost() {													// click boost animation
-						if (boostable == true) { go(); }								//
-																						//
-						function go() {													//
-							boostable = false;											//
-							tri.y -= Math.sin(boostCounter) * speedY * boostSpeed;		// Accounts for base speed and parallax
-							boostCounter += 0.04;										//
-							if (boostCounter >= 3.1) {									//
-								boostCounter = 0;										//
-								boostable = true;										//
-							} else { if (tri.y > -65) { window.requestAnimationFrame(go); } }	// otherwise, animate another frame and check again
-						}																//
-					}																	//
-
 					function move() {
 						tri.y -= speedY;												// Standard vertical movement
 						tri.scale.set((Math.sin(counter/2))*2);							// Weird scaling animation
 						counter += 0.05;
+
+						if (cow.boostMultiplier > 0) {									// click boost
+							tri.y -= cow.boostMultiplier * speedY * boostSpeed;
+						}
 
 						if (tri.y <= 612 && sfxPlayed == false) {						// Play SFX, 50% early to compensate for an average rotation of 90 degrees
 							if (color == 'black') { playAudio('./SFXb/blackCircle' + rngRange(1,3), 'sfx', tri.x, true); }		// Black circle SFX used here
@@ -688,7 +593,6 @@ function rareSpawnController() {
 
 						if (tri.y < -70) { 												// if shape is offscreen..
 							tri.destroy(true); 											// kill it
-							document.body.removeEventListener('click', boost);			// Removes the click boost event listener from the HTML body
 							cow.resourceTriangles++;
 							cow.kongLifetimeShapes++;
 							updateResourceCounter('triangle');
@@ -738,30 +642,15 @@ function rareSpawnController() {
 					tri.y = 601 + (scale*15);
 					tri.scale.set(scale);
 
-					document.body.addEventListener('click', boost);						// Adds click boost event listener
-					let boostCounter = rngRange(0,5)/10;								// initialize sinewave, slight RNG
-					let boostable = true;												// initialize logic to prevent click spamming
-																						//
-					function boost() {													// click boost animation
-						if (boostable == true) { go(); }								//
-																						//
-						function go() {													//
-							boostable = false;											//
-							tri.y -= Math.sin(boostCounter) * 2/scale * 2;				// Accounts for base speed and parallax
-							boostCounter += 0.04;										//
-							if (boostCounter >= 3.1) {									//
-								boostCounter = 0;										//
-								boostable = true;										//
-							} else { if (tri.y > scale*-15) { window.requestAnimationFrame(go); } }	// otherwise, animate another frame and check again
-						}																//
-					}																	//
-
 					function move() {
 						tri.y -= 2/scale;												// vertical movement, based on size
 
+						if (cow.boostMultiplier > 0) {									// click boost
+							tri.y -= cow.boostMultiplier * 2/scale * 2;
+						}
+
 						if (tri.y < scale*-16) {										// if shape is offscreen..
 							tri.destroy(true); 											// kill it
-							document.body.removeEventListener('click', boost);			// Removes the click boost event listener from the HTML body
 							cow.resourceTriangles++;
 							cow.kongLifetimeShapes++;
 							updateResourceCounter('triangle');
@@ -868,26 +757,12 @@ function rareSpawnController() {
 
 					let sfxPlayed = false;
 
-					document.body.addEventListener('click', boost);						// Adds click boost event listener
-					let boostCounter = rngRange(0,5)/10;								// initialize sinewave, slight RNG
-					let boostable = true;												// initialize logic to prevent click spamming
-																						//
-					function boost() {													// click boost animation
-						if (boostable == true) { go(); }								//
-																						//
-						function go() {													//
-							boostable = false;											//
-							shape.y -= Math.sin(boostCounter) * speedY;					// Accounts for base speed and parallax
-							boostCounter += 0.04;										//
-							if (boostCounter >= 3.1) {									//
-								boostCounter = 0;										//
-								boostable = true;										//
-							} else { if (shape.y > -25) { window.requestAnimationFrame(go); } }	// otherwise, animate another frame and check again
-						}																//
-					}																	//
-
 					function move() {
 						shape.y -= speedY;
+
+						if (cow.boostMultiplier > 0) {									// click boost
+							shape.y -= cow.boostMultiplier * speedY;
+						}
 
 						if (shape.y <= 595 && sfxPlayed == false) {
 							switch (selectShape) {										// play sfx when the shape spawns. 100% squares break the audio engine lol
@@ -904,7 +779,6 @@ function rareSpawnController() {
 
 						if (shape.y < -30) { 											// if shape is offscreen..
 							shape.destroy(true); 										// kill it
-							document.body.removeEventListener('click', boost);			// Removes the click boost event listener from the HTML body
 							switch (selectShape) {
 								case 1: cow.resourceDiamonds++; 	updateResourceCounter('diamond');	break;					// different rewards per shape
 								case 2: cow.resourceStars++; 		updateResourceCounter('star');		break;
@@ -963,26 +837,12 @@ function rareSpawnController() {
 
 					let sfxPlayed = false;
 
-					document.body.addEventListener('click', boost);						// Adds click boost event listener
-					let boostCounter = rngRange(0,5)/10;								// initialize sinewave, slight RNG
-					let boostable = true;												// initialize logic to prevent click spamming
-																						//
-					function boost() {													// click boost animation
-						if (boostable == true) { go(); }								//
-																						//
-						function go() {													//
-							boostable = false;											//
-							circ.y -= Math.sin(boostCounter) * speedY * -6;				// Accounts for base speed and parallax. Negative speed is intentional
-							boostCounter += 0.04;										//
-							if (boostCounter >= 3.1) {									//
-								boostCounter = 0;										//
-								boostable = true;										//
-							} else { if (circ.y > -radius -5) { window.requestAnimationFrame(go); } }	// otherwise, animate another frame and check again
-						}																//
-					}																	//
-
 					function move() {
 						circ.y -= speedY;												// Standard vertical movement
+
+						if (cow.boostMultiplier > 0) {									// click boost
+							circ.y -= cow.boostMultiplier * speedY * -6;
+						}
 
 						if (circ.y <= 625 && sfxPlayed == false) {						// Play SFX
 							playAudio('./SFXb/blackCircle' + rngRange(1,3), 'sfx', circ.x, true);
@@ -991,7 +851,6 @@ function rareSpawnController() {
 
 						if (circ.y < -radius) {											// if shape is offscreen..
 							circ.destroy(true); 										// kill it
-							document.body.removeEventListener('click', boost);			// Removes the click boost event listener from the HTML body
 							cow.resourceCircles++;
 							cow.kongLifetimeShapes++;
 							updateResourceCounter('circle');
@@ -1133,33 +992,18 @@ function rareSpawnController() {
 					let rotateSpeed = rngRange(-4,4)/100;								// Random rotation speed
 					if (rotateSpeed == 0) { rotateSpeed = 0.01; }
 
-					document.body.addEventListener('click', boost);						// Adds click boost event listener
-					let boostCounter = rngRange(0,5)/10;								// initialize sinewave, slight RNG
-					let boostable = true;												// initialize logic to prevent click spamming
-																						//
-					function boost() {													// click boost animation
-						if (boostable == true) { go(); }								//
-																						//
-						function go() {													//
-							boostable = false;											//
-							paint.x += Math.sin(boostCounter) * speedX * 2;				// Accounts for base speed and parallax
-							paint.y -= Math.sin(boostCounter) * speedY * 2;				// Accounts for base speed and parallax
-							boostCounter += 0.04;										//
-							if (boostCounter >= 3.1) {									//
-								boostCounter = 0;										//
-								boostable = true;										//
-							} else { if (paint.x < 985) { window.requestAnimationFrame(go); } }	// otherwise, animate another frame and check again
-						}																//
-					}																	//
-
 					function move() {
 						paint.x += speedX;												// move right
 						paint.y -= speedY;												// move right
 						paint.rotation += rotateSpeed;									// rotate
 
+						if (cow.boostMultiplier > 0) {									// click boost
+							paint.x += cow.boostMultiplier * speedX * 2;
+							paint.y -= cow.boostMultiplier * speedY * 2;
+						}
+
 						if (paint.y < -90 || paint.x > 990) {	 						// if shape is offscreen..
 							paint.destroy(true); 										// kill it
-							document.body.removeEventListener('click', boost);			// Removes the click boost event listener from the HTML body
 							switch (shape) {
 								case 1: cow.resourceSquares++; updateResourceCounter('square');		break;					// different rewards per shape
 								case 2: cow.resourceSquares++; updateResourceCounter('square');		break;
@@ -1220,26 +1064,12 @@ function rareSpawnController() {
 
 					let sfxPlayed = false;
 
-					document.body.addEventListener('click', boost);							// Adds click boost event listener
-					let boostCounter = rngRange(0,5)/10;									// initialize sinewave, slight RNG
-					let boostable = true;													// initialize logic to prevent click spamming
-																							//
-					function boost() {														// click boost animation
-						if (boostable == true) { go(); }									//
-																							//
-						function go() {														//
-							boostable = false;												//
-							square.y -= Math.sin(boostCounter) * 0.4 * 2;					// Accounts for base speed and parallax
-							boostCounter += 0.04;											//
-							if (boostCounter >= 3.1) {										//
-								boostCounter = 0;											//
-								boostable = true;											//
-							} else { if (square.y > -65) { window.requestAnimationFrame(go); } }	// otherwise, animate another frame and check again
-						}																	//
-					}																		//
-
 					function move() {
 						square.y -= 0.4;													// Standard vertical movement
+
+						if (cow.boostMultiplier > 0) {										// click boost
+							square.y -= cow.boostMultiplier * 0.8;
+						}
 
 						if (square.y <= 595 && sfxPlayed == false) {						// Play SFX
 							playAudio('./SFXb/cuteSquare' + rngRange(1,3), 'sfx', square.x);
@@ -1248,7 +1078,6 @@ function rareSpawnController() {
 
 						if (square.y < -70) { 												// if shape is offscreen..
 							square.destroy(true); 											// kill it
-							document.body.removeEventListener('click', boost);				// Removes the click boost event listener from the HTML body
 							cow.resourceSquares++;
 							cow.kongLifetimeShapes++;
 							updateResourceCounter('square');

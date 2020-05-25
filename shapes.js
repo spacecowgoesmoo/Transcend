@@ -255,6 +255,7 @@ function spawnShape(size, speedY, speedX, widthX, rotation, luminosity, color, o
 
 	function move() {	
 		shape1.y -= speedYFinal;										// basic movement
+	
 		if (cow.boostMultiplier > 0 && counter != 'biome2CurrentBGHexagonCount') {	
 			shape1.y -= cow.boostMultiplier * speedYFinal;				// click boost
 		}

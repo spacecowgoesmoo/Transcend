@@ -31,7 +31,7 @@ function randomColorPound(luminosity, color) {
 
 function lategameThrottle() {
 	let throttle = false;
-	if (rngRange(1,100) > 5 && cow.gameStarted == true) {
+	if (rngRange(1,100) > 10 && cow.gameStarted == true) {
 		if (cow.currentBiome == 'biome4' ||
 			cow.endgameBarOwned == true ||
 			cow.gameClear == true) {
