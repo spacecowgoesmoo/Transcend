@@ -1,7 +1,7 @@
-v2.01 - Still not good enough!
+v2.01 - Still not efficient enough
 	Performance
 		Optimized click boosting from O(n) to O(1) complexity, massively reducing CPU cost
-		Increased blocking rate of lategameThrottle() from 30% to 90%
+		Increased blocking rate of lategameThrottle() from 30% to 85%
 		Optimized logic in basic shape movement 
 		Throttled hexScanner movement controller from 60FPS to 1FPS
 		Optimized hexScanner movement controller to not use complex math operations

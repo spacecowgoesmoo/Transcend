@@ -17,7 +17,7 @@ function createBackground(luminosity1, color1, luminosity2, color2, lifespan, bi
 
 	function crossfade() {
 		if (biome == cow.currentBiome && preventSecondFadeIn == false) {// If the biome is the same as when the bgSquare spawned..
-			bgSquare.alpha = (Math.sin(q));								// calculate alpha with a sinewave
+			bgSquare.alpha = Math.sin(q);								// calculate alpha with a sinewave
 			q += (1/lifespan)/76;										// increment. lifespan is tuned to be in minutes
 		}
 

@@ -650,5 +650,5 @@ function initializeGameThree() {
 
 // Does things at 60FPS
 app.ticker.add(function() {
-	//console.log(optionsMenuButton.style.opacity);
+	//stardustCounterText.innerHTML = Math.round(app.ticker.FPS) + ' FPS';
 });
