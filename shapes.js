@@ -33,7 +33,7 @@ function createBackground(luminosity1, color1, luminosity2, color2, lifespan, bi
 
 	window.requestAnimationFrame(crossfade);							// starts the animation moving
 
-	if (biome == cow.currentBiome) {									// if we're still in the same biome the gradient was created in.. (lifespan == minutes)
+	if (biome == cow.currentBiome && cow.randomBiomesActive == false) {	// if we're still in the same biome the gradient was created in.. (lifespan == minutes)
 		setTimeout(function() { createBackground(luminosity1, color1, luminosity2, color2, lifespan, biome); }, (lifespan*30000))
 	}
 }
