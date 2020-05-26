@@ -1,6 +1,7 @@
 v2.01 - Still not efficient enough
 	Performance
-		Fixed a bug causing randomBiome backgrounds to never get deleted after leaving the biome
+		Reduced unnecessary layering of randomBiome sky gradients by 99% (!)
+		Fixed a bug causing randomBiome sky gradients to never get deleted after leaving the biome
 		Optimized click boosting from O(n) to O(1) complexity, massively reducing CPU cost
 		Increased blocking rate of lategameThrottle() from 30% to 85%
 		Throttled hexScanner movement controller from 60FPS to 1FPS

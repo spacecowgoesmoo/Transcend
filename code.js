@@ -431,9 +431,16 @@ function disableBiomeButtons() {
 
 
 // Switch biomes
-function changeBiome(location, randomSaveCPU) {
+function changeBiome(location, skipStepsForRandomBiomes) {
 	cow.currentBiome = location;										// change the current biome variable
-	cow.spawnNewBGgradient = true;										// set the flag to spawn a new BG gradient
+
+	if (skipStepsForRandomBiomes == true) {								// set the flag to spawn a new BG gradient
+		if (rngRange(1,100) > 97) {										// and throttle it hard for randomBiomes
+			cow.spawnNewBGgradient = true;
+		}
+	} else {
+		cow.spawnNewBGgradient = true;
+	}
 
 	if (location == 'biome4') {
 		// Smog filter for biome4
@@ -441,7 +448,7 @@ function changeBiome(location, randomSaveCPU) {
 		biome4Container.filters = [shader];								//
 	}
 
-	if (randomSaveCPU != false) { 										// Skips a bunch of stuff if this is being called from the biome randomizer
+	if (skipStepsForRandomBiomes != true) { 							// Skips a bunch of stuff if this is being called from the biome randomizer
 		disableBiomeButtons();
 		switch (location) {
 			case 'biome1':
@@ -476,7 +483,6 @@ function changeBiome(location, randomSaveCPU) {
 				break;
 			default: break;
 		}
-		// Icon colors: yellow red lightMonochrome blue red lightMonochrome
 		saveGame();
 	}
 }
@@ -485,15 +491,15 @@ function changeBiome(location, randomSaveCPU) {
 
 
 function randomBiomes(trigger) {
-	if (trigger == 'activate') { cow.randomBiomesActive = true; cow.bgTransitionSpeed = 1; }
+	if (trigger == 'activate') { cow.randomBiomesActive = true; cow.bgTransitionSpeed = 5; }
 	if (cow.randomBiomesActive == true) {
 		switch(rngRange(1,6)) {
-			case 1: changeBiome('biome1', false); break;
-			case 2: changeBiome('biome2', false); break;
-			case 3: changeBiome('biome3', false); break;
-			case 4: if (rngRange(1,2) == 2) { changeBiome('biome4', false); } break;		// Lower odds because it clogs up the screen
-			case 5: changeBiome('biome5', false); break;
-			case 6: changeBiome('biome6', false); break;
+			case 1: changeBiome('biome1', true); break;
+			case 2: changeBiome('biome2', true); break;
+			case 3: changeBiome('biome3', true); break;
+			case 4: if (rngRange(1,2) == 2) { changeBiome('biome4', true); } break;		// Lower odds because it clogs up the screen
+			case 5: changeBiome('biome5', true); break;
+			case 6: changeBiome('biome6', true); break;
 			default: break;
 		}
 		disableBiomeButtons();

@@ -16,14 +16,19 @@ function createBackground(luminosity1, color1, luminosity2, color2, lifespan, bi
 	let preventSecondFadeIn = false;									// prevents the bgSquare from reappearing if user quickly switches back to an old biome
 
 	function crossfade() {
-		if (biome == cow.currentBiome && preventSecondFadeIn == false) {// If the biome is the same as when the bgSquare spawned..
-			bgSquare.alpha = Math.sin(q);								// calculate alpha with a sinewave
-			q += (1/lifespan)/76;										// increment. lifespan is tuned to be in minutes
-		}
+		if (cow.randomBiomesActive == false) {
+			if (biome == cow.currentBiome && preventSecondFadeIn == false) {// If the biome is the same as when the bgSquare spawned..
+				bgSquare.alpha = Math.sin(q);								// calculate alpha with a sinewave
+				q += (1/lifespan)/76;										// increment. lifespan is tuned to be in minutes
+			}
 
-		if (biome != cow.currentBiome) {								// If the biome has changed..
-			bgSquare.alpha -= lifespan/20000;							// Fade out
-			preventSecondFadeIn = true;
+			if (biome != cow.currentBiome) {								// If the biome has changed..
+				bgSquare.alpha -= lifespan/20000;							// Fade out
+				preventSecondFadeIn = true;
+			}
+		} else {
+			bgSquare.alpha = Math.sin(q);								// skip most of the logic for randomBiomes and just animate
+			q += (1/lifespan)/76;
 		}
 
 		if (q > 3.2 || bgSquare.alpha <= 0.01) {						// if gradient has faded out.. (3.14 is one sinwave cycle)
