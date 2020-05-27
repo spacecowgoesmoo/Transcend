@@ -190,6 +190,7 @@ function loadGame() {
 		// Modify some temporary stats for a cleaner game load
 		cow.spawnNewBGgradient = true;
 		cow.creditsActivated = false;
+		cow.gameStarted = false;
 		cow.hideMusicText = false;
 		cow.filesPreloaded = cowTemp1;
 
