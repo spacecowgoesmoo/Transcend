@@ -435,7 +435,7 @@ function changeBiome(location, skipStepsForRandomBiomes) {
 	cow.currentBiome = location;										// change the current biome variable
 
 	if (skipStepsForRandomBiomes == true) {								// set the flag to spawn a new BG gradient
-		if (rngRange(1,100) > 97) {										// and throttle it hard for randomBiomes
+		if (rngRange(1,100) > 96) {										// and throttle it hard for randomBiomes
 			cow.spawnNewBGgradient = true;
 		}
 	} else {
