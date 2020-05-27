@@ -16,14 +16,19 @@ function createBackground(luminosity1, color1, luminosity2, color2, lifespan, bi
 	let preventSecondFadeIn = false;									// prevents the bgSquare from reappearing if user quickly switches back to an old biome
 
 	function crossfade() {
-		if (biome == cow.currentBiome && preventSecondFadeIn == false) {// If the biome is the same as when the bgSquare spawned..
-			bgSquare.alpha = (Math.sin(q));								// calculate alpha with a sinewave
-			q += (1/lifespan)/76;										// increment. lifespan is tuned to be in minutes
-		}
+		if (cow.randomBiomesActive == false) {
+			if (biome == cow.currentBiome && preventSecondFadeIn == false) {// If the biome is the same as when the bgSquare spawned..
+				bgSquare.alpha = Math.sin(q);								// calculate alpha with a sinewave
+				q += (1/lifespan)/76;										// increment. lifespan is tuned to be in minutes
+			}
 
-		if (biome != cow.currentBiome) {								// If the biome has changed..
-			bgSquare.alpha -= lifespan/20000;							// Fade out
-			preventSecondFadeIn = true;
+			if (biome != cow.currentBiome) {								// If the biome has changed..
+				bgSquare.alpha -= lifespan/20000;							// Fade out
+				preventSecondFadeIn = true;
+			}
+		} else {
+			bgSquare.alpha = Math.sin(q);								// skip most of the logic for randomBiomes and just animate
+			q += (1/lifespan)/76;
 		}
 
 		if (q > 3.2 || bgSquare.alpha <= 0.01) {						// if gradient has faded out.. (3.14 is one sinwave cycle)
@@ -33,7 +38,7 @@ function createBackground(luminosity1, color1, luminosity2, color2, lifespan, bi
 
 	window.requestAnimationFrame(crossfade);							// starts the animation moving
 
-	if (biome == cow.currentBiome) {									// if we're still in the same biome the gradient was created in.. (lifespan == minutes)
+	if (biome == cow.currentBiome && cow.randomBiomesActive == false) {	// if we're still in the same biome the gradient was created in.. (lifespan == minutes)
 		setTimeout(function() { createBackground(luminosity1, color1, luminosity2, color2, lifespan, biome); }, (lifespan*30000))
 	}
 }
@@ -93,30 +98,14 @@ function spawnSkystar(luminosity, color, placement, lifespan, shape, counter) {
 																		// also staggers spawn rate. Max of 314 or it will overflow
 	let sfxPlayed = false;												// Used for dynamically calling the SFX in the animation loop
 
-	document.body.addEventListener('click', boost);						// Adds click boost event listener
-	let boostCounter = rngRange(0,5)/10;								// initialize sinewave, slight RNG
-	let boostable = true;												// initialize logic to prevent click spamming
-
-	function boost() {													// click boost animation
-		if (boostable == true) { go(); }
-
-		function go() {
-			boostable = false;
-
-			star.alpha = (Math.sin(q));									// Same calculations as normal, but faster. Click = 6% progress
-			q += 1/lifespan/6.6;
-
-			boostCounter += 2.4;
-			if (boostCounter >= 3.1) {
-				boostCounter = 0;
-				boostable = true;
-			} else { if (q < 3.1) { setTimeout(function() { window.requestAnimationFrame(go); }, 1000) } }	// Throttled to 1FPS
-		}
-	}
 
 	function pulseBrightness() {
-		star.alpha = (Math.sin(q));										// calculate alpha with a sinewave
+		star.alpha = Math.sin(q);										// calculate alpha with a sinewave
 		q += 1/lifespan/190;											// increment. lifespan is tuned to be in minutes
+
+		if (cow.boostMultiplier > 0) {									// click boost
+			q += 1/lifespan/66;											// Same calculations as normal, but faster. Click = 6% progress
+		}
 
 		if (q > 0.8 && sfxPlayed == false) {							// play sfx when the shape is mostly visible
 			switch (shape) {
@@ -129,7 +118,6 @@ function spawnSkystar(luminosity, color, placement, lifespan, shape, counter) {
 
 		if (q > 3.2) {													// if star has faded out.. (3.14 is one sinwave cycle)
 			star.destroy(true);											// kill it
-			document.body.removeEventListener('click', boost);			// Removes the click boost event listener from the HTML body
 			switch (shape) {											// add one shape to the player's inventory
 				case 'circle': cow.resourceCircles++; break;			//
 				case 'star': cow.resourceStars++; break;				//
@@ -269,58 +257,46 @@ function spawnShape(size, speedY, speedX, widthX, rotation, luminosity, color, o
 
 	let sfxPlayed = false;												// Used for dynamically calling the SFX in the animation loop
 
-	document.body.addEventListener('click', boost);						// Adds click boost event listener
-	let boostCounter = rngRange(0,5)/10;								// initialize sinewave, slight RNG
-	let boostable = true;												// initialize logic to prevent click spamming
 
-	function boost() {													// click boost animation
-		if (boostable == true && counter != 'biome2CurrentBGHexagonCount') { go(); }	// Disabled for biome2 BG hexes
-
-		function go() {
-			boostable = false;
-			shape1.y -= Math.sin(boostCounter) * speedYFinal * 2;		//	Accounts for base speed and parallax
-			boostCounter += 0.04;
-			if (boostCounter >= 3.1) {
-				boostCounter = 0;
-				boostable = true;
-			} else { if (shape1.y > offscreen +5) { window.requestAnimationFrame(go); } }	// otherwise, animate another frame and check again
+	function move() {	
+		shape1.y -= speedYFinal;										// basic movement
+	
+		if (cow.boostMultiplier > 0 && counter != 'biome2CurrentBGHexagonCount') {	
+			shape1.y -= cow.boostMultiplier * speedYFinal;				// click boost
 		}
-	}
-
-	function move() {													//
-		shape1.y -= speedYFinal;										// Does one frame of 60FPS animation
 
 		if (speedX != 0) {												// sinwave animation
 			shape1.x += (Math.sin(sinFinal));							//
 			sinFinal += (speedX/widthX);								// Equation isn't accurate, but it looks ok
 		}
 
-		if (shape1.y <= 595 && sfxPlayed == false && counter != 'biome2CurrentBGHexagonCount' && shape != 'triangle') {
-			switch (shape) {													// play sfx when the shape spawns. 100% squares break the audio engine lol
-				case 'diamond':	playAudio('./SFX/diamond' + rngRange(1,5), 'sfx', shape1.x);	break;
-				case 'hexagon':	playAudio('./SFX/hexagon' + rngRange(1,5), 'sfx', shape1.x);	break;
-				case 'pillar':	if (rngRange(1,10) >= 9) { playAudio('./SFX/square' + rngRange(1,5), 'sfx', shape1.x); }	break;
-				case 'quad':	if (rngRange(1,10) >= 9) { playAudio('./SFX/square' + rngRange(1,5), 'sfx', shape1.x); }	break;
-				case 'star':	playAudio('./SFX/star' + rngRange(1,5), 'sfx', shape1.x);		break;
-				default: break;
+		if (sfxPlayed == false) {
+			if (shape1.y <= 595 && counter != 'biome2CurrentBGHexagonCount' && shape != 'triangle') {
+				switch (shape) {													// play sfx when the shape spawns. 100% squares break the audio engine lol
+					case 'diamond':	playAudio('./SFX/diamond' + rngRange(1,5), 'sfx', shape1.x);	break;
+					case 'hexagon':	playAudio('./SFX/hexagon' + rngRange(1,5), 'sfx', shape1.x);	break;
+					case 'pillar':	if (rngRange(1,10) >= 9) { playAudio('./SFX/square' + rngRange(1,5), 'sfx', shape1.x); }	break;
+					case 'quad':	if (rngRange(1,10) >= 9) { playAudio('./SFX/square' + rngRange(1,5), 'sfx', shape1.x); }	break;
+					case 'star':	playAudio('./SFX/star' + rngRange(1,5), 'sfx', shape1.x);		break;
+					default: break;
+				}
+				sfxPlayed = true;
 			}
-			sfxPlayed = true;
-		}
 
-		if (shape1.y <= (595-(offscreen/2)) && sfxPlayed == false && shape == 'triangle') {	// Special case for triangle to compensate for rotation. Play the SFX 50% pixels early
-			playAudio('./SFX/triangle' + rngRange(1,5), 'sfx', shape1.x);
-			sfxPlayed = true;
-		}
+			if (shape1.y <= (595-(offscreen/2)) && shape == 'triangle') {	// Special case for triangle to compensate for rotation. Play the SFX 50% pixels early
+				playAudio('./SFX/triangle' + rngRange(1,5), 'sfx', shape1.x);
+				sfxPlayed = true;
+			}
 
-		if (shape1.y <= (595-offscreen) && sfxPlayed == false && shape == 'circle') {		// Special case for circles to compensate for centered origins
-			playAudio('./SFX/circle' + rngRange(1,5), 'sfx', shape1.x);
-			sfxPlayed = true;
+			if (shape1.y <= (595-offscreen) && shape == 'circle') {		// Special case for circles to compensate for centered origins
+				playAudio('./SFX/circle' + rngRange(1,5), 'sfx', shape1.x);
+				sfxPlayed = true;
+			}
 		}
 
 		if (shape1.y < offscreen) { 									// if shape is offscreen..
 			shape1.destroy(true); 										// kill it
 			cow[counter]--;												// remove the shape from the resource counter
-			document.body.removeEventListener('click', boost);			// Removes the click boost event listener from the HTML body
 			switch (shape) {											// and add one shape to the player's inventory
 				case 'diamond': cow.resourceDiamonds++; break;			//
 				case 'hexagon':

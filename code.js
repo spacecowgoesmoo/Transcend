@@ -63,6 +63,10 @@ var cow = {
 	audioFormat: '.opus',
 	hideMusicText: false,
 
+	allowClickBoost: true,
+	boostMultiplier: 0,
+	boostCounter: 0,
+
 	randomBiomesUnlocked: false,
 	randomBiomesActive: false,
 	bgTransitionSpeed: 5,
@@ -427,9 +431,16 @@ function disableBiomeButtons() {
 
 
 // Switch biomes
-function changeBiome(location, randomSaveCPU) {
+function changeBiome(location, skipStepsForRandomBiomes) {
 	cow.currentBiome = location;										// change the current biome variable
-	cow.spawnNewBGgradient = true;										// set the flag to spawn a new BG gradient
+
+	if (skipStepsForRandomBiomes == true) {								// set the flag to spawn a new BG gradient
+		if (rngRange(1,100) > 96) {										// and throttle it hard for randomBiomes
+			cow.spawnNewBGgradient = true;
+		}
+	} else {
+		cow.spawnNewBGgradient = true;
+	}
 
 	if (location == 'biome4') {
 		// Smog filter for biome4
@@ -437,7 +448,7 @@ function changeBiome(location, randomSaveCPU) {
 		biome4Container.filters = [shader];								//
 	}
 
-	if (randomSaveCPU != false) { 										// Skips a bunch of stuff if this is being called from the biome randomizer
+	if (skipStepsForRandomBiomes != true) { 							// Skips a bunch of stuff if this is being called from the biome randomizer
 		disableBiomeButtons();
 		switch (location) {
 			case 'biome1':
@@ -472,7 +483,6 @@ function changeBiome(location, randomSaveCPU) {
 				break;
 			default: break;
 		}
-		// Icon colors: yellow red lightMonochrome blue red lightMonochrome
 		saveGame();
 	}
 }
@@ -481,15 +491,15 @@ function changeBiome(location, randomSaveCPU) {
 
 
 function randomBiomes(trigger) {
-	if (trigger == 'activate') { cow.randomBiomesActive = true; cow.bgTransitionSpeed = 1; }
+	if (trigger == 'activate') { cow.randomBiomesActive = true; cow.bgTransitionSpeed = 5; }
 	if (cow.randomBiomesActive == true) {
 		switch(rngRange(1,6)) {
-			case 1: changeBiome('biome1', false); break;
-			case 2: changeBiome('biome2', false); break;
-			case 3: changeBiome('biome3', false); break;
-			case 4: if (rngRange(1,2) == 2) { changeBiome('biome4', false); } break;		// Lower odds because it clogs up the screen
-			case 5: changeBiome('biome5', false); break;
-			case 6: changeBiome('biome6', false); break;
+			case 1: changeBiome('biome1', true); break;
+			case 2: changeBiome('biome2', true); break;
+			case 3: changeBiome('biome3', true); break;
+			case 4: if (rngRange(1,2) == 2) { changeBiome('biome4', true); } break;		// Lower odds because it clogs up the screen
+			case 5: changeBiome('biome5', true); break;
+			case 6: changeBiome('biome6', true); break;
 			default: break;
 		}
 		disableBiomeButtons();
@@ -514,6 +524,24 @@ function stopRandomization() {
 function clearUIwhenMouseExitsWindow() {
 	clearPricesSpan();																// This whole function triggers on 10% of all Chrome windows mouseclicks, ruining the options menu. Acceptable loss
 	//newFade(optionsMenu, 0, 0.25);												// Maybe they'll fix it later
+}
+
+
+
+
+function globalClickBoost() {
+	if (cow.allowClickBoost == true) { go(); }
+
+	function go() {
+		cow.allowClickBoost = false;
+		cow.boostMultiplier = Math.sin(cow.boostCounter) * 2;
+		cow.boostCounter += 0.04;
+		if (cow.boostCounter >= 3.1) {
+			cow.boostCounter = 0;
+			cow.boostMultiplier = 0;
+			cow.allowClickBoost = true;
+		} else { window.requestAnimationFrame(go); }
+	}
 }
 
 
@@ -608,6 +636,7 @@ function initializeGameTwo(gameType) {
 	updateResourceCounter('circle');
 	updateResourceCounter('square');
 	updateResourceCounter('stardust');
+	document.body.addEventListener('click', globalClickBoost);
 	resourceCounter.style.display = 'inline';								// Hides resourceCounter until the previous things have completed. Makes startup look cleaner
 	optionsMenuButton.className = 'visible';
 }
@@ -627,5 +656,5 @@ function initializeGameThree() {
 
 // Does things at 60FPS
 app.ticker.add(function() {
-	//console.log(optionsMenuButton.style.opacity);
+	//stardustCounterText.innerHTML = Math.round(app.ticker.FPS) + ' FPS';
 });

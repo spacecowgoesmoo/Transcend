@@ -31,6 +31,10 @@ function eraseSave() {
 			audioFormat: '.opus',
 			hideMusicText: false,
 
+			allowClickBoost: true,
+			boostMultiplier: 0,
+			boostCounter: 0,
+
 			randomBiomesUnlocked: false,
 			randomBiomesActive: false,
 			bgTransitionSpeed: 5,
@@ -186,8 +190,8 @@ function loadGame() {
 		// Modify some temporary stats for a cleaner game load
 		cow.spawnNewBGgradient = true;
 		cow.creditsActivated = false;
+		cow.gameStarted = false;
 		cow.hideMusicText = false;
-		cow.gameStarted = true;
 		cow.filesPreloaded = cowTemp1;
 
 		cow.userWebBrowser = cowTemp2;
@@ -217,7 +221,6 @@ function startGameResumeDemo() {
 	cow.spawnNewBGgradient = true;
 
 	cow.creditsActivated = false;
-	cow.gameStarted = true;
 
 	cow.hideMusicText = false;
 
