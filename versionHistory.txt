@@ -1,7 +1,7 @@
 v2.02
-	Quality of Life
-		Tripled click boost speed for diamonds
-		Increased click boost speed by 50% for other common shapes
+	Gameplay
+		Tripled click boost speed for biome1 diamonds
+		Increased click boost speed by 50% for everything else
 
 
 

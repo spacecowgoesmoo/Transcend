@@ -841,7 +841,7 @@ function rareSpawnController() {
 						circ.y -= speedY;												// Standard vertical movement
 
 						if (cow.boostMultiplier > 0) {									// click boost
-							circ.y -= cow.boostMultiplier * speedY * -6;
+							circ.y -= cow.boostMultiplier * speedY * -3;
 						}
 
 						if (circ.y <= 625 && sfxPlayed == false) {						// Play SFX
