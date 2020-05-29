@@ -262,7 +262,11 @@ function spawnShape(size, speedY, speedX, widthX, rotation, luminosity, color, o
 		shape1.y -= speedYFinal;										// basic movement
 	
 		if (cow.boostMultiplier > 0 && counter != 'biome2CurrentBGHexagonCount') {	
-			shape1.y -= cow.boostMultiplier * speedYFinal;				// click boost
+			if (shape == 'diamond') {
+				shape1.y -= cow.boostMultiplier * speedYFinal * 2;
+			} else {
+				shape1.y -= cow.boostMultiplier * speedYFinal;			// click boost
+			}
 		}
 
 		if (speedX != 0) {												// sinwave animation

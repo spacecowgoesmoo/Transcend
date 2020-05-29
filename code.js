@@ -534,7 +534,7 @@ function globalClickBoost() {
 
 	function go() {
 		cow.allowClickBoost = false;
-		cow.boostMultiplier = Math.sin(cow.boostCounter) * 2;
+		cow.boostMultiplier = Math.sin(cow.boostCounter) * 3;
 		cow.boostCounter += 0.04;
 		if (cow.boostCounter >= 3.1) {
 			cow.boostCounter = 0;

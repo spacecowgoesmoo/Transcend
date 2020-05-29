@@ -1,3 +1,11 @@
+v2.02
+	Quality of Life
+		Tripled click boost speed for diamonds
+		Increased click boost speed by 50% for other common shapes
+
+
+
+
 v2.01 - More major performance increases
 	Performance
 		Reduced unnecessary layering of randomBiome sky gradients by 99% (!)
