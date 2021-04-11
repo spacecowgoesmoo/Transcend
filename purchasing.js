@@ -102,7 +102,6 @@ function buyBiome2() {
 		updateResourceCounter('hexagon');
 		updateTextSpans(false);
 		playAudio('SFXc/newBiome' + rngRange(1,3), 'sfx', 450, true);
-		cow.kongFirstBiomePurchased = true;
 		saveGame();
 	}
 }
@@ -119,7 +118,6 @@ function buyBiome3() {
 		updateResourceCounter('circle');
 		updateTextSpans(false);
 		playAudio('SFXc/newBiome' + rngRange(1,3), 'sfx', 450, true);
-		cow.kongFirstBiomePurchased = true;
 		saveGame();
 	}
 }
@@ -134,7 +132,6 @@ function buyBiome4() {
 		updateResourceCounter('square');
 		updateTextSpans(false);
 		playAudio('SFXc/newBiome' + rngRange(1,3), 'sfx', 450, true);
-		cow.kongFirstBiomePurchased = true;
 		saveGame();
 	}
 }
@@ -151,7 +148,6 @@ function buyBiome5() {
 		updateResourceCounter('circle');
 		updateTextSpans(false);
 		playAudio('SFXc/newBiome' + rngRange(1,3), 'sfx', 450, true);
-		cow.kongFirstBiomePurchased = true;
 		saveGame();
 	}
 }
@@ -165,7 +161,6 @@ function buyBiome6() {
 		updateResourceCounter('circle');
 		updateTextSpans(false);
 		playAudio('SFXc/newBiome' + rngRange(1,3), 'sfx', 450, true);
-		cow.kongFirstBiomePurchased = true;
 		saveGame();
 	}
 }
@@ -194,7 +189,6 @@ function buyDiamondBar() {
 		updateTextSpans(false);
 		showDiamondBar();
 		playAudio('SFXc/stardustBoost' + rngRange(1,3), 'sfx', 450, true);
-		cow.kongDiamondBarUnlocked = true;
 		saveGame();
 	}
 }
@@ -488,7 +482,7 @@ function recheckItemCostHighlighting() {
 		if (cow.resourceCircles >= 800	 	&& buttID18.src.slice(-10,-5) != 'Color')	{ buttID18.src = 'Images/circleHollowColor' + rngRange(1,3) + '.png'; }
 		if (cow.resourceSquares >= 2400 	&& buttID19.src.slice(-10,-5) != 'Color')	{ buttID19.src = 'Images/squareHollowColor' + rngRange(1,3) + '.png'; }
 		if (cow.resourceSquares >= 6400 	&& buttID20.src.slice(-10,-5) != 'Color')	{ buttID20.src = 'Images/squareHollowColor' + rngRange(1,3) + '.png'; }
-	
+
 		// Resource counter numbers and shapes
 		function getRNG() { return rngRange(1,4); }
 		if (cow.resourceDiamonds >= cow.nextDiamondPrice 	&& cow.diamondCapacity < cow.maxDiamondCapacity 	&& (buttID21.src.slice(-10,-5) != 'Color' || diamondCounter.style.color == 'rgb(249, 249, 249)')) {

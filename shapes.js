@@ -123,7 +123,6 @@ function spawnSkystar(luminosity, color, placement, lifespan, shape, counter) {
 				case 'star': cow.resourceStars++; break;				//
 				default: break;											//
 			}
-			cow.kongLifetimeShapes++;
 			if (cow.endgameBarOwned == true){
 				switch (shape) {												// Add shapes to the endgame bar counter
 					case 'circle': cow.resourceEndgameBarCircles++; break;		//
@@ -258,10 +257,10 @@ function spawnShape(size, speedY, speedX, widthX, rotation, luminosity, color, o
 	let sfxPlayed = false;												// Used for dynamically calling the SFX in the animation loop
 
 
-	function move() {	
+	function move() {
 		shape1.y -= speedYFinal;										// basic movement
-	
-		if (cow.boostMultiplier > 0 && counter != 'biome2CurrentBGHexagonCount') {	
+
+		if (cow.boostMultiplier > 0 && counter != 'biome2CurrentBGHexagonCount') {
 			shape1.y -= cow.boostMultiplier * speedYFinal;				// click boost
 		}
 
@@ -308,9 +307,6 @@ function spawnShape(size, speedY, speedX, widthX, rotation, luminosity, color, o
 				case 'star': cow.resourceStars++;	 			break;	//
 				default: break;											//
 			}
-
-			if (shape == 'quad' || shape == 'pillar' || rngRange(1,10) == 7) { cow.kongLifetimeShapes++; }		// Squares only count for 10%
-			else { cow.kongLifetimeShapes++; }
 
 			if (cow.endgameBarOwned == true){
 				switch (shape) {												// Add shapes to the endgame bar counter

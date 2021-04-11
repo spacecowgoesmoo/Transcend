@@ -6,8 +6,7 @@ function eraseSave() {
 	else eraseSaveText.innerHTML = 'Are you sure?';
 	// Must set currentBiome; it somehow doesn't get repopulated when the page refreshes
 	function erase() {
-		const temp = cow.kongUsername;		// The one thing that we don't want to reset. We need the username intact to point to the savefile
-		cow = { 
+		cow = {
 			currentBiome: 'biome1',
 			spawnNewBGgradient: true,
 
@@ -19,12 +18,6 @@ function eraseSave() {
 			filesPreloaded: 0,
 			preloaderComplete: false,
 			userWebBrowser: '',
-
-			kongUsername: temp,
-			kongLifetimeShapes: 0,
-			kongFirstBiomePurchased: false,
-			kongDiamondBarUnlocked: false,
-			kongStrayNightmareDiscovered: false,
 
 			bgmVolume: 80,
 			sfxVolume: 80,
@@ -129,7 +122,6 @@ function exportEncryptedSave() {
 function importEncryptedSave() {
 	let q = prompt('Paste your save file here');
 	if (q != null) {
-		const temp = cow.kongUsername;
 		q = CryptoJS.AES.decrypt(q, 'notVerySecretHash');		// Decrypt save file
 		q = q.toString(CryptoJS.enc.Utf8);						// Required because the decrypter outputs hex instead of ascii by default. This reconverts it
 		window.cow = JSON.parse(q);
@@ -137,7 +129,6 @@ function importEncryptedSave() {
 		cow.currentBiome = 'biome1';
 		cow.spawnNewBGgradient = true;
 		cow.gameStarted = false;
-		cow.kongUsername = temp;
 		cow.resourceCounterWidth = 115;
 		cow.biome1CurrentDiamondCount = 0;
 		cow.biome1CurrentStarCount = 0;
@@ -159,7 +150,7 @@ function importEncryptedSave() {
 
 
 function saveGame() {
-	const zzz = "transcendSAVEFILE" + cow.kongUsername;
+	const zzz = "transcendSAVEFILE";
 	localStorage.removeItem(zzz);
 	localStorage.setItem(zzz, JSON.stringify(cow));
 }
@@ -168,7 +159,7 @@ function saveGame() {
 
 
 function saveGameRecursive() {
-	const zzz = "transcendSAVEFILE" + cow.kongUsername;
+	const zzz = "transcendSAVEFILE";
 	localStorage.removeItem(zzz);
 	localStorage.setItem(zzz, JSON.stringify(cow));
 	setTimeout(saveGameRecursive, 60000);
@@ -178,12 +169,11 @@ function saveGameRecursive() {
 
 
 function loadGame() {
-	const zzz = "transcendSAVEFILE" + cow.kongUsername;
+	const zzz = "transcendSAVEFILE";
 	const q = localStorage.getItem(zzz);
 	const cowTemp1 = cow.filesPreloaded;
 	const cowTemp2 = cow.userWebBrowser;
 	const cowTemp3 = cow.audioFormat;
-	console.log('Attempting login with Kong username: ' + cow.kongUsername);
 	if (q != null) {
 		// Load the save file
 		window.cow = JSON.parse(q);
@@ -262,8 +252,8 @@ function startGameResumeDemo() {
 	q.setAttribute('style', 'text-align: center; width: 700px; padding: 0 100px; display: block; transition: opacity ease 2s; opacity: 0;');
 	document.body.appendChild(q);
 	setTimeout(function() { resumeText.style.opacity = 1; }, 500);	// Fadein
-	resumeText.innerHTML = '<br>This is a modified demo version of Transcend created for my resume.<br><br>All content has been automatically unlocked for quick viewing. Click the buttons in the lower right to cycle through the game content. For more information on this genre, please visit <a href="https://www.reddit.com/r/incremental_games/" target="_blank">r/incremental_games</a>. The full game is hosted on <a href="http://www.kongregate.com/games/spacecowgoesmoo/transcend" target="_blank">Kongregate</a>.<br><br><br><br>';
-	
+	resumeText.innerHTML = '<br>This is a modified demo version of Transcend created for my resume.<br><br>All content has been automatically unlocked for quick viewing. Click the buttons in the lower right to cycle through the game content. For more information on this genre, please visit <a href="https://www.reddit.com/r/incremental_games/" target="_blank">r/incremental_games</a>. The full game is located <a href="http://www.taylorcalderone.com/transcend" target="_blank">here</a>.<br><br><br><br>';
+
 	// CSS
 	document.body.style.overflowX = 'hidden';
 	document.body.style.overflowY = 'auto';

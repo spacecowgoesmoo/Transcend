@@ -104,7 +104,6 @@ function rareSpawnController() {
 
 						if (quadQuad.y < -90) { 											// if shape is offscreen..
 							quadQuad.destroy(true); 										// kill it
-							cow.kongLifetimeShapes+=5;
 							if (rngRange(1,2) == 1) { cow.resourceDiamonds+=5; updateResourceCounter('diamond'); }			// Random shape rewards
 							else { cow.resourceSquares+=5; updateResourceCounter('square'); }
 						} else { window.requestAnimationFrame(move); }						// otherwise, animate another frame and check again
@@ -171,7 +170,6 @@ function rareSpawnController() {
 						if (diam.y < -40) { 											// if shape is offscreen..
 							diam.destroy(true); 										// kill it
 							cow.resourceDiamonds++;
-							cow.kongLifetimeShapes++;
 							updateResourceCounter('diamond');
 						} else { window.requestAnimationFrame(move); }					// otherwise, animate another frame and check again
 					}																	//
@@ -242,7 +240,6 @@ function rareSpawnController() {
 						if (q > 3.2) {													// if star has faded out.. (3.14 is one sinwave cycle)
 							star.destroy(true);											// kill it
 							cow.resourceStars++;										//
-							cow.kongLifetimeShapes++;
 							updateResourceCounter('star');								//
 						} else { setTimeout(function() { window.requestAnimationFrame(pulseBrightness); }, 1000) } // Throttled to 1FPS
 					}
@@ -359,7 +356,6 @@ function rareSpawnController() {
 						if (q > 3.2) {													// if star has faded out.. (3.14 is one sinwave cycle)
 							star.destroy(true);											// kill it
 							cow.resourceStars++;										//
-							cow.kongLifetimeShapes++;
 							updateResourceCounter('star');								//
 						 } else { window.requestAnimationFrame(move); }					// otherwise, animate another frame and check again
 					}
@@ -422,7 +418,6 @@ function rareSpawnController() {
 						if (ufo.x < -30) { 												// if shape is offscreen..
 							ufo.destroy(true); 											// kill it
 							cow.resourceHexagons++;
-							cow.kongLifetimeShapes++;
 							updateResourceCounter('hexagon');
 						} else { window.requestAnimationFrame(move); }					// otherwise, animate another frame and check again
 					}																	//
@@ -498,7 +493,6 @@ function rareSpawnController() {
 							if (yCounter < yMovement && hex.y > -149) { window.requestAnimationFrame(move); } // If movement isn't done yet and the hex isn't offscreen, keep going
 							else if (hex.y <= -149) {									// This is here for quick updating of the resource counter
 								cow.resourceHexagons++;
-								cow.kongLifetimeShapes++;
 								updateResourceCounter('hexagon');
 							}
 						}
@@ -520,7 +514,7 @@ function rareSpawnController() {
 						if (hex.y <= -149) {											// if shape is offscreen..
 							hex.destroy(true); 											// kill it
 						} else { setTimeout(function() { window.requestAnimationFrame(timer); }, 1000) } // otherwise, animate another frame and check again
-					}																	// Throttled to 1FPS	
+					}																	// Throttled to 1FPS
 
 					window.requestAnimationFrame(timer);								// starts the animation moving
 				}
@@ -594,7 +588,6 @@ function rareSpawnController() {
 						if (tri.y < -70) { 												// if shape is offscreen..
 							tri.destroy(true); 											// kill it
 							cow.resourceTriangles++;
-							cow.kongLifetimeShapes++;
 							updateResourceCounter('triangle');
 						} else { window.requestAnimationFrame(move); }					// otherwise, animate another frame and check again
 					}																	//
@@ -652,7 +645,6 @@ function rareSpawnController() {
 						if (tri.y < scale*-16) {										// if shape is offscreen..
 							tri.destroy(true); 											// kill it
 							cow.resourceTriangles++;
-							cow.kongLifetimeShapes++;
 							updateResourceCounter('triangle');
 						} else { window.requestAnimationFrame(move); }					// otherwise, animate another frame and check again
 					}																	//
@@ -788,7 +780,6 @@ function rareSpawnController() {
 								case 6: cow.resourceSquares++; 		updateResourceCounter('square');	break;
 								default: break;
 							}
-							cow.kongLifetimeShapes++;
 						} else { window.requestAnimationFrame(move); }		// otherwise, animate another frame and check again
 					}														//
 
@@ -852,7 +843,6 @@ function rareSpawnController() {
 						if (circ.y < -radius) {											// if shape is offscreen..
 							circ.destroy(true); 										// kill it
 							cow.resourceCircles++;
-							cow.kongLifetimeShapes++;
 							updateResourceCounter('circle');
 						} else { window.requestAnimationFrame(move); }					// otherwise, animate another frame and check again
 					}																	//
@@ -868,7 +858,6 @@ function rareSpawnController() {
 				} else
 				if (select <= 100) {
 					spawnEvilCircle(1200, 450, 0.4, 0); 			// spawn a big monster circle
-					cow.kongStrayNightmareDiscovered = true;		// this is the rarest thing in the game
 					playAudio('./Music/sn', 'bgm', 450);			// so congrats if you ever see it
 					displayMusicText('Stray Nightmare', 12);
 				}
@@ -1015,7 +1004,6 @@ function rareSpawnController() {
 								case 8: cow.resourceSquares+=4; updateResourceCounter('square');	break;
 								default: break;
 							}
-							cow.kongLifetimeShapes++;
 						} else { window.requestAnimationFrame(move); }					// otherwise, animate another frame and check again
 					}																	//
 
@@ -1079,7 +1067,6 @@ function rareSpawnController() {
 						if (square.y < -70) { 												// if shape is offscreen..
 							square.destroy(true); 											// kill it
 							cow.resourceSquares++;
-							cow.kongLifetimeShapes++;
 							updateResourceCounter('square');
 						} else { window.requestAnimationFrame(move); }						// otherwise, animate another frame and check again
 					}																		//

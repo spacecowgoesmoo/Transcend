@@ -52,12 +52,6 @@ var cow = {
 	preloaderComplete: false,
 	userWebBrowser: '',
 
-	kongUsername: '',
-	kongLifetimeShapes: 0,
-	kongFirstBiomePurchased: false,
-	kongDiamondBarUnlocked: false,
-	kongStrayNightmareDiscovered: false,
-
 	bgmVolume: 80,
 	sfxVolume: 80,
 	audioFormat: '.opus',
@@ -556,39 +550,6 @@ function newGameStuff() {
 
 
 
-function kongregateStuff() {
-	kongregateAPI.loadAPI(function(){												// Initialize
-		window.kongregate = kongregateAPI.getAPI();									//
-
-		cow.kongUsername = kongregate.services.getUsername();						// Get username for the savefile
-		// if (kongregate.services.isGuest()) { cow.kongUsername = 'guest'; }		// Already covered by the API
-
-		kongregate.services.addEventListener('login', kongLiveLogin);				// Recognize live page logins, and execute this function
-
-		function kongLiveLogin() {
-			const x = kongregate.services.getUsername();
-			console.log('Kong username changed to: ' + x);
-			cow.kongUsername = x;													// This is OK because the new username isn't saved
-			initializeGameTwo();
-		}
-
-		function submitScores() {													// High Scores and future badges
-			kongregate.stats.submit("Lifetime Shapes", cow.kongLifetimeShapes);
-			if (cow.kongFirstBiomePurchased == true) { kongregate.stats.submit("First Biome", 1); }				 // Easy		Explorer			Unlock your first new biome
-			if (cow.kongDiamondBarUnlocked == true) { kongregate.stats.submit("Research Phase", 1); }			 // Medium		Technologist		Begin the research phase
-			if (cow.gameClear == true) { kongregate.stats.submit("Game Clear", 1); }							 // Hard		Transhuman			Complete the game
-			if (cow.kongStrayNightmareDiscovered == true) { kongregate.stats.submit("Stray Nightmare", 1); }	 // Impossible	Stray Nightmare		Find a Ghost in the machine
-			setTimeout(submitScores, 30000);
-		}
-
-		submitScores();
-	});
-}
-
-
-
-
-
 
 
 
@@ -613,9 +574,8 @@ function kongregateStuff() {
 // ..which breaks the game when they then get referenced before they exist
 function initializeGameOne() {
 	browserCheck()															// We need the CAF/OPUS data for the preloader
-	audioFormatSetup();													
+	audioFormatSetup();
 	preloadFiles();
-	kongregateStuff();
 }
 
 function initializeGameTwo(gameType) {

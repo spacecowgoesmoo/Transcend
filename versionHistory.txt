@@ -1,3 +1,7 @@
+v2.02 - It's 2021!
+	Moved the game back to my personal site
+	Removed Kongregate support
+
 v2.01 - More major performance increases
 	Performance
 		Reduced unnecessary layering of randomBiome sky gradients by 99% (!)
@@ -6,13 +10,10 @@ v2.01 - More major performance increases
 		Increased blocking rate of lategameThrottle() from 30% to 85%
 		Throttled hexScanner movement controller from 60FPS to 1FPS
 		Optimized hexScanner movement controller to not use complex math operations
-		Slightly optimized logic in basic shape movement 
+		Slightly optimized logic in basic shape movement
 	General Bugfixes
 		Fixed a bug where 2.0's throttled FPS of stars and planets made click boosting look bad
 		Fixed a bug where lategameThrottle() could temporarily break game initialization
-
-
-
 
 v2.0 - Big maintenance patch for 2020
 	Summary
@@ -76,13 +77,6 @@ v2.0 - Big maintenance patch for 2020
 	Devtools
 		Improved unlockEverythingDevHack() to more effectively test all three game phases
 		Added new console messages for background music
-
-
-
-
-
-
-
 
 v1.02 - Chrome breaks web audio standards
 	Added a 'click to start' page to account for the new Chrome autoplay protection
