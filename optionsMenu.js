@@ -252,7 +252,7 @@ function startGameResumeDemo() {
 	q.setAttribute('style', 'text-align: center; width: 700px; padding: 0 100px; display: block; transition: opacity ease 2s; opacity: 0;');
 	document.body.appendChild(q);
 	setTimeout(function() { resumeText.style.opacity = 1; }, 500);	// Fadein
-	resumeText.innerHTML = '<br>This is a modified demo version of Transcend created for my resume.<br><br>All content has been automatically unlocked for quick viewing. Click the buttons in the lower right to cycle through the game content. For more information on this genre, please visit <a href="https://www.reddit.com/r/incremental_games/" target="_blank">r/incremental_games</a>. The full game is located <a href="http://www.taylorcalderone.com/transcend/game.html" target="_blank">here</a>.<br><br><br><br>';
+	resumeText.innerHTML = '<br>This is a modified demo version of Transcend created for my resume.<br><br>All content has been automatically unlocked for quick viewing. Click the buttons in the lower right to cycle through the game content. For more information on this genre, please visit <a href="https://www.reddit.com/r/incremental_games/" target="_blank">r/incremental_games</a>. The full game is located <a href="https://www.taylorcalderone.com/transcend/game.html" target="_blank">here</a>.<br><br><br><br>';
 
 	// CSS
 	document.body.style.overflowX = 'hidden';
